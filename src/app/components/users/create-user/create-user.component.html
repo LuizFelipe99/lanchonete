@@ -26,7 +26,7 @@ comitando na masters
       <mat-form-field>
         <mat-label>Nível</mat-label>
         <mat-select>
-          <mat-option [value]="1">Administrador</mat-option>
+          <mat-option [value]="1">Mirosmar</mat-option>
           <mat-option [value]="2">Caixa</mat-option>
         </mat-select>
       </mat-form-field>
@@ -42,8 +42,14 @@ comitando na masters
         >
           Voltar
         </button>
-           <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-           <button mat-raised-button class="button-success" (click)="openSnackBar('mensagem', 'Ok',  'Tipo')">Salvar</button>
+        <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
+        <button
+          mat-raised-button
+          class="button-success"
+          (click)="openSnackBar('mensagem', 'Ok', 'Tipo')"
+        >
+          Salvar
+        </button>
       </div>
     </mat-card-actions>
   </mat-card>
