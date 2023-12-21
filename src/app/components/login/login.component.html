@@ -9,12 +9,12 @@
     <form class="form">
       <mat-form-field class="example-full-width">
         <mat-label>Usuário</mat-label>
-        <input matInput placeholder="Usuário">
+        <input matInput placeholder="Usuário" name="login" [(ngModel)]="formData.login">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Senha</mat-label>
-        <input matInput placeholder="*****">
+        <input matInput placeholder="*****" type="password" name="password" [(ngModel)]="formData.password">
       </mat-form-field>
     </form>
 
@@ -22,7 +22,7 @@
       <div class="example-button-row">
         <button routerLink="../usuarios/criar" style="margin-right: 1rem;" mat-raised-button class="button-warning">Criar</button> 
         <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-        <button mat-raised-button class="button-success" (click)="openSnackBar('mensagem', 'Ok',  'Tipo')">Login</button>
+        <button mat-raised-button class="button-success" (click)="login()">logar</button>
       </div>
     </mat-card-actions>
   </mat-card>

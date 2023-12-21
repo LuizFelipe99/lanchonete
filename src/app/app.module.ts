@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import { CreateSupplierComponent } from './components/suppliers/create-supplier/
 import { ListSupplierComponent } from './components/suppliers/list-supplier/list-supplier.component';
 import { CreateOrderComponent } from './components/suppliers/order/create-order/create-order.component';
 import { ListOrderComponent } from './components/suppliers/order/list-order/list-order.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { ListOrderComponent } from './components/suppliers/order/list-order/list
     ListSupplierComponent,
     CreateOrderComponent,
     ListOrderComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { ListOrderComponent } from './components/suppliers/order/list-order/list
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

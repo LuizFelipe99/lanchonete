@@ -13,10 +13,10 @@
          Listar Usuarios
       </mat-list-item>
     <!-- item menu -->
-      <mat-list-item role="listitem" routerLink="/login">
+      <!-- <mat-list-item role="listitem" routerLink="/login">
          <mat-icon>account_circle</mat-icon> 
          Login 
-      </mat-list-item>
+      </mat-list-item> -->
       <!-- item menu -->
       <mat-list-item role="listitem" routerLink="/usuarios/criar">
         <mat-icon>group_add</mat-icon> 
@@ -39,6 +39,7 @@
       </mat-list-item>
       <!-- item menu -->
     </mat-list>
+    <button mat-button (click)="logout()" >Sair</button>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

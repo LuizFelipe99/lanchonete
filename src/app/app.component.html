@@ -1,4 +1,7 @@
 <router-outlet>
-  <!-- <app-login></app-login> -->
-  <app-menu></app-menu>
+  <ng-container *ngIf="login; else main">
+    <app-menu></app-menu>
+  </ng-container>
+  
+  <ng-template #main><router-outlet></router-outlet></ng-template>
 </router-outlet>
