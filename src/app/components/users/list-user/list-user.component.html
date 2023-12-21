@@ -6,21 +6,21 @@
           <div>
             <mat-form-field class="example-full-width">
               <mat-label>Nome</mat-label>
-              <input matInput placeholder="Nome">
+              <input matInput placeholder="Nome" name="name" [(ngModel)]="formData.name" >
             </mat-form-field>
           </div>
           
           <div>
             <mat-form-field class="example-full-width">
               <mat-label>Login</mat-label>
-              <input matInput placeholder="Login">
+              <input matInput placeholder="Login" name="login" [(ngModel)]="formData.login" >
             </mat-form-field>
           </div>
           
           <div>
             <mat-form-field>
               <mat-label>Status</mat-label>
-              <mat-select>
+              <mat-select name="active" [(ngModel)]="formData.active" >
                 <mat-option [value]="1">Ativo</mat-option>
                 <mat-option [value]="2">Inativo</mat-option>
                 <mat-option [value]="3">Todos</mat-option>
@@ -32,7 +32,7 @@
             <div class="example-button-row">
               <button routerLink="../usuarios/criar" style="margin-right: 1rem;" mat-raised-button class="button-warning">Limpar Filtros</button> 
               <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-              <button mat-raised-button class="button-success" >Buscar</button>
+              <button mat-raised-button class="button-success" (click)="getUsers(pagination)" >Buscar</button>
             </div>
           </mat-card-actions>
         </div>
@@ -41,7 +41,10 @@
   </mat-card>
 
   <!-- simbolo de loadgin -->
-  <mat-spinner  diameter="40"  class="loading-circle" ></mat-spinner>
+  <div class="" *ngIf="isLoad">
+    <mat-spinner *ngIf="isLoad" diameter="40"  class="loading-circle" ></mat-spinner>
+
+  </div>
 
   <table class="responsive-table" id="customers">
     <tr>
@@ -51,12 +54,12 @@
       <th>Contato</th>
       <th>Status</th>
     </tr>
-    <tr >
-      <td>Luiz Felipe Tomaz Martins de Abreu</td>
-      <td>luizfelipe</td>
-      <td>01/01/2000</td>
-      <td>(33) 9 9928-8313</td>
-      <td>Ativo</td>
+    <tr *ngFor="let user of users">
+      <td> {{user.name}} </td>
+      <td> {{user.login}} </td>
+      <td> {{user.dt_created}} </td>
+      <td> {{user.contact}} </td>
+      <td> {{user.active}} </td>
     </tr>
   </table>
   <!-- INICIO paginação  -->
