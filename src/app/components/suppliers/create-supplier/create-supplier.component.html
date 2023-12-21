@@ -1,0 +1,59 @@
+<div class="container">
+  <mat-card class="card-login" >
+    <mat-card-header>
+      <mat-card-title >Cadastrar fornecedor</mat-card-title>
+      <mat-card-subtitle style="color: #ffff" >Lanchonete</mat-card-subtitle>
+    </mat-card-header>
+
+    <!-- formulario de envio de dados para o cadastro de usuario -->
+    <form class="form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Ex. Coelho Diniz">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Responsável</mat-label>
+        <input matInput placeholder="Ex. Jõao Silva">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Endereço</mat-label>
+        <input matInput placeholder="Ex. Av. Rua de cima, 78, Centro, Manhuaçu">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Contato da empresa</mat-label>
+        <input matInput placeholder="Ex. 33 313333">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Contato do responsável</mat-label>
+        <input matInput placeholder="Ex. 33 313333">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Catalogo de produto</mat-label>
+        <input matInput placeholder="Ex. htts://sitedofornecedor.com">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Tipo de produto</mat-label>
+        <mat-select>
+            <mat-option [value]="1">Bebidas</mat-option>
+            <mat-option [value]="2">Pão</mat-option>
+            <mat-option [value]="3">Carne</mat-option>
+            <mat-option [value]="4">Geral</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+
+    <mat-card-actions style="justify-content: end;">
+      <div class="example-button-row">
+        <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
+        <button mat-raised-button class="button-success" (click)="openSnackBar('mensagem', 'Ok',  'Tipo')">Salvar</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

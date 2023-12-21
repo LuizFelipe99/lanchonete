@@ -1,0 +1,46 @@
+<mat-toolbar class="nav_bar_sup">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="opened=!opened">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Lanchonete</span>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="side">
+    <!-- item menu -->
+    <mat-list role="list">
+      <mat-list-item class="menu-item" role="listitem" routerLink="/usuarios/listar">
+        <mat-icon>people</mat-icon>
+         Listar Usuarios
+      </mat-list-item>
+    <!-- item menu -->
+      <mat-list-item role="listitem" routerLink="/login">
+         <mat-icon>account_circle</mat-icon> 
+         Login 
+      </mat-list-item>
+      <!-- item menu -->
+      <mat-list-item role="listitem" routerLink="/usuarios/criar">
+        <mat-icon>group_add</mat-icon> 
+        Criar usuário 
+      </mat-list-item>
+      <!-- item menu -->
+      <mat-list-item role="listitem" routerLink="/fornecedores/criar">
+        <mat-icon>contact_page</mat-icon> 
+        Cadastrar fornecedor
+      </mat-list-item>
+      <!-- item menu -->
+      <mat-list-item role="listitem" routerLink="/fornecedores/listar">
+        <mat-icon>query_stats</mat-icon> 
+        Listar fornecedor
+      </mat-list-item>
+       <!-- item menu -->
+       <mat-list-item role="listitem" routerLink="fornecedores/pedidos/listar">
+        <mat-icon>query_stats</mat-icon> 
+        Pedido Fornecedor
+      </mat-list-item>
+      <!-- item menu -->
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

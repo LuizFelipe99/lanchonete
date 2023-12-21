@@ -1,0 +1,82 @@
+<div class="container">
+  <mat-card>
+    <form class="form">
+      <div>
+        <div class="form-filter">
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Fornecedor</mat-label>
+              <input matInput placeholder="Ex. Super Mercado X">
+            </mat-form-field>
+          </div>
+          
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Responsável</mat-label>
+              <input matInput placeholder="Ex. Luiz Felipe">
+            </mat-form-field>
+          </div>
+          
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Contato</mat-label>
+              <input matInput placeholder="Ex. 33 3331-3333">
+            </mat-form-field>
+          </div>
+          
+          <mat-card-actions style="justify-content: end;">
+            <div class="example-button-row">
+              <button routerLink="../usuarios/criar" style="margin-right: 1rem;" mat-raised-button class="button-warning">Limpar Filtros</button> 
+              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
+              <button mat-raised-button class="button-success" >Buscar</button>
+            </div>
+          </mat-card-actions>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <!-- simbolo de loadgin -->
+  <mat-spinner  diameter="40"  class="loading-circle" ></mat-spinner>
+
+  <table class="responsive-table" id="customers">
+    <tr>
+      <th>Fornecedor</th>
+      <th>Responsável</th>
+      <th>Pedido</th>
+      <th>Itens</th>
+      <th>Valor</th>
+      <th></th>
+    </tr>
+    <tr >
+      <td>Super Mercado Sao Joao</td>
+      <td>Luiz Felipe</td>
+      <td>001</td>
+      <td>200</td>
+      <td>R$ 300.00</td>
+      <td></td>
+    </tr>
+  </table>
+  <!-- INICIO paginação  -->
+  <div class="form">
+    <div class="form-filter">
+      <div class="pagination">
+        <div>
+          <span>Total: <b> 10 </b> </span>
+          <span>Paginas: <b> 1 </b> </span>
+        </div>
+        <!-- botoes de paginação -->
+        <div class="buttons">
+        <!-- seta de anterior -->
+          <button class="btn-pagination"> < </button>
+          <!-- pagina atual da pagina current_page -->
+          1 
+          <!-- seta de proximo -->
+          <button class="btn-pagination"> > </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIM DA PAGINAÇÃO -->
+</div>
+

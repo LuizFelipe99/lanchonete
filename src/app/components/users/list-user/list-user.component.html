@@ -1,0 +1,92 @@
+<div class="container">
+  <mat-card>
+    <form class="form">
+      <div>
+        <div class="form-filter">
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Nome</mat-label>
+              <input matInput placeholder="Nome">
+            </mat-form-field>
+          </div>
+          
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Login</mat-label>
+              <input matInput placeholder="Login">
+            </mat-form-field>
+          </div>
+          
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>E-mail</mat-label>
+              <input matInput placeholder="email@email.com">
+            </mat-form-field>
+          </div>
+          
+          <div>
+            <mat-form-field>
+              <mat-label>Status</mat-label>
+              <mat-select>
+                <mat-option [value]="1">Ativo</mat-option>
+                <mat-option [value]="2">Inativo</mat-option>
+                <mat-option [value]="3">Todos</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          
+          <mat-card-actions style="justify-content: end;">
+            <div class="example-button-row">
+              <button routerLink="../usuarios/criar" style="margin-right: 1rem;" mat-raised-button class="button-warning">Limpar Filtros</button> 
+              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
+              <button mat-raised-button class="button-success" >Buscar</button>
+            </div>
+          </mat-card-actions>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <!-- simbolo de loadgin -->
+  <mat-spinner  diameter="40"  class="loading-circle" ></mat-spinner>
+
+  <table class="responsive-table" id="customers">
+    <tr>
+      <th>Nome</th>
+      <th>Login</th>
+      <th>E-mail</th>
+      <th>Data de cadastro</th>
+      <th>Contato</th>
+      <th>Status</th>
+    </tr>
+    <tr >
+      <td>Luiz Felipe Tomaz Martins de Abreu</td>
+      <td>luizfelipe</td>
+      <td>luizabreu@gmail.com</td>
+      <td>01/01/2000</td>
+      <td>(33) 9 9928-8313</td>
+      <td>Ativo</td>
+    </tr>
+  </table>
+  <!-- INICIO paginação  -->
+  <div class="form">
+    <div class="form-filter">
+      <div class="pagination">
+        <div>
+          <span>Total: <b> 10 </b> </span>
+          <span>Paginas: <b> 1 </b> </span>
+        </div>
+        <!-- botoes de paginação -->
+        <div class="buttons">
+        <!-- seta de anterior -->
+          <button class="btn-pagination"> < </button>
+          <!-- pagina atual da pagina current_page -->
+          1 
+          <!-- seta de proximo -->
+          <button class="btn-pagination"> > </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIM DA PAGINAÇÃO -->
+</div>
