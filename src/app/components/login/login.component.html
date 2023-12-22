@@ -6,7 +6,7 @@
     </mat-card-header>
 
     <!-- formulario de envio de credenciais -->
-    <form class="form">
+    <form class="form" (keyup.enter)="login()">
       <mat-form-field class="example-full-width">
         <mat-label>Usuário</mat-label>
         <input matInput placeholder="Usuário" name="login" [(ngModel)]="formData.login">
