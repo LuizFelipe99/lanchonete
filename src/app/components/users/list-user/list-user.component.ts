@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../snackbar/snackbar.component';
-
+ 
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
@@ -24,7 +24,7 @@ export class ListUserComponent {
     name: '',
     login: '',
     active: 4,
-    perPage: 10,
+    perPage: 15,
   };
 
   users: any[] = [];

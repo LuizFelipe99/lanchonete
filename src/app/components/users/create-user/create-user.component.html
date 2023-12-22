@@ -6,25 +6,30 @@
     </mat-card-header>
 
     <!-- formulario de envio de dados para o cadastro de usuario -->
-    <form class="form">
+    <form class="form" (keyup.enter)="insertUser()">
       <mat-form-field class="example-full-width">
         <mat-label>Nome</mat-label>
-        <input matInput placeholder="Nome do usuário" />
+        <input matInput placeholder="Nome do usuário" name="name" [(ngModel)]="formData.name" required />
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Login</mat-label>
-        <input matInput placeholder="Login" />
+        <input matInput placeholder="Login" name="login" [(ngModel)]="formData.login" required />
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Senha</mat-label>
-        <input matInput placeholder="***" />
+        <input matInput placeholder="***" type="password" name="password" [(ngModel)]="formData.password" required/>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Contato</mat-label>
+        <input matInput placeholder="(33)9 9928-8313" name="contact" [(ngModel)]="formData.contact" required />
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Nível</mat-label>
-        <mat-select>
+        <mat-select name="usergroup" [(ngModel)]="formData.usergroup" required>
           <mat-option [value]="1">Administrador</mat-option>
           <mat-option [value]="2">Caixa</mat-option>
         </mat-select>
@@ -42,13 +47,7 @@
           Voltar
         </button>
         <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-        <button
-          mat-raised-button
-          class="button-success"
-          (click)="openSnackBar('mensagem', 'Ok', 'Tipo')"
-        >
-          Salvar
-        </button>
+        <button mat-raised-button class="button-success" (click)="insertUser()" > Salvar </button>
       </div>
     </mat-card-actions>
   </mat-card>

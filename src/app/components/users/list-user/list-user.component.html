@@ -67,17 +67,17 @@
     <div class="form-filter">
       <div class="pagination">
         <div>
-          <span>Total: <b> 10 </b> </span>
-          <span>Paginas: <b> 1 </b> </span>
+          <span>Total: <b> {{totalUsers}} </b> </span>
+          <span>Paginas: <b> {{totalPages}} </b> </span>
         </div>
         <!-- botoes de paginação -->
         <div class="buttons">
         <!-- seta de anterior -->
-          <button class="btn-pagination"> < </button>
+          <button class="btn-pagination"  [disabled]="currentPage === 1" (click)="getUsers(this.currentPage - pagination)"> < </button>
           <!-- pagina atual da pagina current_page -->
-          1 
+          {{currentPage}}
           <!-- seta de proximo -->
-          <button class="btn-pagination"> > </button>
+          <button class="btn-pagination" [disabled]="currentPage === totalPages"  (click)="getUsers(this.currentPage + pagination)"> > </button>
         </div>
       </div>
     </div>

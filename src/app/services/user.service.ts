@@ -8,20 +8,14 @@ export class UserService {
   private apiUrl = 'https://gym-dev.com/lanchonete/';
 
   constructor(private http: HttpClient) {}
-
-  getUsers(
-    user: string,
-    login: string,
-    active: number,
-    nextToPage: number,
-    per_page: number
-  ): Promise<any> {
+  // .getUsers(name, login, active, pagination, perPage)
+  getUsers( user: string, login: string, active: number, nextToPage: number, perPage: number): Promise<any> {
     const formData = {
       name: user,
       login: login,
       active: active,
       page: nextToPage,
-      per_page: per_page,
+      per_page: perPage,
     };
     const endPoint = `${this.apiUrl}/user/users/`;
     return this.http
@@ -38,5 +32,33 @@ export class UserService {
   }
 
 
+  insertUser(
+    name: string,
+    login: string,
+    password: string,
+    active: number,
+    contact: string,
+    usergroup: number,
+  ): Promise<any> {
+    const formData = {
+      name: name,
+      login: login,
+      password: password,
+      active: active,
+      contact: contact,
+      usergroup: usergroup,
+    };
+    const endPoint = `${this.apiUrl}/user/create/`;
+    return this.http
+      .post(endPoint, formData)
+      .toPromise()
+      .then((response) => {
+        // Resetar temporizador de inatividade após obter usuários
 
+        return response as any[];
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
+  }
 }
