@@ -6,8 +6,14 @@
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">
-    <!-- item menu -->
+   
     <mat-list role="list">
+        <!-- item menu -->
+        <mat-list-item role="listitem" routerLink="/home">
+          <mat-icon>home</mat-icon> 
+          Inicio 
+        </mat-list-item>
+      <!-- item menu -->
       <mat-list-item class="menu-item" role="listitem" routerLink="/usuarios/listar">
         <mat-icon>people</mat-icon>
          Listar Usuarios

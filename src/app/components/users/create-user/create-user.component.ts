@@ -9,6 +9,11 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent {
+// pegando o login na localstorage
+get login(): string {
+  return localStorage.getItem('login') || ''; // Obter o nome do usuário do localStorage
+}
+
   durationInSeconds = 3; // tempo de duração do snackbar
   horizontalPosition: MatSnackBarHorizontalPosition = 'end'; //posição horizontal
   verticalPosition: MatSnackBarVerticalPosition = 'top'; // posição vertical

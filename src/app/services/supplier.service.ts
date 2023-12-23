@@ -9,14 +9,7 @@ export class SupplierService {
 
   constructor(private http: HttpClient) {}
 
-  getSuppliers(
-    name: string,
-    responsible: string,
-    type: string,
-    active: number,
-    nextToPage: number,
-    perPage: number
-  ): Promise<any> {
+  getSuppliers( name: string, responsible: string, type: string, active: number, nextToPage: number, perPage: number): Promise<any> {
     const formData = {
       name: name,
       responsible: responsible,
