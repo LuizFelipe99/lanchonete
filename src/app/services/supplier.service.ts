@@ -38,4 +38,36 @@ export class SupplierService {
         return Promise.reject(error);
       });
   }
+
+  insertSupplier(
+    name: string,
+    responsible: string,
+    adress: string,
+    contact_supplier: string,
+    contact_responsible: string,
+    catalog: string,
+    type: string,
+    active: number
+  ): Promise<any> {
+    const formData = {
+      name: name,
+      responsible: responsible,
+      adress: adress,
+      contact_supplier: contact_supplier,
+      contact_responsible: contact_responsible,
+      catalog: catalog,
+      type: type,
+      active: active,
+    };
+    const endPoint = `${this.apiUrl}/supplier/create/`;
+    return this.http
+      .post(endPoint, formData)
+      .toPromise()
+      .then((response) => {
+        return response as any[];
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
+  }
 }
