@@ -6,7 +6,7 @@
     </mat-card-header>
 
     <!-- formulario de envio de dados para o cadastro de usuario -->
-    <form class="form" (keyup)="insertSupplier()">
+    <form class="form" (keyup.enter)="insertSupplier()">
       <mat-form-field class="example-full-width">
         <mat-label>Nome</mat-label>
         <input
@@ -89,7 +89,6 @@
         <button
           mat-raised-button
           class="button-success"
-          (click)="openSnackBar('mensagem', 'Ok', 'Tipo')"
           (click)="insertSupplier()"
         >
           Salvar

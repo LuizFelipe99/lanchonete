@@ -46,7 +46,7 @@ export class CreateSupplierComponent {
 
   constructor(private api: SupplierService, private _snackBar: MatSnackBar) {}
 
-  openSnackBar(displayMessage: string, buttonText: string, type: string) {
+  openSnackBar(displayMessage: string, buttonText: string, type: string, style: string) {
     this._snackBar.openFromComponent(SnackbarComponent, {
       data: {
         message: displayMessage,
@@ -56,7 +56,7 @@ export class CreateSupplierComponent {
       duration: this.durationInSeconds * 1000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
-      panelClass: 'error-snackbar',
+      panelClass: style,
     });
   }
 
@@ -89,11 +89,14 @@ export class CreateSupplierComponent {
         this.totalPages = response.total_pages;
         this.currentPage = response.current_page;
         if (response.status === true) {
-          this.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!');
+          this.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
           this.isLoad = false;
+        }else{
+          this.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');
         }
       })
       .catch((error) => {
+        this.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');
         this.isLoad = false;
         console.error('Erro de Cadastro: ', error);
       });
