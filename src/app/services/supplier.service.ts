@@ -32,16 +32,7 @@ export class SupplierService {
       });
   }
 
-  insertSupplier(
-    name: string,
-    responsible: string,
-    adress: string,
-    contact_supplier: string,
-    contact_responsible: string,
-    catalog: string,
-    type: string,
-    active: number
-  ): Promise<any> {
+  insertSupplier( name: string, responsible: string, adress: string, contact_supplier: string, contact_responsible: string, catalog: string, type: string, active: number): Promise<any> {
     const formData = {
       name: name,
       responsible: responsible,
