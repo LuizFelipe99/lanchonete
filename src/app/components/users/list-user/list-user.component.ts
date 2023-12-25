@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { SnackbarComponent } from '../../snackbar/snackbar.component';
- 
+import { SnackbarComponent } from '../../shared/snackbar/snackbar.component';
+import { GlobalService } from 'src/app/global.service'; 
+
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
   styleUrls: ['./list-user.component.scss']
 })
 export class ListUserComponent {
+
+  constructor(private api: UserService, private _snackBar: MatSnackBar, public globalService: GlobalService) {}
+
 
   durationInSeconds = 3; // tempo de duração do snackbar
   horizontalPosition: MatSnackBarHorizontalPosition = 'end'; //posição horizontal
@@ -35,7 +39,7 @@ export class ListUserComponent {
   isLoad: boolean = false;
 
 
-  constructor(private api: UserService, private _snackBar: MatSnackBar) {}
+
 
   ngOnInit(): void {
     this.getUsers(this.pagination);
@@ -67,8 +71,6 @@ export class ListUserComponent {
       );
   }
 
-
-  
 
   openSnackBar(displayMessage: string, buttonText: string, type: string, style: string) {
     

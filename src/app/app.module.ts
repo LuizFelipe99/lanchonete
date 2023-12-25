@@ -22,13 +22,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
 
 import { LoginComponent } from './components/login/login.component';
 import { CreateUserComponent } from './components/users/create-user/create-user.component';
-import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { SnackbarComponent } from './components/shared/snackbar/snackbar.component';
 import { ListUserComponent } from './components/users/list-user/list-user.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CreateSupplierComponent } from './components/suppliers/create-supplier/create-supplier.component';
@@ -36,6 +37,7 @@ import { ListSupplierComponent } from './components/suppliers/list-supplier/list
 import { CreateOrderComponent } from './components/suppliers/order/create-order/create-order.component';
 import { ListOrderComponent } from './components/suppliers/order/list-order/list-order.component';
 import { HomeComponent } from './components/home/home.component';
+import { DialogFormDetailsComponent } from './components/shared/dialog-form-details/dialog-form-details.component';
 
 
 @NgModule({
@@ -51,6 +53,7 @@ import { HomeComponent } from './components/home/home.component';
     CreateOrderComponent,
     ListOrderComponent,
     HomeComponent,
+    DialogFormDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import { HomeComponent } from './components/home/home.component';
     MatSidenavModule,
     MatListModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

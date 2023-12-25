@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { SnackbarComponent } from '../../snackbar/snackbar.component';
+import { SnackbarComponent } from '../../shared/snackbar/snackbar.component';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({

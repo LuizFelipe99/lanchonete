@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from '../../login/login.component';
 
 @Component({
   selector: 'app-snackbar',
