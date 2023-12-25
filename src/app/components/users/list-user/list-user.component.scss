@@ -86,3 +86,8 @@
 ::ng-deep .mat-mdc-progress-spinner circle{
   stroke: var(--menu-second)
 }
+
+.options-table{
+  display: flex;
+  justify-content: space-evenly;
+}

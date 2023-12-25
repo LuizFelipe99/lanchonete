@@ -27,25 +27,14 @@
             </mat-form-field>
           </div>
 
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Tipo</mat-label>
-              <input
-                matInput
-                placeholder="Tipo"
-                name="type"
-                [(ngModel)]="formData.type"
-              />
-            </mat-form-field>
-          </div>
 
           <div>
             <mat-form-field>
               <mat-label>Status</mat-label>
-              <mat-select name="active" [(ngModel)]="formData.active">
-                <mat-option [value]="1">Ativo</mat-option>
-                <mat-option [value]="2">Inativo</mat-option>
-                <mat-option [value]="3">Todos</mat-option>
+              <mat-select name="type" [(ngModel)]="formData.type">
+                <mat-option [value]="1">Pão</mat-option>
+                <mat-option [value]="2">Carne</mat-option>
+                <mat-option [value]="3">Preencher com algo que venha do banco</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
