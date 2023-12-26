@@ -14,9 +14,9 @@ export class GlobalService {
   }
 
     // função que chama o dialog
-    openDialog(titulo: string, form: string, identity: string): void {
+    openDialog(titulo: string, component: string, identifier: string): void {
       const dialogRef = this.dialog.open(DialogFormDetailsComponent, {
-        data: {titulo: titulo, form: form, identity: identity},
+        data: {titulo: titulo, component: component, identifier: identifier},
         // width:'50%'
       });
   
