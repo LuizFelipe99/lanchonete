@@ -15,7 +15,8 @@ export class LoginComponent {
     password: '',
   };
 
-  
+  hide = true;
+
   durationInSeconds = 3; // tempo de duração do snackbar
   horizontalPosition: MatSnackBarHorizontalPosition = 'end'; //posição horizontal
   verticalPosition: MatSnackBarVerticalPosition = 'top'; // posição vertical

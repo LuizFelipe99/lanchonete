@@ -13,8 +13,11 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <mat-label>Senha</mat-label>
-        <input matInput placeholder="*****" type="password" name="password" [(ngModel)]="formData.password">
+          <mat-label>Senha</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" name="password"  [(ngModel)]="formData.password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
       </mat-form-field>
     </form>
 

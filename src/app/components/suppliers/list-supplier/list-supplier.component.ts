@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SupplierService } from 'src/app/services/supplier.service';
+import { GlobalService } from 'src/app/global.service'; 
 
 @Component({
   selector: 'app-list-supplier',
@@ -28,7 +29,7 @@ export class ListSupplierComponent {
   pagination: number = 1;
   isLoad: boolean = false;
 
-  constructor(private api: SupplierService) {}
+  constructor(private api: SupplierService, public globalService: GlobalService) {}
 
   ngOnInit(): void {
     this.getSuppliers(this.pagination);
