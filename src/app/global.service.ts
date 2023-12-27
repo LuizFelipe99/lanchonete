@@ -15,13 +15,17 @@ export class GlobalService {
 
     // função que chama o dialog
     openDialog(titulo: string, component: string, identifier: string, largura: string): void {
+      const identity = identifier;
       const dialogRef = this.dialog.open(DialogFormDetailsComponent, {
         data: {titulo: titulo, component: component, identifier: identifier},
         width: largura
       });
-  
+      
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
+      
+      // setando o identificador na localstorage para consultas em outros componentes
+      localStorage.setItem('identifier', identity); // Salvar o nome do usuário no localStorage
     }
 }
