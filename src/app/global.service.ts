@@ -14,10 +14,10 @@ export class GlobalService {
   }
 
     // função que chama o dialog
-    openDialog(titulo: string, component: string, identifier: string): void {
+    openDialog(titulo: string, component: string, identifier: string, largura: string): void {
       const dialogRef = this.dialog.open(DialogFormDetailsComponent, {
         data: {titulo: titulo, component: component, identifier: identifier},
-        // width:'50%'
+        width: largura
       });
   
       dialogRef.afterClosed().subscribe(result => {

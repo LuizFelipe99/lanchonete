@@ -1,31 +1,28 @@
 
 
-<!-- controlar a visuaçização de usuarios -->
-<div *ngIf="data.component == 'list-user'"class="teste">
-  <h1 mat-dialog-title>{{data.titulo}}</h1>
-
+  <!-- controlar a visuaçização de usuarios -->
+  <div *ngIf="data.component == 'list-user'">
+    <h1 mat-dialog-title>{{data.titulo}}</h1>
+    
   <div mat-dialog-content>
     <h1 mat-dialog-title>Componente: {{data.component}}</h1>
     <h1 mat-dialog-title>Identificador: {{data.identifier}}</h1>
   
   </div>
-
-  <div mat-dialog-actions>
-    <button mat-button (click)="cancel()">Fechar</button>
-  </div>
-</div>
-
-<!-- controlar a visualização de fornecedores -->
-<div *ngIf="data.component == 'list-supplier'"class="teste">
-  <h1 mat-dialog-title>{{data.titulo}}</h1>
-
-  <div mat-dialog-content>
-    <h1 mat-dialog-title>Componente: {{data.component}}</h1>
-    <h1 mat-dialog-title>Identificador: {{data.identifier}}</h1>
   
-  </div>
-
   <div mat-dialog-actions>
     <button mat-button (click)="cancel()">Fechar</button>
   </div>
 </div>
+
+  <!-- controlar a edição de fornecedores -->
+  <!-- se o component passado for o edit-supplier ele chama o componente -->
+  <div *ngIf="data.component == 'edit-supplier'">
+    <h1 mat-dialog-title>{{data.titulo}}</h1>
+    <app-edit-supplier></app-edit-supplier>
+    
+    <!-- botao fechar modal -->
+    <div mat-dialog-actions>
+      <button mat-button (click)="cancel()">Fechar</button>
+    </div>
+  </div>

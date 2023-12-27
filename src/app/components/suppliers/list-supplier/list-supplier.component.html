@@ -85,7 +85,7 @@
       <td>{{ supplier.responsible }}</td>
       <td>{{ supplier.type }}</td>
       <td class="options-table" >
-        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Detalhes', 'list-supplier', supplier.id_supplier )" >visibility</mat-icon>
+        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Fornecedor', 'edit-supplier', supplier.id_supplier, '50%' )" >visibility</mat-icon>
       </td>
     </tr>
   </table>

@@ -38,6 +38,7 @@ import { CreateOrderComponent } from './components/suppliers/order/create-order/
 import { ListOrderComponent } from './components/suppliers/order/list-order/list-order.component';
 import { HomeComponent } from './components/home/home.component';
 import { DialogFormDetailsComponent } from './components/shared/dialog-form-details/dialog-form-details.component';
+import { EditSupplierComponent } from './components/suppliers/edit-supplier/edit-supplier.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { DialogFormDetailsComponent } from './components/shared/dialog-form-deta
     ListOrderComponent,
     HomeComponent,
     DialogFormDetailsComponent,
+    EditSupplierComponent,
   ],
   imports: [
     BrowserModule,
