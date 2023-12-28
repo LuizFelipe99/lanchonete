@@ -11,16 +11,16 @@ import { DialogFormDetailsComponent } from '../../shared/dialog-form-details/dia
   styleUrls: ['./edit-supplier.component.scss']
 })
 export class EditSupplierComponent {
+  ngOnInit(): void {
+    this.getSupplierById();
+  }
   //colocando o valor que vem por localstorage na varaivel identity, que poderá ser usada para realizar outras funções, como salvar
   get identity(): string {
     return localStorage.getItem('identifier') || ''; // Obter o nome do usuário do localStorage
   }
 
-  ngOnInit(): void {
-    this.getSupplierById();
-  }
 
-  constructor(private api: SupplierService, private _snackBar: MatSnackBar, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {}
+  constructor(private api: SupplierService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {}
 
 // objeto para receber os dados da api
   supplier: any[] = [];
