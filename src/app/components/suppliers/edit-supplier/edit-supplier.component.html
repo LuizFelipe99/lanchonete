@@ -15,101 +15,104 @@
   </div>
 
     <!-- formulario de envio de dados para o cadastro de usuario -->
-    <form class="form" *ngFor="let item of supplier">
-      <mat-form-field class="example-full-width" style="width: 60%" >
-        <mat-label>Nome</mat-label>
-        <input
-          matInput
-          placeholder="Nome do fornecedor"
-          name="name"
-          required
-          value="{{item.name}}"
-        />
-      </mat-form-field>
+    <!-- criado ngfor para listar os itens vindos da api -->
+    <div class="" *ngFor="let item of supplier">
+      <form class="form">
+        <mat-form-field class="example-full-width" style="width: 60%" >
+          <mat-label>Nome</mat-label>
+          <input
+          autofocus
+            matInput
+            placeholder="Nome do fornecedor"
+            name="name"
+            required
+            value="{{item.name}}"
+          />
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width"  style="width: 35%">
-        <mat-label>Responsável</mat-label>
-        <input
-          matInput
-          placeholder="Responsável"
-          name="responsible"
-          required
-          value="{{item.responsible}}"
-        />
-      </mat-form-field>
+        <mat-form-field class="example-full-width"  style="width: 35%">
+          <mat-label>Responsável</mat-label>
+          <input
+            matInput
+            placeholder="Responsável"
+            name="responsible"
+            required
+            value="{{item.responsible}}"
+          />
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width"  style="width: 65%">
-        <mat-label>Endereço</mat-label>
-        <input
-          matInput
-          placeholder="Endereço"
-          name="adress"
-          required
-          value="{{item.addres}}"
-        />
-      </mat-form-field>
+        <mat-form-field class="example-full-width"  style="width: 65%">
+          <mat-label>Endereço</mat-label>
+          <input
+            matInput
+            placeholder="Endereço"
+            name="adress"
+            required
+            value="{{item.addres}}"
+          />
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width"  style="width: 30%">
-        <mat-label>Contato da empresa</mat-label>
-        <input
-          matInput
-          placeholder="Contato da empresa"
-          name="contact_supplier"
-          required
-          value="{{item.contact_supplier}}"
-        />
-      </mat-form-field>
+        <mat-form-field class="example-full-width"  style="width: 30%">
+          <mat-label>Contato da empresa</mat-label>
+          <input
+            matInput
+            placeholder="Contato da empresa"
+            name="contact_supplier"
+            required
+            value="{{item.contact_supplier}}"
+          />
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width" style="width: 35%">
-        <mat-label>Contato do responsável</mat-label>
-        <input
-          matInput
-          placeholder="Contato do responsável"
-          name="contact_responsible"
-          required
-          value="{{item.contact_responsible}}"
-        />
-      </mat-form-field>
+        <mat-form-field class="example-full-width" style="width: 35%">
+          <mat-label>Contato do responsável</mat-label>
+          <input
+            matInput
+            placeholder="Contato do responsável"
+            name="contact_responsible"
+            required
+            value="{{item.contact_responsible}}"
+          />
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width"style="width: 60%">
-        <mat-label>Catalogo de produto</mat-label>
-        <input
-          matInput
-          placeholder="Catálogo de produto"
-          name="catalog"
-          value="{{item.catalog}}"
-        />
-      </mat-form-field>
+        <mat-form-field class="example-full-width"style="width: 60%">
+          <mat-label>Catalogo de produto</mat-label>
+          <input
+            matInput
+            placeholder="Catálogo de produto"
+            name="catalog"
+            value="{{item.catalog}}"
+          />
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width" style="width: 35%">
-        <mat-label>Tipo de produto</mat-label>
-        <mat-select name="type" required>
-          <mat-option [value]="">Bebidas</mat-option>
-          <mat-option [value]="2">Pão</mat-option>
-          <mat-option [value]="3">Carne</mat-option>
-          <mat-option [value]="4">Geral</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field class="example-full-width" style="width: 35%">
+          <mat-label>Tipo de produto</mat-label>
+          <mat-select name="type" required>
+            <mat-option [value]="">Bebidas</mat-option>
+            <mat-option [value]="2">Pão</mat-option>
+            <mat-option [value]="3">Carne</mat-option>
+            <mat-option [value]="4">Geral</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width" style="width: 35%">
-        <mat-label>Ativo</mat-label>
-        <mat-select name="type" required>
-          <mat-option [value]="1">Sim</mat-option>
-          <mat-option [value]="2">Não</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </form>
-
-    <mat-card-actions style="justify-content: end">
-      <div class="example-button-row">
-        <button
-        mat-raised-button
-        class="button-warning"
-        (click)="cancel()"
-      >
-        Fechar
-      </button>
-        <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
+        <mat-form-field class="example-full-width" style="width: 35%">
+          <mat-label>Ativo</mat-label>
+          <mat-select name="type" required>
+            <mat-option [value]="1">Sim</mat-option>
+            <mat-option [value]="2">Não</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <mat-card-actions style="justify-content: end">
+        <div class="example-button-row">
+          <button
+          
+          mat-raised-button
+          class="button-warning"
+          (click)="cancel()"
+          style="margin-right: 1rem;"
+        >
+          Fechar
+        </button>
         <button
           mat-raised-button
           class="button-success"
@@ -118,7 +121,8 @@
           Salvar
         </button>
 
-      </div>
-    </mat-card-actions>
+        </div>
+      </mat-card-actions>
+    </div>
   </mat-card>
 </div>
