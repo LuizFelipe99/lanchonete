@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { SupplierService } from 'src/app/services/supplier.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GlobalService } from 'src/app/global.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogFormDetailsComponent } from '../../shared/dialog-form-details/dialog-form-details.component';
 
 @Component({
   selector: 'app-edit-supplier',
@@ -17,7 +20,7 @@ export class EditSupplierComponent {
     this.getSupplierById();
   }
 
-  constructor(private api: SupplierService, private _snackBar: MatSnackBar) {}
+  constructor(private api: SupplierService, private _snackBar: MatSnackBar, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {}
 
 // objeto para receber os dados da api
   supplier: any[] = [];
@@ -36,7 +39,7 @@ export class EditSupplierComponent {
           this.isLoad = false;
           if (response.status === true) {
           }else{
-            // this.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
+            // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
             this.isLoad = false;
         }
         },
@@ -45,5 +48,13 @@ export class EditSupplierComponent {
           console.error('Erro ao buscar usuários:', error);
         }
       );
+  }
+
+  msg(){
+    this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
+  }
+
+  cancel(): void {
+    this.dialogRef.close();
   }
 }

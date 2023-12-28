@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { SnackbarComponent } from '../shared/snackbar/snackbar.component';
+import { MatSnackBar} from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
+
+import { GlobalService } from 'src/app/global.service';
 
 @Component({
   selector: 'app-login',
@@ -15,15 +16,13 @@ export class LoginComponent {
     password: '',
   };
 
+  // controla a visualização da senha no form
   hide = true;
 
-  durationInSeconds = 3; // tempo de duração do snackbar
-  horizontalPosition: MatSnackBarHorizontalPosition = 'end'; //posição horizontal
-  verticalPosition: MatSnackBarVerticalPosition = 'top'; // posição vertical
 
 
 
-  constructor(private _snackBar: MatSnackBar, private authService: AuthService, private router: Router) {}
+  constructor(private _snackBar: MatSnackBar, private authService: AuthService, private router: Router, private globalService: GlobalService) {}
 
 
   login() {
@@ -37,32 +36,18 @@ export class LoginComponent {
           localStorage.setItem('id_user', response.data[0].id);
           localStorage.setItem('active', response.data[0].active);
           this.router.navigate(['/home']); // Redirecionar para a página inicial (home) após o login bem-sucedido
-          this.openSnackBar('Usuário logado com sucess.', 'Ok',  'Sucesso!', 'success-snackbar');
+          this.globalService.openSnackBar('Usuário logado com sucess.', 'Ok',  'Sucesso!', 'success-snackbar');
+          // this.openSnackBar('Usuário logado com sucess.', 'Ok',  'Sucesso!', 'success-snackbar');
         } else {
           // this.isLoad = false;
           // this.loginError = true;
-          this.openSnackBar('Erro ao se autenticar.', 'Ok',  'Erro!', 'error-snackbar');
+          this.globalService.openSnackBar('Erro ao se autenticar.', 'Ok',  'Erro!', 'error-snackbar');
         }
       })
       .catch((error) => {
         // this.isLoad = false;
         console.error('Erro de login:', error);
       });
-  }
-
-  openSnackBar(displayMessage: string, buttonText: string, type: string, style: string) {
-    this._snackBar.openFromComponent(SnackbarComponent, {
-      data:{
-        message: displayMessage,
-        buttonText: buttonText,
-        type: type,
-      },
-      duration: this.durationInSeconds * 1000,
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      panelClass: style,
-    });
-    
   }
 
 

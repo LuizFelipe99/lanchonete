@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { SnackbarComponent } from '../../shared/snackbar/snackbar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { GlobalService } from 'src/app/global.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,9 +14,6 @@ get login(): string {
   return localStorage.getItem('login') || ''; // Obter o nome do usuário do localStorage
 }
 
-  durationInSeconds = 3; // tempo de duração do snackbar
-  horizontalPosition: MatSnackBarHorizontalPosition = 'end'; //posição horizontal
-  verticalPosition: MatSnackBarVerticalPosition = 'top'; // posição vertical
 
     // Objeto para o formulário de filtro
     formData: {
@@ -43,22 +40,8 @@ get login(): string {
     isLoad: boolean = false;
 
 
-  constructor(private api: UserService, private _snackBar: MatSnackBar) {}
+  constructor(private api: UserService, private _snackBar: MatSnackBar, private globalService: GlobalService) {}
 
-  openSnackBar(displayMessage: string, buttonText: string, type: string, style: string) {
-    this._snackBar.openFromComponent(SnackbarComponent, {
-      data:{
-        message: displayMessage,
-        buttonText: buttonText,
-        type: type,
-      },
-      duration: this.durationInSeconds * 1000,
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      panelClass: style,
-    });
-    
-  }
 
 
   insertUser() {
@@ -74,9 +57,9 @@ get login(): string {
           // this.isLoad = false;
 
             if (response.status === true) {
-              this.openSnackBar('Registro criado com sucesso', 'Ok',  'Sucesso!', 'success-snackbar');
+              this.globalService.openSnackBar('Registro criado com sucesso', 'Ok',  'Sucesso!', 'success-snackbar');
             }else{
-              this.openSnackBar('Preencha todos os campos', 'Ok',  'Erro!', 'error-snackbar');
+              this.globalService.openSnackBar('Preencha todos os campos', 'Ok',  'Erro!', 'error-snackbar');
               this.isLoad = false;
           }
         })
