@@ -4,14 +4,10 @@
       <mat-card-title>Cadastrar fornecedor</mat-card-title>
       <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle>
     </mat-card-header>
-    
+
   <!-- simbolo de loadgin -->
   <div class="loading-container" *ngIf="isLoad">
-    <mat-spinner
-      *ngIf="isLoad"
-      diameter="40"
-      class="loading-circle"
-    ></mat-spinner>
+    <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
   </div>
 
     <!-- formulario de envio de dados para o cadastro de usuario -->
@@ -20,68 +16,33 @@
       <form class="form">
         <mat-form-field class="example-full-width" style="width: 60%" >
           <mat-label>Nome</mat-label>
-          <input
-          autofocus
-            matInput
-            placeholder="Nome do fornecedor"
-            name="name"
-            required
-            value="{{item.name}}"
-          />
+          <input autofocus matInput placeholder="Nome do fornecedor" name="name" required value="{{item.name}}" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 35%">
           <mat-label>Responsável</mat-label>
-          <input
-            matInput
-            placeholder="Responsável"
-            name="responsible"
-            required
-            value="{{item.responsible}}"
-          />
+          <input matInput placeholder="Responsável" name="responsible" required value="{{item.responsible}}" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 65%">
           <mat-label>Endereço</mat-label>
-          <input
-            matInput
-            placeholder="Endereço"
-            name="adress"
-            required
-            value="{{item.addres}}"
-          />
+          <input matInput placeholder="Endereço" name="adress" required value="{{item.addres}}" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 30%">
           <mat-label>Contato da empresa</mat-label>
-          <input
-            matInput
-            placeholder="Contato da empresa"
-            name="contact_supplier"
-            required
-            value="{{item.contact_supplier}}"
-          />
+          <input matInput placeholder="Contato da empresa" name="contact_supplier" required value="{{item.contact_supplier}}" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="width: 35%">
           <mat-label>Contato do responsável</mat-label>
           <input
-            matInput
-            placeholder="Contato do responsável"
-            name="contact_responsible"
-            required
-            value="{{item.contact_responsible}}"
-          />
+            matInput placeholder="Contato do responsável" name="contact_responsible" required value="{{item.contact_responsible}}" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"style="width: 60%">
           <mat-label>Catalogo de produto</mat-label>
-          <input
-            matInput
-            placeholder="Catálogo de produto"
-            name="catalog"
-            value="{{item.catalog}}"
-          />
+          <input matInput placeholder="Catálogo de produto" name="catalog" value="{{item.catalog}}" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="width: 35%">
@@ -104,23 +65,12 @@
       </form>
       <mat-card-actions style="justify-content: end">
         <div class="example-button-row">
-          <button
-          
-          mat-raised-button
-          class="button-warning"
-          (click)="cancel()"
-          style="margin-right: 1rem;"
-        >
+          <button mat-raised-button class="button-warning" (click)="cancel()" style="margin-right: 1rem;">
           Fechar
         </button>
-        <button
-          mat-raised-button
-          class="button-success"
-          (click)="msg()"
-        >
+        <button mat-raised-button class="button-success" (click)="msg()">
           Salvar
         </button>
-
         </div>
       </mat-card-actions>
     </div>
