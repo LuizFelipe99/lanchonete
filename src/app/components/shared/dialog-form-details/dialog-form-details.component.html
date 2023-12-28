@@ -29,12 +29,5 @@
 <!-- edit-user -->
 <div *ngIf="data.component == 'edit-user'" class="teste">
   <h1 mat-dialog-title>{{ data.titulo }}</h1>
-
-  <div mat-dialog-content>
     <app-edit-user></app-edit-user>
-  </div>
-
-  <div mat-dialog-actions>
-    <button mat-button (click)="cancel()">Fechar</button>
-  </div>
 </div>

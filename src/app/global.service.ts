@@ -32,6 +32,7 @@ export class GlobalService {
     }
 
 
+
     // função que chama o modal de sucesso / erro
     durationInSeconds = 3; // tempo de duração do snackbar
     horizontalPosition: MatSnackBarHorizontalPosition = 'end'; //posição horizontal
@@ -51,4 +52,6 @@ export class GlobalService {
     });
     
   }
+
+
 }

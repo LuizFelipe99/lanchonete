@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { SupplierService } from 'src/app/services/supplier.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { GlobalService } from 'src/app/global.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { DialogFormDetailsComponent } from '../../shared/dialog-form-details/dialog-form-details.component';
+
+import { GlobalService } from 'src/app/global.service';
 
 @Component({
   selector: 'app-edit-supplier',
@@ -21,6 +21,7 @@ export class EditSupplierComponent {
 
 
   constructor(private api: SupplierService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {}
+
 
 // objeto para receber os dados da api
   supplier: any[] = [];
