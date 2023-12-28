@@ -87,14 +87,8 @@
       <td>{{ user.dt_created }}</td>
       <td>{{ user.contact }}</td>
       <td>{{ user.active }}</td>
-      <td class="options-table">
-        <mat-icon
-          style="cursor: pointer"
-          (click)="
-            globalService.openDialog('Detalhes', 'edit-user', user.id_user)
-          "
-          >visibility</mat-icon
-        >
+      <td class="options-table" >
+        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Detalhes', 'list-user', user.id_user )" >visibility</mat-icon>
       </td>
     </tr>
   </table>

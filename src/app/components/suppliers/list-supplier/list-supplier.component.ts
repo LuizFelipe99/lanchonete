@@ -47,8 +47,10 @@ export class ListSupplierComponent {
           this.totalPages = response.total_pages;
           this.currentPage = response.current_page;
           this.isLoad = false;
+
           if (response.status === true) {
           } else {
+            this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
             this.isLoad = false;
           }
         },

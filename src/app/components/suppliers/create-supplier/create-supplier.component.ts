@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
+  MatSnackBar
 } from '@angular/material/snack-bar';
-import { SnackbarComponent } from '../../shared/snackbar/snackbar.component';
 import { SupplierService } from 'src/app/services/supplier.service';
+import { GlobalService } from 'src/app/global.service';
 
 @Component({
   selector: 'app-create-supplier',
@@ -13,10 +11,6 @@ import { SupplierService } from 'src/app/services/supplier.service';
   styleUrls: ['./create-supplier.component.scss'],
 })
 export class CreateSupplierComponent {
-  durationInSeconds = 3; // tempo de duração do snackbar
-  horizontalPosition: MatSnackBarHorizontalPosition = 'end'; //posição horizontal
-  verticalPosition: MatSnackBarVerticalPosition = 'top'; // posição vertical
-
   formData: {
     name: string;
     responsible: string;
@@ -44,21 +38,8 @@ export class CreateSupplierComponent {
   pagination: number = 1;
   isLoad: boolean = false;
 
-  constructor(private api: SupplierService, private _snackBar: MatSnackBar) {}
+  constructor(private api: SupplierService, private _snackBar: MatSnackBar, private globalService: GlobalService) {}
 
-  openSnackBar(displayMessage: string, buttonText: string, type: string, style: string) {
-    this._snackBar.openFromComponent(SnackbarComponent, {
-      data: {
-        message: displayMessage,
-        buttonText: buttonText,
-        type: type,
-      },
-      duration: this.durationInSeconds * 1000,
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      panelClass: style,
-    });
-  }
 
   insertSupplier() {
     this.isLoad == true;
@@ -89,14 +70,14 @@ export class CreateSupplierComponent {
         this.totalPages = response.total_pages;
         this.currentPage = response.current_page;
         if (response.status === true) {
-          this.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
+          this.globalService.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
           this.isLoad = false;
         }else{
-          this.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');
+          this.globalService.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');
         }
       })
       .catch((error) => {
-        this.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');
+        this.globalService.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');
         this.isLoad = false;
         console.error('Erro de Cadastro: ', error);
       });

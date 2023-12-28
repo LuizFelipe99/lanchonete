@@ -54,4 +54,21 @@ export class SupplierService {
         return Promise.reject(error);
       });
   }
+
+  getSupplierById( id_supplier: string): Promise<any> {
+    const formData = {
+      id_supplier: id_supplier,
+    };
+    const endPoint = `${this.apiUrl}/supplier/suppliers/`;
+    return this.http
+      .post(endPoint, formData)
+      .toPromise()
+      .then((response) => {
+
+        return response as any[];
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
+  }
 }

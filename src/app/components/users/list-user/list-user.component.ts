@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { SnackbarComponent } from '../../shared/snackbar/snackbar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { GlobalService } from 'src/app/global.service'; 
 
 @Component({
@@ -13,10 +12,6 @@ export class ListUserComponent {
 
   constructor(private api: UserService, private _snackBar: MatSnackBar, public globalService: GlobalService) {}
 
-
-  durationInSeconds = 3; // tempo de duração do snackbar
-  horizontalPosition: MatSnackBarHorizontalPosition = 'end'; //posição horizontal
-  verticalPosition: MatSnackBarVerticalPosition = 'top'; // posição vertical
 
   // Objeto para o formulário de filtro
   formData: {
@@ -60,7 +55,7 @@ export class ListUserComponent {
           this.isLoad = false;
           if (response.status === true) {
           }else{
-            this.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
+            this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
             this.isLoad = false;
         }
         },
@@ -72,19 +67,4 @@ export class ListUserComponent {
   }
 
 
-  openSnackBar(displayMessage: string, buttonText: string, type: string, style: string) {
-    
-    this._snackBar.openFromComponent(SnackbarComponent, {
-      data:{
-        message: displayMessage,
-        buttonText: buttonText,
-        type: type,
-      },
-      duration: this.durationInSeconds * 1000,
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      panelClass: style,
-    });
-    
-  }
 }
