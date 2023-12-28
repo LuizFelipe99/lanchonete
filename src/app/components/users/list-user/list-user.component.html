@@ -6,24 +6,14 @@
           <div>
             <mat-form-field class="example-full-width">
               <mat-label>Nome</mat-label>
-              <input
-                matInput
-                placeholder="Nome"
-                name="name"
-                [(ngModel)]="formData.name"
-              />
+              <input matInput placeholder="Nome" name="name" [(ngModel)]="formData.name" />
             </mat-form-field>
           </div>
 
           <div>
             <mat-form-field class="example-full-width">
               <mat-label>Login</mat-label>
-              <input
-                matInput
-                placeholder="Login"
-                name="login"
-                [(ngModel)]="formData.login"
-              />
+              <input matInput placeholder="Login" name="login" [(ngModel)]="formData.login" />
             </mat-form-field>
           </div>
 
@@ -40,20 +30,11 @@
 
           <mat-card-actions style="justify-content: end">
             <div class="example-button-row">
-              <button
-                routerLink="../usuarios/criar"
-                style="margin-right: 1rem"
-                mat-raised-button
-                class="button-warning"
-              >
+              <button routerLink="../usuarios/criar" style="margin-right: 1rem" mat-raised-button class="button-warning">
                 Limpar Filtros
               </button>
               <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-              <button
-                mat-raised-button
-                class="button-success"
-                (click)="getUsers(pagination)"
-              >
+              <button mat-raised-button class="button-success" (click)="getUsers(pagination)">
                 Buscar
               </button>
             </div>
@@ -65,11 +46,7 @@
 
   <!-- simbolo de loadgin -->
   <div class="" *ngIf="isLoad">
-    <mat-spinner
-      *ngIf="isLoad"
-      diameter="40"
-      class="loading-circle"
-    ></mat-spinner>
+    <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
   </div>
 
   <table class="responsive-table" id="customers">
@@ -88,7 +65,7 @@
       <td>{{ user.contact }}</td>
       <td>{{ user.active }}</td>
       <td class="options-table" >
-        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Detalhes', 'list-user', user.id_user, '50%' )" >visibility</mat-icon>
+        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Usuário', 'edit-user', user.id_user, '50%' )" >visibility</mat-icon>
       </td>
     </tr>
   </table>

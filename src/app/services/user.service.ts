@@ -62,6 +62,20 @@ export class UserService {
       });
   }
 
-
+  getUserById( id_user: string): Promise<any> {
+    const formData = {
+      id_user: id_user,
+    };
+    const endPoint = `${this.apiUrl}/user/users/`;
+    return this.http
+      .post(endPoint, formData)
+      .toPromise()
+      .then((response) => {
+        return response as any[];
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
+  }
 
 }
