@@ -35,12 +35,7 @@ import { CreateOrderComponent } from './components/suppliers/order/create-order/
 import { ListOrderComponent } from './components/suppliers/order/list-order/list-order.component';
 import { HomeComponent } from './components/home/home.component';
 import { DialogFormDetailsComponent } from './components/shared/dialog-form-details/dialog-form-details.component';
-<<<<<<< HEAD
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
-=======
-import { EditSupplierComponent } from './components/suppliers/edit-supplier/edit-supplier.component';
-
->>>>>>> 5cb197f06203690d1d4d4480eb88fa41261f785d
 
 @NgModule({
   declarations: [
@@ -56,11 +51,7 @@ import { EditSupplierComponent } from './components/suppliers/edit-supplier/edit
     ListOrderComponent,
     HomeComponent,
     DialogFormDetailsComponent,
-<<<<<<< HEAD
     EditUserComponent,
-=======
-    EditSupplierComponent,
->>>>>>> 5cb197f06203690d1d4d4480eb88fa41261f785d
   ],
   imports: [
     BrowserModule,
