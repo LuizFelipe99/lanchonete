@@ -1,13 +1,10 @@
-
-
 <!-- controlar a visuaçização de usuarios -->
-<div *ngIf="data.component == 'list-user'"class="teste">
-  <h1 mat-dialog-title>{{data.titulo}}</h1>
+<div *ngIf="data.component == 'list-user'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }}</h1>
 
   <div mat-dialog-content>
-    <h1 mat-dialog-title>Componente: {{data.component}}</h1>
-    <h1 mat-dialog-title>Identificador: {{data.identifier}}</h1>
-  
+    <h1 mat-dialog-title>Componente: {{ data.component }}</h1>
+    <h1 mat-dialog-title>Identificador: {{ data.identifier }}</h1>
   </div>
 
   <div mat-dialog-actions>
@@ -16,13 +13,25 @@
 </div>
 
 <!-- controlar a visualização de fornecedores -->
-<div *ngIf="data.component == 'list-supplier'"class="teste">
-  <h1 mat-dialog-title>{{data.titulo}}</h1>
+<div *ngIf="data.component == 'list-supplier'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }}</h1>
 
   <div mat-dialog-content>
-    <h1 mat-dialog-title>Componente: {{data.component}}</h1>
-    <h1 mat-dialog-title>Identificador: {{data.identifier}}</h1>
-  
+    <h1 mat-dialog-title>Componente: {{ data.component }}</h1>
+    <h1 mat-dialog-title>Identificador: {{ data.identifier }}</h1>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Fechar</button>
+  </div>
+</div>
+
+<!-- edit-user -->
+<div *ngIf="data.component == 'edit-user'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }}</h1>
+
+  <div mat-dialog-content>
+    <app-edit-user></app-edit-user>
   </div>
 
   <div mat-dialog-actions>
