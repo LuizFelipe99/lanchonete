@@ -1,9 +1,9 @@
 <div class="container">
   <mat-card class="card-login">
-  <!-- simbolo de loadgin -->
-  <div class="loading-container" *ngIf="isLoad">
-    <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
-  </div>
+    <!-- simbolo de loadgin -->
+    <div class="loading-container" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
 
     <!-- formulario de envio de dados para o cadastro de usuario -->
     <!-- criado ngfor para listar os itens vindos da api -->
@@ -44,7 +44,7 @@
           <button mat-raised-button class="button-warning" (click)="cancel()" style="margin-right: 1rem;">
             Fechar
           </button>
-          <button mat-raised-button class="button-success" (click)="msg()">
+          <button mat-raised-button class="button-success" (click)="updateUser()">
             Salvar
           </button>
         </div>

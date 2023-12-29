@@ -38,13 +38,7 @@
 
     <mat-card-actions style="justify-content: end">
       <div class="example-button-row">
-        <button
-          routerLink="/login"
-          style="margin-right: 1rem"
-          mat-raised-button
-          class="button-warning"
-          *ngIf="!login"
-        >
+        <button routerLink="/login" style="margin-right: 1rem" mat-raised-button class="button-warning" *ngIf="!login">
           Voltar
         </button>
         <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
