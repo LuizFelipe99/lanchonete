@@ -53,6 +53,7 @@
     <tr>
       <th>Fornecedor</th>
       <th>Responsável</th>
+      <th>Contato</th>
       <th>Tipo</th>
       <th></th>
     </tr>
@@ -60,6 +61,7 @@
       <td>{{ supplier.name }}</td>
       <td>{{ supplier.responsible }}</td>
       <td>{{ supplier.type }}</td>
+      <td>{{ supplier.contact_responsible }}</td>
       <td class="options-table" >
         <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Fornecedor', 'edit-supplier', supplier.id_supplier, '50%' )" >visibility</mat-icon>
       </td>
