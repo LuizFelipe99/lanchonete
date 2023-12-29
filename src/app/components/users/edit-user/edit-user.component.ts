@@ -10,31 +10,53 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent {
-
-  formData: {id_user: string; name: string; login: string; password: string; active: number; contact: string;
-     usergroup: number} = {id_user: this.identity, name: '', login: '', password: '', active: 1, contact: '', usergroup: 1};
-
-  ngOnInit(): void {
-    this.getUserById();
-  }
+  
   //colocando o valor que vem por localstorage na varaivel identity, que poderá ser usada para realizar outras funções, como salvar
   get identity(): string {
     return localStorage.getItem('identifier') || ''; // Obter o nome do usuário do localStorage
   }
-
-  constructor(private api: UserService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {}
-
-// objeto para receber os dados da api
+  
+  ngOnInit(): void {
+    this.getUserById();
+  }
+  // metodo construtor
+  constructor(private api: UserService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {
+  }
+  
+  formData: {
+      id_user: string;
+      name: string; 
+      login: string; 
+      password: string; 
+      active: number; 
+      contact: string;
+      usergroup: number
+    } = 
+    {
+      id_user: this.identity, 
+      name: '',
+      login: '', 
+      password: '', 
+      active: 1, 
+      contact: '', 
+      usergroup: 1
+    };
+      
+  // objeto para receber os dados da api
   user: any[] = [];
-  teste: any;
-
-
   isLoad: boolean = false;
+  
    // Método para filtro e paginação
   getUserById() {
     this.isLoad = true;
     this.api.getUserById(this.identity).then((response) => {
           this.user = response.data; // Armazene os usuários na variável 'usuarios'
+          this.formData.name = response.data[0].name;
+          this.formData.login = response.data[0].login;
+          this.formData.password = response.data[0].password;
+          this.formData.active = response.data[0].active;
+          this.formData.contact = response.data[0].contact;
+          this.formData.usergroup = response.data[0].usergroup;
           // daí a gente faria assim..
           this.isLoad = false;
           if (response.status === true) {
@@ -61,10 +83,6 @@ export class EditUserComponent {
       (error: any) => {
         console.error('Erro ao alterar usuário: ', error);
       })
-  }
-
-  msg(){
-    this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
   }
 
   cancel(): void {

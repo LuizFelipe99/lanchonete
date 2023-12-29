@@ -11,28 +11,28 @@
       <form class="form">
         <mat-form-field class="example-full-width" style="width: 60%" >
           <mat-label>Nome</mat-label>
-          <input autofocus matInput placeholder="Nome do usuário" name="name" required value="{{item.name}}" />
+          <input autofocus matInput placeholder="Nome do usuário" name="name" [(ngModel)]="formData.name" required  />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 35%">
           <mat-label>Login</mat-label>
-          <input matInput placeholder="Login" name="login" required value="{{item.login}}" />
+          <input matInput placeholder="Login" name="login" required [(ngModel)]="formData.login" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 65%">
           <mat-label>Senha</mat-label>
-          <input matInput placeholder="Senha" name="password" required value="{{item.password}}" />
+          <input matInput placeholder="Senha" name="password" required [(ngModel)]="formData.password" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 30%">
           <mat-label>Contato</mat-label>
-          <input matInput placeholder="Contato" name="contact" required value="{{item.contact}}" />
+          <input matInput placeholder="Contato" name="contact" required  [(ngModel)]="formData.contact" />
         </mat-form-field>
 
 
         <mat-form-field class="example-full-width" style="width: 35%">
           <mat-label>Nível</mat-label>
-          <mat-select name="usergroup" value="{{item.usergroup}}" required>
+          <mat-select name="usergroup"  [(ngModel)]="formData.usergroup" required>
             <mat-option [value]="1">Administrador</mat-option>
             <mat-option [value]="2">Caixa</mat-option>
            </mat-select>
