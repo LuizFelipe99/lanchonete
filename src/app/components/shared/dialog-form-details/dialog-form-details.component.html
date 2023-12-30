@@ -1,17 +1,3 @@
-<!-- controlar a visuaçização de usuarios -->
-<div *ngIf="data.component == 'list-user'" class="teste">
-  <h1 mat-dialog-title>{{ data.titulo }}</h1>
-
-  <div mat-dialog-content>
-    <h1 mat-dialog-title>Componente: {{ data.component }}</h1>
-    <h1 mat-dialog-title>Identificador: {{ data.identifier }}</h1>
-  </div>
-
-  <div mat-dialog-actions>
-    <button mat-button (click)="cancel()">Fechar</button>
-  </div>
-</div>
-
 <!-- controlar a visualização de fornecedores -->
 <div *ngIf="data.component == 'edit-supplier'" class="teste">
   <h1 mat-dialog-title>{{ data.titulo }}</h1>
@@ -23,4 +9,10 @@
   <h1 mat-dialog-title>{{ data.titulo }}</h1>
     <app-edit-user></app-edit-user>
   <!-- <app-edit-user></app-edit-user> -->
+</div>
+
+<!-- detalhes do pedido do fornecedor -->
+<div *ngIf="data.component == 'detail-order-supplier'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }}</h1>
+    <!-- <app-edit-user></app-edit-user> -->
 </div>
