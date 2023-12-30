@@ -76,6 +76,7 @@ export class EditUserComponent {
     this.api.updateUser(id_user, name, login, password, active, contact, usergroup).then((response) => {this.user = response.data;
       if (response.status === true) {
         this.globalService.openSnackBar('Registro alterado com sucesso', 'Ok',  'Sucesso!', 'success-snackbar');
+        this.getUserById();
       } else {
         this.globalService.openSnackBar('Preencha todos os campos', 'Ok',  'Erro!', 'error-snackbar');
         this.isLoad = false;
