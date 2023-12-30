@@ -19,8 +19,8 @@
           
           <div>
             <mat-form-field class="example-full-width">
-              <mat-label>Contato</mat-label>
-              <input matInput placeholder="Ex. 33 3331-3333">
+              <mat-label>Pedido</mat-label>
+              <input matInput placeholder="Ex. 100">
             </mat-form-field>
           </div>
           
@@ -49,13 +49,13 @@
       <th>Data de vencimento</th>
       <th></th>
     </tr>
-    <tr >
-      <td>Super Mercado Sao Joao</td>
-      <td>Luiz Felipe</td>
-      <td>001</td>
-      <td>200</td>
-      <td>R$ 300.00</td>
-      <td>31/12/2023</td>
+    <tr *ngFor="let order of orders">
+      <td> {{order.supplier}} </td>
+      <td> {{order.responsible}} </td>
+      <td> {{order.id_order_supplier}} </td>
+      <td> {{order.items}} </td>
+      <td> {{order.total}} </td>
+      <td>3 {{order.dt_expired}} </td>
       <td >  <mat-icon style="cursor: pointer">shopping_cart</mat-icon></td>
     </tr>
   </table>
