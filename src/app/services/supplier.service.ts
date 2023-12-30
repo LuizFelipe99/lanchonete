@@ -71,4 +71,21 @@ export class SupplierService {
         return Promise.reject(error);
       });
   }
+  getDetailOrder( id_order_supplier: string): Promise<any> {
+    const formData = {
+      id_order_supplier: id_order_supplier,
+    };
+    const endPoint = `${this.apiUrl}order_supplier/detail/`;
+    return this.http
+      .post(endPoint, formData)
+      .toPromise()
+      .then((response) => {
+
+        return response as any[];
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
+  }
+
 }

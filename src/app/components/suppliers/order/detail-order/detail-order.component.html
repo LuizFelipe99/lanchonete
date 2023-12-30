@@ -1,0 +1,20 @@
+<div class="container">
+    <!-- simbolo de loadgin -->
+    <div class="" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
+  <table class="responsive-table" id="customers">
+    <tr>
+      <th>Item</th>
+      <th>Preço por unidade</th>
+      <th>Quantidade</th>
+      <th>Subtotal</th>
+    </tr>
+    <tr *ngFor="let detail of detailOder">
+      <td> {{detail.name}} </td>
+      <td> {{detail.price_unit}} </td>
+      <td> {{detail.quantity}} </td>
+      <td> {{detail.subtotal}} </td>
+    </tr>
+  </table>
+</div>

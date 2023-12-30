@@ -38,6 +38,7 @@ import { DialogFormDetailsComponent } from './components/shared/dialog-form-deta
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
 import { EditSupplierComponent } from './components/suppliers/edit-supplier/edit-supplier.component';
 import { CategoriesComponent } from './components/dashboard/categories/categories.component';
+import { DetailOrderComponent } from './components/suppliers/order/detail-order/detail-order.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { CategoriesComponent } from './components/dashboard/categories/categorie
     EditUserComponent,
     EditSupplierComponent,
     CategoriesComponent,
+    DetailOrderComponent,
   ],
   imports: [
     BrowserModule,
