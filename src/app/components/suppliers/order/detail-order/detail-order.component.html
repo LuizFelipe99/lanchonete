@@ -1,4 +1,15 @@
 <div class="container">
+  <div class="cabecalho form">
+    <div class="fornecedor">
+      Fornecedor: {{supplier}}
+    </div>
+    <div class="pedido">
+      Pedido: {{ this.identity }}
+    </div>
+    <div class="total">
+      Total: {{total}}
+    </div>
+  </div>
     <!-- simbolo de loadgin -->
     <div class="" *ngIf="isLoad">
       <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>

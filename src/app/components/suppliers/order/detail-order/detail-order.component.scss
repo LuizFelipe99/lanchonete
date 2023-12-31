@@ -96,3 +96,12 @@
   padding: 1rem;
   // background-color: var(--primary-color)
 }
+
+.cabecalho{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  font-size: 18px;
+}
