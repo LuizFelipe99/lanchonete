@@ -20,7 +20,7 @@ export class DetailOrderComponent {
   }
 
   ngOnInit(): void {
-    this.getDetailOrder();
+    this.getDetailOrder(this.pagination);
   }
 
   detailOder: any[] = [];
@@ -28,23 +28,29 @@ export class DetailOrderComponent {
   totalPages: number = 0;
   currentPage: number = 1;
   pagination: number = 1;
+  perPage: number = 15;
   isLoad: boolean = false;
 
-  getDetailOrder() {
+  supplier: string = '';
+
+  getDetailOrder(pagination: number) {
     this.isLoad = true;
-    this.api.getDetailOrder(this.identity).then((response) => {
-          this.detailOder = response.data; // Armazene os usuários na variável 'usuarios'
-          // daí a gente faria assim..
-          this.isLoad = false;
-          if (response.status === true) {
-          }else{
-            // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
-            this.isLoad = false;
-        }
-        },
-        (error: any) => {
-          // this.isLoad = false;
-          console.error('Erro ao buscar usuários:', error);
-        })
+    this.api.getDetailOrder(this.identity, pagination, this.perPage).then((response) => {
+    this.detailOder = response.data; 
+    this.totalPages = response.total_pages;
+    this.currentPage = response.current_page;
+    // this.supplier = response.data[0].
+    // daí a gente faria assim..
+    this.isLoad = false;
+    if (response.status === true) {
+    }else{
+      // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
+      this.isLoad = false;
+  }
+  },
+  (error: any) => {
+    // this.isLoad = false;
+    console.error('Erro ao buscar usuários:', error);
+  })
   }
 }

@@ -17,4 +17,25 @@
       <td> {{detail.subtotal}} </td>
     </tr>
   </table>
+  <!-- INICIO paginação  -->
+  <div class="form" style="width: 100%; max-width: 100%;">
+    <div class="form-filter">
+      <div class="pagination">
+        <div>
+          <span>Total: <b> {{totalOrders}} </b> </span>
+          <span>Paginas: <b> {{totalPages}} </b> </span>
+        </div>
+        <!-- botoes de paginação -->
+        <div class="buttons">
+        <!-- seta de anterior -->
+          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getDetailOrder(this.currentPage - pagination)"> < </button>
+          <!-- pagina atual da pagina current_page -->
+          {{currentPage}}
+          <!-- seta de proximo -->
+          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getDetailOrder(this.currentPage + pagination)"> > </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIM DA PAGINAÇÃO -->
 </div>
