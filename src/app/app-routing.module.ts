@@ -22,8 +22,8 @@ const routes: Routes = [
   { path: 'usuarios/listar', component: ListUserComponent,  canActivate: [AuthGuard] },
   { path: 'fornecedores/criar', component: CreateSupplierComponent,  canActivate: [AuthGuard] },
   { path: 'fornecedores/listar', component: ListSupplierComponent,  canActivate: [AuthGuard] },
-  { path: 'fornecedores/pedidos/criar', component: CreateOrderComponent,  canActivate: [AuthGuard] },
   { path: 'fornecedores/pedidos/listar', component: ListOrderComponent,  canActivate: [AuthGuard] },
+  { path: 'fornecedores/pedidos/criar', component: CreateOrderComponent,  canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -39,6 +39,8 @@ import { EditUserComponent } from './components/users/edit-user/edit-user.compon
 import { EditSupplierComponent } from './components/suppliers/edit-supplier/edit-supplier.component';
 import { CategoriesComponent } from './components/dashboard/categories/categories.component';
 import { DetailOrderComponent } from './components/suppliers/order/detail-order/detail-order.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { DetailOrderComponent } from './components/suppliers/order/detail-order/
     MatProgressSpinnerModule,
     HttpClientModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

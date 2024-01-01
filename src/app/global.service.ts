@@ -12,6 +12,7 @@ export class GlobalService {
   constructor(
     public dialog: MatDialog, 
     private _snackBar: MatSnackBar,
+    // private dialogRef: MatDialogRef<DialogFormDetailsComponent>
     
   ) { }
 
@@ -52,6 +53,7 @@ export class GlobalService {
     });
     
   }
+
 
 
 }
