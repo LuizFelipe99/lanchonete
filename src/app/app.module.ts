@@ -12,7 +12,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -41,6 +41,7 @@ import { CategoriesComponent } from './components/dashboard/categories/categorie
 import { DetailOrderComponent } from './components/suppliers/order/detail-order/detail-order.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
+    ReactiveFormsModule,
     MatSelectModule,
     MatSnackBarModule,
     MatProgressBarModule,
@@ -84,6 +86,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
