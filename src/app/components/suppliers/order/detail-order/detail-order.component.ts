@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SupplierService } from 'src/app/services/supplier.service';
+import { OrderService } from 'src/app/services/order.service';
 import { GlobalService } from 'src/app/global.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogFormDetailsComponent } from 'src/app/components/shared/dialog-form-details/dialog-form-details.component';
@@ -16,7 +16,7 @@ export class DetailOrderComponent {
     return localStorage.getItem('identifier') || ''; // Obter o nome do usuário do localStorage
   }
    // metodo construtor
-   constructor(private api: SupplierService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {
+   constructor(private api: OrderService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {
   }
 
   ngOnInit(): void {

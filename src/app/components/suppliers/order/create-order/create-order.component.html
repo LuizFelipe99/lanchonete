@@ -9,12 +9,12 @@
     <form class="form">
       <mat-form-field class="example-full-width">
         <mat-label>Fornecedor</mat-label>
-        <input matInput placeholder="Nome do fornecedor" name="name"required />
+        <input matInput placeholder="Nome do fornecedor" name="id_supplier" [(ngModel)]="formData.id_supplier" required />
       </mat-form-field>
 
       <mat-form-field class="example-form-field">
         <mat-label>Data de vencimento</mat-label>
-        <input matInput [matDatepicker]="datepicker">
+        <input matInput [matDatepicker]="datepicker" name="dt_expired" [(ngModel)]="formData.dt_expired" >
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
         <mat-datepicker #datepicker>
@@ -25,6 +25,9 @@
         </mat-datepicker>
       </mat-form-field>
 
+
+
+
       <mat-form-field class="example-full-width">
         <mat-label>Observação</mat-label>
         <textarea matInput placeholder="Ex. Pedido fora do padrao..."></textarea>
@@ -34,7 +37,7 @@
     <mat-card-actions style="justify-content: end">
       <div class="example-button-row">
         <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
-        <button mat-raised-button class="button-success">
+        <button mat-raised-button class="button-success"  (click)="createOrder()">
           Salvar
         </button>
       </div>

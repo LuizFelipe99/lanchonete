@@ -14,6 +14,10 @@ export class AppComponent {
     return localStorage.getItem('login') || ''; // Obter o nome do usuário do localStorage
   }
 
+  get id_user(): string {
+    return localStorage.getItem('id_user') || ''; // Obter o nome do usuário do localStorage
+  }
+
   constructor(public dialog: MatDialog){}
 
   

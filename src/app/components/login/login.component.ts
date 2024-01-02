@@ -33,7 +33,7 @@ export class LoginComponent {
         if (response.status === true) {
           console.log(response.status);
           localStorage.setItem('login', response.data[0].login); // Salvar o nome do usuário no localStorage
-          localStorage.setItem('id_user', response.data[0].id);
+          localStorage.setItem('id_user', response.data[0].id_user);
           localStorage.setItem('active', response.data[0].active);
           this.router.navigate(['/home']); // Redirecionar para a página inicial (home) após o login bem-sucedido
           this.globalService.openSnackBar('Usuário logado com sucess.', 'Ok',  'Sucesso!', 'success-snackbar');
