@@ -60,8 +60,8 @@
     <tr *ngFor="let supplier of suppliers">
       <td>{{ supplier.name }}</td>
       <td>{{ supplier.responsible }}</td>
-      <td>{{ supplier.type }}</td>
       <td>{{ supplier.contact_responsible }}</td>
+      <td>{{ supplier.type }}</td>
       <td class="options-table" >
         <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Fornecedor', 'edit-supplier', supplier.id_supplier, '50%' )" >visibility</mat-icon>
       </td>

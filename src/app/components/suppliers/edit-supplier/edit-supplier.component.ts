@@ -35,7 +35,7 @@ export class EditSupplierComponent {
           this.supplier = response.data; // Armazene os usuários na variável 'usuarios'
           this.formData.name = response.data[0].name;
           this.formData.responsible = response.data[0].responsible;
-          this.formData.adress = response.data[0].adress;
+          this.formData.adress = response.data[0].addres;
           this.formData.contact_supplier = response.data[0].contact_supplier;
           this.formData.contact_responsible = response.data[0].contact_responsible;
           this.formData.catalog = response.data[0].catalog;
