@@ -16,38 +16,38 @@
       <form class="form">
         <mat-form-field class="example-full-width" style="width: 60%" >
           <mat-label>Nome</mat-label>
-          <input autofocus matInput placeholder="Nome do fornecedor" name="name" required value="{{item.name}}" />
+          <input autofocus matInput placeholder="Nome do fornecedor" name="name" [(ngModel)]="formData.name" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 35%">
           <mat-label>Responsável</mat-label>
-          <input matInput placeholder="Responsável" name="responsible" required value="{{item.responsible}}" />
+          <input matInput placeholder="Responsável" name="responsible" [(ngModel)]="formData.responsible" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 65%">
           <mat-label>Endereço</mat-label>
-          <input matInput placeholder="Endereço" name="adress" required value="{{item.addres}}" />
+          <input matInput placeholder="Endereço" name="adress" [(ngModel)]="formData.adress" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 30%">
           <mat-label>Contato da empresa</mat-label>
-          <input matInput placeholder="Contato da empresa" name="contact_supplier" required value="{{item.contact_supplier}}" />
+          <input matInput placeholder="Contato da empresa" name="contact_supplier" [(ngModel)]="formData.contact_supplier" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="width: 35%">
           <mat-label>Contato do responsável</mat-label>
           <input
-            matInput placeholder="Contato do responsável" name="contact_responsible" required value="{{item.contact_responsible}}" />
+            matInput placeholder="Contato do responsável" name="contact_responsible" [(ngModel)]="formData.contact_responsible" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"style="width: 60%">
           <mat-label>Catalogo de produto</mat-label>
-          <input matInput placeholder="Catálogo de produto" name="catalog" value="{{item.catalog}}" />
+          <input matInput placeholder="Catálogo de produto" name="catalog" [(ngModel)]="formData.catalog"/>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="width: 35%">
           <mat-label>Tipo de produto</mat-label>
-          <mat-select name="type" required>
+          <mat-select name="type" [(ngModel)]="formData.type" required>
             <mat-option [value]="">Bebidas</mat-option>
             <mat-option [value]="2">Pão</mat-option>
             <mat-option [value]="3">Carne</mat-option>
@@ -57,7 +57,7 @@
 
         <mat-form-field class="example-full-width" style="width: 35%">
           <mat-label>Ativo</mat-label>
-          <mat-select name="type" required>
+          <mat-select name="active" [(ngModel)]="formData.active" required>
             <mat-option [value]="1">Sim</mat-option>
             <mat-option [value]="2">Não</mat-option>
           </mat-select>
@@ -68,7 +68,7 @@
           <button mat-raised-button class="button-warning" (click)="cancel()" style="margin-right: 1rem;">
           Fechar
         </button>
-        <button mat-raised-button class="button-success" (click)="msg()">
+        <button mat-raised-button class="button-success" (click)="updateSupplier()">
           Salvar
         </button>
         </div>

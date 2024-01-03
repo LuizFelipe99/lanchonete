@@ -10,42 +10,42 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent {
-  
+
   //colocando o valor que vem por localstorage na varaivel identity, que poderá ser usada para realizar outras funções, como salvar
   get identity(): string {
     return localStorage.getItem('identifier') || ''; // Obter o nome do usuário do localStorage
   }
-  
+
   ngOnInit(): void {
     this.getUserById();
   }
   // metodo construtor
   constructor(private api: UserService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {
   }
-  
+
   formData: {
       id_user: string;
-      name: string; 
-      login: string; 
-      password: string; 
-      active: number; 
+      name: string;
+      login: string;
+      password: string;
+      active: number;
       contact: string;
       usergroup: number
-    } = 
+    } =
     {
-      id_user: this.identity, 
+      id_user: this.identity,
       name: '',
-      login: '', 
-      password: '', 
-      active: 1, 
-      contact: '', 
+      login: '',
+      password: '',
+      active: 1,
+      contact: '',
       usergroup: 1
     };
-      
+
   // objeto para receber os dados da api
   user: any[] = [];
   isLoad: boolean = false;
-  
+
    // Método para filtro e paginação
   getUserById() {
     this.isLoad = true;
