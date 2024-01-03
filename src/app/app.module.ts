@@ -23,6 +23,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import {AsyncPipe} from '@angular/common';
 
 import { LoginComponent } from './components/login/login.component';
 import { CreateUserComponent } from './components/users/create-user/create-user.component';
@@ -42,6 +43,7 @@ import { DetailOrderComponent } from './components/suppliers/order/detail-order/
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 @NgModule({
   declarations: [
@@ -87,6 +89,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
+    AsyncPipe,
   ],
   providers: [],
   bootstrap: [AppComponent],

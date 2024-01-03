@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { OrderSupplier } from '../models/order.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -40,16 +42,24 @@ export class OrderService {
       });
   }
 
+  createOrder(newOrder: OrderSupplier): Observable<OrderSupplier> {
+    const endPoint = `${this.apiUrl}order_supplier/create/`;
+    return this.http.post<OrderSupplier>(endPoint, newOrder);
+  }
+
+
+
+    // >>>>>>>>>>>>>>>>>>>> nao exclui esse cara nao <<<<<<<<<<<<<<<<<<<<<<<<<
 
     // criando pedido vazio
-    createOrder( id_supplier: string, total: string, created_by: string, dt_expired: string): 
-    Promise<any> {
-      const formData = {id_supplier: id_supplier, total: total, created_by: created_by, dt_expired: dt_expired};
-      const endPoint = `${this.apiUrl}/order_supplier/create/`;
-      return this.http.post(endPoint, formData).toPromise()
-      .then((response) => {return response as any[]})
-      .catch((error) => {
-      return Promise.reject(error)});
-    }
+    // createOrder( id_supplier: string, total: string, created_by: string, dt_expired: string): 
+    // Promise<any> {
+    //   const formData = {id_supplier: id_supplier, total: total, created_by: created_by, dt_expired: dt_expired};
+    //   const endPoint = `${this.apiUrl}/order_supplier/create/`;
+    //   return this.http.post(endPoint, formData).toPromise()
+    //   .then((response) => {return response as any[]})
+    //   .catch((error) => {
+    //   return Promise.reject(error)});
+    // }
 
 }

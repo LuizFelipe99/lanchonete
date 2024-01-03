@@ -71,13 +71,11 @@ export class SupplierService {
         return Promise.reject(error);
       });
   }
-  getDetailOrder( id_order_supplier: string, nextToPage: number, perPage: number): Promise<any> {
+
+  getSupplierName( ): Promise<any> {
     const formData = {
-      id_order_supplier: id_order_supplier,
-      page: nextToPage,
-      per_page: perPage,
     };
-    const endPoint = `${this.apiUrl}order_supplier/detail/`;
+    const endPoint = `${this.apiUrl}/supplier/supplier_names/`;
     return this.http
       .post(endPoint, formData)
       .toPromise()
