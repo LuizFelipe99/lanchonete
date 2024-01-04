@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GlobalService } from 'src/app/global.service';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/models/User/user.model';
 
 @Component({
   selector: 'app-create-user',
@@ -17,19 +17,12 @@ export class CreateUserComponent {
   isLoad: boolean = false;
 
   users: User[] = [];
-  newUser: User = {
-    name: '',
-    login: '',
-    password: '',
-    active: 0,
-    contact: '',
-    usergroup: 0,
-    // Preencha outras propriedades conforme necessário
+  newUser: User = {name: '', login: '', password: '', active: 0, contact: '', usergroup: 0,
   };
 
   constructor(private api: UserService, private globalService: GlobalService) {}
 
-
+// função para criar usuario
   insertUser(): void {
     this.isLoad = true;
     this.api.insertUser(this.newUser).subscribe(createUser => {

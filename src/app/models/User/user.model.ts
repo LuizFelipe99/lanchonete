@@ -8,3 +8,11 @@ export interface User{
   usergroup: number;
   dt_created?: string;
 }
+
+// interface usada para filtrar usuario
+export interface UserFilter{
+  name: string;
+  login: string;
+  active: number;
+  per_page: number;
+}
