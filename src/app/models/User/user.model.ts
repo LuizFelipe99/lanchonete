@@ -11,8 +11,12 @@ export interface User{
 
 // interface usada para filtrar usuario
 export interface UserFilter{
-  name: string;
-  login: string;
-  active: number;
-  per_page: number;
+  id_user?: string,
+  name?: string;
+  login?: string;
+  active?: number;
+  per_page?: number;
+  password?: string;
+  contact?: string;
+  usergroup?: number;
 }
