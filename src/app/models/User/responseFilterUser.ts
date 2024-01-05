@@ -3,5 +3,5 @@ export class ResponseFilterUsers{
   total_pages: number;
   current_page: number;
   page: number;
-  users: number;  
+  users: number;
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { GlobalService } from 'src/app/global.service'; 
+import { GlobalService } from 'src/app/global.service';
 import { User, UserFilter } from 'src/app/models/User/user.model';
 
 @Component({
