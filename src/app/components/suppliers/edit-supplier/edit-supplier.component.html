@@ -12,42 +12,42 @@
 
     <!-- formulario de envio de dados para o cadastro de usuario -->
     <!-- criado ngfor para listar os itens vindos da api -->
-    <div class="" *ngFor="let item of supplier">
+    <div class="" *ngFor="let item of suppliers">
       <form class="form">
         <mat-form-field class="example-full-width" style="width: 60%" >
           <mat-label>Nome</mat-label>
-          <input autofocus matInput placeholder="Nome do fornecedor" name="name" [(ngModel)]="formData.name" required />
+          <input autofocus matInput placeholder="Nome do fornecedor" name="name" [(ngModel)]="newSupplier.name" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 35%">
           <mat-label>Responsável</mat-label>
-          <input matInput placeholder="Responsável" name="responsible" [(ngModel)]="formData.responsible" required />
+          <input matInput placeholder="Responsável" name="responsible" [(ngModel)]="newSupplier.responsible" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 65%">
           <mat-label>Endereço</mat-label>
-          <input matInput placeholder="Endereço" name="adress" [(ngModel)]="formData.adress" required />
+          <input matInput placeholder="Endereço" name="adress" [(ngModel)]="newSupplier.adress" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"  style="width: 30%">
           <mat-label>Contato da empresa</mat-label>
-          <input matInput placeholder="Contato da empresa" name="contact_supplier" [(ngModel)]="formData.contact_supplier" required />
+          <input matInput placeholder="Contato da empresa" name="contact_supplier" [(ngModel)]="newSupplier.contact_supplier" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="width: 35%">
           <mat-label>Contato do responsável</mat-label>
           <input
-            matInput placeholder="Contato do responsável" name="contact_responsible" [(ngModel)]="formData.contact_responsible" required />
+            matInput placeholder="Contato do responsável" name="contact_responsible" [(ngModel)]="newSupplier.contact_responsible" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width"style="width: 60%">
           <mat-label>Catalogo de produto</mat-label>
-          <input matInput placeholder="Catálogo de produto" name="catalog" [(ngModel)]="formData.catalog"/>
+          <input matInput placeholder="Catálogo de produto" name="catalog" [(ngModel)]="newSupplier.catalog"/>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="width: 35%">
           <mat-label>Tipo de produto</mat-label>
-          <mat-select name="type" [(ngModel)]="formData.type" required>
+          <mat-select name="type" [(ngModel)]="newSupplier.type" required>
             <mat-option [value]="">Bebidas</mat-option>
             <mat-option [value]="2">Pão</mat-option>
             <mat-option [value]="3">Carne</mat-option>
@@ -57,7 +57,7 @@
 
         <mat-form-field class="example-full-width" style="width: 35%">
           <mat-label>Ativo</mat-label>
-          <mat-select name="active" [(ngModel)]="formData.active" required>
+          <mat-select name="active" [(ngModel)]="newSupplier.active" required>
             <mat-option [value]="1">Sim</mat-option>
             <mat-option [value]="2">Não</mat-option>
           </mat-select>

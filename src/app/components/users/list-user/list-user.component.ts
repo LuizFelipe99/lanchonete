@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { GlobalService } from 'src/app/global.service'; 
+import { GlobalService } from 'src/app/global.service';
 import { User, UserFilter } from 'src/app/models/User/user.model';
 
 @Component({
@@ -15,9 +15,6 @@ export class ListUserComponent {
   users: User[];
   filterUser: UserFilter = { name: '', login: '', active: 1, per_page: 15};
 
-
-
-  
   // variaveis para controlar paginação
   page: number = 1;
   totalUsers: number = 0;

@@ -1,5 +1,8 @@
+import { ResponseFilterSuppliers } from './../models/Supplier/responseFilterSupplier';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Supplier } from '../models/Supplier/supplier.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,67 +12,25 @@ export class SupplierService {
 
   constructor(private http: HttpClient) {}
 
-  getSuppliers( name: string, responsible: string, type: string, active: number, nextToPage: number, perPage: number): Promise<any> {
-    const formData = {
-      name: name,
-      responsible: responsible,
-      type: type,
-      active: active,
-      page: nextToPage,
-      per_page: perPage,
-    };
-
+  // função para listar todos os fornecedores e enviar filtros caso tenha
+  // aqui eu usei o " responseFilterSupplier" para armazenar a resposta da api
+  public getSuppliers(filter?: any, page?: number): Observable<ResponseFilterSuppliers> {
     const endPoint = `${this.apiUrl}/supplier/suppliers/`;
-
-    return this.http
-      .post(endPoint, formData)
-      .toPromise()
-      .then((response) => {
-        return response as any[];
-      })
-      .catch((error) => {
-        return Promise.reject(error);
-      });
+    filter.page = page;
+    return this.http.post<ResponseFilterSuppliers>(endPoint, filter);
   }
 
-  insertSupplier( name: string, responsible: string, adress: string, contact_supplier: string, contact_responsible: string, catalog: string, type: string, active: number): Promise<any> {
-    const formData = {
-      name: name,
-      responsible: responsible,
-      adress: adress,
-      contact_supplier: contact_supplier,
-      contact_responsible: contact_responsible,
-      catalog: catalog,
-      type: type,
-      active: active,
-    };
+  // função para criar fornecedor
+  // aqui eu usei o " Supplier " pois mandei na requisição todos os campos da model SUPPLIER
+  insertSupplier(newOrder: Supplier): Observable<Supplier> {
     const endPoint = `${this.apiUrl}/supplier/create/`;
-    return this.http
-      .post(endPoint, formData)
-      .toPromise()
-      .then((response) => {
-        return response as any[];
-      })
-      .catch((error) => {
-        return Promise.reject(error);
-      });
+    return this.http.post<Supplier>(endPoint, newOrder);
   }
 
-  getSupplierById( id_supplier: string): Promise<any> {
-    const formData = {
-      id_supplier: id_supplier,
-    };
+  // função que pega o fornecedor pelo id
+  public getSupplierById( id_supplier?: any): Observable<ResponseFilterSuppliers> {
     const endPoint = `${this.apiUrl}/supplier/suppliers/`;
-    return this.http
-      .post(endPoint, formData)
-      .toPromise()
-      .then((response) => {
-
-        return response as any[];
-      })
-      .catch((error) => {
-        return Promise.reject(error);
-      });
+    return this.http.post<ResponseFilterSuppliers>(endPoint, id_supplier)
   }
 
   getSupplierName( ): Promise<any> {
@@ -88,10 +49,10 @@ export class SupplierService {
       });
   }
 
-  updateSupplier(id_supplier: string, name: string, responsible: string, adress: string, contact_supplier: string, contact_responsible: string, catalog: string, type: string, active: number): Promise<any> {
-    const formData = {id_supplier: id_supplier, name: name, responsible: responsible, adress: adress, contact_supplier: contact_supplier, contact_responsible: contact_responsible, catalog: catalog, type: type, active: active};
+  // função que atualiza o fornecedor
+  updateSupplier(editSupplier: Supplier, id_supplier: string): Observable<Supplier> {
     const endPoint = `${this.apiUrl}/supplier/update/`;
-    return this.http.post(endPoint, formData).toPromise().then((response) => {return response as any[]}).catch((error) => {return Promise.reject(error)})
+    return this.http.post<Supplier>(endPoint, editSupplier);
   }
 
 }
