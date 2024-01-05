@@ -1,1 +1,17 @@
-<p>categories works!</p>
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Categorias: 100
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description> -->
+    </mat-expansion-panel-header >
+    <div class="content">
+      <p>I'm visible because I am open I'm visible because I am open I'm visible because I am open</p>
+      <canvas id="chart">{{ chart }}</canvas>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

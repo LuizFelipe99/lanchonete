@@ -43,6 +43,10 @@ import { DetailOrderComponent } from './components/suppliers/order/detail-order/
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatExpansionModule} from '@angular/material/expansion';
+
+// chart js
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -90,6 +94,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatNativeDateModule,
     MatAutocompleteModule,
     AsyncPipe,
+    MatExpansionModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

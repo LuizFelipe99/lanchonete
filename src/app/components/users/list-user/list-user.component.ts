@@ -15,9 +15,6 @@ export class ListUserComponent {
   users: User[];
   filterUser: UserFilter = { name: '', login: '', active: 1, per_page: 15};
 
-
-
-  
   // variaveis para controlar paginação
   page: number = 1;
   totalUsers: number = 0;
