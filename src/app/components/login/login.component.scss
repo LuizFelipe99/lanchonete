@@ -1,6 +1,6 @@
 
 .card-login{
-  width: 30%;
+  width: 35%;
   background-color: var(--second-color);
   color: #ffff;
   padding: 10px;
@@ -16,4 +16,21 @@
   display: flex;
   flex-direction: column;
   padding: 10px
+}
+
+
+@media (max-width: 1024px) {
+  .card-login{
+    width: 55%;
+  }
+}
+@media (max-width: 769px) {
+  .card-login{
+    width: 65%;
+  }
+}
+@media (max-width: 481px) {
+  .card-login{
+    width: 75%;
+  }
 }
