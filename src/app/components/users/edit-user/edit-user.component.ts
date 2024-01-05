@@ -19,6 +19,7 @@ export class EditUserComponent {
 
   ngOnInit(): void {
     this.getUserById();
+    
   }
   // metodo construtor
   constructor(private api: UserService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {
@@ -48,7 +49,7 @@ getUserById(){
       }
     });
   }
-  
+
 // função que atualiza o cadastro
   updateUser(){
     console.log(this.newUser);

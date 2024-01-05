@@ -6,21 +6,21 @@
           <div>
             <mat-form-field class="example-full-width">
               <mat-label>Fornecedor</mat-label>
-              <input matInput placeholder="Ex. Super Mercado X" name="supplier" [(ngModel)]="formData.supplier">
+              <input matInput placeholder="Ex. Super Mercado X" name="supplier" [(ngModel)]="filterOrder.supplier">
             </mat-form-field>
           </div>
           
           <div>
             <mat-form-field class="example-full-width">
               <mat-label>Responsável</mat-label>
-              <input matInput placeholder="Ex. Luiz Felipe" name="responsible" [(ngModel)]="formData.responsible">
+              <input matInput placeholder="Ex. Luiz Felipe" name="responsible" [(ngModel)]="filterOrder.responsible">
             </mat-form-field>
           </div>
           
           <div>
             <mat-form-field class="example-full-width">
               <mat-label>Pedido</mat-label>
-              <input matInput placeholder="Ex. 100" name="id_order_supplier" [(ngModel)]="formData.id_order_supplier">
+              <input matInput placeholder="Ex. 100" name="id_order_supplier" [(ngModel)]="filterOrder.id_order_supplier">
             </mat-form-field>
           </div>
           
@@ -28,7 +28,7 @@
             <div class="example-button-row" >
               <button routerLink="../usuarios/criar" style="margin-right: 1rem;" mat-raised-button class="button-warning">Limpar Filtros</button> 
               <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-              <button mat-raised-button class="button-success" style="margin-right: 1rem;" (click)="getOrders(pagination)" >Buscar</button>
+              <button mat-raised-button class="button-success" style="margin-right: 1rem;" (click)="getOrders(page)" >Buscar</button>
             </div>
           </mat-card-actions>
         </div>
@@ -58,7 +58,7 @@
       <td> {{order.items}} </td>
       <td> {{order.total}} </td>
       <td>3 {{order.dt_expired}} </td>
-      <td >  <mat-icon (click)="globalService.openDialog('Detalhes do pedido', 'detail-order-supplier', order.id_order_supplier, '50%')" style="cursor: pointer">shopping_cart</mat-icon></td>
+      <td >  <mat-icon (click)="globalService.openDialog('Detalhes do pedido', 'detail-order-supplier', order.id_order_supplier || '', '50%')" style="cursor: pointer">shopping_cart</mat-icon></td>
     </tr>
   </table>
   <!-- INICIO paginação  -->
@@ -72,11 +72,11 @@
         <!-- botoes de paginação -->
         <div class="buttons">
         <!-- seta de anterior -->
-          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getOrders(this.currentPage - pagination)"> < </button>
+          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getOrders(this.currentPage - 1)"> < </button>
           <!-- pagina atual da pagina current_page -->
           {{currentPage}}
           <!-- seta de proximo -->
-          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getOrders(this.currentPage + pagination)"> > </button>
+          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getOrders(this.currentPage + 1)"> > </button>
         </div>
       </div>
     </div>

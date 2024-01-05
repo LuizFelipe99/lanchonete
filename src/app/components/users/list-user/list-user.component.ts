@@ -14,6 +14,9 @@ export class ListUserComponent {
 
   users: User[];
   filterUser: UserFilter = { name: '', login: '', active: 1, per_page: 15};
+
+
+
   
   // variaveis para controlar paginação
   page: number = 1;
@@ -26,6 +29,7 @@ export class ListUserComponent {
     // ao carregar componente é executado a função getUser para listar tudo e passando a pagina por parametro
     // como a pagina até entao é 1 ele sempre vai carregar na primeira pagina
     this.getUsers(this.page);
+
   }
 
 // passando a pagina por parametro para a paginação

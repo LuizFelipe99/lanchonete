@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { OrderSupplier } from '../models/order/order.model';
+import { OrderSupplier, ResponseFilterOrder } from '../models/order/order.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,8 +11,15 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
+  public getOrders(filter?: any, page?: number): Observable<ResponseFilterOrder>{
+    const endPoint = `${this.apiUrl}/order_supplier/orders/`;
+    filter.page = page;
+    return this.http.post<ResponseFilterOrder>(endPoint, filter);
+  }
+  
+
   // .getUsers(name, login, active, pagination, perPage)
-  getOrders( supplier: string, responsible: string, id_order_supplier: string, nextToPage: number, perPage: number): 
+  getOrderss( supplier: string, responsible: string, id_order_supplier: string, nextToPage: number, perPage: number): 
   Promise<any> {
     const formData = {supplier: supplier, responsible: responsible, id_order_supplier: id_order_supplier, page: nextToPage, per_page: perPage};
     const endPoint = `${this.apiUrl}/order_supplier/orders/`;
