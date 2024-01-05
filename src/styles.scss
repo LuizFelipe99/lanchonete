@@ -34,14 +34,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // }
 .mat-mdc-snack-bar-container {
   &.success-snackbar {
-    --mdc-snackbar-container-color: var(--button-success);
+    --mdc-snackbar-container-color: #D4EDDA; //cor de fundo
     --mat-mdc-snack-bar-button-color: #fff;
     --mdc-snackbar-supporting-text-color: #000;
+    border-radius: 5px;
+    border: 1px solid var(--button-success);
   }
   &.error-snackbar {
-    --mdc-snackbar-container-color: var(--button-warning);
-    --mat-mdc-snack-bar-button-color: #fff;
-    --mdc-snackbar-supporting-text-color: #fff;
+    --mdc-snackbar-container-color: #F8D7DA;
+    --mat-mdc-snack-bar-button-color: #000;
+    --mdc-snackbar-supporting-text-color: #000;
+    border-radius: 5px;
+    border: 1px solid var(--button-warning);
   }
 }
 

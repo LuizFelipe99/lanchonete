@@ -1,4 +1,17 @@
 .error-message{
   font-size: 16px;
 }
-
+.area-button{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.button-ok{
+  height: 25px !important;
+  width: 50px;
+  border-radius: 5px;
+  padding: 2px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px black;
+}

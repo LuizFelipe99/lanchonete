@@ -14,7 +14,7 @@ export class ListOrderComponent {
   constructor(private api: OrderService, private _snackBar: MatSnackBar, public globalService: GlobalService) {}
 
   ngOnInit(): void {
-    this.getOrderss(this.page);
+    this.getOrders(this.page);
   }
 
 // requiisição tipada
@@ -49,53 +49,5 @@ getOrders(page: number){
     });
   }
 
-
-
-
-
-
-
-
-
-  // Objeto para o formulário de filtro
-  formData: {
-    supplier: string;
-    responsible: string;
-    id_order_supplier: string;
-    perPage: number;
-  } = {
-    supplier: '',
-    responsible: '',
-    id_order_supplier: '',
-    perPage: 15,
-  };
-
-
-
-  getOrderss(pagination: number) {
-    this.isLoad = true;
-    const { supplier, responsible, id_order_supplier, perPage } = this.formData;
-    this.api
-      .getOrderss(supplier, responsible, id_order_supplier, pagination, perPage)
-      .then(
-        (response) => {
-          this.orders = response.data; // Armazene os usuários na variável 'usuarios'
-          this.totalOrders = response.orders;
-          this.totalPages = response.total_pages;
-          this.currentPage = response.current_page;
-          this.isLoad = false;
-
-          if (response.status === true) {
-          }else{
-            this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
-            this.isLoad = false;
-        }
-        },
-        (error: any) => {
-          this.isLoad = false;
-          console.error('Erro ao buscar usuários:', error);
-        }
-      );
-  }
 
 }
