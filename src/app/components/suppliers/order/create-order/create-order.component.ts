@@ -17,21 +17,6 @@ export class CreateOrderComponent {
   constructor(private api: OrderService){}
 
 
-  // Objeto para o formulário de filtro
-  formData: {
-    id_supplier: string;
-    total: string;
-    created_by: string;
-    dt_expired: string;
-  } = {
-    id_supplier: '',
-    total: '',
-    created_by: this.id_user,
-    dt_expired: '',
-  };
-
-
-
   orders: OrderSupplier[] = [];
   newOrder: OrderSupplier = {
     id_supplier: 0,
@@ -49,26 +34,4 @@ export class CreateOrderComponent {
       // this.loadOrders();
     });
   }
-    // Preencha outras propriedades conforme necessário
-
-  // createOrder() {
-  //   const { id_supplier, total, created_by, dt_expired } = this.formData;
-  //   this.api
-  //   .createOrder(id_supplier, total, created_by, dt_expired )
-  //   .then(
-  //     (response) => {
-
-  //         if (response.status === true) {
-  //           console.log("criado");
-  //         }else{
-  //           console.log("nao criado");
-  //           // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
-  //       }
-  //       },
-  //       (error: any) => {
-  //         console.error('Erro ao buscar usuários:', error);
-  //       }
-  //     );
-  // }
-
 }
