@@ -1,0 +1,24 @@
+<div class="action">
+  <button class="button-close" (click)="cancel()">  <mat-icon>close</mat-icon>  </button>
+</div>
+<!-- controlar a visualização de fornecedores -->
+<div *ngIf="data.component == 'edit-supplier'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }}</h1>
+  <app-edit-supplier></app-edit-supplier>
+</div>
+
+<!-- edit-user -->
+<div *ngIf="data.component == 'edit-user'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }}</h1>
+    <app-edit-user></app-edit-user>
+  <!-- <app-edit-user></app-edit-user> -->
+</div>
+
+<!-- detalhes do pedido do fornecedor -->
+<div *ngIf="data.component == 'detail-order-supplier'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }} <mat-icon>grading</mat-icon> </h1>   
+  <app-detail-order></app-detail-order>
+    <!-- <app-edit-user></app-edit-user> -->
+</div>
+
+

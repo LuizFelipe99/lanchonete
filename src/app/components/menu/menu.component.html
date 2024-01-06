@@ -1,0 +1,59 @@
+<mat-toolbar class="nav_bar_sup">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="opened=!opened">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Lanchonete</span>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="side">
+   
+    <mat-list role="list">
+        <!-- item menu -->
+        <mat-list-item role="listitem" routerLink="/home">
+          <mat-icon>home</mat-icon> 
+          Inicio 
+        </mat-list-item>
+      <!-- item menu -->
+      <mat-list-item class="menu-item" role="listitem" routerLink="/usuarios/listar">
+        <mat-icon>people</mat-icon>
+         Listar Usuarios
+      </mat-list-item>
+    <!-- item menu -->
+      <!-- <mat-list-item role="listitem" routerLink="/login">
+         <mat-icon>account_circle</mat-icon> 
+         Login 
+      </mat-list-item> -->
+      <!-- item menu -->
+      <mat-list-item role="listitem" routerLink="/usuarios/criar">
+        <mat-icon>group_add</mat-icon> 
+        Criar usuário 
+      </mat-list-item>
+      <!-- item menu -->
+      <mat-list-item role="listitem" routerLink="/fornecedores/criar">
+        <mat-icon>contact_page</mat-icon> 
+        Cadastrar fornecedor
+      </mat-list-item>
+      <!-- item menu -->
+      <mat-list-item role="listitem" routerLink="/fornecedores/listar">
+        <mat-icon>query_stats</mat-icon> 
+        Listar fornecedor
+      </mat-list-item>
+       <!-- item menu -->
+       <mat-list-item role="listitem" routerLink="fornecedores/pedidos/listar">
+        <mat-icon>grading</mat-icon> 
+        Pedido Fornecedor
+      </mat-list-item>
+      <!-- item menu -->
+      <!-- item menu -->
+      <mat-list-item role="listitem" routerLink="/fornecedores/pedidos/criar">
+        <mat-icon>grading</mat-icon> 
+        Criar pedido
+      </mat-list-item>
+    <!-- item menu -->
+    </mat-list>
+    <button mat-button (click)="logout()" >Sair</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
