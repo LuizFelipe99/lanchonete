@@ -32,7 +32,6 @@ getUserStats(){
         // this.globalService.openSnackBar('Não foi encontrado', 'Ok',  'Erro!', 'error-snackbar');
       }else{
         this.users.labels = data.labels;
-        console.log(this.users.labels);
       }
     });
   }
@@ -52,7 +51,7 @@ getUserStats(){
   // datos
   const data = {
     labels: [
-      'this.ativo',
+      'Ativos',
       'Inativos',
     ],
     datasets: [{

@@ -1,4 +1,4 @@
 export interface UserStatsDashboard{
-    labels: any[];
-    quantity: any[];
+    labels: { status: number }[];
+    quantity: { quantity: number }[];
 }
