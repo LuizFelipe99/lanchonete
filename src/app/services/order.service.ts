@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { OrderSupplier, ResponseFilterOrder } from '../models/order/order.model';
+import { OrderSupplier, ResponseFilterOrder } from '../models/Order/order.model';
 import { Observable } from 'rxjs';
 
 @Injectable({

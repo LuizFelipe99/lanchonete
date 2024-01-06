@@ -38,7 +38,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DialogFormDetailsComponent } from './components/shared/dialog-form-details/dialog-form-details.component';
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
 import { EditSupplierComponent } from './components/suppliers/edit-supplier/edit-supplier.component';
-import { CategoriesComponent } from './components/dashboard/categories/categories.component';
+import { UsersDashComponent } from './components/dashboard/users-active/users-dash.component';
 import { DetailOrderComponent } from './components/suppliers/order/detail-order/detail-order.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
@@ -65,7 +65,7 @@ import { NgChartsModule } from 'ng2-charts';
     DialogFormDetailsComponent,
     EditUserComponent,
     EditSupplierComponent,
-    CategoriesComponent,
+    UsersDashComponent,
     DetailOrderComponent,
   ],
   imports: [

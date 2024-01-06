@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
 import { OrderService } from 'src/app/services/order.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { OrderFilter, OrderSupplier } from 'src/app/models/order/order.model';
+import { OrderFilter, OrderSupplier } from 'src/app/models/Order/order.model';
 
 @Component({
   selector: 'app-list-order',
