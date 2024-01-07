@@ -1,6 +1,7 @@
 import { OrderService } from 'src/app/services/order.service';
 import {Component} from '@angular/core';
-import { OrderSupplier } from 'src/app/models/Order/order.model';
+import { OrderSupplier } from 'src/app/models/Order/order_supplier.model';
+
 
 
 @Component({

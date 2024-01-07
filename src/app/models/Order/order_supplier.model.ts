@@ -1,10 +1,10 @@
 export interface OrderSupplier {
   id_order_supplier?: string;
-  id_supplier: number;
-  dt_created: string;
-  dt_expired: string;
-  total: string;
-  created_by: string;
+  id_supplier?: number;
+  dt_created?: string;
+  dt_expired?: string;
+  total?: string;
+  created_by?: string;
   supplier?: string;
   responsible?: string;
   items?: string;
