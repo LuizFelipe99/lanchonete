@@ -1,0 +1,85 @@
+<div class="container">
+  <mat-card>
+    <form class="form">
+      <div>
+        <div class="form-filter">
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Fornecedor</mat-label>
+              <input matInput placeholder="Ex. Super Mercado X" name="supplier" [(ngModel)]="filterOrder.supplier">
+            </mat-form-field>
+          </div>
+          
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Responsável</mat-label>
+              <input matInput placeholder="Ex. Luiz Felipe" name="responsible" [(ngModel)]="filterOrder.responsible">
+            </mat-form-field>
+          </div>
+          
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Pedido</mat-label>
+              <input type="number" matInput placeholder="Ex. 100" name="id_order_supplier" [(ngModel)]="filterOrder.id_order_supplier">
+            </mat-form-field>
+          </div>
+          
+          <mat-card-actions style="justify-content: end;">
+            <div class="example-button-row" >
+              <button routerLink="../usuarios/criar" style="margin-right: 1rem;" mat-raised-button class="button-warning">Limpar Filtros</button> 
+              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
+              <button mat-raised-button class="button-success" style="margin-right: 1rem;" (click)="getOrders(page)" >Buscar</button>
+            </div>
+          </mat-card-actions>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <!-- simbolo de loadgin -->
+  <div class="" *ngIf="isLoad">
+    <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+  </div>
+
+  <table class="responsive-table" id="customers">
+    <tr>
+      <th>Fornecedor</th>
+      <th>Responsável</th>
+      <th>Pedido</th>
+      <th>Itens</th>
+      <th>Valor</th>
+      <th>Data de vencimento</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let order of orders">
+      <td> {{order.supplier}} </td>
+      <td> {{order.responsible}} </td>
+      <td> {{order.id_order_supplier}} </td>
+      <td> {{order.items}} </td>
+      <td> {{order.total}} </td>
+      <td>3 {{order.dt_expired}} </td>
+      <td >  <mat-icon (click)="globalService.openDialog('Detalhes do pedido', 'detail-order-supplier', order.id_order_supplier || '', '50%')" style="cursor: pointer">shopping_cart</mat-icon></td>
+    </tr>
+  </table>
+  <!-- INICIO paginação  -->
+  <div class="form">
+    <div class="form-filter">
+      <div class="pagination">
+        <div>
+          <span>Total: <b> {{totalOrders}} </b> </span>
+          <span>Paginas: <b> {{totalPages}} </b> </span>
+        </div>
+        <!-- botoes de paginação -->
+        <div class="buttons">
+        <!-- seta de anterior -->
+          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getOrders(this.currentPage - 1)"> < </button>
+          <!-- pagina atual da pagina current_page -->
+          {{currentPage}}
+          <!-- seta de proximo -->
+          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getOrders(this.currentPage + 1)"> > </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIM DA PAGINAÇÃO -->
+</div>

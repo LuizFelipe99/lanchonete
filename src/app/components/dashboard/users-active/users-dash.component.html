@@ -1,0 +1,17 @@
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Categorias: 1000
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description> -->
+    </mat-expansion-panel-header >
+    <div class="content">
+      <p>Gráfico referente aos usuarios da plataforma</p>
+      <canvas id="usersChart">{{ chart }}</canvas>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

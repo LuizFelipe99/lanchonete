@@ -1,0 +1,20 @@
+mat-sidenav-container{
+  height: calc(205vh - 115vh);
+}
+mat-sidenav{
+  width: 200px;
+  background-color: var(--menu-second);
+  
+}
+.nav_bar_sup{
+  background-color: var(--button-warning);
+  color: #fff;
+}
+
+.menu-item{
+  cursor: pointer !important;
+}
+
+::ng-deep .mdc-list-item__content{
+  cursor: pointer !important;
+}
