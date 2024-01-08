@@ -6,12 +6,12 @@
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">
-   
+
     <mat-list role="list">
         <!-- item menu -->
         <mat-list-item role="listitem" routerLink="/home">
-          <mat-icon>home</mat-icon> 
-          Inicio 
+          <mat-icon>home</mat-icon>
+          Inicio
         </mat-list-item>
       <!-- item menu -->
       <mat-list-item class="menu-item" role="listitem" routerLink="/usuarios/listar">
@@ -20,36 +20,46 @@
       </mat-list-item>
     <!-- item menu -->
       <!-- <mat-list-item role="listitem" routerLink="/login">
-         <mat-icon>account_circle</mat-icon> 
-         Login 
+         <mat-icon>account_circle</mat-icon>
+         Login
       </mat-list-item> -->
       <!-- item menu -->
       <mat-list-item role="listitem" routerLink="/usuarios/criar">
-        <mat-icon>group_add</mat-icon> 
-        Criar usuário 
+        <mat-icon>group_add</mat-icon>
+        Criar usuário
       </mat-list-item>
       <!-- item menu -->
       <mat-list-item role="listitem" routerLink="/fornecedores/criar">
-        <mat-icon>contact_page</mat-icon> 
+        <mat-icon>contact_page</mat-icon>
         Cadastrar fornecedor
       </mat-list-item>
       <!-- item menu -->
       <mat-list-item role="listitem" routerLink="/fornecedores/listar">
-        <mat-icon>query_stats</mat-icon> 
+        <mat-icon>query_stats</mat-icon>
         Listar fornecedor
       </mat-list-item>
        <!-- item menu -->
        <mat-list-item role="listitem" routerLink="fornecedores/pedidos/listar">
-        <mat-icon>grading</mat-icon> 
+        <mat-icon>grading</mat-icon>
         Pedido Fornecedor
       </mat-list-item>
       <!-- item menu -->
       <!-- item menu -->
       <mat-list-item role="listitem" routerLink="/fornecedores/pedidos/criar">
-        <mat-icon>grading</mat-icon> 
+        <mat-icon>grading</mat-icon>
         Criar pedido
       </mat-list-item>
-    <!-- item menu -->
+      <!-- item menu -->
+      <!-- item menu -->
+      <mat-list-item role="listitem" routerLink="/itens/listar">
+        <mat-icon>grading</mat-icon>
+        Listar Itens
+      </mat-list-item>
+      <!-- item menu -->
+      <mat-list-item role="listitem" routerLink="/itens/criar">
+        <mat-icon>grading</mat-icon>
+        Criar Itens
+      </mat-list-item>
     </mat-list>
     <button mat-button (click)="logout()" >Sair</button>
   </mat-sidenav>

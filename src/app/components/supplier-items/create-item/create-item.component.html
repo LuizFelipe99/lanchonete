@@ -1,0 +1,39 @@
+<div class="container">
+  <mat-card class="card-login">
+    <mat-card-header>
+      <mat-card-title>Cadastrar item</mat-card-title>
+      <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle>
+    </mat-card-header>
+
+    <!-- formulario de envio de dados para o cadastro de usuario -->
+    <form class="form" (keyup.enter)="insertItem()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome do fornecedor" name="name" [(ngModel)]="newItem.name" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Descrição</mat-label>
+        <input matInput placeholder="Descrição" name="description" [(ngModel)]="newItem.description" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Categoria</mat-label>
+        <input matInput placeholder="Categoria" name="category" [(ngModel)]="newItem.category" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Data de validade</mat-label>
+        <input matInput placeholder="Data de validade" name="expiration" [(ngModel)]="newItem.expiration" required />
+      </mat-form-field>
+
+    </form>
+
+    <mat-card-actions style="justify-content: end">
+      <div class="example-button-row">
+        <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
+        <button mat-raised-button class="button-success" (click)="insertItem()"> Salvar </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

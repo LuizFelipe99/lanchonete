@@ -11,8 +11,11 @@ import { CreateSupplierComponent } from './components/suppliers/create-supplier/
 import { ListSupplierComponent } from './components/suppliers/list-supplier/list-supplier.component';
 import { CreateOrderComponent } from './components/suppliers/order/create-order/create-order.component';
 import { ListOrderComponent } from './components/suppliers/order/list-order/list-order.component';
+import { ListItemComponent } from './components/supplier-items/list-item/list-item.component';
 
 import { HomeComponent } from './components/home/home.component';
+import { CreateItemComponent } from './components/supplier-items/create-item/create-item.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,6 +27,8 @@ const routes: Routes = [
   { path: 'fornecedores/listar', component: ListSupplierComponent,  canActivate: [AuthGuard] },
   { path: 'fornecedores/pedidos/listar', component: ListOrderComponent,  canActivate: [AuthGuard] },
   { path: 'fornecedores/pedidos/criar', component: CreateOrderComponent,  canActivate: [AuthGuard] },
+  { path: 'itens/listar', component: ListItemComponent,  canActivate: [AuthGuard] },
+  { path: 'itens/criar', component: CreateItemComponent,  canActivate: [AuthGuard] },
 ];
 
 @NgModule({

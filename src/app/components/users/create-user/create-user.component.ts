@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { GlobalService } from 'src/app/global.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/User/user.model';

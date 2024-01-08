@@ -47,7 +47,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
 // chart js
 import { NgChartsModule } from 'ng2-charts';
-import { CreteItemComponent } from './components/supplier-items/crete-item/crete-item.component';
+import { CreateItemComponent } from './components/supplier-items/create-item/create-item.component';
 import { ListItemComponent } from './components/supplier-items/list-item/list-item.component';
 
 
@@ -69,7 +69,7 @@ import { ListItemComponent } from './components/supplier-items/list-item/list-it
     EditSupplierComponent,
     UsersDashComponent,
     DetailOrderComponent,
-    CreteItemComponent,
+    CreateItemComponent,
     ListItemComponent,
   ],
   imports: [
