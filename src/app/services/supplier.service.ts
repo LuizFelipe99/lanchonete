@@ -22,7 +22,7 @@ export class SupplierService {
 
   // função para criar fornecedor
   // aqui eu usei o " Supplier " pois mandei na requisição todos os campos da model SUPPLIER
-  insertSupplier(newOrder: Supplier): Observable<Supplier> {
+  public insertSupplier(newOrder: Supplier): Observable<Supplier> {
     const endPoint = `${this.apiUrl}/supplier/create/`;
     return this.http.post<Supplier>(endPoint, newOrder);
   }
@@ -33,7 +33,12 @@ export class SupplierService {
     return this.http.post<ResponseFilterSuppliers>(endPoint, id_supplier)
   }
 
-  getSupplierName( ): Promise<any> {
+  public getSupplierName(filter?: any): Observable<ResponseFilterSuppliers>{
+    const endPoint = `${this.apiUrl}/supplier/supplier_names`;
+    return this.http.post<ResponseFilterSuppliers>(endPoint, filter)
+  }
+
+  getSupplierNames( ): Promise<any> {
     const formData = {
     };
     const endPoint = `${this.apiUrl}/supplier/supplier_names/`;

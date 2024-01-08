@@ -1,6 +1,8 @@
 import { OrderService } from 'src/app/services/order.service';
 import {Component} from '@angular/core';
 import { OrderSupplier } from 'src/app/models/Order/order_supplier.model';
+import { SupplierService } from 'src/app/services/supplier.service';
+import { Supplier, SupplierFilter } from 'src/app/models/Supplier/supplier.model';
 
 
 
@@ -15,15 +17,19 @@ export class CreateOrderComponent {
     return localStorage.getItem('id_user') || ''; // Obter o nome do usuário do localStorage
   }
   
-  constructor(private api: OrderService){}
+  constructor(private api: OrderService, private suppiler: SupplierService){}
 
+  ngOnInit(){
+    this.getSupplierNames();
+  }
+
+  suppliers: Supplier[];
+  filterSupplier: SupplierFilter = {name: '', responsible: '', type: '', active: 1, per_page: 15};
 
   orders: OrderSupplier[] = [];
   newOrder: OrderSupplier = {
     id_supplier: 0,
     dt_expired: '',
-    dt_created: '',
-    total: '',
     created_by: this.id_user,
     // Preencha outras propriedades conforme necessário
   };
@@ -33,6 +39,13 @@ export class CreateOrderComponent {
       console.log('Nova ordem cadastrada:', createdOrder);
       // Atualizar a lista de ordens após o cadastro (opcional)
       // this.loadOrders();
+    });
+  }
+
+  getSupplierNames(): void{
+    this.suppiler.getSuppliers(this.filterSupplier).subscribe(data => {
+      console.log('Nova ordem cadastrada:', data);
+      this.suppliers = data.data;
     });
   }
 }

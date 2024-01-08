@@ -7,11 +7,14 @@
 
     <!-- formulario de envio de dados para o cadastro de usuario -->
     <form class="form">
-      <mat-form-field class="example-full-width">
+      <mat-form-field>
         <mat-label>Fornecedor</mat-label>
-        <input matInput placeholder="Nome do fornecedor" name="id_supplier" [(ngModel)]="newOrder.id_supplier" required />
+        <mat-select name="type" [(ngModel)]="newOrder.id_supplier">
+          <mat-option  *ngFor="let name of suppliers" [value]="name.id_supplier"> {{name.name}} </mat-option>
+        </mat-select>
       </mat-form-field>
 
+      <!-- input de data reference a expiração do pedido -->
       <mat-form-field class="example-form-field">
         <mat-label>Data de vencimento</mat-label>
         <input matInput [matDatepicker]="datepicker" name="dt_expired" [(ngModel)]="newOrder.dt_expired" >
@@ -24,8 +27,6 @@
           </mat-datepicker-actions>
         </mat-datepicker>
       </mat-form-field>
-
-
 
       <mat-form-field class="example-full-width">
         <mat-label>Observação</mat-label>
