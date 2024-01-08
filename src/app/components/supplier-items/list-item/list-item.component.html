@@ -1,0 +1,101 @@
+<div class="container">
+  <mat-card>
+    <form class="form">
+      <div>
+        <div class="form-filter">
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Nome</mat-label>
+              <input matInput placeholder="Nome" name="name" [(ngModel)]="filterItem.name" />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Descrição</mat-label>
+              <input matInput placeholder="Descrição" name="description" [(ngModel)]="filterItem.description" />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Status</mat-label>
+              <mat-select name="active"  [(ngModel)]="filterItem.active" >
+                <mat-option [value]="0">Inativo</mat-option>
+                <mat-option [value]="1">Ativo</mat-option>
+                <mat-option [value]="3">Todos</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <mat-card-actions style="justify-content: end">
+            <div class="example-button-row">
+              <button routerLink="../usuarios/criar" style="margin-right: 1rem" mat-raised-button class="button-warning">
+                Limpar Filtros
+              </button>
+              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
+              <button mat-raised-button class="button-success" (click)="getItems(1)">
+                Buscar
+              </button>
+            </div>
+          </mat-card-actions>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <!-- simbolo de loadgin -->
+  <div class="" *ngIf="isLoad">
+    <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+  </div>
+
+  <table class="responsive-table" id="customers">
+    <tr>
+      <th>Nome</th>
+      <th>Login</th>
+      <th>Data de cadastro</th>
+      <th>Contato</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let item of items">
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.expiration }}</td>
+      <td>{{ item.active }}</td>
+      <td class="options-table" >
+        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Item', 'edit-item', item.id_item || '', '50%' )" >visibility</mat-icon>
+      </td>
+    </tr>
+  </table>
+  <!-- INICIO paginação  -->
+  <div class="form">
+    <div class="form-filter">
+      <div class="pagination">
+        <div>
+          <span
+            >Total: <b> {{ totalItems }} </b>
+          </span>
+          <span
+            >Paginas: <b> {{ totalPages }} </b>
+          </span>
+        </div>
+        <!-- botoes de paginação -->
+        <div class="buttons">
+          <!-- seta de anterior -->
+          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getItems(this.currentPage - 1)">
+            <
+          </button>
+          <!-- pagina atual da pagina current_page -->
+          {{ currentPage }}
+          <!-- seta de proximo -->
+          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getItems(this.currentPage + 1)">
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIM DA PAGINAÇÃO -->
+</div>
