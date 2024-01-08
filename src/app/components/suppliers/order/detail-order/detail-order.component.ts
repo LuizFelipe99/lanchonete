@@ -38,25 +38,24 @@ export class DetailOrderComponent {
   getDetailOrder(pagination: number) {
     this.isLoad = true; // variavel que controla o simbolo de loading
     this.api.getDetailOrder(this.identity, pagination, this.perPage).then((response) => {
+      if (response.status === true) {
       this.detailOder = response.data; 
       this.totalPages = response.total_pages;
       this.currentPage = response.current_page;
       this.supplier = response.data[0].supplier;
+      this.isLoad = false;
 
       // bloco responsavel por fazer a soma entre os subtotais, para nao precisar criar outra chamada para api
       this.total = this.sumSubTotal();
       // fim do bloco de somar valores
       
-      // daí a gente faria assim..
-      this.isLoad = false;
-      if (response.status === true) {
       }else{
         // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
         this.isLoad = false;
     }
   },
   (error: any) => {
-    // this.isLoad = false;
+    this.isLoad = false;
     console.error('Erro ao buscar usuários:', error);
   })
   }
