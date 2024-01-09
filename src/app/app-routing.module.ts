@@ -15,6 +15,8 @@ import { ListItemComponent } from './components/supplier-items/list-item/list-it
 
 import { HomeComponent } from './components/home/home.component';
 import { CreateItemComponent } from './components/supplier-items/create-item/create-item.component';
+import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
+import { ListCategoryComponent } from './components/category/list-category/list-category.component';
 
 
 const routes: Routes = [
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'fornecedores/pedidos/criar', component: CreateOrderComponent,  canActivate: [AuthGuard] },
   { path: 'itens/listar', component: ListItemComponent,  canActivate: [AuthGuard] },
   { path: 'itens/criar', component: CreateItemComponent,  canActivate: [AuthGuard] },
+  { path: 'categorias/listar', component: ListCategoryComponent,  canActivate: [AuthGuard] },
+  { path: 'categorias/criar', component: CreateCategoryComponent,  canActivate: [AuthGuard] },
 ];
 
 @NgModule({

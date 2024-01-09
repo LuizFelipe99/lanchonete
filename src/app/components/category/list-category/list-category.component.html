@@ -6,26 +6,16 @@
           <div>
             <mat-form-field class="example-full-width">
               <mat-label>Nome</mat-label>
-              <input matInput placeholder="Nome" name="name" [(ngModel)]="filterItem.name" />
+              <input matInput placeholder="Nome" name="name" [(ngModel)]="filterCategory.name" />
             </mat-form-field>
           </div>
 
           <div>
             <mat-form-field class="example-full-width">
               <mat-label>Descrição</mat-label>
-              <input matInput placeholder="Descrição" name="description" [(ngModel)]="filterItem.description" />
+              <input matInput placeholder="Descrição" name="description" [(ngModel)]="filterCategory.description" />
             </mat-form-field>
           </div>
-
-          <mat-form-field>
-            <mat-label>Tipo de produto</mat-label>
-            <mat-select name="category" [(ngModel)]="filterItem.category">
-              <mat-option [value]="1">Bebidas</mat-option>
-              <mat-option [value]="2">Pão</mat-option>
-              <mat-option [value]="3">Carne</mat-option>
-              <mat-option [value]="4">Geral</mat-option>
-            </mat-select>
-          </mat-form-field>
 
           <mat-card-actions style="justify-content: end">
             <div class="example-button-row">
@@ -33,7 +23,7 @@
                 Limpar Filtros
               </button>
               <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-              <button mat-raised-button class="button-success" (click)="getItems(1)">
+              <button mat-raised-button class="button-success" (click)="getCategories(1)">
                 Buscar
               </button>
             </div>
@@ -52,17 +42,13 @@
     <tr>
       <th>Nome</th>
       <th>Descrição</th>
-      <th>Categoria</th>
-      <th>Quantidade</th>
       <th></th>
     </tr>
-    <tr *ngFor="let item of items">
-      <td>{{ item.name }}</td>
-      <td>{{ item.description }}</td>
-      <td>{{ item.category }}</td>
-      <td>{{ item.quantity }}</td>
+    <tr *ngFor="let category of categories">
+      <td>{{ category.name }}</td>
+      <td>{{ category.description }}</td>
       <td class="options-table" >
-        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Item', 'edit-item', item.id_item || '', '50%' )" >visibility</mat-icon>
+        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Item', 'edit-category', category.id_category || '', '50%' )" >visibility</mat-icon>
       </td>
     </tr>
   </table>
@@ -72,7 +58,7 @@
       <div class="pagination">
         <div>
           <span
-            >Total: <b> {{ totalItems }} </b>
+            >Total: <b> {{ totalCategories }} </b>
           </span>
           <span
             >Paginas: <b> {{ totalPages }} </b>
@@ -81,13 +67,13 @@
         <!-- botoes de paginação -->
         <div class="buttons">
           <!-- seta de anterior -->
-          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getItems(this.currentPage - 1)">
+          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getCategories(this.currentPage - 1)">
             <
           </button>
           <!-- pagina atual da pagina current_page -->
           {{ currentPage }}
           <!-- seta de proximo -->
-          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getItems(this.currentPage + 1)">
+          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getCategories(this.currentPage + 1)">
             >
           </button>
         </div>

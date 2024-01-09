@@ -11,7 +11,7 @@ import { ItemSupplierService } from 'src/app/services/item-supplier.service';
 export class CreateItemComponent {
   isLoad: boolean = false;
   items: Item[] = [];
-  newItem: Item = {name: '', description: '', category: '', expiration: '', active: 0}
+  newItem: Item = {name: '', description: '', category: ''}
 
   constructor(private api: ItemSupplierService, private globalService: GlobalService) {}
 

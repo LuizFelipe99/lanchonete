@@ -49,6 +49,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { NgChartsModule } from 'ng2-charts';
 import { CreateItemComponent } from './components/supplier-items/create-item/create-item.component';
 import { ListItemComponent } from './components/supplier-items/list-item/list-item.component';
+import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
+import { ListCategoryComponent } from './components/category/list-category/list-category.component';
 
 
 @NgModule({
@@ -71,6 +73,8 @@ import { ListItemComponent } from './components/supplier-items/list-item/list-it
     DetailOrderComponent,
     CreateItemComponent,
     ListItemComponent,
+    CreateCategoryComponent,
+    ListCategoryComponent,
   ],
   imports: [
     BrowserModule,

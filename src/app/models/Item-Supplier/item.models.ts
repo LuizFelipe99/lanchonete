@@ -3,8 +3,7 @@ export interface Item{
   name?: string;
   description?: string;
   category?: string;
-  expiration?: string;
-  active?: number;
+  quantity?: number;
 }
 
 // interface usada para filtrar usuario
@@ -13,7 +12,6 @@ export interface ItemFilter{
   name?: string;
   description?: string;
   category?: string;
-  expiration?: string;
-  active?: number;
+  quantity?: number;
   per_page?: number;
 }

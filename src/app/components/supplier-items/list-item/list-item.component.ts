@@ -12,7 +12,7 @@ export class ListItemComponent {
   constructor(private api: ItemSupplierService, public globalService: GlobalService){}
 
   items: Item[];
-  filterItem: ItemFilter = {name: '', description: '', category: '', expiration: '', active: 0, per_page: 15};
+  filterItem: ItemFilter = {name: '', description: '', category: '', quantity: 0, per_page: 15};
 
   page: number =1;
   totalItems: number = 0;

@@ -9,7 +9,7 @@
     <form class="form" (keyup.enter)="insertItem()">
       <mat-form-field class="example-full-width">
         <mat-label>Nome</mat-label>
-        <input matInput placeholder="Nome do fornecedor" name="name" [(ngModel)]="newItem.name" required />
+        <input matInput placeholder="Nome do Item" name="name" [(ngModel)]="newItem.name" required />
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
@@ -19,14 +19,13 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Categoria</mat-label>
-        <input matInput placeholder="Categoria" name="category" [(ngModel)]="newItem.category" required />
+        <mat-select name="category" [(ngModel)]="newItem.category" required>
+          <mat-option [value]="1">Bebidas</mat-option>
+          <mat-option [value]="2">Pão</mat-option>
+          <mat-option [value]="3">Carne</mat-option>
+          <mat-option [value]="4">Geral</mat-option>
+        </mat-select>
       </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Data de validade</mat-label>
-        <input matInput placeholder="Data de validade" name="expiration" [(ngModel)]="newItem.expiration" required />
-      </mat-form-field>
-
     </form>
 
     <mat-card-actions style="justify-content: end">

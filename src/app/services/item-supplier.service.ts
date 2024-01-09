@@ -9,7 +9,7 @@ import { Item } from "../models/Item-Supplier/item.models";
 })
 
 export class ItemSupplierService {
-  private apiUrl = 'https://gym-dev.com/lanchonete/';
+  private apiUrl = 'https://gym-dev.com/lanchonete';
 
   constructor(private http: HttpClient) {}
 
