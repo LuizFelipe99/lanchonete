@@ -16,9 +16,17 @@
 
 <!-- detalhes do pedido do fornecedor -->
 <div *ngIf="data.component == 'detail-order-supplier'" class="teste">
-  <h1 mat-dialog-title>{{ data.titulo }} <mat-icon>grading</mat-icon> </h1>   
+  <h1 mat-dialog-title>{{ data.titulo }} <mat-icon>grading</mat-icon> </h1>
   <app-detail-order></app-detail-order>
     <!-- <app-edit-user></app-edit-user> -->
 </div>
+
+<!-- detalhes do pedido do fornecedor -->
+<div *ngIf="data.component == 'edit-category'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }} <mat-icon>grading</mat-icon> </h1>
+  <app-edit-category></app-edit-category>
+    <!-- <app-edit-user></app-edit-user> -->
+</div>
+
 
 
