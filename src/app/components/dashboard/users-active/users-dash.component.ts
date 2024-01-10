@@ -26,11 +26,12 @@ export class UsersDashComponent {
   chartData: any;
   panelOpenState = false;
   public chart: Chart;
-
+  totalUsers: any;
 // passando a pagina por parametro para a paginação
 // a pagina pode variar de acordo com o botao do form de paginar, ele sempre incrementa/decrementa current_page + 1 ou -1 depende da ação
 getUserStats(){
     this.api.getUserStats().subscribe(data => {
+      this.totalUsers = data.users.map(users => users.users);
       this.chartData = {
         labels: data.labels.map(label => label.status === 0 ? 'Inativos' : 'Ativos'),
         values: data.quantity.map(item => item.quantity)
