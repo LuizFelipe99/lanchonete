@@ -8,70 +8,139 @@
   <mat-sidenav [(opened)]="opened" mode="side">
 
     <mat-list role="list">
-        <!-- item menu -->
-        <mat-list-item role="listitem" routerLink="/home">
+         <!-- item menu -->
+         <mat-list-item role="listitem" routerLink="/home">
           <mat-icon>home</mat-icon>
           Inicio
         </mat-list-item>
-      <!-- item menu -->
-      <mat-list-item class="menu-item" role="listitem" routerLink="/usuarios/listar">
-        <mat-icon>people</mat-icon>
-         Listar Usuarios
-      </mat-list-item>
-    <!-- item menu -->
-      <!-- <mat-list-item role="listitem" routerLink="/login">
-         <mat-icon>account_circle</mat-icon>
-         Login
-      </mat-list-item> -->
-      <!-- item menu -->
-      <mat-list-item role="listitem" routerLink="/usuarios/criar">
-        <mat-icon>group_add</mat-icon>
-        Criar usuário
-      </mat-list-item>
-      <!-- item menu -->
-      <mat-list-item role="listitem" routerLink="/fornecedores/criar">
-        <mat-icon>contact_page</mat-icon>
-        Cadastrar fornecedor
-      </mat-list-item>
-      <!-- item menu -->
-      <mat-list-item role="listitem" routerLink="/fornecedores/listar">
-        <mat-icon>query_stats</mat-icon>
-        Listar fornecedor
-      </mat-list-item>
-       <!-- item menu -->
-       <mat-list-item role="listitem" routerLink="fornecedores/pedidos/listar">
-        <mat-icon>grading</mat-icon>
-        Pedido Fornecedor
-      </mat-list-item>
-      <!-- item menu -->
-      <!-- item menu -->
-      <mat-list-item role="listitem" routerLink="/fornecedores/pedidos/criar">
-        <mat-icon>grading</mat-icon>
-        Criar pedido
-      </mat-list-item>
-      <!-- item menu -->
-      <!-- item menu -->
-      <mat-list-item role="listitem" routerLink="/itens/listar">
-        <mat-icon>view_list</mat-icon>
-        Listar Itens
-      </mat-list-item>
-      <!-- item menu -->
-      <mat-list-item role="listitem" routerLink="/itens/criar">
-        <mat-icon>grading</mat-icon>
-        Criar Itens
-      </mat-list-item>
-      <!-- item menu -->
-      <mat-list-item role="listitem" routerLink="/categorias/listar">
-        <mat-icon>grading</mat-icon>
-        Listar Categorias
-      </mat-list-item>
-       <!-- item menu -->
-       <mat-list-item role="listitem" routerLink="/categorias/criar">
-        <mat-icon>category</mat-icon>
-        Criar Categorias
-      </mat-list-item>
+
+      <!-- acordion para menu de usuarios -->
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header class="header-menu" >
+            <mat-panel-title>
+              Usuários: 
+            </mat-panel-title>
+          </mat-expansion-panel-header >
+          <div class="content">
+              <!-- item menu -->
+            <mat-list-item class="menu-item" role="listitem" routerLink="/usuarios/listar">
+              <mat-icon>people</mat-icon>
+              Listar Usuarios
+            </mat-list-item>
+
+            <!-- item menu -->
+            <mat-list-item role="listitem" routerLink="/usuarios/criar">
+              <mat-icon>group_add</mat-icon>
+              Criar usuário
+            </mat-list-item>
+            <!-- item menu -->
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <!-- acordio para menu de fornecedores -->
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Fornecedores: 
+            </mat-panel-title>
+          </mat-expansion-panel-header >
+          <div class="content">
+              <!-- item menu -->
+          <mat-list-item role="listitem" routerLink="/fornecedores/criar">
+            <mat-icon>contact_page</mat-icon>
+            Cadastrar fornecedor
+          </mat-list-item>
+          <!-- item menu -->
+          <mat-list-item role="listitem" routerLink="/fornecedores/listar">
+            <mat-icon>query_stats</mat-icon>
+            Listar fornecedor
+          </mat-list-item>
+          <!-- item menu -->
+              </div>
+            </mat-expansion-panel>
+      </mat-accordion>
+
+      <!-- acordion para pedidos -->
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Pedidos: 
+            </mat-panel-title>
+          </mat-expansion-panel-header >
+          <div class="content">
+            <!-- item menu -->
+            <mat-list-item role="listitem" routerLink="fornecedores/pedidos/listar">
+              <mat-icon>grading</mat-icon>
+              Pedido Fornecedor
+            </mat-list-item>
+            <!-- item menu -->
+            <!-- item menu -->
+            <mat-list-item role="listitem" routerLink="/fornecedores/pedidos/criar">
+              <mat-icon>grading</mat-icon>
+              Criar pedido
+            </mat-list-item>
+            <!-- item menu -->
+              </div>
+            </mat-expansion-panel>
+      </mat-accordion>
+
+      <!-- acordion para items -->
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Items: 
+            </mat-panel-title>
+          </mat-expansion-panel-header >
+          <div class="content">
+            <!-- item menu -->
+            <mat-list-item role="listitem" routerLink="/itens/listar">
+              <mat-icon>view_list</mat-icon>
+              Listar Itens
+            </mat-list-item>
+            <!-- item menu -->
+            <mat-list-item role="listitem" routerLink="/itens/criar">
+              <mat-icon>grading</mat-icon>
+              Criar Itens
+            </mat-list-item>
+            <!-- item menu -->
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- acordion para items -->
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                            (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Categorias: 
+          </mat-panel-title>
+        </mat-expansion-panel-header >
+        <div class="content">
+          <mat-list-item role="listitem" routerLink="/categorias/listar">
+            <mat-icon>grading</mat-icon>
+            Listar Categorias
+          </mat-list-item>
+           <!-- item menu -->
+           <mat-list-item role="listitem" routerLink="/categorias/criar">
+            <mat-icon>category</mat-icon>
+            Criar Categorias
+          </mat-list-item>
+        </div>
+      </mat-expansion-panel>
+  </mat-accordion>
+
     </mat-list>
-    <button mat-button (click)="logout()" >Sair</button>
+    <button mat-button (click)="logout()" >  <mat-icon>logout</mat-icon> Sair</button>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

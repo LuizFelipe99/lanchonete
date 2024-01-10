@@ -13,6 +13,7 @@ get usuario(): string {
 }
 
 constructor(private router: Router) {}
+panelOpenState = false;
 
 logout(): void {
   localStorage.clear();
