@@ -8,7 +8,7 @@ import { DashBoard } from 'src/app/services/dashboard/dashboard.service';
 import {Chart} from 'chart.js/auto';
 
 @Component({
-  selector: 'app-categories',
+  selector: 'app-users-dash',
   templateUrl: './users-dash.component.html',
   styleUrls: ['./users-dash.component.scss']
 })
