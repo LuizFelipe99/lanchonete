@@ -21,7 +21,7 @@ mat-sidenav{
 }
 
 
-::ng-deep .mat-expansion-panel{
+::ng-deep .header-menu{
   border-radius: 0px !important;
   margin: 0px !important;
   background-color: var(--menu-second) !important;
@@ -30,3 +30,4 @@ mat-sidenav{
 .button-exit{
   align-self: flex-end;
 }
+
