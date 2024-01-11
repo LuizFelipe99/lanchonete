@@ -53,6 +53,7 @@ import { CreateCategoryComponent } from './components/category/create-category/c
 import { ListCategoryComponent } from './components/category/list-category/list-category.component';
 import { ItemsCategoryComponent } from './components/dashboard/items-category/items-category.component';
 import { EditCategoryComponent } from './components/category/edit-category/edit-category.component';
+import { EditItemComponent } from './components/supplier-items/edit-item/edit-item.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { EditCategoryComponent } from './components/category/edit-category/edit-
     ListCategoryComponent,
     ItemsCategoryComponent,
     EditCategoryComponent,
+    EditItemComponent,
   ],
   imports: [
     BrowserModule,

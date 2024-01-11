@@ -41,4 +41,10 @@ export class CategoryService {
     editCategory.id_category = id_category;
     return this.http.post<Category>(endPoint, editCategory);
   }
+
+    // função que pega o produto pelo id
+    public getCategoryName(): Observable<ResponseFilterCategories>{
+      const endPoint = `${this.apiUrl}/category/category_name/`;
+      return this.http.post<ResponseFilterCategories>(endPoint, '');
+    }
 }

@@ -40,4 +40,6 @@ export class ItemSupplierService {
     editItem.id_item = id_item;
     return this.http.post<Item>(endPoint, editItem);
   }
+
+  
 }

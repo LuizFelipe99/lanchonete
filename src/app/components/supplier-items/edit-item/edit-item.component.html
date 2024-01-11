@@ -1,0 +1,48 @@
+<div class="container">
+  <mat-card class="card-login">
+    <mat-card-header>
+      <mat-card-title>Editar item</mat-card-title>
+      <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle>
+    </mat-card-header>
+
+  <!-- simbolo de loadgin -->
+  <div class="loading-container" *ngIf="isLoad">
+    <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+  </div>
+
+    <!-- formulario de envio de dados para o cadastro de usuario -->
+    <!-- criado ngfor para listar os itens vindos da api -->
+    <div class="" *ngFor="let item of items">
+      <form class="form">
+        <mat-form-field class="example-full-width" style="width: 60%" >
+          <mat-label>Nome</mat-label>
+          <input autofocus matInput placeholder="Nome do fornecedor" name="name" [(ngModel)]="newItem.name" required />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width"  style="width: 35%">
+          <mat-label>Descrição</mat-label>
+          <input matInput placeholder="Descrição" name="description" [(ngModel)]="newItem.description" required />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Categoria</mat-label>
+          <mat-select name="category" [(ngModel)]="newItem.category"   required>
+            <mat-option *ngFor="let names of category_names" [value]="names.id_category"  >{{names.name}}</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <mat-card-actions style="justify-content: end">
+        <div class="example-button-row">
+          <button mat-raised-button class="button-warning" (click)="cancel()" style="margin-right: 1rem;">
+          Fechar
+        </button>
+        <button mat-raised-button class="button-success" (click)="updateItem()">
+          Salvar
+        </button>
+        </div>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</div>
+
