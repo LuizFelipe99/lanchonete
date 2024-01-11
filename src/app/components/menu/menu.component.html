@@ -2,8 +2,9 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="opened=!opened">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Lanchonete</span>
-  <button mat-button (click)="logout()" class="button-exit" >  <mat-icon>logout</mat-icon> Sair</button>
+  <span>Lanchonete</span> 
+ 
+  <p>v0.0.86</p>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">
@@ -140,6 +141,7 @@
       </mat-expansion-panel>
   </mat-accordion>
 
+  <p><button mat-button (click)="logout()" class="button-exit" >  <mat-icon>logout</mat-icon> Sair</button></p>
     </mat-list>
     
   </mat-sidenav>
