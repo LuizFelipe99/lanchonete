@@ -16,7 +16,7 @@ import { Category } from 'src/app/models/Category/category.models';
 export class EditItemComponent {
   ngOnInit(): void {
     this.getItemById();
-    this.getCategoryName();
+     this.getCategoryName();
   }
 
   get identity(): string {
@@ -32,6 +32,21 @@ export class EditItemComponent {
 
   category_names: Category[];
 
+  getCategoryName() {
+    this.isLoad = true;
+    this.category.getCategoryName().subscribe(data => {
+      if ('error' in data) {
+        this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
+        this.isLoad = false;
+      } else {
+        this.category_names = data.data;
+        console.log('getCategoryName',this.newItem.category);
+        }
+      }
+    );
+  }
+
+
   getItemById() {
     this.isLoad = true;
     this.api.getItemById(this.filterItem).subscribe(data => {
@@ -43,6 +58,7 @@ export class EditItemComponent {
         this.newItem.name = this.items[0].name;
         this.newItem.description = this.items[0].description;
         this.newItem.category = this.items[0].category;
+        console.log('new item name ', this.newItem.category);
         this.isLoad = false;
       }
     })
@@ -63,19 +79,6 @@ export class EditItemComponent {
 
   }
 
-  getCategoryName() {
-    this.isLoad = true;
-    this.category.getCategoryName().subscribe(data => {
-      if ('error' in data) {
-        this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
-        this.isLoad = false;
-      } else {
-        this.category_names = data.data;
-        console.log(this.category_names);
-        }
-      }
-    );
-  }
 
   cancel(): void {
     this.dialogRef.close();
