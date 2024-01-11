@@ -3,6 +3,7 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span>Lanchonete</span>
+  <button mat-button (click)="logout()" class="button-exit" >  <mat-icon>logout</mat-icon> Sair</button>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">
@@ -140,7 +141,7 @@
   </mat-accordion>
 
     </mat-list>
-    <button mat-button (click)="logout()" >  <mat-icon>logout</mat-icon> Sair</button>
+    
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

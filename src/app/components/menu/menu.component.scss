@@ -3,7 +3,7 @@ mat-sidenav-container{
   // height: 100%;
 }
 mat-sidenav{
-  width: 300px;
+  width: 250px;
   background-color: var(--menu-second);
   
 }
@@ -18,4 +18,15 @@ mat-sidenav{
 
 ::ng-deep .mdc-list-item__content{
   cursor: pointer !important;
+}
+
+
+::ng-deep .mat-expansion-panel{
+  border-radius: 0px !important;
+  margin: 0px !important;
+  background-color: var(--menu-second) !important;
+}
+
+.button-exit{
+  align-self: flex-end;
 }
