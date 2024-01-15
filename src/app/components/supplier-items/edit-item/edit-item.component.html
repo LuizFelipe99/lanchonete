@@ -26,9 +26,8 @@
 
         <mat-form-field class="example-full-width">
           <mat-label>Categoria</mat-label>
-          <mat-select name="category" [(ngModel)]="newItem.category" *ngIf="category_names"  required>
-
-            <mat-option *ngFor="let names of category_names" [value]="names.id_category"  >{{newItem.category}}</mat-option>
+          <mat-select name="category" [(ngModel)]="newItem.category" *ngIf="category_names" required>
+            <mat-option *ngFor="let names of category_names" [value]="names.id_category" >{{names.name}}</mat-option>
           </mat-select>
         </mat-form-field>
       </form>

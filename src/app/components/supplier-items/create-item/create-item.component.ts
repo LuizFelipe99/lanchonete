@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
 import { Item } from 'src/app/models/Item-Supplier/item.models';
 import { ItemSupplierService } from 'src/app/services/item-supplier.service';
+import { Category } from 'src/app/models/Category/category.models';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-create-item',
@@ -13,7 +15,13 @@ export class CreateItemComponent {
   items: Item[] = [];
   newItem: Item = {name: '', description: '', category: ''}
 
-  constructor(private api: ItemSupplierService, private globalService: GlobalService) {}
+  constructor(private api: ItemSupplierService, private globalService: GlobalService, private categoryName: CategoryService) {}
+
+  ngOnInit(): void{
+    this.getCategoryName();
+  }
+
+  category_names: Category[];
 
   insertItem(): void {
     this.isLoad === true;
@@ -27,5 +35,20 @@ export class CreateItemComponent {
       }
     })
   }
+
+  getCategoryName() {
+    this.isLoad = true;
+    this.categoryName.getCategoryName().subscribe(data => {
+      if ('error' in data) {
+        this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
+        this.isLoad = false;
+      } else {
+        this.category_names = data.data;
+        console.log('getCategoryName',this.newItem.category);
+        }
+      }
+    );
+  }
+
 
 }
