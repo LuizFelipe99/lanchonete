@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import { OrderSupplier } from 'src/app/models/Order/order_supplier.model';
 import { SupplierService } from 'src/app/services/supplier.service';
 import { Supplier, SupplierFilter } from 'src/app/models/Supplier/supplier.model';
+import { GlobalService } from 'src/app/global.service';
 
 
 
@@ -17,7 +18,7 @@ export class CreateOrderComponent {
     return localStorage.getItem('id_user') || ''; // Obter o nome do usuário do localStorage
   }
   
-  constructor(private api: OrderService, private suppiler: SupplierService){}
+  constructor(private api: OrderService, private suppiler: SupplierService, public globalService: GlobalService){}
 
   ngOnInit(){
     this.getSupplierNames();
@@ -33,10 +34,19 @@ export class CreateOrderComponent {
     created_by: this.id_user,
     // Preencha outras propriedades conforme necessário
   };
+  isLoad = false;
 
   createNewOrder(): void {
+    this.isLoad = true;
     this.api.createOrder(this.newOrder).subscribe(createdOrder => {
       console.log('Nova ordem cadastrada:', createdOrder);
+      if ('error' in createdOrder) {
+        this.globalService.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');
+      this.isLoad = false;
+      } else {
+        this.globalService.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
+        this.isLoad = false;
+      }
       // Atualizar a lista de ordens após o cadastro (opcional)
       // this.loadOrders();
     });

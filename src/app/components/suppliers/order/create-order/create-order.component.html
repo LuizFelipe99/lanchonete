@@ -2,9 +2,12 @@
   <mat-card class="card-login">
     <mat-card-header>
       <mat-card-title>Cadastrar fornecedor</mat-card-title>
-      <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle>
+      <mat-card-subtitle>Lanchonete</mat-card-subtitle>
     </mat-card-header>
-
+  <!-- simbolo de loadgin -->
+  <div class="" *ngIf="isLoad">
+    <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+  </div>
     <!-- formulario de envio de dados para o cadastro de usuario -->
     <form class="form">
       <mat-form-field>
