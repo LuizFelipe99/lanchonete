@@ -41,5 +41,20 @@ export class ItemSupplierService {
     return this.http.post<Item>(endPoint, editItem);
   }
 
-  
+  public getItemName(filter?: any): Observable<ResponseFilterItems> {
+    const endPoint = `${this.apiUrl}/item/item_names`
+    return this.http.post<ResponseFilterItems>(endPoint, filter)
+  }
+
+  getItemNames(): Promise<any> {
+    const formData = {};
+    const endPoint = `${this.apiUrl}/item/item_names/`;
+    return this.http.post(endPoint, formData).toPromise().then((response) => {
+      return response as any[];
+    }).catch((error) => {
+      return Promise.reject(error);
+    })
+  }
+
+
 }

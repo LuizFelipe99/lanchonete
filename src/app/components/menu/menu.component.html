@@ -2,8 +2,8 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="opened=!opened">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Lanchonete</span> 
- 
+  <span>Lanchonete</span>
+
   <p>v0.0.87</p>
 </mat-toolbar>
 <mat-sidenav-container>
@@ -22,7 +22,7 @@
                              (closed)="panelOpenState = false">
           <mat-expansion-panel-header class=" header-menu" >
             <mat-panel-title>
-              Usuários: 
+              Usuários:
             </mat-panel-title>
           </mat-expansion-panel-header >
           <div class="content">
@@ -48,7 +48,7 @@
                              (closed)="panelOpenState = false">
           <mat-expansion-panel-header class="header-menu">
             <mat-panel-title>
-              Fornecedores: 
+              Fornecedores:
             </mat-panel-title>
           </mat-expansion-panel-header >
           <div class="content">
@@ -67,31 +67,30 @@
             </mat-expansion-panel>
       </mat-accordion>
 
-      <!-- acordion para pedidos -->
-      <mat-accordion>
+       <!-- acordion para orders -->
+       <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false">
+                              (closed)="panelOpenState = false">
           <mat-expansion-panel-header class="header-menu">
             <mat-panel-title>
-              Pedidos: 
+              Pedidos:
             </mat-panel-title>
-          </mat-expansion-panel-header  >
+          </mat-expansion-panel-header >
           <div class="content">
             <!-- item menu -->
             <mat-list-item role="listitem" routerLink="fornecedores/pedidos/listar">
-              <mat-icon>grading</mat-icon>
-              Pedido Fornecedor
+              <mat-icon>view_list</mat-icon>
+              Listar Pedidos
             </mat-list-item>
             <!-- item menu -->
-            <!-- item menu -->
-            <mat-list-item role="listitem" routerLink="/fornecedores/pedidos/criar">
+            <mat-list-item role="listitem" routerLink="fornecedores/pedidos/criar">
               <mat-icon>grading</mat-icon>
-              Criar pedido
+              Criar Pedidos
             </mat-list-item>
             <!-- item menu -->
-              </div>
-            </mat-expansion-panel>
-      </mat-accordion>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
 
       <!-- acordion para items -->
       <mat-accordion>
@@ -99,7 +98,7 @@
                               (closed)="panelOpenState = false">
           <mat-expansion-panel-header class="header-menu">
             <mat-panel-title>
-              Items: 
+              Items:
             </mat-panel-title>
           </mat-expansion-panel-header >
           <div class="content">
@@ -124,7 +123,7 @@
                             (closed)="panelOpenState = false">
         <mat-expansion-panel-header class="header-menu">
           <mat-panel-title>
-            Categorias: 
+            Categorias:
           </mat-panel-title>
         </mat-expansion-panel-header >
         <div class="content">
@@ -143,7 +142,7 @@
 
   <p><button mat-button (click)="logout()" class="button-exit" >  <mat-icon>logout</mat-icon> Sair</button></p>
     </mat-list>
-    
+
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

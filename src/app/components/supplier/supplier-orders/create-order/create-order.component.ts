@@ -4,6 +4,8 @@ import { OrderSupplier } from 'src/app/models/Order/order_supplier.model';
 import { SupplierService } from 'src/app/services/supplier.service';
 import { Supplier, SupplierFilter } from 'src/app/models/Supplier/supplier.model';
 import { GlobalService } from 'src/app/global.service';
+import { ItemSupplierService } from 'src/app/services/item-supplier.service';
+import { Item, ItemFilter } from 'src/app/models/Item-Supplier/item.models';
 
 
 
@@ -17,15 +19,19 @@ export class CreateOrderComponent {
   get id_user(): string {
     return localStorage.getItem('id_user') || ''; // Obter o nome do usuário do localStorage
   }
-  
-  constructor(private api: OrderService, private suppiler: SupplierService, public globalService: GlobalService){}
+
+  constructor(private api: OrderService, private supplier: SupplierService, private item: ItemSupplierService, public globalService: GlobalService){}
 
   ngOnInit(){
     this.getSupplierNames();
+    this.getItemNames();
   }
 
   suppliers: Supplier[];
   filterSupplier: SupplierFilter = {name: '', responsible: '', type: '', active: 1, per_page: 15};
+
+  items: Item[];
+  filterItem: ItemFilter = {name: '', description: '', category: ''};
 
   orders: OrderSupplier[] = [];
   newOrder: OrderSupplier = {
@@ -53,9 +59,15 @@ export class CreateOrderComponent {
   }
 
   getSupplierNames(): void{
-    this.suppiler.getSuppliers(this.filterSupplier).subscribe(data => {
+    this.supplier.getSuppliers(this.filterSupplier).subscribe(data => {
       console.log('Nova ordem cadastrada:', data);
       this.suppliers = data.data;
     });
+  }
+
+  getItemNames(): void {
+    this.item.getItems(this.filterItem).subscribe(data => {
+      this.items = data.data;
+    })
   }
 }
