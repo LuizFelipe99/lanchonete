@@ -26,20 +26,20 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {AsyncPipe} from '@angular/common';
 
 import { LoginComponent } from './components/login/login.component';
-import { CreateUserComponent } from './components/users/create-user/create-user.component';
-import { SnackbarComponent } from './components/shared/snackbar/snackbar.component';
-import { ListUserComponent } from './components/users/list-user/list-user.component';
+import { CreateUserComponent } from './components/user/users/create-user/create-user.component';
+import { SnackbarComponent } from './components/shared/alert/snackbar.component';
+import { ListUserComponent } from './components/user/users/list-user/list-user.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { CreateSupplierComponent } from './components/suppliers/create-supplier/create-supplier.component';
-import { ListSupplierComponent } from './components/suppliers/list-supplier/list-supplier.component';
-import { CreateOrderComponent } from './components/suppliers/order/create-order/create-order.component';
-import { ListOrderComponent } from './components/suppliers/order/list-order/list-order.component';
+import { CreateSupplierComponent } from './components/supplier/suppliers/create-supplier/create-supplier.component';
+import { ListSupplierComponent } from './components/supplier/suppliers/list-supplier/list-supplier.component';
+import { CreateOrderComponent } from './components/supplier/supplier-orders/create-order/create-order.component';
+import { ListOrderComponent } from './components/supplier/supplier-orders/list-order/list-order.component';
 import { HomeComponent } from './components/home/home.component';
 import { DialogFormDetailsComponent } from './components/shared/dialog-form-details/dialog-form-details.component';
-import { EditUserComponent } from './components/users/edit-user/edit-user.component';
-import { EditSupplierComponent } from './components/suppliers/edit-supplier/edit-supplier.component';
+import { EditUserComponent } from './components/user/users/edit-user/edit-user.component';
+import { EditSupplierComponent } from './components/supplier/suppliers/edit-supplier/edit-supplier.component';
 import { UsersDashComponent } from './components/dashboard/users-active/users-dash.component';
-import { DetailOrderComponent } from './components/suppliers/order/detail-order/detail-order.component';
+import { DetailOrderComponent } from './components/supplier/supplier-orders/detail-order/detail-order.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -47,13 +47,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
 // chart js
 import { NgChartsModule } from 'ng2-charts';
-import { CreateItemComponent } from './components/supplier-items/create-item/create-item.component';
-import { ListItemComponent } from './components/supplier-items/list-item/list-item.component';
+import { CreateItemComponent } from './components/supplier/supplier-items/create-item/create-item.component';
+import { ListItemComponent } from './components/supplier/supplier-items/list-item/list-item.component';
 import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
 import { ListCategoryComponent } from './components/category/list-category/list-category.component';
 import { ItemsCategoryComponent } from './components/dashboard/items-category/items-category.component';
 import { EditCategoryComponent } from './components/category/edit-category/edit-category.component';
-import { EditItemComponent } from './components/supplier-items/edit-item/edit-item.component';
+import { EditItemComponent } from './components/supplier/supplier-items/edit-item/edit-item.component';
 
 
 @NgModule({

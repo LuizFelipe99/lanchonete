@@ -4,17 +4,17 @@ import { AuthGuard } from './services/auth/auth.guard';
 // import do login
 import { LoginComponent } from './components/login/login.component';
 // import dos users
-import { CreateUserComponent } from './components/users/create-user/create-user.component';
-import { ListUserComponent } from './components/users/list-user/list-user.component';
+import { CreateUserComponent } from './components/user/users/create-user/create-user.component';
+import { ListUserComponent } from './components/user/users/list-user/list-user.component';
 // import dos fornecedores
-import { CreateSupplierComponent } from './components/suppliers/create-supplier/create-supplier.component';
-import { ListSupplierComponent } from './components/suppliers/list-supplier/list-supplier.component';
-import { CreateOrderComponent } from './components/suppliers/order/create-order/create-order.component';
-import { ListOrderComponent } from './components/suppliers/order/list-order/list-order.component';
-import { ListItemComponent } from './components/supplier-items/list-item/list-item.component';
+import { CreateSupplierComponent } from './components/supplier/suppliers/create-supplier/create-supplier.component';
+import { ListSupplierComponent } from './components/supplier/suppliers/list-supplier/list-supplier.component';
+import { CreateOrderComponent } from './components/supplier/supplier-orders/create-order/create-order.component';
+import { ListOrderComponent } from './components/supplier/supplier-orders/list-order/list-order.component';
+import { ListItemComponent } from './components/supplier/supplier-items/list-item/list-item.component';
 
 import { HomeComponent } from './components/home/home.component';
-import { CreateItemComponent } from './components/supplier-items/create-item/create-item.component';
+import { CreateItemComponent } from './components/supplier/supplier-items/create-item/create-item.component';
 import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
 import { ListCategoryComponent } from './components/category/list-category/list-category.component';
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SupplierService } from 'src/app/services/supplier.service';
 import { MatDialogRef } from '@angular/material/dialog';
-import { DialogFormDetailsComponent } from '../../shared/dialog-form-details/dialog-form-details.component';
+import { DialogFormDetailsComponent } from '../../../shared/dialog-form-details/dialog-form-details.component';
 import { GlobalService } from 'src/app/global.service';
 import { Supplier, SupplierFilter } from 'src/app/models/Supplier/supplier.model';
 

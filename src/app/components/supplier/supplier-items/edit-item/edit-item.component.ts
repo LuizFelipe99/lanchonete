@@ -1,8 +1,8 @@
-import { CategoryService } from './../../../services/category.service';
+import { CategoryService } from '../../../../services/category.service';
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ItemSupplierService } from 'src/app/services/item-supplier.service';
-import { DialogFormDetailsComponent } from '../../shared/dialog-form-details/dialog-form-details.component';
+import { DialogFormDetailsComponent } from '../../../shared/dialog-form-details/dialog-form-details.component';
 import { GlobalService } from 'src/app/global.service';
 import { Item } from 'src/app/models/Item-Supplier/item.models';
 import { ItemFilter } from 'src/app/models/Item-Supplier/item.models';

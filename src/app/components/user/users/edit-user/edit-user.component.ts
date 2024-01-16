@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
 import { UserService } from 'src/app/services/user.service';
-import { DialogFormDetailsComponent } from '../../shared/dialog-form-details/dialog-form-details.component';
+import { DialogFormDetailsComponent } from '../../../shared/dialog-form-details/dialog-form-details.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User, UserFilter } from 'src/app/models/User/user.model';
 

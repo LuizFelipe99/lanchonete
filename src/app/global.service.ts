@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { DialogFormDetailsComponent } from './components/shared/dialog-form-details/dialog-form-details.component';
-import { SnackbarComponent } from './components/shared/snackbar/snackbar.component';
+import { SnackbarComponent } from './components/shared/alert/snackbar.component';
 
 @Injectable({
   providedIn: 'root'
