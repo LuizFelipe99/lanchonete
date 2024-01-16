@@ -35,9 +35,29 @@
         <mat-label>Observação</mat-label>
         <textarea matInput placeholder="Ex. Pedido fora do padrao..."></textarea>
       </mat-form-field>
+      <!-- area responsavel para referenciar pelo menos 1 item -->
+      <mat-form-field class="example-full-width" style="width: 50%;">
+          <mat-label>Item</mat-label>
+          <mat-select name="id_item" required>
+            <mat-option [value]="1">Item 01</mat-option>
+          </mat-select> 
+      </mat-form-field>
 
+      <mat-form-field class="example-full-width">
+        <mat-label>Valor unitário</mat-label>
+        <input matInput placeholder="R$ 01.00">
+      </mat-form-field>
+      
+      <mat-form-field class="example-full-width">
+        <mat-label>Quantidade</mat-label>
+        <input matInput placeholder="Ex. 3">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Total</mat-label>
+        <input matInput placeholder="R$ 01.00" disabled>
+      </mat-form-field>
     </form>
-    <h3>Auto Complete</h3>
 
     <mat-card-actions style="justify-content: end">
       <div class="example-button-row">
