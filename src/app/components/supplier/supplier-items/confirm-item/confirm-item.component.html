@@ -6,8 +6,8 @@
       <!-- formulario de envio de dados para o cadastro de usuario -->
       <form class="form">
         <mat-form-field class="example-full-width">
-            <mat-label>Item</mat-label>
-            <input matInput placeholder="Ex. Pedido fora do padrao..." disabled="">
+            <mat-label>Item </mat-label>
+            <input matInput placeholder="Ex. Pedido fora do padrao..." disabled  name="name" [(ngModel)]="newItem.name" >
         </mat-form-field>
         <mat-form-field class="example-full-width">
             <mat-label>Quantidade</mat-label>
