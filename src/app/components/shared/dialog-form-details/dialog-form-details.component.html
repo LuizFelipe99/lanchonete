@@ -37,5 +37,12 @@
   <app-list-item></app-list-item>
 </div>
 
+<!-- confirmar item ao pedido adicionando quantidade e preço unitario -->
+<div *ngIf="data.component == 'confirm-item'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }} <mat-icon>grading</mat-icon> </h1>
+  <app-confirm-item></app-confirm-item>
+</div>
+
+
 
 
