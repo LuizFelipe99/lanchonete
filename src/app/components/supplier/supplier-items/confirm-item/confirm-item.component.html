@@ -11,15 +11,15 @@
         </mat-form-field>
         <mat-form-field class="example-full-width">
             <mat-label>Quantidade</mat-label>
-            <input matInput placeholder="Ex. Pedido fora do padrao...">
+            <input matInput placeholder="Ex. 1" name="quantity" [(ngModel)]="newItem.quantity">
         </mat-form-field>
         <mat-form-field class="example-full-width">
             <mat-label>Valor por unidade</mat-label>
-            <input matInput placeholder="Ex. Pedido fora do padrao...">
+            <input matInput placeholder="R$ 1.00" name="price_unit" [(ngModel)]="newItem.price_unit">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-            <mat-label>Subtotal</mat-label>
-            <input matInput placeholder="Ex. Pedido fora do padrao..." disabled>
+            <mat-label>Total</mat-label>
+            <input matInput disabled  name="total" [(ngModel)]="newItem.total">
         </mat-form-field>
       </form>
   

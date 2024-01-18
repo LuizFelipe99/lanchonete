@@ -43,6 +43,7 @@ export class CreateOrderComponent {
   isLoad = false;
   addItem = true;
 
+
   createNewOrder(): void {
     this.isLoad = true;
     
@@ -54,6 +55,7 @@ export class CreateOrderComponent {
       this.addItem = false;
       } else {
         this.globalService.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
+        this.globalService.openDialog('Selecione o item', 'list-item', '1', '80%');
         this.isLoad = false;
         this.addItem = true;
       }
@@ -64,7 +66,6 @@ export class CreateOrderComponent {
 
   getSupplierNames(): void{
     this.supplier.getSuppliers(this.filterSupplier).subscribe(data => {
-      console.log('Nova ordem cadastrada:', data);
       this.suppliers = data.data;
     });
   }

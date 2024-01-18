@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogFormDetailsComponent } from 'src/app/components/shared/dialog-form-details/dialog-form-details.component';
 import { GlobalService } from 'src/app/global.service';
-import { Item, ItemFilter } from 'src/app/models/Item-Supplier/item.models';
+import { Item, ItemFilter, ItemInOrder } from 'src/app/models/Item-Supplier/item.models';
 import { ItemSupplierService } from 'src/app/services/item-supplier.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { ItemSupplierService } from 'src/app/services/item-supplier.service';
   styleUrls: ['./confirm-item.component.scss']
 })
 export class ConfirmItemComponent {
+  // pegando identity pelo localstorage que vai ser refrenciado com o id_item
   get identity(): string {
     return localStorage.getItem('identifier') || '';
   }
@@ -21,26 +22,26 @@ export class ConfirmItemComponent {
     this.getItemById();
   }
 
-id_item = this.identity;
-items: Item[];
-filterItem: ItemFilter = {id_item: this.identity};
-newItem: Item = {name: '', id_item: ''};
-isLoad: boolean = false;
+  id_item = this.identity;
+  items: Item[];
+  filterItem: ItemFilter = {id_item: this.identity};
+  newItem: ItemInOrder = {name: '', id_item: '', price_unit: '', quantity: '', total: ''};
+  isLoad: boolean = false;
 
-getItemById() {
-  this.isLoad = true;
-  this.api.getItemById(this.filterItem).subscribe(data => {
-    if ('error' in data) {
-      this.globalService.openSnackBar('Não foi encontrado', 'Ok', 'Erro!', 'error-snackbar');
-      this.isLoad = false;
-    } else {
-      this.items = data.data;
-      this.newItem.name = this.items[0].name;
-      this.newItem.description = this.items[0].description;
-      this.newItem.category = this.items[0].category;
-      console.log('new item name ', this.newItem.category);
-      this.isLoad = false;
-    }
-  })
-}
+  // pegando o item pelo id e jogando para a função que tras somente 1
+  getItemById() {
+    this.isLoad = true;
+    this.api.getItemById(this.filterItem).subscribe(data => {
+      if ('error' in data) {
+        this.globalService.openSnackBar('Não foi encontrado', 'Ok', 'Erro!', 'error-snackbar');
+        this.isLoad = false;
+      } else {
+        this.items = data.data;
+        this.newItem.name = this.items[0].name;
+        this.newItem.id_item = this.items[0].id_item;
+        console.log('id item = ', this.newItem.id_item);
+        this.isLoad = false;
+      }
+    })
+  }
 }
