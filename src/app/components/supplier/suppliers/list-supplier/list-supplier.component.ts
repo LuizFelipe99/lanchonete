@@ -13,7 +13,7 @@ export class ListSupplierComponent {
   constructor(private api: SupplierService, public globalService: GlobalService) {}
 
   suppliers: Supplier[];
-  filterSupplier: SupplierFilter = {name: '', responsible: '', type: '', active: 1, per_page: 15};
+  filterSupplier: SupplierFilter = {name: '', responsible: '', active: 1, per_page: 15};
 
   page: number = 1;
   totalSuppliers: number = 0;

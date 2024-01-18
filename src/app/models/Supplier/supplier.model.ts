@@ -6,7 +6,6 @@ export interface Supplier {
   contact_supplier?: string;
   contact_responsible?: string;
   catalog?: string;
-  type?: string;
   active?: number;
 }
 
@@ -19,7 +18,6 @@ export interface SupplierFilter {
   contact_supplier?: string;
   contact_responsible?: string;
   catalog?: string;
-  type?: string;
   active?: number;
   per_page?: number;
 }

@@ -36,16 +36,6 @@
         <mat-label>Catalogo de produto</mat-label>
         <input matInput placeholder="Catálogo de produto" name="catalog" [(ngModel)]="newSupplier.catalog" />
       </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Tipo de produto</mat-label>
-        <mat-select name="type" [(ngModel)]="newSupplier.type" required>
-          <mat-option [value]="1">Bebidas</mat-option>
-          <mat-option [value]="2">Pão</mat-option>
-          <mat-option [value]="3">Carne</mat-option>
-          <mat-option [value]="4">Geral</mat-option>
-        </mat-select>
-      </mat-form-field>
     </form>
 
     <mat-card-actions style="justify-content: end">

@@ -24,7 +24,7 @@ export class EditSupplierComponent {
 // objeto para receber os dados da api
   suppliers: Supplier[];
   filterSupplier: SupplierFilter = {id_supplier: this.identity}
-  newSupplier: Supplier = {name: '', responsible: '', adress: '', contact_supplier: '', contact_responsible: '', catalog: '', type: '', active: 0};
+  newSupplier: Supplier = {id_supplier: this.identity ,name: '', responsible: '', adress: '', contact_supplier: '', contact_responsible: '', catalog: '', active: 0};
   isLoad: boolean = false;
 
    // Método para filtro e paginação
@@ -42,7 +42,6 @@ export class EditSupplierComponent {
         this.newSupplier.contact_supplier = this.suppliers[0].contact_supplier;
         this.newSupplier.contact_responsible = this.suppliers[0].contact_responsible;
         this.newSupplier.catalog = this.suppliers[0].catalog;
-        this.newSupplier.type = this.suppliers[0].type;
         this.newSupplier.active = this.suppliers[0].active;
         this.isLoad = false;
       }

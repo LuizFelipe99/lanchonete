@@ -17,17 +17,6 @@
             </mat-form-field>
           </div>
 
-          <div>
-            <mat-form-field>
-              <mat-label>Status</mat-label>
-              <mat-select name="type" [(ngModel)]="filterSupplier.type">
-                <mat-option [value]="1">Pão</mat-option>
-                <mat-option [value]="2">Carne</mat-option>
-                <mat-option [value]="3">Preencher com algo que venha do banco</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-
           <mat-card-actions style="justify-content: end">
             <div class="example-button-row">
               <button routerLink="../fornecedores/criar" style="margin-right: 1rem" mat-raised-button class="button-warning">
@@ -54,14 +43,12 @@
       <th>Fornecedor</th>
       <th>Responsável</th>
       <th>Contato</th>
-      <th>Tipo</th>
       <th></th>
     </tr>
     <tr *ngFor="let supplier of suppliers">
       <td>{{ supplier.name }}</td>
       <td>{{ supplier.responsible }}</td>
       <td>{{ supplier.contact_responsible }}</td>
-      <td>{{ supplier.type }}</td>
       <td class="options-table" >
         <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Fornecedor', 'edit-supplier', supplier.id_supplier || '','50%' )" >visibility</mat-icon>
       </td>

@@ -13,7 +13,7 @@ export class CreateSupplierComponent {
   isLoad: boolean = false;
 
   suppliers: Supplier[] = [];
-  newSupplier: Supplier = {name: '', responsible: '', adress: '', contact_supplier: '', contact_responsible: '', catalog: '', type: '', active: 0}
+  newSupplier: Supplier = {name: '', responsible: '', adress: '', contact_supplier: '', contact_responsible: '', catalog: '', active: 0}
 
   constructor(private api: SupplierService, private globalService: GlobalService) {}
 

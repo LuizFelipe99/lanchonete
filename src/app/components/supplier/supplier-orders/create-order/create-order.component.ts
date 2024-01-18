@@ -28,7 +28,7 @@ export class CreateOrderComponent {
   }
 
   suppliers: Supplier[];
-  filterSupplier: SupplierFilter = {name: '', responsible: '', type: '', active: 1, per_page: 15};
+  filterSupplier: SupplierFilter = {name: '', responsible: '', active: 1, per_page: 15};
 
   items: Item[];
   filterItem: ItemFilter = {name: '', description: '', category: ''};
