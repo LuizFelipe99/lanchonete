@@ -43,6 +43,7 @@ export class CreateOrderComponent {
   isLoad = false;
   addItem = true;
 
+  id_order_supplier = <any> '';
 
   createNewOrder(): void {
     this.isLoad = true;
@@ -56,6 +57,8 @@ export class CreateOrderComponent {
       } else {
         this.globalService.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
         this.globalService.openDialog('Selecione o item', 'list-item', '1', '80%');
+        this.id_order_supplier = createdOrder.id_order_supplier;
+        localStorage.setItem('id_order_supplier',this.id_order_supplier['id_order_supplier']);
         this.isLoad = false;
         this.addItem = true;
       }

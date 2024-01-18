@@ -16,6 +16,11 @@ export class ConfirmItemComponent {
     return localStorage.getItem('identifier') || '';
   }
 
+   // pegando o id da order cadastrada
+   get id_order_supplier(): string {
+    return localStorage.getItem('id_order_supplier') || '0'; // Obter o nome do usuário do localStorage
+  }
+
   constructor(private api: ItemSupplierService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>){}
 
   ngOnInit(): void {
@@ -39,7 +44,6 @@ export class ConfirmItemComponent {
         this.items = data.data;
         this.newItem.name = this.items[0].name;
         this.newItem.id_item = this.items[0].id_item;
-        console.log('id item = ', this.newItem.id_item);
         this.isLoad = false;
       }
     })

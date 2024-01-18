@@ -15,6 +15,9 @@ export class ListItemComponent {
     return localStorage.getItem('identifier') || '0'; // Obter o nome do usuário do localStorage
   }
 
+
+
+
   constructor(private api: ItemSupplierService, public globalService: GlobalService){}
 
   items: Item[];
