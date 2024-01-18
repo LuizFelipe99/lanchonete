@@ -7,6 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./dialog-form-details.component.scss']
 })
 export class DialogFormDetailsComponent {
+
   // variavel para manipular os dados recebidos
   // variavel conteúdo para controlar os dados
   content: any;
@@ -19,6 +20,8 @@ export class DialogFormDetailsComponent {
   }
 
   cancel(): void {
+    // garante que sempre o indetifier ficará sempre limpo
+    localStorage.removeItem('identifier');
     this.dialogRef.close();
   }
 

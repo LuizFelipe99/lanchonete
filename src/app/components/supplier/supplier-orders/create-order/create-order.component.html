@@ -35,35 +35,24 @@
         <mat-label>Observação</mat-label>
         <textarea matInput placeholder="Ex. Pedido fora do padrao..."></textarea>
       </mat-form-field>
+
       <!-- area responsavel para referenciar pelo menos 1 item -->
-      <mat-form-field class="example-full-width" style="width: 50%;">
-          <mat-label>Item</mat-label>
-          <mat-select name="id_item" required>
-            <mat-option [value]="1">Item 01</mat-option>
-          </mat-select>
-      </mat-form-field>
+      <!-- vai ter um if para verificar se ja foi criado a order -->
+      <div *ngIf="addItem">
+        <mat-form-field class="example-full-width" style="width: 50%;">
+          <mat-label>Itens</mat-label>
+          <input matInput placeholder="Ex. Pão" disabled=""> 
+        </mat-form-field>
+        <button  (click)="globalService.openDialog('Selecione o item', 'list-item', '1', '100%')" mat-raised-button class="button-success" style="width: 50%;">Adicionar</button>
+      </div>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Valor unitário</mat-label>
-        <input matInput placeholder="R$ 01.00">
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Quantidade</mat-label>
-        <input matInput placeholder="Ex. 3">
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Total</mat-label>
-        <input matInput placeholder="R$ 01.00" disabled>
-      </mat-form-field>
     </form>
 
     <mat-card-actions style="justify-content: end">
       <div class="example-button-row">
         <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
         <button mat-raised-button class="button-success"  (click)="createNewOrder()">
-          Salvar
+          Processar
         </button>
       </div>
     </mat-card-actions>

@@ -31,5 +31,11 @@
   <app-edit-item></app-edit-item>
 </div>
 
+<!-- dlistar os itens -->
+<div *ngIf="data.component == 'list-item'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }} <mat-icon>grading</mat-icon> </h1>
+  <app-list-item></app-list-item>
+</div>
+
 
 

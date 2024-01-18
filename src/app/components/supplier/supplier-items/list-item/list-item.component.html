@@ -62,7 +62,8 @@
       <td>{{ item.category }}</td>
       <td>{{ item.quantity }}</td>
       <td class="options-table" >
-        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Item', 'edit-item', item.id_item || '', '50%' )" >visibility</mat-icon>
+        <mat-icon *ngIf="!addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Editar Item', 'edit-item', item.id_item || '', '50%' )" >visibility</mat-icon>
+        <mat-icon *ngIf="addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Editar Item', 'edit-item', item.id_item || '', '50%' )" >add_circle</mat-icon>
       </td>
     </tr>
   </table>

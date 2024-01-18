@@ -41,17 +41,21 @@ export class CreateOrderComponent {
     // Preencha outras propriedades conforme necessário
   };
   isLoad = false;
+  addItem = true;
 
   createNewOrder(): void {
     this.isLoad = true;
+    
     this.api.createOrder(this.newOrder).subscribe(createdOrder => {
       console.log('Nova ordem cadastrada:', createdOrder);
       if ('error' in createdOrder) {
         this.globalService.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');
       this.isLoad = false;
+      this.addItem = false;
       } else {
         this.globalService.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
         this.isLoad = false;
+        this.addItem = true;
       }
       // Atualizar a lista de ordens após o cadastro (opcional)
       // this.loadOrders();
