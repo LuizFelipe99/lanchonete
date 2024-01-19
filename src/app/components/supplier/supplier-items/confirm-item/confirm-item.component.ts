@@ -30,7 +30,7 @@ export class ConfirmItemComponent {
   id_item = this.identity;
   items: Item[];
   filterItem: ItemFilter = {id_item: this.identity};
-  newItem: ItemInOrder = {name: '', id_item: '', price_unit: '', quantity: '', total: ''};
+  newItem: ItemInOrder = { id_order_supplier: this.id_order_supplier,  name: '', id_item: '', price_unit: '', quantity: '', total: ''};
   isLoad: boolean = false;
 
   // pegando o item pelo id e jogando para a função que tras somente 1
@@ -45,6 +45,17 @@ export class ConfirmItemComponent {
         this.newItem.name = this.items[0].name;
         this.newItem.id_item = this.items[0].id_item;
         this.isLoad = false;
+      }
+    })
+  }
+
+  // função que adiciona o item na order criada
+  insertItemOrder(){
+    this.api.insertItemInOrder(this.newItem).subscribe(data => {
+      if('error' in data){
+        this.globalService.openDialog('Não foi possivel adicionar o item', 'OK', 'Erro!', 'error-snackbar');
+      }else{
+        this.globalService.openDialog('Item adicionado com sucesso', 'OK', 'Sucesso!', 'success-snackbar');
       }
     })
   }

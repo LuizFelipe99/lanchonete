@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ResponseFilterItems } from "../models/Item-Supplier/responseFilterItem";
-import { Item } from "../models/Item-Supplier/item.models";
+import { Item, ItemInOrder } from "../models/Item-Supplier/item.models";
 
 @Injectable({
   providedIn:'root',
@@ -56,5 +56,9 @@ export class ItemSupplierService {
     })
   }
 
+  insertItemInOrder(insertItens: ItemInOrder): Observable<ItemInOrder>{
+    const endPoint = `${this.apiUrl}/order_supplier/insert_item/`;
+    return this.http.post<ItemInOrder>(endPoint, insertItens);
+  }
 
 }

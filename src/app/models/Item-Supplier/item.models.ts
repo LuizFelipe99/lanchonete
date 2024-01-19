@@ -19,6 +19,7 @@ export interface ItemFilter{
 // interface usada para inserir item na order
 export interface ItemInOrder{
   id_item?: string,
+  id_order_supplier?: string,
   name?: string,
   quantity?: string,
   price_unit?: string,
