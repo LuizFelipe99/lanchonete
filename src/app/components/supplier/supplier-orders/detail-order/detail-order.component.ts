@@ -34,6 +34,8 @@ export class DetailOrderComponent {
   supplier: string = '';
 
   total: number = 0;
+  dt_expired: string = '';
+  pedido: string = '';
 
   getDetailOrder(pagination: number) {
     this.isLoad = true; // variavel que controla o simbolo de loading
@@ -43,11 +45,15 @@ export class DetailOrderComponent {
       this.totalPages = response.total_pages;
       this.currentPage = response.current_page;
       this.supplier = response.data[0].supplier;
+      this.dt_expired = response.data[0].dt_expired;
+      this.pedido = response.data[0].id_order_supplier;
+      console.log(this.pedido);
       this.isLoad = false;
-
       // bloco responsavel por fazer a soma entre os subtotais, para nao precisar criar outra chamada para api
       this.total = this.sumSubTotal();
       // fim do bloco de somar valores
+      // colocando na localstorage o id_order para adicionar mais itens
+      localStorage.setItem('id_order_supplier', this.identity);
       
       }else{
         // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');

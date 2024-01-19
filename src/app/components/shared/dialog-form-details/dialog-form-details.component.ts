@@ -22,6 +22,7 @@ export class DialogFormDetailsComponent {
   cancel(): void {
     // garante que sempre o indetifier ficará sempre limpo
     localStorage.removeItem('identifier');
+    // localStorage.removeItem('id_order_supplier');
     this.dialogRef.close();
   }
 
