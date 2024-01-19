@@ -21,7 +21,7 @@ export interface ItemInOrder{
   id_item?: string,
   id_order_supplier?: string,
   name?: string,
-  quantity?: string,
-  price_unit?: string,
-  total?: string,
+  quantity?: number,
+  price_unit?: number,
+  total?: number,
 }

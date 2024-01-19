@@ -62,7 +62,7 @@ export class DetailOrderComponent {
 
 
   sumSubTotal(): number {
-    return this.detailOder.reduce((acumulador, objeto) => acumulador + objeto.subtotal, 0);
+    return this.detailOder.reduce((acumulador, objeto) => acumulador + objeto.total, 0);
     // console.log(acumulador);
   }
 }
