@@ -13,7 +13,7 @@
       Vencimento{{ dt_expired }}
     </div>
     <!-- botao para adicionar mais itens, vai ser feito um if de acordo com a data -->
-    <div class="action">
+    <div class="action" *ngIf="addItem">
       <button  (click)="globalService.openDialog('Selecione o item', 'list-item', '1', '80%')" mat-raised-button class="button-success" style="width: 20%;">Mais Itens <mat-icon>search</mat-icon></button>
     </div>
   </mat-card>

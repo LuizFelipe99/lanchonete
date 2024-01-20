@@ -57,7 +57,7 @@
       <td> {{order.id_order_supplier}} </td>
       <td> {{order.items}} </td>
       <td> {{order.total}} </td>
-      <td>3 {{order.dt_expired}} </td>
+      <td> {{order.dt_expired}} </td>
       <td >  <mat-icon (click)="globalService.openDialog('Detalhes do pedido', 'detail-order-supplier', order.id_order_supplier || '', '50%')" style="cursor: pointer">shopping_cart</mat-icon></td>
     </tr>
   </table>

@@ -25,14 +25,11 @@ export class GlobalService {
       });
       
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
       });
       
       // setando o identificador na localstorage para consultas em outros componentes
       localStorage.setItem('identifier', identity); // Salvar o nome do usuário no localStorage
     }
-
-
 
     // função que chama o modal de sucesso / erro
     durationInSeconds = 3; // tempo de duração do snackbar

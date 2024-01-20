@@ -17,6 +17,11 @@ export class DetailOrderComponent {
   }
    // metodo construtor
    constructor(private api: OrderService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {
+
+   // Formata a data atual para mostrar apenas ano, mês e dia
+   this.dataAtualFormatada = this.formatarData(this.dataAtual);
+
+
   }
 
   ngOnInit(): void {
@@ -37,6 +42,10 @@ export class DetailOrderComponent {
   dt_expired: string = '';
   pedido: string = '';
 
+  dataAtualFormatada: string;
+  dataAtual = new Date();
+  addItem = false;
+
   getDetailOrder(pagination: number) {
     this.isLoad = true; // variavel que controla o simbolo de loading
     this.api.getDetailOrder(this.identity, pagination, this.perPage).then((response) => {
@@ -47,7 +56,6 @@ export class DetailOrderComponent {
       this.supplier = response.data[0].supplier;
       this.dt_expired = response.data[0].dt_expired;
       this.pedido = response.data[0].id_order_supplier;
-      console.log(this.pedido);
       this.isLoad = false;
       // bloco responsavel por fazer a soma entre os subtotais, para nao precisar criar outra chamada para api
       this.total = this.sumSubTotal();
@@ -59,6 +67,9 @@ export class DetailOrderComponent {
         // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
         this.isLoad = false;
     }
+    // chamando função para formatar data atual e chamando função para verificar se data atual é igual a this.dt_expired
+    
+    this.verifyExpiredOrder();
   },
   (error: any) => {
     this.isLoad = false;
@@ -71,4 +82,21 @@ export class DetailOrderComponent {
     return this.detailOder.reduce((acumulador, objeto) => acumulador + objeto.total, 0);
     // console.log(acumulador);
   }
+
+  formatarData(data: Date): string {
+    const formattedDate = data.toISOString().slice(0, 10);
+    return formattedDate;
+  }
+
+  verifyExpiredOrder(){
+    this.formatarData(this.dataAtual);
+    if (this.dt_expired < this.dataAtualFormatada) {
+      console.log('menor');
+      this.addItem = true;
+    }else{
+      console.log('maior');
+      this.addItem = true
+    }
+  }
+
 }
