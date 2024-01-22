@@ -1,10 +1,14 @@
 <p>Desativar Dashboards</p>
 <button (click)="inactiveDash()" >{{label_button}}</button>
 <div class="container">
-  <div class="container-item" *ngIf="setUserDash" >
+  <!-- <div class="container-item" *ngIf="setUserDash" >
     <app-users-dash></app-users-dash>
-  </div>
-  <div class="container-item" *ngIf="setCategoryDash">
+  </div> -->
+  <!-- <div class="container-item" *ngIf="setCategoryDash">
     <app-items-category></app-items-category>
+  </div> -->
+
+  <div class="container-item" *ngIf="setCategoryDash">
+    <app-order-supplier-status></app-order-supplier-status>
   </div>
 </div>
