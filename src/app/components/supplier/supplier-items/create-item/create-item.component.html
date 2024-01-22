@@ -23,6 +23,10 @@
           <mat-option *ngFor="let names of category_names" [value]="names.id_category">{{names.name}}</mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Estoque minimo</mat-label>
+        <input type="number" matInput placeholder="Ex: 1" name="min_stock" [(ngModel)]="newItem.min_stock" required />
+      </mat-form-field>
     </form>
 
     <mat-card-actions style="justify-content: end">

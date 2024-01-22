@@ -53,14 +53,14 @@
       <th>Nome</th>
       <th>Descrição</th>
       <th>Categoria</th>
-      <th>Quantidade</th>
+      <th>Em estoque</th>
       <th></th>
     </tr>
     <tr *ngFor="let item of items">
       <td>{{ item.name }}</td>
       <td>{{ item.description }}</td>
       <td>{{ item.category }}</td>
-      <td>{{ item.quantity }}</td>
+      <td>{{ item.current_stock }}</td>
       <td class="options-table" >
         <mat-icon *ngIf="!addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Editar Item', 'edit-item', item.id_item || '', '50%' )" >visibility</mat-icon>
         <mat-icon *ngIf="addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Confirmar item', 'confirm-item', item.id_item || '', '50%' )" >add_circle</mat-icon>
