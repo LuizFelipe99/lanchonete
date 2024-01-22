@@ -22,6 +22,7 @@ export interface ItemFilter{
 export interface ItemInOrder{
   id_item?: string,
   id_order_supplier?: string,
+  id_order_supplier_items?: string,
   name?: string,
   quantity?: number,
   price_unit?: number,

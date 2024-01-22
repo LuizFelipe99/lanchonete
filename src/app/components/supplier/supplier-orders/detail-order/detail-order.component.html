@@ -27,12 +27,15 @@
       <th>Preço por unidade</th>
       <th>Quantidade</th>
       <th>Subtotal</th>
+      <th></th>
     </tr>
     <tr *ngFor="let detail of detailOder">
       <td> {{detail.name}} </td>
       <td> {{detail.price_unit}} </td>
       <td> {{detail.quantity}} </td>
       <td> {{detail.total}} </td>
+      <!-- botao de remover o item do pediodo segue a mesma logica de adicionar, só poderá fazer isso se a data de vencimento for menor do que a de hoje -->
+      <td *ngIf="addItem" (click)="removeItemOrder(detail.id_order_supplier_items)" >  <mat-icon  style="cursor: pointer">delete</mat-icon></td>
     </tr>
   </table>
   <!-- INICIO paginação  -->

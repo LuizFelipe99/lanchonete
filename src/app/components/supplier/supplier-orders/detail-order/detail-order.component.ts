@@ -3,6 +3,8 @@ import { OrderService } from 'src/app/services/order.service';
 import { GlobalService } from 'src/app/global.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogFormDetailsComponent } from 'src/app/components/shared/dialog-form-details/dialog-form-details.component';
+import { ItemSupplierService } from 'src/app/services/item-supplier.service';
+import { ItemInOrder } from 'src/app/models/Item-Supplier/item.models';
 
 @Component({
   selector: 'app-detail-order',
@@ -16,7 +18,7 @@ export class DetailOrderComponent {
     return localStorage.getItem('identifier') || ''; // Obter o nome do usuário do localStorage
   }
    // metodo construtor
-   constructor(private api: OrderService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {
+   constructor(private api: OrderService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>, public item: ItemSupplierService) {
 
    // Formata a data atual para mostrar apenas ano, mês e dia
    this.dataAtualFormatada = this.formatarData(this.dataAtual);
@@ -45,6 +47,25 @@ export class DetailOrderComponent {
   dataAtualFormatada: string;
   dataAtual = new Date();
   addItem = false;
+  id_item_to_remove = 0;
+  removeItem: ItemInOrder = { id_order_supplier_items: '1'};
+
+// a pagina pode variar de acordo com o botao do form de paginar, ele sempre incrementa/decrementa current_page + 1 ou -1 depende da ação
+removeItemOrder(id_order_supplier_items: string){
+  // adicionando o valor recebid por parametro la do front ao valor da variavel a ser enviada na requisição
+  this.removeItem.id_order_supplier_items = id_order_supplier_items;
+  this.isLoad = true;
+  this.item.removeItemOrder(this.removeItem).subscribe(data => {
+    if ('error' in data){
+      this.globalService.openSnackBar('Não foi encontrado', 'Ok',  'Erro!', 'error-snackbar');
+      this.isLoad = false;
+    }else{
+      this.globalService.openSnackBar('Item removido com sucesso', 'Ok',  'Sucesso!', 'success-snackbar');
+      this.getDetailOrder(1);
+      this.isLoad = false;
+    }
+  });
+}
 
   getDetailOrder(pagination: number) {
     this.isLoad = true; // variavel que controla o simbolo de loading
@@ -56,6 +77,8 @@ export class DetailOrderComponent {
       this.supplier = response.data[0].supplier;
       this.dt_expired = response.data[0].dt_expired;
       this.pedido = response.data[0].id_order_supplier;
+      this.id_item_to_remove = response.data[0].id_order_supplier_items;
+      console.log(this.id_item_to_remove);
       this.isLoad = false;
       // bloco responsavel por fazer a soma entre os subtotais, para nao precisar criar outra chamada para api
       this.total = this.sumSubTotal();
@@ -92,11 +115,12 @@ export class DetailOrderComponent {
     this.formatarData(this.dataAtual);
     if (this.dt_expired < this.dataAtualFormatada) {
       console.log('menor');
-      this.addItem = true;
+      this.addItem = false;
     }else{
       console.log('maior');
       this.addItem = true
     }
   }
+
 
 }

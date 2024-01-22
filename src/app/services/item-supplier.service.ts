@@ -61,4 +61,11 @@ export class ItemSupplierService {
     return this.http.post<ItemInOrder>(endPoint, insertItens);
   }
 
+ // função que pega o produto pelo id
+ public removeItemOrder(removeItens: ItemInOrder): Observable<ItemInOrder>{
+  const endPoint = `${this.apiUrl}/order_supplier/remove_item/`;
+  return this.http.post<ItemInOrder>(endPoint, removeItens);
+}
+
+
 }
