@@ -16,6 +16,32 @@
           Inicio
         </mat-list-item>
 
+      <!-- acordion para menu de lanches -->
+      <mat-accordion class="header-menu">
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header class=" header-menu" >
+            <mat-panel-title>
+              Lanches:
+            </mat-panel-title>
+          </mat-expansion-panel-header >
+          <div class="content">
+              <!-- item menu -->
+            <mat-list-item class="menu-item" role="listitem" routerLink="/lanches/listar">
+              <mat-icon>snack</mat-icon>
+              Listar Lanches
+            </mat-list-item>
+
+            <!-- item menu -->
+            <mat-list-item role="listitem" routerLink="/lanches/criar">
+              <mat-icon>group_add</mat-icon>
+              Criar lanche
+            </mat-list-item>
+            <!-- item menu -->
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+
       <!-- acordion para menu de usuarios -->
       <mat-accordion class="header-menu">
         <mat-expansion-panel (opened)="panelOpenState = true"

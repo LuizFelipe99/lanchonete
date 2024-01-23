@@ -7,6 +7,7 @@ import { Supplier } from '../models/Supplier/supplier.model';
 @Injectable({
   providedIn: 'root',
 })
+
 export class SupplierService {
   private apiUrl = 'https://gym-dev.com/lanchonete/';
 
