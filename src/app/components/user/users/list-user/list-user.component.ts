@@ -13,7 +13,7 @@ export class ListUserComponent {
   constructor(private api: UserService, public globalService: GlobalService) {}
 
   users: User[];
-  filterUser: UserFilter = { name: '', login: '', active: 1, per_page: 15};
+  filterUser: UserFilter = { name: '', login: '', active: 3};
 
   // variaveis para controlar paginação
   page: number = 1;

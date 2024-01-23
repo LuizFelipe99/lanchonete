@@ -80,7 +80,6 @@ removeItemOrder(id_order_supplier_items: string){
       this.pedido = response.data[0].id_order_supplier;
       this.id_item_to_remove = response.data[0].id_order_supplier_items;
       this.status = response.data[0].status;
-      console.log(this.id_item_to_remove);
       this.isLoad = false;
       // bloco responsavel por fazer a soma entre os subtotais, para nao precisar criar outra chamada para api
       this.total = this.sumSubTotal();
@@ -98,7 +97,7 @@ removeItemOrder(id_order_supplier_items: string){
   },
   (error: any) => {
     this.isLoad = false;
-    console.error('Erro ao buscar usuários:', error);
+    console.error('Erro ao buscar pedidos:', error);
   })
   }
 
@@ -116,10 +115,8 @@ removeItemOrder(id_order_supplier_items: string){
   verifyExpiredOrder(){
     this.formatarData(this.dataAtual);
     if (this.dt_expired < this.dataAtualFormatada) {
-      console.log('menor');
       this.addItem = false;
     }else{
-      console.log('maior');
       this.addItem = true
     }
   }

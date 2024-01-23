@@ -23,13 +23,13 @@ export class OrderSupplierStatusComponent {
   panelOpenState = false;
   public chart: Chart;
   
-  totalCategories: any;
+  totalOrders: any;
 // passando a pagina por parametro para a paginação
 // a pagina pode variar de acordo com o botao do form de paginar, ele sempre incrementa/decrementa current_page + 1 ou -1 depende da ação
 getOrderStatus(){
     this.api.getStatusOrders().subscribe(data => {
 
-      this.totalCategories = data.orders.map(orders => orders.orders);
+      this.totalOrders = data.orders.map(orders => orders.orders);
       
       this.chartData = {
         labels: data.labels.map(label => label.label),
