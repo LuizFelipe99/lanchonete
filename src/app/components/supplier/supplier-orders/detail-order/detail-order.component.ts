@@ -49,6 +49,7 @@ export class DetailOrderComponent {
   addItem = false;
   id_item_to_remove = 0;
   removeItem: ItemInOrder = { id_order_supplier_items: '1'};
+  status = '';
 
 // a pagina pode variar de acordo com o botao do form de paginar, ele sempre incrementa/decrementa current_page + 1 ou -1 depende da ação
 removeItemOrder(id_order_supplier_items: string){
@@ -78,6 +79,7 @@ removeItemOrder(id_order_supplier_items: string){
       this.dt_expired = response.data[0].dt_expired;
       this.pedido = response.data[0].id_order_supplier;
       this.id_item_to_remove = response.data[0].id_order_supplier_items;
+      this.status = response.data[0].status;
       console.log(this.id_item_to_remove);
       this.isLoad = false;
       // bloco responsavel por fazer a soma entre os subtotais, para nao precisar criar outra chamada para api
