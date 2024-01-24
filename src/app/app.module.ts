@@ -57,6 +57,9 @@ import { EditItemComponent } from './components/supplier/supplier-items/edit-ite
 import { ConfirmItemComponent } from './components/supplier/supplier-items/confirm-item/confirm-item.component';
 import { OrderSupplierStatusComponent } from './components/dashboard/order-supplier-status/order-supplier-status.component';
 import { CreateSnackComponent } from './components/snack/snacks/create-snack/create-snack.component';
+import { ListSnackComponent } from './components/snack/snacks/list-snack/list-snack.component';
+import { EditSnackComponent } from './components/snack/snacks/edit-snack/edit-snack.component';
+import { ListSnackOrderComponent } from './components/snack/snack-orders/list-snack-order/list-snack-order.component';
 
 
 @NgModule({
@@ -87,6 +90,9 @@ import { CreateSnackComponent } from './components/snack/snacks/create-snack/cre
     ConfirmItemComponent,
     OrderSupplierStatusComponent,
     CreateSnackComponent,
+    ListSnackComponent,
+    EditSnackComponent,
+    ListSnackOrderComponent,
   ],
   imports: [
     BrowserModule,

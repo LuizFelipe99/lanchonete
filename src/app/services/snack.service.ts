@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ResponseFilterSnacks } from "../models/Snack/responseFilterSnack";
-import { Observable, filter } from "rxjs";
+import { Observable } from "rxjs";
 import { Snack } from "../models/Snack/snack.models";
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Snack } from "../models/Snack/snack.models";
 })
 
 export class SnackService {
-  private apiUrl = 'https://gym-dev.com/lanchonete/snack/create/'
+  private apiUrl = 'https://gym-dev.com/lanchonete/'
 
   constructor(private http: HttpClient) {}
 
@@ -21,7 +21,7 @@ export class SnackService {
     }
 
   public getSnackById(id_snack?: any): Observable<ResponseFilterSnacks> {
-    const endPoint = `${this.apiUrl}/snack/snacks`;
+    const endPoint = `${this.apiUrl}/snack/snacks/`;
     return this.http.post<ResponseFilterSnacks>(endPoint, id_snack)
   }
 

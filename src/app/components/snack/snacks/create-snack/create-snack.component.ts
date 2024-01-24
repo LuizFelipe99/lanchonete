@@ -16,12 +16,13 @@ export class CreateSnackComponent {
 
   constructor(private api: SnackService, private globalService: GlobalService) {}
 
-  // função para criar fornecedor
+  // função para criar lanche
   insertSnack(): void {
     this.isLoad == true;
     this.api.insertSnack(this.newSnack).subscribe(createSnack => {
       if ('error' in createSnack) {
         this.globalService.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');
+
         this.isLoad = false;
       }else{
         this.globalService.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
