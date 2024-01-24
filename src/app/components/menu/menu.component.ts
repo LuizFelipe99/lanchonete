@@ -7,17 +7,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-opened = true;
-get usuario(): string {
-  return localStorage.getItem('login') || ''; // Obter o nome do usuário do localStorage
-}
 
-constructor(private router: Router) {}
-panelOpenState = false;
+  get usuario(): string {
+    return localStorage.getItem('login') || ''; // Obter o nome do usuário do localStorage
+  }
 
-logout(): void {
-  localStorage.clear();
-  // Redirecionar para a rota de login
-  this.router.navigate(['/login']);
-}
+// pegando o grupo do usuario na sessao
+  get usergroup(): string {
+    return localStorage.getItem('usergroup') || ''; // Obter o nome do usuário do localStorage
+  }
+
+  showAdminMenu: boolean = false;
+  
+  opened = true;
+  constructor(private router: Router) {}
+  panelOpenState = false;
+
+  ngOnInit(){
+    this.veriryGroupUser();
+  }
+
+  logout(): void {
+    localStorage.clear();
+    // Redirecionar para a rota de login
+    this.router.navigate(['/login']);
+  }
+
+  veriryGroupUser(){
+    if(this.usergroup == '1'){
+      this.showAdminMenu = true;
+    }
+  }
 }
