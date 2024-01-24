@@ -7,7 +7,7 @@ export interface Snack {
 
 // interface usada para filtrar lanche
 export interface SnackFilter {
-  id_supplier?:string;
+  id_snack?:string;
   name?: string;
   description?: string;
   price?: string;

@@ -18,6 +18,7 @@ import { CreateItemComponent } from './components/supplier/supplier-items/create
 import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
 import { ListCategoryComponent } from './components/category/list-category/list-category.component';
 import { CreateSnackComponent } from './components/snack/snacks/create-snack/create-snack.component';
+import { ListSnackComponent } from './components/snack/snacks/list-snack/list-snack.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'categorias/listar', component: ListCategoryComponent,  canActivate: [AuthGuard] },
   { path: 'categorias/criar', component: CreateCategoryComponent,  canActivate: [AuthGuard] },
   { path: 'lanches/criar', component: CreateSnackComponent,  canActivate: [AuthGuard] },
+  { path: 'lanches/listar', component: ListSnackComponent,  canActivate: [AuthGuard] },
 ];
 
 @NgModule({
