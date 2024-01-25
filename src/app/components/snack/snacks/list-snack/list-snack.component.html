@@ -19,7 +19,7 @@
 
           <mat-card-actions style="justify-content: end">
             <div class="example-button-row">
-              <button routerLink="../lanches/criar" style="margin-right: 1rem" mat-raised-button class="button-warning">
+              <button style="margin-right: 1rem" mat-raised-button class="button-warning">
                 Limpar Filtros
               </button>
               <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
@@ -50,7 +50,8 @@
       <td>{{ snack.description }}</td>
       <td>{{ snack.price }}</td>
       <td class="options-table" >
-        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Fornecedor', 'edit-snack', snack.id_snack || '','50%' )" >visibility</mat-icon>
+        <mat-icon *ngIf="!addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Editar Lanche', 'edit-snack', snack.id_snack || '', '50%' )" >visibility</mat-icon>
+        <mat-icon *ngIf="addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Confirmar item', 'confirm-snack', snack.id_snack || '', '50%' )" >add_circle</mat-icon>
       </td>
     </tr>
   </table>

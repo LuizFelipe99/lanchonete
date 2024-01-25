@@ -9,6 +9,11 @@ import { SnackService } from 'src/app/services/snack.service';
   styleUrls: ['./list-snack.component.scss']
 })
 export class ListSnackComponent {
+
+  //pegando o valor de itendifier que esta na localstorage para usar para a verificação do botao de add item ao pedido
+  get identity(): string {
+    return localStorage.getItem('identifier') || '0'; // Obter o nome do usuário do localStorage
+  }
   constructor(private api: SnackService, public globalService: GlobalService) {}
 
   snacks: Snack[];
@@ -20,8 +25,11 @@ export class ListSnackComponent {
   currentPage: number = 1;
   isLoad: boolean = false;
 
+  addItemButton = false;
+
   ngOnInit(): void {
     this.getSnacks(this.page);
+    this.setAddItem();
   }
 
   getSnacks(page: number) {
@@ -39,5 +47,15 @@ export class ListSnackComponent {
         }
       }
     );
+  }
+
+  //  função responsoavel por controlar a visibilidade o botao de adicionar item ao pedido
+  setAddItem(){
+    if (this.identity == '1'){
+      this.addItemButton = true;
+    }else{
+      this.addItemButton = false;
+    }
+    localStorage.removeItem('identifier');
   }
 }

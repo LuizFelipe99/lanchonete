@@ -32,7 +32,6 @@ isLoad: boolean = false;
 client: string = '';
 
 total: number = 0;
-dt_expired: string = '';
 pedido: string = '';
 addItem = false;
 status = '';
@@ -45,7 +44,6 @@ status = '';
       this.totalPages = response.total_pages;
       this.currentPage = response.current_page;
       this.client = response.data[0].client;
-      this.dt_expired = response.data[0].dt_expired;
       this.pedido = response.data[0].id_order_snack;
       this.status = response.data[0].status;
       this.isLoad = false;
@@ -54,12 +52,12 @@ status = '';
       // fim do bloco de somar valores
       // colocando na localstorage o id_order para adicionar mais itens
       localStorage.setItem('id_order_snack', this.identity);
-      
+      this.verifyMoreItem();
       }else{
         // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
         this.isLoad = false;
     }
-    // chamando função para formatar data atual e chamando função para verificar se data atual é igual a this.dt_expired
+
     
     },
     (error: any) => {
@@ -71,5 +69,14 @@ status = '';
   sumSubTotal(): number {
     return this.detailOder.reduce((acumulador, objeto) => acumulador + objeto.total, 0);
     // console.log(acumulador);
+  }
+
+  // essa função verifica se o status do pedido é = a concluido, caso seha, o botao de add mais itens desaparece
+  verifyMoreItem(){
+    if (this.status == 'Concluído' ) {
+      this.addItem = false;
+    }else{
+      this.addItem = true;
+    }
   }
 }
