@@ -1,10 +1,11 @@
 mat-sidenav-container{
   height: calc(205vh - 115vh);
-  // height: 100%;
+  height: 100%;
 }
 mat-sidenav{
   width: 250px;
-  background-color: var(--menu-second);
+  // background-color: var(--menu-second);
+  background-image: linear-gradient(to bottom, #dd5517, #e05918, #e45c19, #e7601a, #ea631b, #e6601a, #e15d1a, #dd5a19, #d15116, #c44813, #b83f0f, #ac360c);
   
 }
 .nav_bar_sup{
@@ -20,11 +21,20 @@ mat-sidenav{
   cursor: pointer !important;
 }
 
+::ng-deep .mat-mdc-list-item:hover{
+  border-bottom: 1px solid black;
+  background-color: #dd5517;
+  
+}
 
 ::ng-deep .header-menu{
-  border-radius: 0px !important;
+  border-radius: 10px !important;
   margin: 0px !important;
   background-color: var(--menu-second) !important;
+}
+::ng-deep .mat-expansion-panel:last-of-type{
+  margin-top: 10px !important;
+  background-color: transparent !important;
 }
 
 .button-exit{
