@@ -7,12 +7,17 @@ export interface OrderSnack {
   created_by?: string
   snack?: string;
   description?: string;
+  client?: string;
+  status?: string;
+  itens?:string;
 }
 
 export interface OrderSnackFilter{
   snack?: string;
   description?: string,
-  id_order_snack?: number;
+  id_order_snack?: string;
+  client?: string;
+  status?: string;
 }
 
 export interface ResponseFilterOrderSnack {

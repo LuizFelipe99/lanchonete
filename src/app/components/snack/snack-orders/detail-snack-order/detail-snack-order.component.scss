@@ -4,6 +4,7 @@
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     font-size: 18px;
+    width: 100%;
     // line-height: 18px;
   }
   
@@ -48,7 +49,7 @@
     justify-content: space-around;
     border-radius: 0.25rem;
     background-color: #f2f2f2;
-    width: 80vw;
+    width: 100%;
     padding-top: 0.5rem;
     flex-wrap: wrap;
     // padding: 0.3rem;
@@ -85,4 +86,36 @@
   
   ::ng-deep .mat-mdc-progress-spinner circle{
     stroke: var(--menu-second)
+  }
+  
+  .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 1rem;
+    // background-color: var(--primary-color)
+  }
+  
+  .cabecalho{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    font-size: 18px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  
+  .status{
+    border: 1px solid green;
+    padding: 2px;
+    border-radius: 10px;
+  }
+  .status:hover{
+    background-color: green;
+    color: #fff;
+    cursor: default;
   }

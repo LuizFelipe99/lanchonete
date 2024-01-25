@@ -18,7 +18,7 @@ export class ListSnackOrderComponent {
 
 // requiisição tipada
 orders: OrderSnack[];
-filterOrder: OrderSnackFilter = {snack: '', description: '', id_order_snack: 0}
+filterOrder: OrderSnackFilter = {status: '3', description: '', id_order_snack: ''}
 
   // variaveis para controlar paginação
   page: number = 1;

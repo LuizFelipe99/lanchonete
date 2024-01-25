@@ -60,6 +60,7 @@ import { CreateSnackComponent } from './components/snack/snacks/create-snack/cre
 import { ListSnackComponent } from './components/snack/snacks/list-snack/list-snack.component';
 import { EditSnackComponent } from './components/snack/snacks/edit-snack/edit-snack.component';
 import { ListSnackOrderComponent } from './components/snack/snack-orders/list-snack-order/list-snack-order.component';
+import { DetailSnackOrderComponent } from './components/snack/snack-orders/detail-snack-order/detail-snack-order.component';
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import { ListSnackOrderComponent } from './components/snack/snack-orders/list-sn
     ListSnackComponent,
     EditSnackComponent,
     ListSnackOrderComponent,
+    DetailSnackOrderComponent,
   ],
   imports: [
     BrowserModule,

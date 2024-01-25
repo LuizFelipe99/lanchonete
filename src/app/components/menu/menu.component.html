@@ -70,6 +70,32 @@
         </mat-expansion-panel>
       </mat-accordion>
 
+       <!-- acordion para orders -->
+       <mat-accordion *ngIf="showAdminMenu">
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false">
+          <mat-expansion-panel-header class="header-menu">
+            <mat-panel-title>
+              Pedidos Lanches:
+            </mat-panel-title>
+            <mat-icon>list_alt</mat-icon>
+          </mat-expansion-panel-header >
+          <div class="content">
+            <!-- item menu -->
+            <mat-list-item role="listitem" routerLink="lanches/pedidos/listar">
+              <mat-icon>search</mat-icon>
+              Listar Pedidos
+            </mat-list-item>
+            <!-- item menu -->
+            <mat-list-item role="listitem" routerLink="lanches/pedidos/criar">
+              <mat-icon>grading</mat-icon>
+              Criar Pedidos
+            </mat-list-item>
+            <!-- item menu -->
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
       <!-- acordion para menu de usuarios -->
       <mat-accordion class="header-menu" *ngIf="showAdminMenu">
         <mat-expansion-panel (opened)="panelOpenState = true"
@@ -121,7 +147,7 @@
             </mat-list-item>
        
           </div>
-            </mat-expansion-panel>
+        </mat-expansion-panel>
       </mat-accordion>
 
        <!-- acordion para orders -->

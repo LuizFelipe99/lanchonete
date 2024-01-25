@@ -19,6 +19,7 @@ import { CreateCategoryComponent } from './components/category/create-category/c
 import { ListCategoryComponent } from './components/category/list-category/list-category.component';
 import { CreateSnackComponent } from './components/snack/snacks/create-snack/create-snack.component';
 import { ListSnackComponent } from './components/snack/snacks/list-snack/list-snack.component';
+import { ListSnackOrderComponent } from './components/snack/snack-orders/list-snack-order/list-snack-order.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'categorias/criar', component: CreateCategoryComponent,  canActivate: [AuthGuard] },
   { path: 'lanches/criar', component: CreateSnackComponent,  canActivate: [AuthGuard] },
   { path: 'lanches/listar', component: ListSnackComponent,  canActivate: [AuthGuard] },
+  { path: 'lanches/pedidos/listar', component: ListSnackOrderComponent,  canActivate: [AuthGuard] },
 ];
 
 @NgModule({
