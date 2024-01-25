@@ -1,19 +1,19 @@
 <div class="container">
   <mat-card class="cabecalho form">
     <div class="fornecedor">
-      Fornecedor: {{supplier}}
+      <b>Fornecedor: </b> {{supplier}}
     </div>
     <div class="pedido">
-      Pedido: {{ pedido }}
+      <b>Pedido:</b> {{ pedido }}
     </div>
     <div class="total">
-      Total: {{total}}
+      <b>Total:</b> R${{total}}
     </div>
     <div class="vencimento">
-      Vencimento{{ dt_expired }}
+      <b>Vencimento: </b> {{ dt_expired }}
     </div>
     <div class="vencimento">
-      Status {{ status }}
+    <b>Status: </b> <span class=""> {{ status }} </span>
     </div>
     <!-- botao para adicionar mais itens, vai ser feito um if de acordo com a data -->
     <div class="action" *ngIf="addItem">

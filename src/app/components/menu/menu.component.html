@@ -13,11 +13,35 @@
   <mat-sidenav [(opened)]="opened" mode="side">
 
     <mat-list role="list">
-         <!-- item menu -->
-         <mat-list-item role="listitem" routerLink="/home">
-          <mat-icon>home</mat-icon>
-          Inicio
-        </mat-list-item>
+       <!-- acordion para menu de lanches -->
+       <mat-accordion class="header-menu"  >
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header class=" header-menu" >
+            <mat-panel-title>
+              Home:
+            </mat-panel-title>
+            <mat-icon>home</mat-icon>
+          </mat-expansion-panel-header >
+          <div class="content">
+              <!-- item menu -->
+              <mat-list-item role="listitem" routerLink="/home">
+                <mat-icon>home</mat-icon>
+                Inicio
+              </mat-list-item>
+              <!-- item menu -->
+              <mat-list-item role="listitem" routerLink="/home">
+                <mat-icon>donut_small</mat-icon>
+                Dashboard
+              </mat-list-item>
+              <!-- item menu -->
+              <mat-list-item role="listitem" routerLink="/home">
+                <mat-icon>feed</mat-icon>
+                Novidades
+              </mat-list-item>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- acordion para menu de lanches -->
       <mat-accordion class="header-menu"  >

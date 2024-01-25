@@ -114,10 +114,10 @@ removeItemOrder(id_order_supplier_items: string){
 
   verifyExpiredOrder(){
     this.formatarData(this.dataAtual);
-    if (this.dt_expired < this.dataAtualFormatada) {
+    if (this.dt_expired < this.dataAtualFormatada || this.status == 'Recebido' ) {
       this.addItem = false;
     }else{
-      this.addItem = true
+      this.addItem = true;
     }
   }
 
