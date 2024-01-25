@@ -2,35 +2,63 @@
 .card-login{
   width: 35%;
   background-color: var(--second-color);
+  // background-image: radial-gradient(circle, #dd5517, #e05918, #e45c19, #e7601a, #ea631b, #e6601a, #e15d1a, #dd5a19, #d15116, #c44813, #b83f0f, #ac360c);
   color: #ffff;
   padding: 10px;
+  box-shadow: 6px 6px 18px 6px black;
+  transition: 0.6s;
 }
 .container{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: var(--primary-color)
+  // background-color: var(--primary-color)
+  background-image: radial-gradient(circle, #dd5517, #e05918, #e45c19, #e7601a, #ea631b, #e6601a, #e15d1a, #dd5a19, #d15116, #c44813, #b83f0f, #ac360c);
 }
 .form{
   display: flex;
   flex-direction: column;
-  padding: 10px
+  padding: 10px;
 }
 
+.logo{
+  // border-radius: 50%;
+  width:50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-logo{
+  width: 25%;
+  box-shadow: 6px 6px 18px 6px black;
+  border-radius: 50%;
+  transition: 0.6s;
+}
 
 @media (max-width: 1024px) {
   .card-login{
     width: 55%;
+  }
+  .img-logo{
+    width: 40%;
   }
 }
 @media (max-width: 769px) {
   .card-login{
     width: 65%;
   }
+  .img-logo{
+    width: 60%;
+  }
 }
 @media (max-width: 481px) {
   .card-login{
     width: 75%;
+  }
+  .img-logo{
+    width: 80%;
   }
 }

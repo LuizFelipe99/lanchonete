@@ -1,10 +1,13 @@
 <mat-toolbar class="nav_bar_sup">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="opened=!opened">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Lanchonete</span>
-
-  <p>v0.1.05</p>
+  <div class="">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="opened=!opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Lanchonete</span>
+  </div>
+  <div class=""  routerLink="/home">
+    <img class="logo" src="../../../assets/logo.png" alt="">
+  </div>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">

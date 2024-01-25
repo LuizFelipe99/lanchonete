@@ -11,6 +11,10 @@ mat-sidenav{
 .nav_bar_sup{
   background-color: var(--button-warning);
   color: #fff;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
 }
 
 .menu-item{
@@ -41,3 +45,14 @@ mat-sidenav{
   align-self: flex-end;
 }
 
+
+.logo{
+  border-radius: 50%;
+  width: 80px;
+  box-shadow: 3px 3px 9px 3px black;
+  cursor: pointer;
+  transition: 0.6s;
+}
+.logo:hover{
+  scale: 1.1;
+}
