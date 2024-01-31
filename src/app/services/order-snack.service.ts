@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { OrderSnack, ResponseFilterOrderSnack } from "../models/Snack-Order/snack-order.models";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
+import { ItemInOrderSnack } from "../models/Item-Supplier/item.models";
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +43,12 @@ export class OrderSnackService {
       .catch((error) => {
         return Promise.reject(error);
       });
+  }
+
+
+  insertItemInOrder(insertItens: ItemInOrderSnack):Observable<ItemInOrderSnack>{
+    const endPoint = `${this.apiUrl}/order_snack/insert_item/`;
+    return this.http.post<ItemInOrderSnack>(endPoint, insertItens);
   }
 
 }

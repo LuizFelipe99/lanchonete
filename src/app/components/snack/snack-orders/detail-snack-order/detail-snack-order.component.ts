@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogFormDetailsComponent } from 'src/app/components/shared/dialog-form-details/dialog-form-details.component';
 import { GlobalService } from 'src/app/global.service';
-import { Item, ItemFilter } from 'src/app/models/Item-Supplier/item.models';
+import { Item, ItemFilter, ItemInOrder, ItemInOrderSnack } from 'src/app/models/Item-Supplier/item.models';
 import { ItemSupplierService } from 'src/app/services/item-supplier.service';
 import { OrderSnackService } from 'src/app/services/order-snack.service';
 
@@ -17,7 +17,7 @@ export class DetailSnackOrderComponent {
   return localStorage.getItem('identifier') || ''; // Obter o nome do usuário do localStorage
 }
 // metodo construtor
-constructor(private api: OrderSnackService, private item: ItemSupplierService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {}
+constructor(private api: OrderSnackService, private item: ItemSupplierService,  public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {}
 
 ngOnInit(): void {
   this.getDetailOrder(this.pagination);
@@ -44,8 +44,10 @@ addItem = false;
 status = '';
 payment_type = '';
 
-  getDetailOrder(pagination: number) {
-    this.isLoad = true; // variavel que controla o simbolo de loading
+
+
+getDetailOrder(pagination: number) {
+  this.isLoad = true; // variavel que controla o simbolo de loading
     this.api.getDetailOrder(this.identity, pagination, this.perPage).then((response) => {
       if (response.status === true) {
       this.detailOder = response.data; 
@@ -66,11 +68,11 @@ payment_type = '';
         // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
         this.isLoad = false;
     }
-
     
-    },
-    (error: any) => {
-      this.isLoad = false;
+    
+  },
+  (error: any) => {
+    this.isLoad = false;
       console.error('Erro ao buscar pedidos:', error);
     })
   }
@@ -105,5 +107,24 @@ payment_type = '';
         this.isLoad =  false;
       }
     });
+  }
+
+  
+  itemInOrder: ItemInOrderSnack = {id_order_snack: '', id_item: '', price_unit: '', quantity: '', total: ''}
+  insertItemInOrder(id_item: string, price_unit: string, quantity: string, total: string){
+    this.itemInOrder.id_item = id_item;
+    this.itemInOrder.price_unit = price_unit;
+    this.itemInOrder.quantity = quantity;
+    this.itemInOrder.total = total;
+    this.itemInOrder.id_order_snack = this.pedido;
+    this.api.insertItemInOrder(this.itemInOrder).subscribe(data => {
+      if('error' in data) {
+        this.globalService.openSnackBar('Não foi encontrado', 'Ok', 'Erro!', 'error-snackbar');
+        this.isLoad = false;
+      } else {
+        this.globalService.openSnackBar('Item adicionado ao pedido', 'Ok', 'Sucesso!', 'success-snackbar');
+        this.getDetailOrder(1);
+      }
+    })
   }
 }

@@ -29,3 +29,16 @@ export interface ItemInOrder{
   price_unit?: number,
   total?: number,
 }
+
+
+// interface usada para inserir item na order
+export interface ItemInOrderSnack{
+  id_item?: string,
+  id_order_snack?: string,
+  id_order_snack_items?: string,
+  name?: string,
+  quantity?: string,
+  price_unit?: string,
+  total?: string,
+}
+
