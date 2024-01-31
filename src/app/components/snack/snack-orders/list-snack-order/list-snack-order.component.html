@@ -59,8 +59,8 @@
         <td> {{order.id_order_snack}} </td>
         <td> {{order.status}} </td>
         <td> {{order.itens}} </td>
-        <td> {{order.total}} </td>
-        <td >  <mat-icon (click)="globalService.openDialog('Detalhes do pedido', 'detail-snack-order', order.id_order_snack || '', '90%')" style="cursor: pointer">shopping_cart</mat-icon></td>
+        <td> R$ {{order.total}} </td>
+        <td >  <mat-icon (click)="globalService.openDialog('Detalhes do pedido', 'detail-snack-order', order.id_order_snack || '', '95%')" style="cursor: pointer">shopping_cart</mat-icon></td>
       </tr>
     </table>
     <!-- INICIO paginação  -->
