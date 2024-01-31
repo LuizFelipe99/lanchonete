@@ -5,6 +5,7 @@ export interface Item{
   category?: string;
   current_stock?: number;
   min_stock?: number;
+  sale_price?:string;
 }
 
 // interface usada para filtrar usuario

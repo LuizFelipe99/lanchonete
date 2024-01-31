@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogFormDetailsComponent } from 'src/app/components/shared/dialog-form-details/dialog-form-details.component';
 import { GlobalService } from 'src/app/global.service';
+import { Item, ItemFilter } from 'src/app/models/Item-Supplier/item.models';
+import { ItemSupplierService } from 'src/app/services/item-supplier.service';
 import { OrderSnackService } from 'src/app/services/order-snack.service';
 
 @Component({
@@ -15,15 +17,20 @@ export class DetailSnackOrderComponent {
   return localStorage.getItem('identifier') || ''; // Obter o nome do usuário do localStorage
 }
 // metodo construtor
-constructor(private api: OrderSnackService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {}
+constructor(private api: OrderSnackService, private item: ItemSupplierService, public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {}
 
 ngOnInit(): void {
   this.getDetailOrder(this.pagination);
+  this.getItems(1);
 }
+
+items: Item[];
+filterItem: ItemFilter = {name: '', description: '', category: '', current_stock: 0, per_page: 15};
 
 detailOder: any[] = [];
 totalOrders: number = 0;
 totalPages: number = 0;
+totalItems: number = 0;
 currentPage: number = 1;
 pagination: number = 1;
 perPage: number = 15;
@@ -78,5 +85,23 @@ status = '';
     }else{
       this.addItem = true;
     }
+  }
+
+
+
+  getItems(page: number) {
+    this.isLoad = true;
+    this.item.getItems(this.filterItem, page).subscribe(data => {
+      if('error' in data) {
+        this.globalService.openSnackBar('Não foi encontrado', 'Ok', 'Erro!', 'error-snackbar');
+        this.isLoad = false;
+      } else {
+        this.items = data.data;
+        this.totalPages = data.total_pages;
+        this.currentPage = data.current_page;
+        this.totalItems = data.items;
+        this.isLoad =  false;
+      }
+    });
   }
 }
