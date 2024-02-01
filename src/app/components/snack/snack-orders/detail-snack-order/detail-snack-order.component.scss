@@ -28,7 +28,7 @@ width: 100%;
 }
 .lanches-container{
   display: flex;
-  // justify-content: space-between;
+  justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
   overflow-y:scroll;

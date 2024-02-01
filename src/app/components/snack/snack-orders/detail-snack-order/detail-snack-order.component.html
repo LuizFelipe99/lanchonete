@@ -11,6 +11,10 @@
         <span>R$  {{item.sale_price}} </span>
       </mat-card>
     </div>
+    <!-- simbolo de loadgin -->
+    <div class="load" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
   </mat-card>
 
   <!-- lado responsavel por exibir os itens do pedido -->
