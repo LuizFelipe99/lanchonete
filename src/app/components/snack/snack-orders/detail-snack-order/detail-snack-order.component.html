@@ -1,7 +1,6 @@
 <div class="container">
   <mat-card class="cabecalho form" style="margin-right: 1rem; width: 70%;" *ngIf="addItem">
-    Pedido: {{pedido}}
-    <h1>Lanches</h1>
+    Lanches
     <div class="lanches-container">
       <!-- primeiro parametro da função é o id do item -->
       <!-- (id_item: string, price_unit: number, quantity: number, total: number){ -->
@@ -19,6 +18,7 @@
 
   <!-- lado responsavel por exibir os itens do pedido -->
   <mat-card class="cabecalho form" style="width: 30%;">
+    Detalhes
     <div class="detalhe">
       <table class="responsive-table" id="customers">
         <tr>
