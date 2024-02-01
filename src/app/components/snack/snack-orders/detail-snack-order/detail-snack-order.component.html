@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-card class="cabecalho form" style="margin-right: 1rem;">
+  <mat-card class="cabecalho form" style="margin-right: 1rem;" *ngIf="addItem">
     Pedido: {{pedido}}
     <h1>Lanches</h1>
     <div class="lanches-container">
@@ -33,13 +33,17 @@
           </td>
           <td> {{item.total}} </td>
         </tr>
-      
       </table>
+    </div>
+    <!-- simbolo de loadgin -->
+    <div class="load" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
     </div>
     <span><b>Cliente</b> {{client}} </span>
     <span><b>Pagamento</b> {{payment_type}} </span>
     <span><b>Total</b> R${{total}}</span>
-    <button  mat-raised-button class="button-success" style="width: 20%;">Finalizar <mat-icon>check_small</mat-icon></button>
+    <span><b>Status: </b> {{status}}</span>
+    <button *ngIf="addItem" mat-raised-button class="button-success" style="width: 20%;">Finalizar <mat-icon>check_small</mat-icon></button>
     
   </mat-card>
 </div>
