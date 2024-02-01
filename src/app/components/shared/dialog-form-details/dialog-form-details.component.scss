@@ -21,3 +21,7 @@
 .button-close:hover{
   box-shadow: 0px 1px 10px black;
 }
+
+::ng-deep .cdk-overlay-pane{
+  max-width: 100% !important;
+}

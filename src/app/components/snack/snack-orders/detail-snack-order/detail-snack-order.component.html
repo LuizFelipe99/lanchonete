@@ -1,12 +1,12 @@
 <div class="container">
-  <mat-card class="cabecalho form" style="margin-right: 1rem;" *ngIf="addItem">
+  <mat-card class="cabecalho form" style="margin-right: 1rem; width: 70%;" *ngIf="addItem">
     Pedido: {{pedido}}
     <h1>Lanches</h1>
     <div class="lanches-container">
       <!-- primeiro parametro da função é o id do item -->
       <!-- (id_item: string, price_unit: number, quantity: number, total: number){ -->
       <mat-card class="lanche" *ngFor="let item of items" (click)="insertItemInOrder(item.id_item || '', item.sale_price || '', '1', item.sale_price || '');" >
-        <img src="../../../../../assets/lanche.jpg" alt="">
+        <img src="{{item.url_img}}" alt="">
         <span> {{item.name}} </span>
         <span>R$  {{item.sale_price}} </span>
       </mat-card>
@@ -14,7 +14,7 @@
   </mat-card>
 
   <!-- lado responsavel por exibir os itens do pedido -->
-  <mat-card class="cabecalho form">
+  <mat-card class="cabecalho form" style="width: 30%;">
     <div class="detalhe">
       <table class="responsive-table" id="customers">
         <tr>

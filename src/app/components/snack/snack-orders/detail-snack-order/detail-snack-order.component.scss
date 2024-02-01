@@ -26,8 +26,16 @@
 img{
 width: 100%;
 }
+.lanches-container{
+  display: flex;
+  // justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y:scroll;
+  max-height: 400px;
+}
 .lanche{
-  width: 25%;
+  width: 15%;
   text-align: center;
   transition: 0.6s;
   margin-right: 1rem;
@@ -37,14 +45,6 @@ width: 100%;
   cursor: pointer;
   scale: 1.01;
   box-shadow: 0px 1px 10px black;
-}
-.lanches-container{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow-y:scroll;
-  max-height: 400px;
 }
 .detalhe{
   overflow-y: scroll;

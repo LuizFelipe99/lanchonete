@@ -22,6 +22,8 @@ import { ListSnackComponent } from './components/snack/snacks/list-snack/list-sn
 import { ListSnackOrderComponent } from './components/snack/snack-orders/list-snack-order/list-snack-order.component';
 
 
+
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },

@@ -6,6 +6,7 @@ export interface Item{
   current_stock?: number;
   min_stock?: number;
   sale_price?:string;
+  url_img?: string;
 }
 
 // interface usada para filtrar usuario
@@ -17,6 +18,7 @@ export interface ItemFilter{
   current_stock?: number;
   min_stock?: number,
   per_page?: number;
+  url_img?:string;
 }
 
 // interface usada para inserir item na order
