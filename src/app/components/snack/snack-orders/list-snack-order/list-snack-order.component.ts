@@ -9,6 +9,7 @@ import { OrderSnackService } from 'src/app/services/order-snack.service';
   templateUrl: './list-snack-order.component.html',
   styleUrls: ['./list-snack-order.component.scss']
 })
+
 export class ListSnackOrderComponent {
   constructor(private api: OrderSnackService, private _snackBar: MatSnackBar, public globalService: GlobalService) {}
 
