@@ -25,7 +25,7 @@ ngOnInit(): void {
 }
 
 items: Item[];
-filterItem: ItemFilter = {name: '', description: '', category: '', current_stock: 0, per_page: 50};
+filterItem: ItemFilter = {name: '', description: '', category: '', current_stock: 0, per_page: 100};
 
 detailOder: any[] = [];
 totalOrders: number = 0;
@@ -33,7 +33,7 @@ totalPages: number = 0;
 totalItems: number = 0;
 currentPage: number = 1;
 pagination: number = 1;
-perPage: number = 50;
+perPage: number = 100;
 isLoad: boolean = false;
 
 client: string = '';

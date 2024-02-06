@@ -17,9 +17,9 @@
   </mat-card>
 
   <!-- lado responsavel por exibir os itens do pedido -->
-  <mat-card class="cabecalho form" style="width: 30%;">
+  <mat-card class="cabecalho form" style="width: 35%; height: 95vh;">
     Detalhes
-    <div class="detalhe">
+    <div class="detalhe" >
       <table class="responsive-table" id="customers">
         <tr>
           <th>Item</th>
@@ -47,7 +47,7 @@
     <span><b>Pagamento</b> {{payment_type}} </span>
     <span><b>Total</b> R${{total}}</span>
     <span><b>Status: </b> {{status}}</span>
-    <button *ngIf="addItem" mat-raised-button class="button-success" style="width: 20%;">Finalizar <mat-icon>check_small</mat-icon></button>
+    <button *ngIf="addItem" mat-raised-button class="button-success" style="width: 40%;">Finalizar <mat-icon>check_small</mat-icon></button>
     
   </mat-card>
 </div>
