@@ -1,6 +1,9 @@
 ::ng-deep .mat-mdc-progress-spinner circle{
   stroke: var(--menu-second)
 }
+::ng-deep .mdc-dialog__container{
+  height: 95vh;
+}
 
 .container{
   display: flex;
@@ -32,7 +35,7 @@ width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
   overflow-y:scroll;
-  max-height: 470px;
+  max-height: 90vh;
 }
 .lanche{
   width: 15%;
