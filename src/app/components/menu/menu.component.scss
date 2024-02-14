@@ -1,5 +1,6 @@
 mat-sidenav-container{
   height: calc(205vh - 115vh);
+  max-height: 100vh;
   // height: 100%;
 }
 mat-sidenav{
@@ -8,6 +9,7 @@ mat-sidenav{
   background-image: linear-gradient(to bottom, #dd5517, #e05918, #e45c19, #e7601a, #ea631b, #e6601a, #e15d1a, #dd5a19, #d15116, #c44813, #b83f0f, #ac360c);
   
 }
+
 .nav_bar_sup{
   background-color: var(--button-warning);
   color: #fff;

@@ -1,3 +1,22 @@
 img {
   width: 200px;
 }
+
+.card-login{
+  width: 30%;
+  // background-color: var(--second-color);
+  color: #ffff;
+  padding: 10px;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  // background-color: var(--primary-color)
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  padding: 10px
+}

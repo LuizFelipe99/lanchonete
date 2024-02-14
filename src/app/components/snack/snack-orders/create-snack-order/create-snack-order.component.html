@@ -1,9 +1,35 @@
+<!-- <div class="container">
+  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
+  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
+  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
+  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
+  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
+  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
+  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
+</div> -->
+
+<!-- código do elvim comentado -->
+
+
 <div class="container">
-  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
-  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
-  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
-  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
-  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
-  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
-  <img src="https://gym-dev.com/lanchonete/snacks_img/x-tudo.jpg" alt="">
+  <mat-card class="card-login">
+    <mat-card-header>
+      <mat-card-title>Pedido cliente</mat-card-title>
+      <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle>
+    </mat-card-header>
+
+    <!-- formulario de envio de dados para o cadastro de usuario -->
+    <form class="form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Cliente</mat-label>
+        <input matInput placeholder="Mesa, Nome etc.." name="name"  [(ngModel)]="newOrder.client" required />
+      </mat-form-field>
+    </form>
+
+    <mat-card-actions style="justify-content: end">
+      <div class="example-button-row">
+        <button mat-raised-button class="button-success" (click)="createNewOrder()" > Salvar </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
 </div>
