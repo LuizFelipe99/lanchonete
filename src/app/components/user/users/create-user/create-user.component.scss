@@ -34,3 +34,11 @@
     width: 75%;
   }
 }
+.loading-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+::ng-deep .mat-mdc-progress-spinner circle{
+  stroke: var(--menu-second)
+}

@@ -26,7 +26,7 @@ export class ListCategoryComponent {
   }
 
   getCategories(page: number) {
-    this.isLoad = false;
+    this.isLoad = true;
     this.api.getCategories(this.filterCategory, page).subscribe(data => {
       if ('error' in data) {
         this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok', 'Erro!', 'error-snackbar');
