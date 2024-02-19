@@ -18,8 +18,10 @@ export class LoginComponent {
 
   // controla a visualização da senha no form
   hide = true;
-
-
+hidPassword(){
+  console.log(this.hide);
+  this.hide = !this.hide;
+}
 
 
   constructor(private _snackBar: MatSnackBar, private authService: AuthService, private router: Router, private globalService: GlobalService) {}
