@@ -44,6 +44,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatRadioModule} from '@angular/material/radio';
 
 // chart js
 import { NgChartsModule } from 'ng2-charts';
@@ -62,6 +63,7 @@ import { EditSnackComponent } from './components/snack/snacks/edit-snack/edit-sn
 import { ListSnackOrderComponent } from './components/snack/snack-orders/list-snack-order/list-snack-order.component';
 import { DetailSnackOrderComponent } from './components/snack/snack-orders/detail-snack-order/detail-snack-order.component';
 import { CreateSnackOrderComponent } from './components/snack/snack-orders/create-snack-order/create-snack-order.component';
+import { FinishOrderComponent } from './components/supplier/supplier-orders/finish-order/finish-order.component';
 
 
 @NgModule({
@@ -97,6 +99,8 @@ import { CreateSnackOrderComponent } from './components/snack/snack-orders/creat
     ListSnackOrderComponent,
     DetailSnackOrderComponent,
     CreateSnackOrderComponent,
+    FinishOrderComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -126,6 +130,7 @@ import { CreateSnackOrderComponent } from './components/snack/snack-orders/creat
     AsyncPipe,
     MatExpansionModule,
     NgChartsModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

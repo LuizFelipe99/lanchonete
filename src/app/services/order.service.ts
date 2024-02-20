@@ -39,6 +39,18 @@ export class OrderService {
     return this.http.post<ResponseFilterOrder>(endPoint, filter, {headers});
   }
 
+  // função para finalizar pedido
+  finishOrder(finishOrider: OrderSupplier,): Observable<OrderSupplier> {
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    const endPoint = `${this.apiUrl}order_supplier/update/`;
+    return this.http.post<OrderSupplier>(endPoint, finishOrider, {headers});
+  }
+
 
   // detalhes do pedido
   getDetailOrder( id_order_supplier: string, nextToPage: number, perPage: number): Promise<any> {

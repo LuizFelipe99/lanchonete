@@ -19,6 +19,10 @@
     <div class="action" *ngIf="addItem">
       <button  (click)="globalService.openDialog('Selecione o item', 'list-item', '1', '80%')" mat-raised-button class="button-success" style="width: 20%;">Mais Itens <mat-icon>search</mat-icon></button>
     </div>
+    <!-- botao para finalizar o pedido -->
+    <div class="action" *ngIf="finishOrder" style="margin-top: 10px;">
+      <button  (click)="globalService.openDialog('Selecione o item', 'finish-order', identity, '40%')" mat-raised-button class="button-success" style="width: 20%;">Finalizar <mat-icon>check_small</mat-icon></button>
+    </div>
   </mat-card>
   <!-- simbolo de loadgin -->
   <div class="loading-content" style="height: 40px;">

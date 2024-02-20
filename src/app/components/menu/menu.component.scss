@@ -6,8 +6,8 @@ mat-sidenav-container{
 mat-sidenav{
   width: 250px;
   // background-color: var(--menu-second);
-  background-image: linear-gradient(to bottom, #dd5517, #e05918, #e45c19, #e7601a, #ea631b, #e6601a, #e15d1a, #dd5a19, #d15116, #c44813, #b83f0f, #ac360c);
-  
+  // background-image: linear-gradient(to bottom, #dd5517, #e05918, #e45c19, #e7601a, #ea631b, #e6601a, #e15d1a, #dd5a19, #d15116, #c44813, #b83f0f, #ac360c);
+  background-color: #e7601a;
 }
 
 .nav_bar_sup{
@@ -61,4 +61,28 @@ mat-sidenav{
 .logo_nav{
   display: flex;
   justify-content: end;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: orange;
+  border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--menu-primary);
+  border-radius: 20px;
+  border: 3px solid orange;
+}
+
+::ng-deep .mat-drawer-inner-container{
+  overflow: visible !important;
+}
+
+::ng-deep .mat-mdc-list-base{
+  padding: 5px !important;
 }

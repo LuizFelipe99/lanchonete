@@ -47,6 +47,7 @@ export class DetailOrderComponent {
   dataAtualFormatada: string;
   dataAtual = new Date();
   addItem = false;
+  finishOrder = false;
   id_item_to_remove = 0;
   removeItem: ItemInOrder = { id_order_supplier_items: '1'};
   status = '';
@@ -119,7 +120,17 @@ removeItemOrder(id_order_supplier_items: string){
     }else{
       this.addItem = true;
     }
+    this.verifyStatus();
   }
 
+  verifyStatus(){
+    if(this.dt_expired < this.dataAtualFormatada  || this.status == "Recebido" || this.status == "Cancelado" ){
+      this.finishOrder = false;
+      this.addItem = false;
+    }else{
+      this.finishOrder = true;
+      this.addItem = true;
+    }
+  }
 
 }

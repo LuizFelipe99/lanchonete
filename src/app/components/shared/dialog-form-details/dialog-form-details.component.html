@@ -54,11 +54,16 @@
   <app-detail-snack-order></app-detail-snack-order>
 </div>
 
-
 <!-- lista de lanches -->
 <div *ngIf="data.component == 'list-snack'" class="teste">
   <h1 mat-dialog-title>{{ data.titulo }}</h1>
   <app-list-snack></app-list-snack>
+</div>
+
+<!-- finalizar order do fornecedor -->
+<div *ngIf="data.component == 'finish-order'" class="teste">
+  <h1 mat-dialog-title>{{ data.titulo }}</h1>
+  <app-finish-order></app-finish-order>
 </div>
 
 

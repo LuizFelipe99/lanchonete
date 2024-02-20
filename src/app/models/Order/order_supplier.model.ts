@@ -4,6 +4,7 @@ export interface OrderSupplier {
   dt_created?: string;
   dt_expired?: string;
   total?: string;
+  status?: string;
   created_by?: string;
   supplier?: string;
   responsible?: string;
