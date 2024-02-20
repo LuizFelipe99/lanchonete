@@ -6,8 +6,10 @@
     </mat-card-header>
 
   <!-- simbolo de loadgin -->
-  <div class="loading-container" *ngIf="isLoad">
-    <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+  <div class="loading-content" style="height: 40px;">
+    <div class="" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
   </div>
 
     <!-- formulario de envio de dados para o cadastro de usuario -->
@@ -22,6 +24,11 @@
         <mat-form-field class="example-full-width"  style="width: 35%">
           <mat-label>Descrição</mat-label>
           <input matInput placeholder="Descrição" name="description" [(ngModel)]="newItem.description" required />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width"  style="width: 35%">
+          <mat-label>Preço de venda</mat-label>
+          <input matInput placeholder="Descrição" name="sale_price" [(ngModel)]="newItem.sale_price" required />
         </mat-form-field>
 
         <mat-form-field class="example-full-width">

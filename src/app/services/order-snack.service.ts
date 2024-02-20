@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { OrderSnack, ResponseFilterOrderSnack } from "../models/Snack-Order/snack-order.models";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
@@ -8,20 +8,36 @@ import { ItemInOrderSnack } from "../models/Item-Supplier/item.models";
   providedIn: 'root',
 })
 export class OrderSnackService {
+  get tokenId(): string {
+    return localStorage.getItem('token') || ''; // Obter o nome do usuário do localStorage
+  }
+
   private apiUrl = 'https://gym-dev.com/lanchonete/';
 
   constructor(private http: HttpClient) {}
   // função para criar um novo pedido
   createOrder(newOrder: OrderSnack): Observable<OrderSnack> {
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     const endPoint = `${this.apiUrl}order_snack/create/`;
-    return this.http.post<OrderSnack>(endPoint, newOrder);
+    return this.http.post<OrderSnack>(endPoint, newOrder, {headers});
   }
 
 // função para listar todos pedidos CASO HAJA ITENS ADICIONADOS
   public getOrders(filter?: any, page?: number): Observable<ResponseFilterOrderSnack>{
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     const endPoint = `${this.apiUrl}/order_snack/orders/`;
     filter.page = page;
-    return this.http.post<ResponseFilterOrderSnack>(endPoint, filter);
+    return this.http.post<ResponseFilterOrderSnack>(endPoint, filter, {headers});
   }
 
 
@@ -47,8 +63,14 @@ export class OrderSnackService {
 
 
   insertItemInOrder(insertItens: ItemInOrderSnack):Observable<ItemInOrderSnack>{
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     const endPoint = `${this.apiUrl}/order_snack/insert_item/`;
-    return this.http.post<ItemInOrderSnack>(endPoint, insertItens);
+    return this.http.post<ItemInOrderSnack>(endPoint, insertItens, {headers});
   }
 
 }

@@ -20,10 +20,12 @@
       <button  (click)="globalService.openDialog('Selecione o item', 'list-item', '1', '80%')" mat-raised-button class="button-success" style="width: 20%;">Mais Itens <mat-icon>search</mat-icon></button>
     </div>
   </mat-card>
-    <!-- simbolo de loadgin -->
+  <!-- simbolo de loadgin -->
+  <div class="loading-content" style="height: 40px;">
     <div class="" *ngIf="isLoad">
       <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
     </div>
+  </div>
   <table class="responsive-table" id="customers">
     <tr>
       <th>Item</th>

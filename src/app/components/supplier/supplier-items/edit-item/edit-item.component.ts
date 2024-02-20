@@ -58,6 +58,7 @@ export class EditItemComponent {
         this.newItem.name = this.items[0].name;
         this.newItem.description = this.items[0].description;
         this.newItem.category = this.items[0].category;
+        this.newItem.sale_price = this.items[0].sale_price;
         console.log('new item name ', this.newItem.category);
         this.isLoad = false;
       }

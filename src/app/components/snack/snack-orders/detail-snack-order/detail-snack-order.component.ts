@@ -43,6 +43,7 @@ pedido: string = '';
 addItem = false;
 status = '';
 payment_type = '';
+service_type = '';
 
 
 
@@ -57,6 +58,7 @@ getDetailOrder(pagination: number) {
       this.pedido = response.data[0].id_order_snack;
       this.status = response.data[0].status;
       this.payment_type = response.data[0].payment_type;
+      this.service_type = response.data[0].service_type;
       this.isLoad = false;
       // bloco responsavel por fazer a soma entre os subtotais, para nao precisar criar outra chamada para api
       this.total = this.sumSubTotal();

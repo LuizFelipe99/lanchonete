@@ -35,6 +35,7 @@ hidPassword(){
         if (response.status === true) {
           console.log(response.status);
           localStorage.setItem('login', response.data[0].login); // Salvar o nome do usuário no localStorage
+          localStorage.setItem('token', response.data[0].token); // Salvar o nome do usuário no localStorage
           localStorage.setItem('id_user', response.data[0].id_user);
           localStorage.setItem('active', response.data[0].active);
           localStorage.setItem('usergroup', response.data[0].usergroup);

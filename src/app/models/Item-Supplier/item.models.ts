@@ -4,8 +4,8 @@ export interface Item{
   description?: string;
   category?: string;
   current_stock?: number;
-  min_stock?: number;
   sale_price?:string;
+  min_stock?: number;
   url_img?: string;
 }
 
@@ -17,6 +17,7 @@ export interface ItemFilter{
   category?: string;
   current_stock?: number;
   min_stock?: number,
+  sale_price?:string;
   per_page?: number;
   url_img?:string;
 }
@@ -29,6 +30,7 @@ export interface ItemInOrder{
   name?: string,
   quantity?: number,
   price_unit?: number,
+  sale_price?:string;
   total?: number,
 }
 

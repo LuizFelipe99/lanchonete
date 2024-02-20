@@ -1,5 +1,5 @@
 import { ObserversModule } from '@angular/cdk/observers';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ItemsCategoryDashboard } from 'src/app/models/Dashboard/items-category.model';
@@ -12,6 +12,11 @@ import { UserStatsDashboard } from 'src/app/models/Dashboard/users-status.model'
 })
 
 export class DashBoard {
+  get tokenId(): string {
+    return localStorage.getItem('token') || ''; // Obter o nome do usuário do localStorage
+  }
+
+
   private apiUrl = 'https://gym-dev.com/lanchonete/';
 
   constructor(private http: HttpClient) {}
@@ -20,18 +25,36 @@ export class DashBoard {
   // função para listar todos os usuarios e enviar filtros caso tenha
   // aqui eu usei o " responseFilterUser" para armazenar a resposta da api
   public getUserStats(): Observable<UserStatsDashboard>{
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     const endPoint = `${this.apiUrl}/dashboard/users/status/`;
-    return this.http.post<UserStatsDashboard>(endPoint, '');
+    return this.http.post<UserStatsDashboard>(endPoint, '', {headers});
   }
 
   public getItemCategory(): Observable<ItemsCategoryDashboard>{
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     const endPoint = `${this.apiUrl}/dashboard/items-category/`;
-    return this.http.post<ItemsCategoryDashboard>(endPoint, '');
+    return this.http.post<ItemsCategoryDashboard>(endPoint, '', {headers});
   }
 
   public getStatusOrders(): Observable<OrderSupplierStatus>{
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     const endPoint = `${this.apiUrl}/dashboard/order-status/`;
-    return this.http.post<OrderSupplierStatus>(endPoint, '');
+    return this.http.post<OrderSupplierStatus>(endPoint, '', {headers});
   }
  
 }

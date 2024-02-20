@@ -27,6 +27,10 @@
         <mat-label>Estoque minimo</mat-label>
         <input type="number" matInput placeholder="Ex: 1" name="min_stock" [(ngModel)]="newItem.min_stock" required />
       </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Valor de venda</mat-label>
+        <input type="number" matInput placeholder="Ex: 1" name="sale_price" [(ngModel)]="newItem.sale_price" required />
+      </mat-form-field>
     </form>
 
     <mat-card-actions style="justify-content: end">

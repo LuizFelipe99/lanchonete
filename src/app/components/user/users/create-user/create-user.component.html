@@ -5,8 +5,10 @@
       <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle>
     </mat-card-header>
   <!-- simbolo de loadgin -->
-  <div class="loading-container" *ngIf="isLoad">
-    <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+  <div class="loading-content" style="height: 40px;">
+    <div class="" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
   </div>
     <!-- formulario de envio de dados para o cadastro de usuario -->
     <form class="form" (keyup.enter)="insertUser()">
@@ -41,9 +43,6 @@
 
     <mat-card-actions style="justify-content: end">
       <div class="example-button-row">
-        <button routerLink="/login" style="margin-right: 1rem" mat-raised-button class="button-warning" *ngIf="!login">
-          Voltar
-        </button>
         <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
         <button mat-raised-button class="button-success" (click)="insertUser()" > Salvar </button>
       </div>

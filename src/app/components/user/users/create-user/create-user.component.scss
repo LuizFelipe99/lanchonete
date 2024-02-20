@@ -1,8 +1,8 @@
 
 .card-login{
   width: 35%;
-  background-color: var(--second-color);
-  color: #ffff;
+  // background-color: var(--second-color);
+  color: #000;
   padding: 10px;
 }
 .container{
@@ -10,7 +10,8 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: var(--primary-color)
+  color: #000;
+  // background-color: var(--primary-color)
 }
 .form{
   display: flex;

@@ -8,6 +8,7 @@ export interface OrderSnack {
   snack?: string;
   description?: string;
   client?: string;
+  service_type?: string;
   status?: string;
   itens?:string;
 }

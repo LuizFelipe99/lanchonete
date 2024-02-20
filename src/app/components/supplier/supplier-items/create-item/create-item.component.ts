@@ -13,7 +13,7 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CreateItemComponent {
   isLoad: boolean = false;
   items: Item[] = [];
-  newItem: Item = {name: '', description: '', category: '', min_stock: 0}
+  newItem: Item = {name: '', description: '', category: '', min_stock: 0, sale_price: ''}
 
   constructor(private api: ItemSupplierService, private globalService: GlobalService, private categoryName: CategoryService) {}
 
