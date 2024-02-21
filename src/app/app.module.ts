@@ -64,6 +64,7 @@ import { ListSnackOrderComponent } from './components/snack/snack-orders/list-sn
 import { DetailSnackOrderComponent } from './components/snack/snack-orders/detail-snack-order/detail-snack-order.component';
 import { CreateSnackOrderComponent } from './components/snack/snack-orders/create-snack-order/create-snack-order.component';
 import { FinishOrderComponent } from './components/supplier/supplier-orders/finish-order/finish-order.component';
+import { FinishSnackOrderComponent } from './components/snack/snack-orders/finish-snack-order/finish-snack-order.component';
 
 
 @NgModule({
@@ -100,6 +101,7 @@ import { FinishOrderComponent } from './components/supplier/supplier-orders/fini
     DetailSnackOrderComponent,
     CreateSnackOrderComponent,
     FinishOrderComponent,
+    FinishSnackOrderComponent,
     
   ],
   imports: [

@@ -24,18 +24,16 @@
         <tr>
           <th>Item</th>
           <th>Valor unitário</th>
-          <th>Quantidade</th>
-          <th>Total</th>
+          <!-- <th>Quantidade</th> -->
+          <!-- <th>Total</th> -->
         </tr>
         <tr *ngFor="let item of detailOder">
           <td> {{item.name}} </td>
           <td> R$ {{item.sale_price}} </td>
-          <td> 
-            <button> - </button>
+          <!-- <td> 
             {{item.quantity}} 
-            <button> + </button>
-          </td>
-          <td> {{item.total}} </td>
+          </td> -->
+          <!-- <td> {{item.total}} </td> -->
         </tr>
       </table>
     </div>
@@ -48,7 +46,8 @@
     <span><b>Pagamento</b> {{payment_type}} </span>
     <span><b>Total</b> R${{total}}</span>
     <span><b>Status: </b> {{status}}</span>
-    <button *ngIf="addItem" mat-raised-button class="button-success" style="width: 40%;">Finalizar <mat-icon>check_small</mat-icon></button>
-    
+    <button *ngIf="addItem" mat-raised-button class="button-success" style="width: 40%; cursor: pointer;"
+    (click)="globalService.openDialog('Detalhes do pedido', 'finish-snack-order', this.pedido, '75%')" >Finalizar <mat-icon>check_small</mat-icon></button>
+     
   </mat-card>
 </div>

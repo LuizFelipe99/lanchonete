@@ -1,0 +1,60 @@
+<div class="container">
+  <mat-card class="cabecalho form" style="width: 55%; height: 50vh;">
+    <form class="form">
+      <div>
+        <div class="form-filter">
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Valor</mat-label>
+              <input matInput placeholder="R$ 1" name="supplier">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Forma de pagamento</mat-label>
+              <mat-select name="active">
+                <mat-option [value]="1">Pix</mat-option>
+                <mat-option [value]="2">Dinheiro</mat-option>
+                <mat-option [value]="3">Cartão</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          
+          <mat-card-actions style="justify-content: end;">
+            <div class="example-button-row" >
+              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
+              <button mat-raised-button class="button-success" style="margin-right: 1rem;">Abater</button>
+            </div>
+          </mat-card-actions>
+        </div>
+      </div>
+    </form>
+    <mat-card class="cabecalho form" style="width: 100%; margin-top: 1rem;">
+      <span><b>Pedido: </b> {{identity}} </span>
+      <span><b>Total:</b> {{total}} </span>
+      <span><b>Pago:</b> 00 </span>
+      <span><b>Restante:</b> 00 </span>
+    </mat-card>
+  </mat-card>
+  
+  <!-- lado direito responsavel pelo detalhe -->
+  <mat-card class="cabecalho form" style="width: 45%; height: 50vh;">
+    Detalhes
+    <div class="detalhe" >
+      <table class="responsive-table" id="customers">
+        <tr>
+          <th>Item</th>
+          <th>Valor unitário</th>
+          <!-- <th>Quantidade</th> -->
+          <!-- <th>Total</th> -->
+        </tr>
+        <tr *ngFor="let item of detailOder">
+          <td> {{item.name}} </td>
+          <td> R$ {{item.sale_price}} </td>
+        </tr>
+      </table>
+    </div>
+  </mat-card>
+
+</div>
