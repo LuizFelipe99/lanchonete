@@ -44,7 +44,7 @@
     <span><b>Cliente</b> {{client}} </span>
     <span><b>Atendimento</b> {{service_type}} </span>
     <span><b>Pagamento</b> {{payment_type}} </span>
-    <span><b>Total</b> R${{total}}</span>
+    <span><b>Total</b> R${{total | number: '1.2-2'}}</span>
     <span><b>Status: </b> {{status}}</span>
     <button *ngIf="addItem" mat-raised-button class="button-success" style="width: 40%; cursor: pointer;"
     (click)="globalService.openDialog('Detalhes do pedido', 'finish-snack-order', this.pedido, '75%')" >Finalizar <mat-icon>check_small</mat-icon></button>
