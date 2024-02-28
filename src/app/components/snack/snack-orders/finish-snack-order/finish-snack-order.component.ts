@@ -99,11 +99,14 @@ isDecrease = false;
       this.api.finishOrderSnack(this.FinishOrder).subscribe((response) =>{
         console.log(response);
         if ('error' in response) {
-          this.globalService.openSnackBar('Não há valores para abater', 'Ok', 'Erro!', 'error-snackbar');
-          this.isLoad = false;
+          if('extra_value' in response){
+            this.globalService.openSnackBar('Valor informado é maior do que o total do pedido', 'Ok', 'Erro!', 'error-snackbar');
+          }else{
+
+            this.globalService.openSnackBar('Não há valores para abater', 'Ok', 'Erro!', 'error-snackbar');
+            this.isLoad = false;
+          }
         } else {
-          
-  
           this.globalService.openSnackBar('Valor abatido com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
           // setando na localstorage o id da order
           this.isLoad = false;
