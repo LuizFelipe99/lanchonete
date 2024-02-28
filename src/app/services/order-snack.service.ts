@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { OrderSnack, ResponseFilterOrderSnack } from "../models/Snack-Order/snack-order.models";
+import { FinishOrder, OrderSnack, ResponseFilterOrderSnack } from "../models/Snack-Order/snack-order.models";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { ItemInOrderSnack } from "../models/Item-Supplier/item.models";
@@ -71,6 +71,17 @@ export class OrderSnackService {
     });
     const endPoint = `${this.apiUrl}/order_snack/insert_item/`;
     return this.http.post<ItemInOrderSnack>(endPoint, insertItens, {headers});
+  }
+
+  finishOrderSnack(finishOrder: FinishOrder):Observable<FinishOrder>{
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    const endPoint = `${this.apiUrl}/order_snack/finish_order/`;
+    return this.http.post<FinishOrder>(endPoint, finishOrder, {headers});
   }
 
 }

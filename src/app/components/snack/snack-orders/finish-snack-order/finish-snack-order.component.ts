@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
+import { FinishOrder } from 'src/app/models/Snack-Order/snack-order.models';
 import { OrderSnackService } from 'src/app/services/order-snack.service';
 
 @Component({
@@ -19,6 +20,10 @@ ngOnInit(): void {
   this.getDetailOrder(this.pagination);
 }
 
+
+
+
+
 detailOder: any[] = [];
 totalOrders: number = 0;
 totalPages: number = 0;
@@ -30,11 +35,15 @@ isLoad: boolean = false;
 
 client: string = '';
 
-total: number = 0;
+total_order: number = 0;
 pedido: string = '';
 status = '';
 payment_type = '';
 service_type = '';
+
+pago: number = 0;
+restante: number = 0;
+isDecrease = false;
 
   getDetailOrder(pagination: number) {
     this.isLoad = true; // variavel que controla o simbolo de loading
@@ -48,9 +57,13 @@ service_type = '';
         this.status = response.data[0].status;
         this.payment_type = response.data[0].payment_type;
         this.service_type = response.data[0].service_type;
+        this.total_order = this.sumSubTotal();
+
+        this.pago = response.payament[0].pago;
+        this.restante = (this.total_order - this.pago);
         this.isLoad = false;
+        this.verificaPendencia()
         // bloco responsavel por fazer a soma entre os subtotais, para nao precisar criar outra chamada para api
-        this.total = this.sumSubTotal();
         // colocando na localstorage o id_order para adicionar mais itens
         }else{
           // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
@@ -68,5 +81,36 @@ service_type = '';
     sumSubTotal(): number {
       return this.detailOder.reduce((acumulador, objeto) => acumulador + objeto.total, 0);
       // console.log(acumulador);
+    }
+    verificaPendencia(){
+      if(this.restante <= 0){
+        this.isDecrease = true;
+      }
+    }
+
+    FinishOrder: FinishOrder = {
+      id_order_snack: this.identity,
+      total: 0,
+      discounted_value: '',
+      discounted_type: ''
+    };
+    finishOrderSnack(){
+      this.FinishOrder.total = this.sumSubTotal();
+      this.api.finishOrderSnack(this.FinishOrder).subscribe((response) =>{
+        console.log(response);
+        if ('error' in response) {
+          this.globalService.openSnackBar('Não há valores para abater', 'Ok', 'Erro!', 'error-snackbar');
+          this.isLoad = false;
+        } else {
+          
+  
+          this.globalService.openSnackBar('Valor abatido com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
+          // setando na localstorage o id da order
+          this.isLoad = false;
+          this.getDetailOrder(1);
+        }
+        // Atualizar a lista de ordens após o cadastro (opcional)
+        // this.loadOrders();
+      });
     }
 }

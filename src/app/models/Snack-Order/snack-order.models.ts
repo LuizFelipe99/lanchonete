@@ -29,3 +29,10 @@ export interface ResponseFilterOrderSnack {
   orders_snack: number;
 }
 
+export interface FinishOrder {
+  id_order_snack?: string;
+  discounted_value?: string;
+  discounted_type?: string;
+  total?: number;
+}
+
