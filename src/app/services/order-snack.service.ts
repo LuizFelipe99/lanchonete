@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { FinishOrder, OrderSnack, ResponseFilterOrderSnack } from "../models/Snack-Order/snack-order.models";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
-import { ItemInOrderSnack } from "../models/Item-Supplier/item.models";
+import { ItemInOrderSnack, RemoveItemInOrder } from "../models/Item-Supplier/item.models";
 
 @Injectable({
   providedIn: 'root',
@@ -82,6 +82,17 @@ export class OrderSnackService {
     });
     const endPoint = `${this.apiUrl}/order_snack/finish_order/`;
     return this.http.post<FinishOrder>(endPoint, finishOrder, {headers});
+  }
+
+  removeItemFromOrder(removeItem: RemoveItemInOrder):Observable<RemoveItemInOrder>{
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    const endPoint = `${this.apiUrl}/order_snack/remove_item/`;
+    return this.http.post<RemoveItemInOrder>(endPoint, removeItem, {headers});
   }
 
 }

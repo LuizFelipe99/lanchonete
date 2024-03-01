@@ -45,13 +45,13 @@
       <table class="responsive-table" id="customers">
         <tr>
           <th>Item</th>
-          <th>Valor unitário</th>
-          <!-- <th>Quantidade</th> -->
-          <!-- <th>Total</th> -->
+          <th>Subtotal</th>
+          <th>Quantidade</th>
         </tr>
         <tr *ngFor="let item of detailOder">
           <td> {{item.name}} </td>
-          <td> R$ {{item.sale_price}} </td>
+          <td> R$ {{item.total}} </td>
+          <td> {{item.total_quantity}} </td>
         </tr>
       </table>
     </div>

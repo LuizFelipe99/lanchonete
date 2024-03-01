@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogFormDetailsComponent } from 'src/app/components/shared/dialog-form-details/dialog-form-details.component';
 import { GlobalService } from 'src/app/global.service';
-import { Item, ItemFilter, ItemInOrder, ItemInOrderSnack } from 'src/app/models/Item-Supplier/item.models';
+import { Item, ItemFilter, ItemInOrder, ItemInOrderSnack, RemoveItemInOrder } from 'src/app/models/Item-Supplier/item.models';
 import { ItemSupplierService } from 'src/app/services/item-supplier.service';
 import { OrderSnackService } from 'src/app/services/order-snack.service';
 
@@ -125,6 +125,19 @@ getDetailOrder(pagination: number) {
         this.isLoad = false;
       } else {
         this.globalService.openSnackBar('Item adicionado ao pedido', 'Ok', 'Sucesso!', 'success-snackbar');
+        this.getDetailOrder(1);
+      }
+    })
+  }
+
+  removeItemOrder: RemoveItemInOrder = {id_order_snack_items: 0}
+  removeItemFromOrder(id_order_snack_items: number){
+    this.removeItemOrder.id_order_snack_items = id_order_snack_items;
+    this.api.removeItemFromOrder(this.removeItemOrder).subscribe(data => {
+      if('error' in data){
+        this.globalService.openSnackBar('Não foi possível remover o item', 'Ok', 'Erro!', 'error-snackbar');
+      }else{
+        this.globalService.openSnackBar('Item removido do pedido', 'Ok', 'Sucesso!', 'success-snackbar');
         this.getDetailOrder(1);
       }
     })

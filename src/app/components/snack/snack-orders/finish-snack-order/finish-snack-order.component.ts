@@ -94,6 +94,7 @@ isDecrease = false;
       discounted_value: '',
       discounted_type: ''
     };
+    
     finishOrderSnack(){
       this.FinishOrder.total = this.sumSubTotal();
       this.api.finishOrderSnack(this.FinishOrder).subscribe((response) =>{

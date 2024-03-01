@@ -46,3 +46,7 @@ export interface ItemInOrderSnack{
   total?: string,
 }
 
+export interface RemoveItemInOrder{
+  id_order_snack_items?: number
+}
+
