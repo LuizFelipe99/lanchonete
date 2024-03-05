@@ -17,7 +17,7 @@
   </mat-card>
 
   <!-- lado responsavel por exibir os itens do pedido -->
-  <mat-card class="cabecalho form" style="width: 35%; height: 95vh;">
+  <mat-card class="cabecalho form" [ngClass]="{'detail-true': addItem, 'detail-false': !addItem}">
     Detalhes
     <div class="detalhe" >
       <table class="responsive-table" id="customers">
@@ -31,11 +31,10 @@
           <td> {{item.name}} </td>
           <td> R$ {{item.total}} </td>
           <td> {{item.total_quantity}} </td>
-          <td>
-            <mat-icon style="cursor: pointer;" (click)="removeItemFromOrder(item.id_order_snack_items)" >
+          <td >
+            <mat-icon *ngIf="addItem" style="cursor: pointer;" (click)="removeItemFromOrder(item.id_order_snack_items)" >
               delete
             </mat-icon>
-            {{item.id_order_snack_items}}
           </td>
         </tr>
       </table>
