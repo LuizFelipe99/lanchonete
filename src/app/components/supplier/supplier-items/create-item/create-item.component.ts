@@ -24,7 +24,7 @@ export class CreateItemComponent {
   category_names: Category[];
 
   insertItem(): void {
-    this.isLoad === true;
+    this.isLoad = true;
     this.api.insertItem(this.newItem).subscribe(CreateItem => {
       if('error' in CreateItem) {
         this.globalService.openSnackBar('Preencha todos os campos', 'Ok', 'Eroo!', 'error-snackbar');
@@ -37,11 +37,9 @@ export class CreateItemComponent {
   }
 
   getCategoryName() {
-    this.isLoad = true;
     this.categoryName.getCategoryName().subscribe(data => {
       if ('error' in data) {
         this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
-        this.isLoad = false;
       } else {
         this.category_names = data.data;
         console.log('getCategoryName',this.newItem.category);

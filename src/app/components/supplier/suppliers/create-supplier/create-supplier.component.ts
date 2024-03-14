@@ -10,16 +10,16 @@ import { Supplier } from 'src/app/models/Supplier/supplier.model';
 })
 export class CreateSupplierComponent {
 
-  isLoad: boolean = false;
-
+  
   suppliers: Supplier[] = [];
   newSupplier: Supplier = {name: '', responsible: '', adress: '', contact_supplier: '', contact_responsible: '', catalog: '', active: 0}
-
+  
   constructor(private api: SupplierService, private globalService: GlobalService) {}
-
+  
+  isLoad: boolean = false;
   // função para criar fornecedor
-  insertSupplier(): void {
-    this.isLoad == true;
+  insertSupplier() {
+    this.isLoad = true;
     this.api.insertSupplier(this.newSupplier).subscribe(createSupplier => {
       if ('error' in createSupplier) {
         this.globalService.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');

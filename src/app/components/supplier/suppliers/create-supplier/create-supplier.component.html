@@ -5,6 +5,12 @@
       <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle>
     </mat-card-header>
 
+        <!-- simbolo de loadgin -->
+    <div class="loading-content" style="height: 40px;">
+      <div class="" *ngIf="isLoad">
+        <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+      </div>
+    </div>
     <!-- formulario de envio de dados para o cadastro de usuario -->
     <form class="form" (keyup.enter)="insertSupplier()">
       <mat-form-field class="example-full-width">
