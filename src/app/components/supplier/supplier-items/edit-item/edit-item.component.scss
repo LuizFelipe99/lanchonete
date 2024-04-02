@@ -29,4 +29,18 @@
     align-items: center;
     justify-content: center;
   }
+  .container{
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // height: 100%;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .loading-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
   

@@ -19,7 +19,7 @@
 
           <mat-card-actions style="justify-content: end">
             <div class="example-button-row">
-              <button routerLink="../fornecedores/criar" style="margin-right: 1rem" mat-raised-button class="button-warning">
+              <button (click)="clearInputs()" style="margin-right: 1rem" mat-raised-button class="button-warning">
                 Limpar Filtros
               </button>
               <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->

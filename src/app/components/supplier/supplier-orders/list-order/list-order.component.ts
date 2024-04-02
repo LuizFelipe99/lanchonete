@@ -50,4 +50,10 @@ getOrders(page: number){
   }
 
 
+  clearInputs(){
+    this.filterOrder.supplier = "";
+    this.filterOrder.responsible = "";
+    this.filterOrder.id_order_supplier = 0;
+  }
+
 }

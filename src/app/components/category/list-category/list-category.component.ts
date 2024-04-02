@@ -41,4 +41,8 @@ export class ListCategoryComponent {
     })
   }
 
+  clearInputs(){
+    this.filterCategory.name = "";
+    this.filterCategory.description = "";
+  }
 }

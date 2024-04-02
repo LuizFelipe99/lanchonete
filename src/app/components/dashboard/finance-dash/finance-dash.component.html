@@ -1,0 +1,113 @@
+<div class="container" style="margin-bottom: 1rem;">
+
+  <!-- card responsavel por exibir a soma do valor que entorou no mes atual -->
+  <mat-card class="card-total">
+    <div class="card-body">
+      <div class="arrow-up material-symbols-outlined">
+        <mat-icon style="font-size: 50px; width: auto; height: auto;">arrow_upward</mat-icon>
+      </div>
+      <div class="description">
+        <p><b> R$ {{total_current_month | number: '1.2-2'}} </b></p>
+        <span class="span">Total bruto do mês atual</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="see_detail">
+        Ver detalhes
+      </div>
+      <div class="action">
+        <mat-icon style="color: #2B957A;">chevron_right</mat-icon>
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- card responsavel por exibir a soma do valor que entorou no mes atual -->
+  <mat-card class="card-total" style="background-color: #FF902B;">
+    <div class="card-body">
+      <div class="arrow-up material-symbols-outlined">
+        <mat-icon style="font-size: 50px; width: auto; height: auto;">list_alt</mat-icon>
+      </div>
+      <div class="description">
+        <p><b> {{total_order_snack}} </b></p>
+        <span class="span">Pedidos de clientes</span>
+      </div>
+    </div>
+    <div class="card-footer" style="background-color: #F77600;">
+      <div class="see_detail">
+        Ver detalhes
+      </div>
+      <div class="action">
+        <mat-icon style="color: #FF902B;">chevron_right</mat-icon>
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- card responsavel por exibir a soma do valor que entorou no mes atual -->
+  <mat-card class="card-total" style="background-color: #27C24C;">
+    <div class="card-body">
+      <div class="arrow-up material-symbols-outlined">
+        <mat-icon style="font-size: 50px; width: auto; height: auto;">list_alt</mat-icon>
+      </div>
+      <div class="description">
+        <p><b> {{total_order_supplier}} </b></p>
+        <span class="span">Pedidos de fornecedor</span>
+      </div>
+    </div>
+    <div class="card-footer" style="background-color: #1E983B;">
+      <div class="see_detail">
+        Ver detalhes
+      </div>
+      <div class="action">
+        <mat-icon style="color: #27C24C;">chevron_right</mat-icon>
+      </div>
+    </div>
+  </mat-card>
+
+</div>
+
+<mat-card class="filter-card">
+  <div class="card-head">
+    <mat-icon>filter_alt</mat-icon>
+    Filtros
+  </div>
+  <div>
+    <form class="form-filter">
+
+      <!-- input de data reference a data para filtrar -->
+      <mat-form-field class="example-form-field">
+        <mat-label>Data de inicio</mat-label>
+        <input matInput [matDatepicker]="picker_dt_begin" name="dt_begin">
+        <mat-datepicker-toggle matIconSuffix [for]="picker_dt_begin"></mat-datepicker-toggle>
+        <mat-datepicker #picker_dt_begin>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancelar</button>
+            <button mat-raised-button class="button-apply" matDatepickerApply>Aplicar</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+      <!-- input de data reference a data para filtrar -->
+      <mat-form-field class="example-form-field">
+        <mat-label>Data de inicio</mat-label>
+        <input matInput [matDatepicker]="picker_dt_end" name="dt_expired">
+        <mat-datepicker-toggle matIconSuffix [for]="picker_dt_end"></mat-datepicker-toggle>
+        <mat-datepicker #picker_dt_end>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancelar</button>
+            <button mat-raised-button class="button-apply" matDatepickerApply>Aplicar</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <!-- botao que realiza filtro por data -->
+      <button  mat-raised-button class="button-success">Filtrar <mat-icon>filter_alt</mat-icon></button>
+    </form>
+    <span class="span">Filtre entre duas datas serem exibidas no gráfico</span>
+  </div>
+</mat-card>
+
+<h1>Gráfico</h1>
+<div class="content-chart">
+  <p>Gráfico referente quantidade de item por categoria</p>
+  <canvas id="financeChart"> {{chart}} </canvas>
+</div>
+<!-- <mat-icon style="margin-right: 5px;">list_alt</mat-icon> -->

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
+import { Category, CategoryFilter } from 'src/app/models/Category/category.models';
 import { Item, ItemFilter } from 'src/app/models/Item-Supplier/item.models';
+import { CategoryService } from 'src/app/services/category.service';
 import { ItemSupplierService } from 'src/app/services/item-supplier.service';
 
 @Component({
@@ -18,7 +20,7 @@ export class ListItemComponent {
 
 
 
-  constructor(private api: ItemSupplierService, public globalService: GlobalService){}
+  constructor(private api: ItemSupplierService, public globalService: GlobalService, private category: CategoryService){}
 
   items: Item[];
   filterItem: ItemFilter = {name: '', description: '', category: '', current_stock: 0, per_page: 15};
@@ -35,6 +37,7 @@ export class ListItemComponent {
   ngOnInit(): void{
     this.getItems(this.page);
     this.setAddItem();
+    this.getCategories(1);
   }
 
 //  função responsoavel por controlar a visibilidade o botao de adicionar item ao pedido
@@ -62,6 +65,28 @@ export class ListItemComponent {
         this.isLoad =  false;
       }
     });
+  }
+
+  clearInputs(){
+    this.filterItem.name = "";
+    this.filterItem.description = "";
+    this.filterItem.category = "";
+  }
+
+
+  categories: Category[];
+  filterCategory: CategoryFilter = {name: '', description: '', per_page: 100}
+  // pegando as categorias
+  getCategories(page: number) {
+    this.isLoad = true;
+    this.category.getCategories(this.filterCategory, page).subscribe(data => {
+      if ('error' in data) {
+        this.globalService.openSnackBar('Não foi encontrado categorias', 'Ok', 'Erro!', 'error-snackbar');
+        this.isLoad = false;
+      } else {
+        this.categories = data.data;
+      }
+    })
   }
 
 }

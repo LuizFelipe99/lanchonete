@@ -41,4 +41,9 @@ export class ListSupplierComponent {
       }       
     );
   }
+
+  clearInputs(){
+    this.filterSupplier.name = "";
+    this.filterSupplier.responsible = "";
+  }
 }

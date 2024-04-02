@@ -20,16 +20,18 @@
           <mat-form-field>
             <mat-label>Tipo de produto</mat-label>
             <mat-select name="category" [(ngModel)]="filterItem.category">
-              <mat-option [value]="1">Bebidas</mat-option>
+              <mat-option *ngFor="let item of categories" [value]="item.id_category"> {{item.name}} </mat-option>
+
+              <!-- <mat-option [value]="1">Bebidas</mat-option>
               <mat-option [value]="2">Pão</mat-option>
               <mat-option [value]="3">Carne</mat-option>
-              <mat-option [value]="4">Geral</mat-option>
+              <mat-option [value]="4">Geral</mat-option> -->
             </mat-select>
           </mat-form-field>
 
           <mat-card-actions style="justify-content: end">
             <div class="example-button-row">
-              <button style="margin-right: 1rem" mat-raised-button class="button-warning">
+              <button style="margin-right: 1rem" mat-raised-button class="button-warning" (click)="clearInputs()">
                 Limpar Filtros
               </button>
               <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->

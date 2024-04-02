@@ -47,4 +47,9 @@ export class ListUserComponent {
     });
   }
 
+  clearInputs(){
+    this.filterUser.name = "";
+    this.filterUser.login = "";
+    this.filterUser.active = 3;
+  }
 }
