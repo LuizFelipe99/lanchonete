@@ -2,7 +2,7 @@ import { ObserversModule } from '@angular/cdk/observers';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { financeDashModel } from 'src/app/models/Dashboard/finance.model';
+import { financeDashModel, financeDetailDashModel } from 'src/app/models/Dashboard/finance.model';
 import { ItemsCategoryDashboard } from 'src/app/models/Dashboard/items-category.model';
 import { OrderSupplierStatus } from 'src/app/models/Dashboard/oder-supplier-status.model';
 import { UserStatsDashboard } from 'src/app/models/Dashboard/users-status.model';
@@ -67,5 +67,16 @@ export class DashBoard {
     });
     const endPoint = `${this.apiUrl}/dashboard/finance/total_month/`;
     return this.http.post<financeDashModel>(endPoint, '', {headers});
+  }
+
+  public getFinanceDetailDash(): Observable<financeDetailDashModel>{
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    const endPoint = `${this.apiUrl}/dashboard/finance/total_month_detail/`;
+    return this.http.post<financeDetailDashModel>(endPoint, '', {headers});
   }
 }

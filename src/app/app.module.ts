@@ -66,6 +66,7 @@ import { CreateSnackOrderComponent } from './components/snack/snack-orders/creat
 import { FinishOrderComponent } from './components/supplier/supplier-orders/finish-order/finish-order.component';
 import { FinishSnackOrderComponent } from './components/snack/snack-orders/finish-snack-order/finish-snack-order.component';
 import { FinanceDashComponent } from './components/dashboard/finance-dash/finance-dash.component';
+import { FinanceDashDetailComponent } from './components/dashboard/finance-dash-detail/finance-dash-detail.component';
 
 
 @NgModule({
@@ -104,6 +105,7 @@ import { FinanceDashComponent } from './components/dashboard/finance-dash/financ
     FinishOrderComponent,
     FinishSnackOrderComponent,
     FinanceDashComponent,
+    FinanceDashDetailComponent,
     
   ],
   imports: [

@@ -1,0 +1,63 @@
+
+<button class="btn-goback" routerLink="../../../home">
+    <mat-icon>undo</mat-icon>
+</button>
+<div class="container" style="margin-bottom: 1rem;">
+    <mat-card class="card-total">
+        <div class="card-body">
+            <div class="arrow-up material-symbols-outlined">
+                <mat-icon style="font-size: 50px; width: auto; height: auto;">attach_money</mat-icon>
+            </div>
+            <div class="description">
+                <p><b> {{total_pix['total_pix']}} </b></p>
+                <span class="span">PIX</span>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="see_detail">
+                04/04/2024
+            </div>
+        </div>
+    </mat-card>
+
+    <!-- total cash -->
+    <mat-card class="card-total" style="background-color: #FF902B;">
+        <div class="card-body">
+            <div class="arrow-up material-symbols-outlined">
+                <mat-icon style="font-size: 50px; width: auto; height: auto;">payments</mat-icon>
+            </div>
+            <div class="description">
+                <p><b> {{total_cash['total_cash']}} </b></p>
+                <span class="span">Dinheiro</span>
+            </div>
+        </div>
+        <div class="card-footer" style="background-color: #F77600;">
+            <div class="see_detail">
+                04/04/2024
+            </div>
+        </div>
+    </mat-card>
+
+    <!-- total card -->
+    <mat-card class="card-total" style="background-color: #27C24C;">
+        <div class="card-body">
+            <div class="arrow-up material-symbols-outlined">
+                <mat-icon style="font-size: 50px; width: auto; height: auto;">credit_card</mat-icon>
+            </div>
+            <div class="description">
+                <p><b>  {{total_card['total_card']}}  </b></p>
+                <span class="span">Cartão</span>
+            </div>
+        </div>
+        <div class="card-footer" style="background-color: #1E983B;">
+            <div class="see_detail">
+                04/04/2024
+            </div>
+        </div>
+    </mat-card>
+</div>
+<h1>Gráfico</h1>
+<div class="content-chart">
+  <p>Gráfico referente quantidade de item por categoria</p>
+  <canvas id="financeChartDetail"> {{chart}} </canvas>
+</div>

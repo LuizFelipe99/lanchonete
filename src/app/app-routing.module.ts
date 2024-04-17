@@ -22,6 +22,8 @@ import { ListSnackComponent } from './components/snack/snacks/list-snack/list-sn
 import { ListSnackOrderComponent } from './components/snack/snack-orders/list-snack-order/list-snack-order.component';
 import { CreateSnackOrderComponent } from './components/snack/snack-orders/create-snack-order/create-snack-order.component';
 
+import { FinanceDashDetailComponent } from './components/dashboard/finance-dash-detail/finance-dash-detail.component';
+
 
 
 
@@ -43,6 +45,7 @@ const routes: Routes = [
   { path: 'lanches/listar', component: ListSnackComponent,  canActivate: [AuthGuard] },
   { path: 'lanches/pedidos/listar', component: ListSnackOrderComponent,  canActivate: [AuthGuard] },
   { path: 'lanches/pedidos/criar', component: CreateSnackOrderComponent,  canActivate: [AuthGuard] },
+  { path: 'dashboard/financias/detalhes', component: FinanceDashDetailComponent,  canActivate: [AuthGuard] },
 ];
 
 @NgModule({
