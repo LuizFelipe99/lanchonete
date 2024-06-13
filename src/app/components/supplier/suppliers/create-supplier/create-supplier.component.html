@@ -1,0 +1,54 @@
+<div class="container">
+  <mat-card class="card-login">
+    <mat-card-header>
+      <mat-card-title style="color: black !important;">Cadastrar fornecedor</mat-card-title>
+      <mat-card-subtitle>Lanchonete</mat-card-subtitle>
+    </mat-card-header>
+
+        <!-- simbolo de loadgin -->
+    <div class="loading-content" style="height: 40px;">
+      <div class="" *ngIf="isLoad">
+        <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+      </div>
+    </div>
+    <!-- formulario de envio de dados para o cadastro de usuario -->
+    <form class="form" (keyup.enter)="insertSupplier()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome do fornecedor" name="name" [(ngModel)]="newSupplier.name" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Responsável</mat-label>
+        <input matInput placeholder="Responsável" name="responsible" [(ngModel)]="newSupplier.responsible" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Endereço</mat-label>
+        <input matInput placeholder="Endereço" name="adress" [(ngModel)]="newSupplier.adress" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Contato da empresa</mat-label>
+        <input matInput placeholder="Contato da empresa" name="contact_supplier" [(ngModel)]="newSupplier.contact_supplier" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Contato do responsável</mat-label>
+        <input matInput placeholder="Contato do responsável" name="contact_responsible" [(ngModel)]="newSupplier.contact_responsible" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Catalogo de produto</mat-label>
+        <input matInput placeholder="Catálogo de produto" name="catalog" [(ngModel)]="newSupplier.catalog" />
+      </mat-form-field>
+    </form>
+
+    <mat-card-actions style="justify-content: end">
+      <div class="example-button-row">
+        <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
+        <button mat-raised-button class="button-success" (click)="insertSupplier()"> Salvar </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

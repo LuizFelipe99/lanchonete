@@ -1,0 +1,103 @@
+<div class="container">
+  <mat-card>
+    <form class="form">
+      <div>
+        <div class="form-filter">
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Nome</mat-label>
+              <input matInput placeholder="Nome" name="name" [(ngModel)]="filterItem.name" />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Descrição</mat-label>
+              <input matInput placeholder="Descrição" name="description" [(ngModel)]="filterItem.description" />
+            </mat-form-field>
+          </div>
+
+          <mat-form-field>
+            <mat-label>Tipo de produto</mat-label>
+            <mat-select name="category" [(ngModel)]="filterItem.category">
+              <mat-option *ngFor="let item of categories" [value]="item.id_category"> {{item.name}} </mat-option>
+
+              <!-- <mat-option [value]="1">Bebidas</mat-option>
+              <mat-option [value]="2">Pão</mat-option>
+              <mat-option [value]="3">Carne</mat-option>
+              <mat-option [value]="4">Geral</mat-option> -->
+            </mat-select>
+          </mat-form-field>
+
+          <mat-card-actions style="justify-content: end">
+            <div class="example-button-row">
+              <button style="margin-right: 1rem" mat-raised-button class="button-warning" (click)="clearInputs()">
+                Limpar Filtros
+              </button>
+              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
+              <button mat-raised-button class="button-success" (click)="getItems(1)">
+                Buscar
+              </button>
+            </div>
+          </mat-card-actions>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <!-- simbolo de loadgin -->
+  <div class="loading-content" style="height: 40px;">
+    <div class="" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
+  </div>
+
+  <table class="responsive-table" id="customers">
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Categoria</th>
+      <th>Em estoque</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let item of items">
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.current_stock }}</td>
+      <td class="options-table" >
+        <mat-icon *ngIf="!addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Editar Item', 'edit-item', item.id_item || '', '50%' )" >edit</mat-icon>
+        <mat-icon *ngIf="addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Confirmar item', 'confirm-item', item.id_item || '', '50%' )" >add_circle</mat-icon>
+      </td>
+    </tr>
+  </table>
+  <!-- INICIO paginação  -->
+  <div class="form">
+    <div class="form-filter">
+      <div class="pagination">
+        <div>
+          <span
+            >Total: <b> {{ totalItems }} </b>
+          </span>
+          <span
+            >Paginas: <b> {{ totalPages }} </b>
+          </span>
+        </div>
+        <!-- botoes de paginação -->
+        <div class="buttons">
+          <!-- seta de anterior -->
+          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getItems(this.currentPage - 1)">
+            <
+          </button>
+          <!-- pagina atual da pagina current_page -->
+          {{ currentPage }}
+          <!-- seta de proximo -->
+          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getItems(this.currentPage + 1)">
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- FIM DA PAGINAÇÃO -->
+</div>

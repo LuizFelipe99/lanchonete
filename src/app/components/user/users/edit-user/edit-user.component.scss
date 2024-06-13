@@ -1,0 +1,31 @@
+
+.card-login{
+  width: 100%;
+  // background-color: var(--second-color);
+  color: #ffff;
+  padding: 1rem;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  // background-color: var(--primary-color)
+}
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.example-full-width{
+ margin-right: 20px;
+}
+
+.loading-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

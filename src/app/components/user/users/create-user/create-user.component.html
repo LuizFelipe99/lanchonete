@@ -1,0 +1,51 @@
+<div class="container">
+  <mat-card class="card-login">
+    <mat-card-header>
+      <mat-card-title>Criar Usuário</mat-card-title>
+      <!-- <mat-card-subtitle >Lanchonete</mat-card-subtitle> -->
+    </mat-card-header>
+  <!-- simbolo de loadgin -->
+  <div class="loading-content" style="height: 40px;">
+    <div class="" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
+  </div>
+    <!-- formulario de envio de dados para o cadastro de usuario -->
+    <form class="form" (keyup.enter)="insertUser()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome do usuário" name="name" [(ngModel)]="newUser.name" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Login</mat-label>
+        <input matInput placeholder="Login" name="login" [(ngModel)]="newUser.login" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Senha</mat-label>
+        <input matInput placeholder="***" type="password" name="password" [(ngModel)]="newUser.password" required/>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Contato</mat-label>
+        <input matInput placeholder="(33)9 9928-8313" name="contact" [(ngModel)]="newUser.contact" required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nível</mat-label>
+        <mat-select name="usergroup" [(ngModel)]="newUser.usergroup" required>
+          <mat-option [value]="1">Administrador</mat-option>
+          <mat-option [value]="2">Caixa</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+    <mat-card-actions style="justify-content: end">
+      <div class="example-button-row">
+        <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
+        <button mat-raised-button class="button-success" (click)="insertUser()" > Salvar </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

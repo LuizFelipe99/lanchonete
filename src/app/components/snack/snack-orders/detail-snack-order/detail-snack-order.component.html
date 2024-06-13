@@ -1,0 +1,55 @@
+<div class="container">
+  <mat-card class="cabecalho form" style="margin-right: 1rem; width: 70%;" *ngIf="addItem">
+    Lanches
+    <div class="lanches-container">
+      <!-- primeiro parametro da função é o id do item -->
+      <!-- (id_item: string, price_unit: number, quantity: number, total: number){ -->
+      <mat-card class="lanche" *ngFor="let item of items" (click)="insertItemInOrder(item.id_item || '', item.sale_price || '', '1', item.sale_price || '');" >
+        <img src="{{item.url_img}}" alt="">
+        <span> {{item.name}} </span>
+        <span>R$  {{item.sale_price}} </span>
+      </mat-card>
+    </div>
+    <!-- simbolo de loadgin -->
+    <div class="load" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
+  </mat-card>
+
+  <!-- lado responsavel por exibir os itens do pedido -->
+  <mat-card class="cabecalho form" [ngClass]="{'detail-true': addItem, 'detail-false': !addItem}">
+    Detalhes
+    <div class="detalhe" >
+      <table class="responsive-table" id="customers">
+        <tr>
+          <th>Item</th>
+          <th>Subtotal</th>
+          <th>Quantidade</th>
+          <th>Remover</th>
+        </tr>
+        <tr *ngFor="let item of detailOder">
+          <td> {{item.name}} </td>
+          <td> R$ {{item.total}} </td>
+          <td> {{item.total_quantity}} </td>
+          <td >
+            <mat-icon *ngIf="addItem" style="cursor: pointer;" (click)="removeItemFromOrder(item.id_order_snack_items)" >
+              delete
+            </mat-icon>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- simbolo de loadgin -->
+    <div class="load" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
+    <span><b>Cliente</b> {{client}} </span>
+    <span><b>Atendimento</b> {{service_type}} </span>
+    <span><b>Pagamento</b> {{payment_type}} </span>
+    <span><b>Total</b> R${{total | number: '1.2-2'}}</span>
+    <span><b>Status: </b> {{status}}</span>
+    <button *ngIf="addItem" mat-raised-button class="button-success" style="width: 40%; cursor: pointer;"
+    (click)="globalService.openDialog('Detalhes do pedido', 'finish-snack-order', this.pedido, '75%')" >Finalizar <mat-icon>check_small</mat-icon></button>
+     
+  </mat-card>
+</div>

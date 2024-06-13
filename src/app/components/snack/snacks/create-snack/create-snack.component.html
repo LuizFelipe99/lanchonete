@@ -1,0 +1,34 @@
+<div class="container">
+  <mat-card class="card-login">
+    <mat-card-header>
+      <mat-card-title>Cadastrar lanche</mat-card-title>
+      <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle>
+    </mat-card-header>
+
+    <!-- formulario de envio de dados para o cadastro de usuario -->
+    <form class="form" (keyup.enter)="insertSnack()">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome do lanche" name="name" [(ngModel)]="newSnack.name" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Descrição</mat-label>
+        <input matInput placeholder="Descrição" name="description" [(ngModel)]="newSnack.description" required />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Preço</mat-label>
+        <input matInput placeholder="Preço" name="price" [(ngModel)]="newSnack.price" required />
+      </mat-form-field>
+
+    </form>
+
+    <mat-card-actions style="justify-content: end">
+      <div class="example-button-row">
+        <button mat-raised-button class="button-success" (click)="insertSnack()"> Salvar </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

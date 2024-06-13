@@ -1,0 +1,64 @@
+<div class="container">
+    <mat-card class="cabecalho form">
+      <div class="fornecedor">
+        <b>Cliente: </b> {{client}}
+      </div>
+      <div class="pedido">
+        <b>Pedido:</b> {{ pedido }}
+      </div>
+      <div class="total">
+        <b>Total:</b> R${{total}}
+      </div>
+      <div class="vencimento">
+        <b>Status: </b> <span class=""> {{ status }} </span>
+      </div>
+      <!-- botao para adicionar mais itens, vai ser feito um if de acordo com a data -->
+      <div class="action" *ngIf="addItem">
+        <button  (click)="globalService.openDialog('Selecione o item', 'list-item', '1', '80%')" mat-raised-button class="button-success" style="width: 20%;">Mais Itens <mat-icon>search</mat-icon></button>
+      </div>
+    </mat-card>
+  <!-- simbolo de loadgin -->
+  <div class="loading-content" style="height: 40px;">
+    <div class="" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
+  </div>
+    <table class="responsive-table" id="customers">
+      <tr>
+        <th>Item</th>
+        <th>Preço por unidade</th>
+        <th>Quantidade</th>
+        <th>Subtotal</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let detail of detailOder">
+        <td> {{detail.name}} </td>
+        <td> {{detail.price_unit}} </td>
+        <td> {{detail.quantity}} </td>
+        <td> {{detail.total}} </td>
+        <!-- botao de remover o item do pediodo segue a mesma logica de adicionar, só poderá fazer isso se a data de vencimento for menor do que a de hoje -->
+      </tr>
+    </table>
+    <!-- INICIO paginação  -->
+    <div class="form" style="width: 100%; max-width: 100%;">
+      <div class="form-filter">
+        <div class="pagination">
+          <div>
+            <span>Total: <b> {{totalOrders}} </b> </span>
+            <span>Paginas: <b> {{totalPages}} </b> </span>
+          </div>
+          <!-- botoes de paginação -->
+          <div class="buttons">
+          <!-- seta de anterior -->
+            <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getDetailOrder(this.currentPage - pagination)"> < </button>
+            <!-- pagina atual da pagina current_page -->
+            {{currentPage}}
+            <!-- seta de proximo -->
+            <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getDetailOrder(this.currentPage + pagination)"> > </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIM DA PAGINAÇÃO -->
+  </div>
+  

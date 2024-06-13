@@ -1,0 +1,131 @@
+::ng-deep .mat-mdc-progress-spinner circle{
+  stroke: var(--menu-second)
+}
+::ng-deep .mdc-dialog__container{
+  height: 95vh;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+
+  // background-color: var(--primary-color)
+}
+
+.cabecalho{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  font-size: 18px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+img{
+width: 100%;
+}
+.lanches-container{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y:scroll;
+  max-height: 90vh;
+}
+.lanche{
+  width: 15%;
+  text-align: center;
+  transition: 0.6s;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+.lanche:hover{
+  cursor: pointer;
+  scale: 1.01;
+  box-shadow: 0px 1px 10px black;
+}
+.detalhe{
+  overflow-y: scroll;
+  max-height: 60vh;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: orange;
+  border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--menu-primary);
+  border-radius: 20px;
+  border: 3px solid orange;
+}
+
+
+
+// lado direito
+
+
+.responsive-table {
+  width: 100%
+  // height: 80vh;
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  font-size: 18px;
+  text-align: left;
+  // line-height: 18px;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers th {
+  text-align: center;
+}
+
+#customers tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+#customers tr:hover {
+  background: var(--menu-primary);
+  color: white;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: var(--menu-primary);
+  color: white;
+}
+
+
+.load{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-true{
+  width: 35%; height: 95vh;
+}
+
+.detail-false{
+  width: 100%; height: 40vh;
+}
