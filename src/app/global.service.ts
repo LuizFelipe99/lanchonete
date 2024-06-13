@@ -49,7 +49,7 @@ export class GlobalService {
       panelClass: style,
     });
     
-  }
+  } 
 
 
 
