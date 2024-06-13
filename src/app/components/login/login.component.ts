@@ -18,18 +18,28 @@ export class LoginComponent {
 
   // controla a visualização da senha no form
   hide = true;
+<<<<<<< HEAD
   hidPassword(){
     console.log(this.hide);
     this.hide = !this.hide;
   }
   isLoad = false;
+=======
+hidPassword(){
+  console.log(this.hide);
+  this.hide = !this.hide;
+}
+>>>>>>> 2dd795801cd24ebaaba6d2c6d41759a7c83126d8
 
 
   constructor(private _snackBar: MatSnackBar, private authService: AuthService, private router: Router, private globalService: GlobalService) {}
 
 
   login() {
+<<<<<<< HEAD
     this.isLoad = true;
+=======
+>>>>>>> 2dd795801cd24ebaaba6d2c6d41759a7c83126d8
     const { login, password } = this.formData; // Use 'login' ao invés de 'login' para corresponder ao objeto esperado pelo backend.
     this.authService
       .login(login, password)
@@ -44,9 +54,14 @@ export class LoginComponent {
           this.router.navigate(['/home']); // Redirecionar para a página inicial (home) após o login bem-sucedido
           this.globalService.openSnackBar('Usuário logado com sucess.', 'Ok',  'Sucesso!', 'success-snackbar');
           // this.openSnackBar('Usuário logado com sucess.', 'Ok',  'Sucesso!', 'success-snackbar');
+<<<<<<< HEAD
           this.isLoad = false;
         } else {
           this.isLoad = false;
+=======
+        } else {
+          // this.isLoad = false;
+>>>>>>> 2dd795801cd24ebaaba6d2c6d41759a7c83126d8
           // this.loginError = true;
           this.globalService.openSnackBar('Erro ao se autenticar.', 'Ok',  'Erro!', 'error-snackbar');
         }
