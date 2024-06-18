@@ -7,6 +7,7 @@ export interface Item{
   sale_price?:string;
   min_stock?: number;
   url_img?: string;
+  rank?:string;
 }
 
 // interface usada para filtrar usuario
@@ -20,6 +21,7 @@ export interface ItemFilter{
   sale_price?:string;
   per_page?: number;
   url_img?:string;
+  rank?:string;
 }
 
 // interface usada para inserir item na order

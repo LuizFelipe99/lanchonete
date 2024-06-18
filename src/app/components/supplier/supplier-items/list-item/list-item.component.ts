@@ -23,7 +23,7 @@ export class ListItemComponent {
   constructor(private api: ItemSupplierService, public globalService: GlobalService, private category: CategoryService){}
 
   items: Item[];
-  filterItem: ItemFilter = {name: '', description: '', category: '', current_stock: 0, per_page: 15};
+  filterItem: ItemFilter = {name: '', description: '', category: '', current_stock: 0, per_page: 15, rank: ''};
 
   page: number =1;
   totalItems: number = 0;
