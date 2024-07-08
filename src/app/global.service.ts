@@ -59,7 +59,9 @@ export class GlobalService {
       alert("Login expirado");
       localStorage.clear(); // limpa toda localStorage
       this.router.navigate(['/login']); // Redirecionar para a página inicial (login) 
+      this.dialog.closeAll();
     }
   }
+
 
 }

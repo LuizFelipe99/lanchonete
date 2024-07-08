@@ -34,6 +34,7 @@ export class EditUserComponent {
 getUserById(){
     this.isLoad = true;
     this.api.getUserById(this.filterUser).subscribe(data => {
+      this.globalService.veryTokenExpired(data);
       if ('error' in data){
         this.globalService.openSnackBar('Não foi encontrado', 'Ok',  'Erro!', 'error-snackbar');
         this.isLoad = false;
@@ -46,8 +47,7 @@ getUserById(){
         this.newUser.contact = this.users[0].contact;
         this.newUser.usergroup = this.users[0].usergroup;
         this.isLoad = false;
-      }
-      this.globalService.veryTokenExpired(data);
+      } 
     });
   }
 
