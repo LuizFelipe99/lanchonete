@@ -48,6 +48,7 @@ export class CreateSnackOrderComponent {
       }
       // Atualizar a lista de ordens após o cadastro (opcional)
       // this.loadOrders();
+      this.globalService.veryTokenExpired(createdOrder);
     });
   }
 

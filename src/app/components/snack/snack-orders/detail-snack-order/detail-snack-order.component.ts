@@ -70,7 +70,7 @@ getDetailOrder(pagination: number) {
         // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
         this.isLoad = false;
     }
-    
+    this.globalService.veryTokenExpired(response);
     
   },
   (error: any) => {
@@ -108,6 +108,7 @@ getDetailOrder(pagination: number) {
         this.totalItems = data.items;
         this.isLoad =  false;
       }
+      this.globalService.veryTokenExpired(data);
     });
   }
 
@@ -127,6 +128,7 @@ getDetailOrder(pagination: number) {
         this.globalService.openSnackBar('Item adicionado ao pedido', 'Ok', 'Sucesso!', 'success-snackbar');
         this.getDetailOrder(1);
       }
+      this.globalService.veryTokenExpired(data);
     })
   }
 
@@ -140,6 +142,7 @@ getDetailOrder(pagination: number) {
         this.globalService.openSnackBar('Item removido do pedido', 'Ok', 'Sucesso!', 'success-snackbar');
         this.getDetailOrder(1);
       }
+      this.globalService.veryTokenExpired(data);
     })
   }
 }

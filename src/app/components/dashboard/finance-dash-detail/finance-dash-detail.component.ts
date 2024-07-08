@@ -31,6 +31,7 @@ export class FinanceDashDetailComponent {
         this.total_cash = data.total_cash[0];
         this.total_card= data.total_card[0];
         this.drawChart();
+        this.globalService.veryTokenExpired(data);
       });
     }
 

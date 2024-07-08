@@ -36,6 +36,7 @@ export class FinanceDashComponent {
           this.total_order_supplier = data.order_supplier[0]['total'];
           this.total_order_snack = data.order_snack[0]['total'];
         }
+        this.globalService.veryTokenExpired(data);
       });
     }
   

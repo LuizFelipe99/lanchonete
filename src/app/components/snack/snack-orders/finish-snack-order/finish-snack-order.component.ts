@@ -69,7 +69,7 @@ isDecrease = false;
           // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
           this.isLoad = false;
       }
-      
+      this.globalService.veryTokenExpired(response);
       
     },
     (error: any) => {
@@ -113,6 +113,7 @@ isDecrease = false;
           this.isLoad = false;
           this.getDetailOrder(1);
         }
+        this.globalService.veryTokenExpired(response);
         // Atualizar a lista de ordens após o cadastro (opcional)
         // this.loadOrders();
       });

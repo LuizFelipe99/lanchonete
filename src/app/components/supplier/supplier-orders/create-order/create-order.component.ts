@@ -65,18 +65,21 @@ export class CreateOrderComponent {
       }
       // Atualizar a lista de ordens após o cadastro (opcional)
       // this.loadOrders();
+      this.globalService.veryTokenExpired(createdOrder);
     });
   }
 
   getSupplierNames(): void{
     this.supplier.getSuppliers(this.filterSupplier).subscribe(data => {
       this.suppliers = data.data;
+      this.globalService.veryTokenExpired(data);
     });
   }
 
   getItemNames(): void {
     this.item.getItems(this.filterItem).subscribe(data => {
       this.items = data.data;
+      this.globalService.veryTokenExpired(data);
     })
   }
 }

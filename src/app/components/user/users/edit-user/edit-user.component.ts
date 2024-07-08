@@ -47,6 +47,7 @@ getUserById(){
         this.newUser.usergroup = this.users[0].usergroup;
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(data);
     });
   }
 
@@ -63,6 +64,7 @@ getUserById(){
         this.globalService.openSnackBar('Alterado com sucesso', 'Ok',  'Sucesso!', 'success-snackbar');
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(createUser);
     },
     );
   }

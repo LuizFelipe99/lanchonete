@@ -42,6 +42,7 @@ export class EditItemComponent {
         this.category_names = data.data;
         console.log('getCategoryName',this.newItem.category);
         }
+        this.globalService.veryTokenExpired(data);
       }
     );
   }
@@ -62,6 +63,7 @@ export class EditItemComponent {
         console.log('new item name ', this.newItem.category);
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(data);
     })
   }
 
@@ -76,6 +78,7 @@ export class EditItemComponent {
         this.globalService.openSnackBar('Registro alterado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(createItem);
     })
 
   }

@@ -38,6 +38,7 @@ export class ListSupplierComponent {
           this.currentPage = data.current_page;
           this.isLoad = false;            
         }
+        this.globalService.veryTokenExpired(data);
       }       
     );
   }

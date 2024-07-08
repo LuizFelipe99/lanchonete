@@ -46,6 +46,7 @@ export class ConfirmItemComponent {
         this.newItem.id_item = this.items[0].id_item;
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(data);
     })
   }
 
@@ -58,6 +59,7 @@ export class ConfirmItemComponent {
       }else{
         this.globalService.openSnackBar('Item adicionado com sucesso', 'OK', 'Sucesso!', 'success-snackbar');
       }
+      this.globalService.veryTokenExpired(data);
     })
   }
 

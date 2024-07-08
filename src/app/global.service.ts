@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { DialogFormDetailsComponent } from './components/shared/dialog-form-details/dialog-form-details.component';
 import { SnackbarComponent } from './components/shared/alert/snackbar.component';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class GlobalService {
   constructor(
     public dialog: MatDialog, 
     private _snackBar: MatSnackBar,
+    public router: Router
     // private dialogRef: MatDialogRef<DialogFormDetailsComponent>
     
   ) { }
@@ -51,6 +53,12 @@ export class GlobalService {
     
   } 
 
-
+ veryTokenExpired(data:any){
+    if (data.token_expired){
+      alert("Login expirado");
+      localStorage.clear(); // limpa toda localStorage
+      this.router.navigate(['/login']); // Redirecionar para a página inicial (login) 
+    }
+  }
 
 }

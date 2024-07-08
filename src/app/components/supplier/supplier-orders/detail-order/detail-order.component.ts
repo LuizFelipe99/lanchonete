@@ -66,6 +66,7 @@ removeItemOrder(id_order_supplier_items: string){
       this.getDetailOrder(1);
       this.isLoad = false;
     }
+    this.globalService.veryTokenExpired(data);
   });
 }
 
@@ -95,6 +96,7 @@ removeItemOrder(id_order_supplier_items: string){
     // chamando função para formatar data atual e chamando função para verificar se data atual é igual a this.dt_expired
     
     this.verifyExpiredOrder();
+    this.globalService.veryTokenExpired(response);
   },
   (error: any) => {
     this.isLoad = false;

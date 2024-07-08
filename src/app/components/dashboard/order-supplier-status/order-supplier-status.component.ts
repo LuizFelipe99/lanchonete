@@ -37,6 +37,7 @@ getOrderStatus(){
       };
       // Chame a função drawChart() após receber os dados
       this.drawChart();
+      this.globalService.veryTokenExpired(data);
     });
   }
 

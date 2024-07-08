@@ -44,6 +44,7 @@ export class ListUserComponent {
         this.totalUsers = data.users;
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(data);
     });
   }
 

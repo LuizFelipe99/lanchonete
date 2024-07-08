@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { GlobalService } from 'src/app/global.service';
 import { OrderSnack, OrderSnackFilter } from 'src/app/models/Snack-Order/snack-order.models';
 import { OrderSnackService } from 'src/app/services/order-snack.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-snack-order',
@@ -11,7 +12,7 @@ import { OrderSnackService } from 'src/app/services/order-snack.service';
 })
 
 export class ListSnackOrderComponent {
-  constructor(private api: OrderSnackService, private _snackBar: MatSnackBar, public globalService: GlobalService) {}
+  constructor(private api: OrderSnackService, private _snackBar: MatSnackBar, public globalService: GlobalService,  private router: Router) {}
 
   ngOnInit(): void {
     this.getOrders(this.page);
@@ -43,6 +44,8 @@ getOrders(page: number){
         this.totalOrders = data.orders_snack;
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(data);
+
     });
   }
 }

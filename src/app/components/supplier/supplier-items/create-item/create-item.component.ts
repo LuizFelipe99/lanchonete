@@ -33,6 +33,7 @@ export class CreateItemComponent {
         this.globalService.openSnackBar('Registro criado com, sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(CreateItem);
     })
   }
 
@@ -44,7 +45,9 @@ export class CreateItemComponent {
         this.category_names = data.data;
         console.log('getCategoryName',this.newItem.category);
         }
+        this.globalService.veryTokenExpired(data);
       }
+      
     );
   }
 

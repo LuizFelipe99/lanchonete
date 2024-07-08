@@ -64,6 +64,7 @@ export class ListItemComponent {
         this.totalItems = data.items;
         this.isLoad =  false;
       }
+      this.globalService.veryTokenExpired(data);
     });
   }
 
@@ -86,6 +87,7 @@ export class ListItemComponent {
       } else {
         this.categories = data.data;
       }
+      this.globalService.veryTokenExpired(data);
     })
   }
 

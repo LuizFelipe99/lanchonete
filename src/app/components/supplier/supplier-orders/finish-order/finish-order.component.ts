@@ -39,6 +39,7 @@ export class FinishOrderComponent {
       }else{
         this.users = data.data;
       }
+      this.globalService.veryTokenExpired(data);
     });
   }
 
@@ -49,6 +50,7 @@ export class FinishOrderComponent {
       }else{
         this.globalService.openSnackBar('Atualizado com sucesso', 'Ok',  'Sucesso!', 'success-snackbar');
       }
+      this.globalService.veryTokenExpired(data);
     });
   }
 
