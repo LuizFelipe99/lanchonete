@@ -72,5 +72,4 @@ getUserById(){
   cancel(): void {
     this.dialogRef.close();
   }
-
 }

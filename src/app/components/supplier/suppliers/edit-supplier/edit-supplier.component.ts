@@ -60,6 +60,7 @@ export class EditSupplierComponent {
         this.globalService.openSnackBar('Registro alterado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
         this.isLoad = false;
       }
+      //funcao que verifica token
       this.globalService.veryTokenExpired(createSupplier);
     },
     );

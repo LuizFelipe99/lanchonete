@@ -65,6 +65,7 @@ export class CreateOrderComponent {
       }
       // Atualizar a lista de ordens após o cadastro (opcional)
       // this.loadOrders();
+      //funcao que verifica token
       this.globalService.veryTokenExpired(createdOrder);
     });
   }

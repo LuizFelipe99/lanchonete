@@ -39,7 +39,9 @@ export class CreateUserComponent {
         this.globalService.openSnackBar('Registro criado com sucesso', 'Ok',  'Sucesso!', 'success-snackbar');
         this.isLoad = false;
       }
+      //funcao que verifica token
       this.globalService.veryTokenExpired(createUser);
+
     },
     );
   }

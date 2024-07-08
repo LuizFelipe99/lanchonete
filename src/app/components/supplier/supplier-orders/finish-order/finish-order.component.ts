@@ -39,6 +39,7 @@ export class FinishOrderComponent {
       }else{
         this.users = data.data;
       }
+      //funcao que verifica token
       this.globalService.veryTokenExpired(data);
     });
   }
@@ -50,6 +51,7 @@ export class FinishOrderComponent {
       }else{
         this.globalService.openSnackBar('Atualizado com sucesso', 'Ok',  'Sucesso!', 'success-snackbar');
       }
+      //funcao que verifica token
       this.globalService.veryTokenExpired(data);
     });
   }

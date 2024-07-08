@@ -46,6 +46,7 @@ getOrders(page: number){
         this.totalOrders = data.orders;
         this.isLoad = false;
       }
+      //funcao que verifica token
       this.globalService.veryTokenExpired(data);
     });
   }

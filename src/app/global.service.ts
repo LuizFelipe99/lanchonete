@@ -53,6 +53,7 @@ export class GlobalService {
     
   } 
 
+  //funcao que verifica token que vem da api
  veryTokenExpired(data:any){
     if (data.token_expired){
       alert("Login expirado");
