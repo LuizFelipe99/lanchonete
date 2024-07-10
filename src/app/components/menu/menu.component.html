@@ -5,9 +5,18 @@
     </button>
     <span>Lanchonete</span>
   </div>
-  <div class="logo_nav"  routerLink="/home">
-    <img class="logo" src="../../../assets/logo.png" alt="">
-  </div>
+  <div *ngIf="showAdminMenu">
+  <div class="logo_nav" mat-button [matMenuTriggerFor]="menu">
+      <mat-menu #menu="matMenu">
+          <button mat-menu-item 
+            *ngFor="let menu of menu_items_config"
+            routerLink={{menu.url}}> 
+            {{menu.title}} 
+          </button>
+        </mat-menu>
+        <img class="logo" src="../../../assets/logo.png" alt=""> 
+      </div>
+    </div>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">

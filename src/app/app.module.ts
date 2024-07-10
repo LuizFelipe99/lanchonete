@@ -23,6 +23,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
 import {AsyncPipe} from '@angular/common';
 
 import { LoginComponent } from './components/login/login.component';
@@ -137,6 +138,7 @@ import { FinanceDashDetailComponent } from './components/dashboard/finance-dash-
     MatExpansionModule,
     NgChartsModule,
     MatRadioModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],

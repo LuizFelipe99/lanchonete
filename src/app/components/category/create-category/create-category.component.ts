@@ -26,6 +26,7 @@ export class CreateCategoryComponent {
         this.globalService.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(createCategory);
     })
   }
 

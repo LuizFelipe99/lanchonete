@@ -38,6 +38,7 @@ export class EditCategoryComponent {
         this.newCategory.description = this.categories[0].description;
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(data);
     })
   }
 
@@ -52,6 +53,7 @@ export class EditCategoryComponent {
         this.globalService.openSnackBar('Registro alterado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
         this.isLoad = false;
       }
+      this.globalService.veryTokenExpired(createCategory);
     })
   }
 

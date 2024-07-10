@@ -25,12 +25,14 @@
           <th>Item</th>
           <th>Subtotal</th>
           <th>Quantidade</th>
+          <th>Obs.:</th>
           <th>Remover</th>
         </tr>
         <tr *ngFor="let item of detailOder">
           <td> {{item.name}} </td>
           <td> R$ {{item.total}} </td>
           <td> {{item.total_quantity}} </td>
+          <td> {{item.observation}} </td>
           <td >
             <mat-icon *ngIf="addItem" style="cursor: pointer;" (click)="removeItemFromOrder(item.id_order_snack_items)" >
               delete

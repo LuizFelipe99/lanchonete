@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -16,6 +15,12 @@ export class MenuComponent {
   get usergroup(): string {
     return localStorage.getItem('usergroup') || ''; // Obter o nome do usuário do localStorage
   }
+
+  // itens do menu para exibir
+menu_items_config = [
+  { title: "Configurações", url: "/home"},
+  { title: "Perfil", url: "/usuarios/listar"}
+]
 
   showAdminMenu: boolean = false;
   

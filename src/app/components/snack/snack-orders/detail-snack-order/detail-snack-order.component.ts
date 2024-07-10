@@ -114,6 +114,7 @@ getDetailOrder(pagination: number) {
 
   
   itemInOrder: ItemInOrderSnack = {id_order_snack: '', id_item: '', price_unit: '', quantity: '', total: ''}
+
   insertItemInOrder(id_item: string, price_unit: string, quantity: string, total: string){
     this.itemInOrder.id_item = id_item;
     this.itemInOrder.price_unit = price_unit;
@@ -133,6 +134,7 @@ getDetailOrder(pagination: number) {
   }
 
   removeItemOrder: RemoveItemInOrder = {id_order_snack_items: 0}
+  
   removeItemFromOrder(id_order_snack_items: number){
     this.removeItemOrder.id_order_snack_items = id_order_snack_items;
     this.api.removeItemFromOrder(this.removeItemOrder).subscribe(data => {
