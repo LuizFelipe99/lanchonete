@@ -1,0 +1,66 @@
+<div class="container">
+  <mat-card class="card-login">
+    <mat-card-header>
+      <mat-card-title style="color: black !important">Cadastrar fornecedor</mat-card-title>
+      <!-- <mat-card-subtitle>Lanchonete</mat-card-subtitle> -->
+    </mat-card-header>
+  <!-- simbolo de loadgin -->
+  <div class="loading-content" style="height: 40px;">
+    <div class="" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
+  </div>
+    <!-- formulario de envio de dados para o cadastro de usuario -->
+    <form class="form">
+      <mat-form-field>
+        <mat-label>Fornecedor</mat-label>
+        <mat-select name="type" [(ngModel)]="newOrder.id_supplier">
+          <mat-option  *ngFor="let name of suppliers" [value]="name.id_supplier"> {{name.name}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- input de data reference a expiração do pedido -->
+      <mat-form-field class="example-form-field">
+        <mat-label>Data de vencimento</mat-label>
+        <input matInput [matDatepicker]="datepicker" name="dt_expired" [(ngModel)]="newOrder.dt_expired" >
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancelar</button>
+            <button mat-raised-button class="button-apply" matDatepickerApply>Aplicar</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Observação</mat-label>
+        <textarea matInput placeholder="Ex. Pedido fora do padrao..."></textarea>
+      </mat-form-field>
+
+      <!-- area responsavel para referenciar pelo menos 1 item -->
+      <!-- vai ter um if para verificar se ja foi criado a order -->
+      <div *ngIf="addItem">
+        <mat-form-field class="example-full-width" style="width: 50%;">
+          <mat-label>Itens</mat-label>
+          <input matInput placeholder="Ex. Pão" disabled=""> 
+        </mat-form-field>
+        <button  (click)="globalService.openDialog('Selecione o item', 'list-item', '1', '80%')" mat-raised-button class="button-success" style="width: 50%;">Buscar <mat-icon>search</mat-icon></button>
+      </div>
+
+    </form>
+
+    <mat-card-actions style="justify-content: end">
+      <div class="example-button-row">
+        <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
+        <button mat-raised-button class="button-success"  (click)="createNewOrder()">
+          Processar
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+
+
+
+
+</div>

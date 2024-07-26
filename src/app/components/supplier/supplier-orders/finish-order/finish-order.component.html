@@ -1,0 +1,31 @@
+<div class="container">
+    <mat-card class="card-login">
+      <mat-card-header>
+        <mat-card-title style="color: #000">Finalizar pedido</mat-card-title>
+        <mat-card-subtitle style="color: #000">Lanchonete {{identity}} </mat-card-subtitle>
+      </mat-card-header>
+  
+      <!-- formulario de envio de dados para o cadastro de usuario -->
+      <form class="form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Recebido por</mat-label>
+          <mat-select name="id_user" required>
+            <mat-option *ngFor="let user of users" [value]="user.id_user" >{{user.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-radio-group aria-label="Select an option" name="status" [(ngModel)]="updateOrder.status">
+            <mat-radio-button value="1">Receber</mat-radio-button>
+            <mat-radio-button value="2">Cancelar</mat-radio-button>
+          </mat-radio-group>
+      </form>
+  
+      <mat-card-actions style="justify-content: end">
+        <div class="example-button-row">
+          <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
+          <button mat-raised-button class="button-success" (click)="finishOrder()" > Salvar </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  

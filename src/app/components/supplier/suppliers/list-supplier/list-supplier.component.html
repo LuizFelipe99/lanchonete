@@ -1,0 +1,87 @@
+<div class="container">
+  <mat-card>
+    <form class="form">
+      <div>
+        <div class="form-filter">
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Fornecedor</mat-label>
+              <input matInput placeholder="Nome" name="name" [(ngModel)]="filterSupplier.name" />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Responsável</mat-label>
+              <input matInput placeholder="Responsável" name="responsible" [(ngModel)]="filterSupplier.responsible" />
+            </mat-form-field>
+          </div>
+
+          <mat-card-actions style="justify-content: end">
+            <div class="example-button-row">
+              <button (click)="clearInputs()" style="margin-right: 1rem" mat-raised-button class="button-warning">
+                Limpar Filtros
+              </button>
+              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
+              <button mat-raised-button class="button-success" (click)="getSuppliers(1)">
+                Buscar
+              </button>
+            </div>
+          </mat-card-actions>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <!-- simbolo de loadgin -->
+  <div class="loading-content" style="height: 40px;">
+    <div class="" *ngIf="isLoad">
+      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    </div>
+  </div>
+
+  <table class="responsive-table" id="customers">
+    <tr>
+      <th>Fornecedor</th>
+      <th>Responsável</th>
+      <th>Contato</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let supplier of suppliers">
+      <td>{{ supplier.name }}</td>
+      <td>{{ supplier.responsible }}</td>
+      <td>{{ supplier.contact_responsible }}</td>
+      <td class="options-table" >
+        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Fornecedor', 'edit-supplier', supplier.id_supplier || '','50%' )" >edit</mat-icon>
+      </td>
+    </tr>
+  </table>
+  <!-- INICIO paginação  -->
+  <div class="form">
+    <div class="form-filter">
+      <div class="pagination">
+        <div>
+          <span
+            >Total: <b> {{ totalSuppliers }} </b>
+          </span>
+          <span
+            >Paginas: <b> {{ totalPages }} </b>
+          </span>
+        </div>
+        <!-- botoes de paginação -->
+        <div class="buttons">
+          <!-- seta de anterior -->
+          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getSuppliers(this.currentPage - 1)">
+            <
+          </button>
+          <!-- pagina atual da pagina current_page -->
+          {{ currentPage }}
+          <!-- seta de proximo -->
+          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getSuppliers(this.currentPage + 1)">
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

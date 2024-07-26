@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // height: 100%;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  /* Esconde o input */
+input[type='file'] {
+    display: none
+  }
+  
+  /* Aparência que terá o seletor de arquivo */
+  label {
+    background-color: #3498db;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    padding: 6px 20px;
+  }

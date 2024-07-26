@@ -1,0 +1,24 @@
+<div class="container">
+  <mat-card class="card-login">
+    <mat-card-header>
+      <mat-card-title style="color: black !important;">Baixa de item</mat-card-title>
+    </mat-card-header>
+
+    <form class="form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Item</mat-label>
+        <input matInput placeholder="Nome do Item" name="name" required />
+      </mat-form-field>
+
+      <!-- quatidade -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Quantidade</mat-label>
+        <input matInput placeholder="Quantidade" name="qte" required type="number"/>
+      </mat-form-field>
+
+      <div class="example-button-row">
+        <button mat-raised-button class="button-success"> Salvar </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,27 @@
+
+.card-login{
+  width: 30%;
+  // background-color: var(--second-color);
+  color: #ffff;
+  padding: 10px;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  // background-color: var(--primary-color)
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  padding: 10px
+}
+.loading-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+::ng-deep .mat-mdc-progress-spinner circle{
+  stroke: var(--menu-second)
+}

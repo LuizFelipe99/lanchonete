@@ -1,0 +1,100 @@
+:root{
+    --borda-redonda: 10px;
+    --footer-bg: #2B957A; 
+    --card-bg: #37BC9B;
+  
+  }
+  .container{
+    display: flex;
+    justify-content: space-evenly;
+  }
+.card-total{
+    background-color: #37BC9B;
+    color: #fff;
+    width: 25%;
+    height: 150px;
+    padding-top: 10px;
+    font-size: 20px;
+    box-shadow: 0px 0px 5px black;
+    border-radius: var(borda-redonda);
+}
+.card-body{
+    height: 70%;
+    text-align: right;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.card-footer{
+    height: 30%;
+    background-color: #2B957A;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-bottom-left-radius:  var(borda-redonda);
+    border-bottom-right-radius: var(borda-redonda);
+}
+.arrow-up{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+.action{
+    background-color: #fff;
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    transition: 0.6s;
+}
+.action:hover{
+    box-shadow: 0px 0px 5px black;
+    cursor: pointer;
+
+}
+.description{
+    margin-top: 1rem;
+}
+.span{
+    font-size: 18px;
+    color: #CBE4D2;
+}
+
+
+// estilo do form filter
+.form-filter{
+    display: flex;
+    align-items: baseline;
+    // justify-content: space-evenly;
+    width: 80vw;
+    padding-top: 0.5rem;
+    flex-wrap: wrap;
+    // padding: 0.3rem;
+  }
+
+  .card-head{
+    background-color: var(--menu-primary);
+    border-top-left-radius: var(borda-redonda);
+    border-top-right-radius: var(borda-redonda);
+    padding: 10px;
+    color: #fff;
+  }
+  .filter-card{
+    margin-bottom: 1rem;
+  }
+
+  .example-form-field{
+    margin: 1%;
+  }
+
+  .content-chart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+  }
