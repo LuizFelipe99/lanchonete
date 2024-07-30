@@ -5,19 +5,25 @@
     </mat-card-header>
 
     <form class="form">
+          <!-- simbolo de loadgin -->
+          <div class="loading-content" style="height: 40px;">
+            <div class="" *ngIf="isLoad">
+              <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+            </div>
+          </div>
       <mat-form-field class="example-full-width">
         <mat-label>Item</mat-label>
-        <input matInput placeholder="Nome do Item" name="name" required />
+        <input matInput placeholder="Nome do Item" name="name" [(ngModel)]="lowItem.id_item"  required />
       </mat-form-field>
 
       <!-- quatidade -->
       <mat-form-field class="example-full-width">
         <mat-label>Quantidade</mat-label>
-        <input matInput placeholder="Quantidade" name="qte" required type="number"/>
+        <input matInput placeholder="Quantidade" name="qte" [(ngModel)]="lowItem.qte_remove"  required type="number"/>
       </mat-form-field>
 
       <div class="example-button-row">
-        <button mat-raised-button class="button-success"> Salvar </button>
+        <button mat-raised-button class="button-success" (click)="lowItemStock()"> Salvar </button>
       </div>
     </form>
   </mat-card>

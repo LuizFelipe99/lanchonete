@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ResponseFilterItems } from "../models/Item-Supplier/responseFilterItem";
-import { Item, ItemInOrder } from "../models/Item-Supplier/item.models";
+import { Item, ItemInOrder, lowItemStock } from "../models/Item-Supplier/item.models";
 
 @Injectable({
   providedIn:'root',
@@ -112,6 +112,17 @@ export class ItemSupplierService {
   });
   const endPoint = `${this.apiUrl}/order_supplier/remove_item/`;
   return this.http.post<ItemInOrder>(endPoint, removeItens, {headers});
+}
+
+public lowItemToStock(lowItem: lowItemStock): Observable<lowItemStock>{
+  const token = this.tokenId;
+  // Configurar o cabeçalho da requisição
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  const endPoint = `${this.apiUrl}/item/low_item/`;
+  return this.http.post<ItemInOrder>(endPoint, lowItem, {headers});
 }
 
 

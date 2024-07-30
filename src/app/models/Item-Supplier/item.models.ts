@@ -52,3 +52,8 @@ export interface RemoveItemInOrder{
   id_order_snack_items?: number
 }
 
+export interface lowItemStock{
+  id_item?:string,
+  qte_remove?: string,
+  message?: any,
+}
