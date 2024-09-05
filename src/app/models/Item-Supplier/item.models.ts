@@ -56,4 +56,5 @@ export interface lowItemStock{
   id_item?:string,
   qte_remove?: string,
   message?: any,
+  name?: string,
 }

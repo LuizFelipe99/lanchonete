@@ -11,11 +11,16 @@
               <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
             </div>
           </div>
-      <mat-form-field class="example-full-width">
-        <mat-label>Item</mat-label>
-        <input matInput placeholder="Nome do Item" name="name" [(ngModel)]="lowItem.id_item"  required />
-      </mat-form-field>
-
+          <mat-form-field class="example-full-width">
+            <mat-label>Item</mat-label>
+            <input matInput placeholder="Nome do Item" [formControl]="itemControl" [(ngModel)]="lowItem.id_item" [matAutocomplete]="auto" required />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredItems | async" [value]="option.id_item">
+                {{ option.name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          
       <!-- quatidade -->
       <mat-form-field class="example-full-width">
         <mat-label>Quantidade</mat-label>
