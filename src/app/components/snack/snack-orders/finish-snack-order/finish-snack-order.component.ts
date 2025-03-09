@@ -102,6 +102,9 @@ isDecrease = false;
     
     finishOrderSnack(){
       this.FinishOrder.total = this.sumSubTotal();
+      if(this.FinishOrder.discounted_type == null || this.FinishOrder.discounted_type == "" || this.FinishOrder.discounted_value == ""){
+        return this.globalService.openSnackBar('Tipo de desconto obrigatório', 'Ok', 'Erro!', 'error-snackbar');
+      }
       this.api.finishOrderSnack(this.FinishOrder).subscribe((response) =>{
         console.log(response);
         if ('error' in response) {
