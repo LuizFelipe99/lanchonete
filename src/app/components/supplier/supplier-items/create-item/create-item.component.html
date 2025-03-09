@@ -38,6 +38,29 @@
         <mat-label>Valor de venda</mat-label>
         <input type="number" matInput placeholder="Ex: 1" name="sale_price" [(ngModel)]="newItem.sale_price" required />
       </mat-form-field>
+      
+      <div class="upload-container">
+        <label class="upload-label">Imagem</label>
+        
+        <!-- Input escondido -->
+        <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" hidden>
+        
+        <!-- Botão Material Design -->
+        <button mat-raised-button color="primary" (click)="triggerFileInput()">
+          <mat-icon>upload</mat-icon> Escolher Imagem
+        </button>
+      
+        <!-- Exibir o nome do arquivo escolhido -->
+        <span class="file-name" *ngIf="selectedFileName !== 'Nenhum arquivo selecionado'">
+          {{ selectedFileName }}
+        </span>
+      
+        <!-- Exibir a pré-visualização da imagem -->
+        <div class="image-preview" *ngIf="imagePreview">
+          <img [src]="imagePreview" alt="Prévia da Imagem">
+        </div>
+      </div>
+      
     </form>
 
     <mat-card-actions style="justify-content: end">

@@ -49,7 +49,6 @@ export class CreateOrderComponent {
     this.isLoad = true;
     
     this.api.createOrder(this.newOrder).subscribe(createdOrder => {
-      console.log('Nova ordem cadastrada:', createdOrder);
       if ('error' in createdOrder) {
         this.globalService.openSnackBar('Preencha todos os campos', 'Ok', 'Erro!', 'error-snackbar');
         this.isLoad = false;
@@ -58,8 +57,8 @@ export class CreateOrderComponent {
         this.globalService.openSnackBar('Registro criado com sucesso', 'Ok', 'Sucesso!', 'success-snackbar');
         this.globalService.openDialog('Selecione o item', 'list-item', '1', '80%');
         // setando na localstorage o id da order
-        this.id_order_supplier = createdOrder.id_order_supplier;
-        localStorage.setItem('id_order_supplier',this.id_order_supplier['id_order_supplier']);
+        this.id_order_supplier = createdOrder;
+        localStorage.setItem('id_order_supplier',this.id_order_supplier['order_supplier']);
         this.isLoad = false;
         this.addItem = true;
       }

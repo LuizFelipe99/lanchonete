@@ -51,14 +51,19 @@
         <th>Cliente</th>
         <th>Pedido</th>
         <th>Status</th>
-        <th>Itens</th>
+        <th style="width: 50px;">Itens</th>
         <th>Valor</th>
-        <th></th>
+        <th style="width: 30px;" ></th>
       </tr>
       <tr *ngFor="let order of orders">
         <td> {{order.client}} </td>
         <td> {{order.id_order_snack}} </td>
-        <td> {{order.status}} </td>
+        <td> 
+          <mat-icon *ngIf="order.status === 'Pendente'" class="icon-unsuccess">do_not_disturb_on</mat-icon>
+          <mat-icon *ngIf="order.status !== 'Pendente'" class="icon-success" >check</mat-icon>
+          {{order.status}} 
+        </td>
+
         <td> {{order.itens}} </td>
         <td> R$ {{order.total | number: '1.2-2'}} </td>
         <td >  <mat-icon (click)="globalService.openDialog('Detalhes do pedido', 'detail-snack-order', order.id_order_snack || '', '95%')" style="cursor: pointer">shopping_cart</mat-icon></td>

@@ -56,12 +56,11 @@ export class GlobalService {
   //funcao que verifica token que vem da api
  veryTokenExpired(data:any){
     if (data.token_expired){
-      alert("Login expirado");
+     this.openSnackBar('Login expirado', 'Ok',  'Erro!', 'error-snackbar');
       localStorage.clear(); // limpa toda localStorage
       this.router.navigate(['/login']); // Redirecionar para a página inicial (login) 
       this.dialog.closeAll();
     }
   }
-
 
 }

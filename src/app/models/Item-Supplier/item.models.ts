@@ -3,9 +3,9 @@ export interface Item{
   name?: string;
   description?: string;
   category?: string;
-  current_stock?: number;
+  current_stock?: string;
   sale_price?:string;
-  min_stock?: number;
+  min_stock?: string;
   url_img?: string;
   rank?:string;
 }

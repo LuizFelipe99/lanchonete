@@ -53,6 +53,7 @@ export class ConfirmItemComponent {
   // função que adiciona o item na order criada
   insertItemOrder(){
     this.calculateTotal();
+    console.log(this.newItem);
     this.api.insertItemInOrder(this.newItem).subscribe(data => {
       if('error' in data){
         this.globalService.openSnackBar('Não foi possivel adicionar o item', 'OK', 'Erro!', 'error-snackbar');

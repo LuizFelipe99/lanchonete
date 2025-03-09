@@ -6,6 +6,9 @@ import { Item, ItemFilter, ItemInOrder, ItemInOrderSnack, RemoveItemInOrder } fr
 import { ItemSupplierService } from 'src/app/services/item-supplier.service';
 import { OrderSnackService } from 'src/app/services/order-snack.service';
 
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+
 @Component({
   selector: 'app-detail-snack-order',
   templateUrl: './detail-snack-order.component.html',
@@ -16,12 +19,25 @@ export class DetailSnackOrderComponent {
  get identity(): string {
   return localStorage.getItem('identifier') || ''; // Obter o nome do usuário do localStorage
 }
+
+searchQuery: string = '';
+searchSubject = new Subject<string>(); // Subject para debounce da busca
 // metodo construtor
 constructor(private api: OrderSnackService, private item: ItemSupplierService,  public globalService: GlobalService, public dialogRef: MatDialogRef<DialogFormDetailsComponent>) {}
 
 ngOnInit(): void {
   this.getDetailOrder(this.pagination);
   this.getItems(1);
+
+
+    // Configura o debounce para evitar chamadas excessivas à API
+    this.searchSubject.pipe(
+      debounceTime(500), // Aguarda 500ms antes de fazer a requisição
+      distinctUntilChanged() // Só dispara se o valor mudar
+    ).subscribe(searchText => {
+      this.filterItem.name = searchText;
+      this.getItems(1); // Buscar os itens na API
+    });
 }
 
 items: Item[];
@@ -45,6 +61,12 @@ status = '';
 payment_type = '';
 service_type = '';
 
+
+
+  // Função para chamar a busca quando o usuário digita
+  onSearchChange() {
+    this.searchSubject.next(this.searchQuery);
+  }
 
 
 getDetailOrder(pagination: number) {

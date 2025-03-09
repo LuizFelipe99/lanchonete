@@ -16,6 +16,7 @@ export interface OrderFilter{
   supplier?: string;
   responsible?: string,
   id_order_supplier?: number;
+  active?: number;
 }
 
 export interface ResponseFilterOrder {

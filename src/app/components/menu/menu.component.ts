@@ -18,8 +18,8 @@ export class MenuComponent {
 
   // itens do menu para exibir
 menu_items_config = [
-  { title: "Configurações", url: "/home"}, //path /configuracoes
-  { title: "Perfil", url: "/usuarios/listar"}
+  { title: "Configurações", url: "/configuracoes"}, //path /configuracoes
+  { title: "Perfil", url: "/home"}
 ]
 
 // icones mais usados

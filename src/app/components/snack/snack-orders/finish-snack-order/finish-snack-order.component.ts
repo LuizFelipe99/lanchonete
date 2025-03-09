@@ -13,6 +13,10 @@ export class FinishSnackOrderComponent {
   get identity(): string {
     return localStorage.getItem('identifier') || ''; // Obter o nome do usuário do localStorage
   }
+  get id_user(): string {
+    return localStorage.getItem('id_user') || ''; // Obter o nome do usuário do localStorage
+  }
+
   // metodo construtor
 constructor(private api: OrderSnackService, public globalService: GlobalService) {}
 
@@ -92,7 +96,8 @@ isDecrease = false;
       id_order_snack: this.identity,
       total: 0,
       discounted_value: '',
-      discounted_type: ''
+      discounted_type: '',
+      created_by: this.id_user,
     };
     
     finishOrderSnack(){

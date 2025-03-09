@@ -19,7 +19,7 @@ export class ListOrderComponent {
 
 // requiisição tipada
 orders: OrderSupplier[];
-filterOrder: OrderFilter = {supplier: '', responsible: '', id_order_supplier: 0}
+filterOrder: OrderFilter = {supplier: '', responsible: '', id_order_supplier: 0, active: 1}
 
 
 

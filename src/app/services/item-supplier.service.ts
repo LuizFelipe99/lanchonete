@@ -45,7 +45,7 @@ export class ItemSupplierService {
 
   // função para criar produto
   // aqui eu usei o " Product " pois mandei na requisição todos os campos da model PRODUCT
-  insertItem(newOrder: Item):Observable<Item>{
+  insertItem_bkp(newOrder: Item):Observable<Item>{
     const token = this.tokenId;
     // Configurar o cabeçalho da requisição
     const headers = new HttpHeaders({
@@ -55,6 +55,19 @@ export class ItemSupplierService {
     const endPoint = `${this.apiUrl}/item/create/`;
     return this.http.post<Item>(endPoint, newOrder, {headers});
   }
+
+  insertItem(formData: FormData): Observable<any> {
+    const token = this.tokenId;
+  
+    // Configurar cabeçalhos sem 'Content-Type', pois FormData define isso automaticamente
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    const endPoint = `${this.apiUrl}/item/create/`;
+    return this.http.post<any>(endPoint, formData, { headers });
+  }
+  
 
   // função para atualizar o produto
   updateItem(editItem: Item, id_item: string):Observable<Item> {

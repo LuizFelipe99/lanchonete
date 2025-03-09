@@ -1,11 +1,21 @@
 <div class="container">
   <mat-card class="cabecalho form" style="margin-right: 1rem; width: 70%;" *ngIf="addItem">
     Lanches
+
+      <!-- preciso adicionar um input para busca aqui -->
+      <!-- Campo de busca -->
+      <mat-form-field appearance="outline" class="search-bar">
+        <mat-label>Buscar Lanche</mat-label>
+        <input matInput type="text" [(ngModel)]="searchQuery" (input)="onSearchChange()">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
     <div class="lanches-container">
+
       <!-- primeiro parametro da função é o id do item -->
       <!-- (id_item: string, price_unit: number, quantity: number, total: number){ -->
       <mat-card class="lanche" *ngFor="let item of items" (click)="insertItemInOrder(item.id_item || '', item.sale_price || '', '1', item.sale_price || '');" >
-        <img src="{{item.url_img}}" alt="">
+        <!-- <img src="https://gym-dev.com/lanchonete/{{item.url_img}}" alt=""> -->
+        <img [src]="item.url_img ? 'https://gym-dev.com/lanchonete/' + item.url_img : 'https://gym-dev.com/lanchonete/snacks_img/produto-sem-imagem.jpg'" alt="Imagem do item">
         <span> {{item.name}} </span>
         <span>R$  {{item.sale_price}} </span>
       </mat-card>

@@ -34,5 +34,6 @@ export interface FinishOrder {
   discounted_value?: string;
   discounted_type?: string;
   total?: number;
+  created_by?: string;
 }
 

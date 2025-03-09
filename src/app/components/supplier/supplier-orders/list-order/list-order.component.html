@@ -23,6 +23,17 @@
               <input type="number" matInput placeholder="Ex. 100" name="id_order_supplier" [(ngModel)]="filterOrder.id_order_supplier">
             </mat-form-field>
           </div>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Status</mat-label>
+              <mat-select name="active"  [(ngModel)]="filterOrder.active" >
+                <mat-option [value]="0">Inativo</mat-option>
+                <mat-option [value]="1">Ativo</mat-option>
+                <mat-option [value]="3">Todos</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
           
           <mat-card-actions style="justify-content: end;">
             <div class="example-button-row" >
@@ -45,6 +56,7 @@
 
   <table class="responsive-table" id="customers">
     <tr>
+      <th>Pedido</th>
       <th>Fornecedor</th>
       <th>Responsável</th>
       <th>Pedido</th>
@@ -54,6 +66,7 @@
       <th></th>
     </tr>
     <tr *ngFor="let order of orders">
+      <td> {{order.id_order_supplier}} </td>
       <td> {{order.supplier}} </td>
       <td> {{order.responsible}} </td>
       <td> {{order.id_order_supplier}} </td>

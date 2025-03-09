@@ -27,7 +27,13 @@ export class CreateCategoryComponent {
         this.isLoad = false;
       }
       this.globalService.veryTokenExpired(createCategory);
+      this.clearInputs();
     })
+  }
+
+  clearInputs(){
+    this.newCategory.name = "";
+    this.newCategory.description = "";
   }
 
 }
