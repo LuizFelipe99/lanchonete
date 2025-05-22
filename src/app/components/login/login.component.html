@@ -1,41 +1,36 @@
-<div class="container">
+<div class="container" style="background-color: var(--button-warning);">
   <div class="logo">
-    <img class="img-logo" src="../../../assets/logo.png" alt="">
+    <!-- <img class="logo-img" src="../../../assets/logo-2.png" alt="Phillipão Lanches Logo" /> -->
   </div>
-  <mat-card class="card-login" >
-    <mat-card-header>
-      <mat-card-title >Login</mat-card-title>
-      <mat-card-subtitle style="color: #ffff" >Lanchonete</mat-card-subtitle>
-    </mat-card-header>
+  <div class="card-login-content">
+    <mat-card class="card-login" >
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
 
-    <!-- formulario de envio de credenciais -->
-    <form class="form" (keyup.enter)="login()">
-      <mat-form-field class="example-full-width">
-        <mat-label>Usuário</mat-label>
-        <input matInput placeholder="Usuário" name="login" [(ngModel)]="formData.login">
-      </mat-form-field>
+      <form class="form" (keyup.enter)="login()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Usuário</mat-label>
+          <input matInput placeholder="Usuário" name="login" [(ngModel)]="formData.login" />
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width">
+        <mat-form-field appearance="fill" class="full-width password-field">
           <mat-label>Senha</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" name="password"  [(ngModel)]="formData.password">
-          <span class="password_hide" matSuffix (click)="hidPassword()">
+          <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="formData.password" />
+          <button mat-icon-button matSuffix type="button" (click)="hidPassword()" [attr.aria-label]="'Toggle password visibility'">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </span>
-      </mat-form-field>
-    </form>
+          </button>
+        </mat-form-field>
+      </form>
 
-    <mat-card-actions style="justify-content: end;">
-      <div class="example-button-row">
-        <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-        <button mat-raised-button class="button-success" (click)="login()">Acessar</button>
-      </div>
-    </mat-card-actions>
+      <mat-card-actions class="actions">
+        <button mat-raised-button color="primary" class="button-success" (click)="login()">Acessar</button>
+        <div class="create-new" >Criar um novo</div>
+      </mat-card-actions>
 
-     <!-- simbolo de loadgin -->
-    <div class="loading-content" style="height: 40px;">
-      <div class="" *ngIf="isLoad">
-        <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+      <div *ngIf="isLoad" class="loading-content">
+        <mat-spinner diameter="40"></mat-spinner>
       </div>
-    </div>
-  </mat-card>
+    </mat-card>
+  </div>
 </div>

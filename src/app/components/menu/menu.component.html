@@ -8,9 +8,9 @@
   <div *ngIf="showAdminMenu">
   <div class="logo_nav" mat-button [matMenuTriggerFor]="menu">
       <mat-menu #menu="matMenu">
-          <button mat-menu-item 
+          <button mat-menu-item
             *ngFor="let menu of menu_items_config"
-            routerLink={{menu.url}}> 
+            routerLink={{menu.url}}>
             {{menu.title}} 
           </button>
         </mat-menu>
