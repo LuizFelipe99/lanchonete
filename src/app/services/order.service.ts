@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { OrderSupplier, ResponseFilterOrder } from '../models/Order/order_supplier.model';
 import { Observable } from 'rxjs';
+import { BASE_URL } from "./api_connector";
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,8 @@ export class OrderService {
     return localStorage.getItem('token') || ''; // Obter o nome do usuário do localStorage
   }
 
-  private apiUrl = 'https://gym-dev.com/lanchonete/';
+  // private apiUrl = 'https://gym-dev.com/lanchonete/';
+  private apiUrl = BASE_URL;
 
   constructor(private http: HttpClient) {}
   // função para criar um novo pedido

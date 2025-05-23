@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ResponseFilterCategories } from "../models/Category/responseFilterCategory";
 import { Category } from "../models/Category/category.models";
+import { BASE_URL } from "./api_connector";
 
 
 @Injectable({
@@ -14,7 +15,8 @@ export class CategoryService {
     return localStorage.getItem('token') || ''; // Obter o nome do usuário do localStorage
   }
 
-  private apiUrl = 'https://gym-dev.com/lanchonete';
+  // private apiUrl = 'https://gym-dev.com/lanchonete';
+  private apiUrl = BASE_URL;
 
   constructor(private http: HttpClient) {}
 

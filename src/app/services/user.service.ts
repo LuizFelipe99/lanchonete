@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { User} from '../models/User/user.model';
 import { Observable } from 'rxjs';
 import { ResponseFilterUsers } from '../models/User/responseFilterUser';
-
+import { BASE_URL } from "./api_connector";
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,8 @@ export class UserService {
   }
 
 
-  private apiUrl = 'https://gym-dev.com/lanchonete/';
+  // private apiUrl = 'https://gym-dev.com/lanchonete/';
+  private apiUrl = BASE_URL;
 
   constructor(private http: HttpClient) {}
 

@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ResponseFilterItems } from "../models/Item-Supplier/responseFilterItem";
 import { Item, ItemInOrder, lowItemStock } from "../models/Item-Supplier/item.models";
+import { BASE_URL } from "./api_connector";
 
 @Injectable({
   providedIn:'root',
@@ -13,7 +14,8 @@ export class ItemSupplierService {
     return localStorage.getItem('token') || ''; // Obter o nome do usuário do localStorage
   }
 
-  private apiUrl = 'https://gym-dev.com/lanchonete';
+  // private apiUrl = 'https://gym-dev.com/lanchonete';
+  private apiUrl = BASE_URL;
 
   constructor(private http: HttpClient) {}
 

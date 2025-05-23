@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { ResponseFilterSnacks } from "../models/Snack/responseFilterSnack";
 import { Observable } from "rxjs";
 import { Snack } from "../models/Snack/snack.models";
+import { BASE_URL } from "./api_connector";
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,8 @@ export class SnackService {
     return localStorage.getItem('token') || ''; // Obter o nome do usuário do localStorage
   }
 
-  private apiUrl = 'https://gym-dev.com/lanchonete/'
+  // private apiUrl = 'https://gym-dev.com/lanchonete/';
+  private apiUrl = BASE_URL;
 
   constructor(private http: HttpClient) {}
 

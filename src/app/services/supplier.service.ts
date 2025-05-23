@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Supplier } from '../models/Supplier/supplier.model';
+import { BASE_URL } from "./api_connector";
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,8 @@ export class SupplierService {
     return localStorage.getItem('token') || ''; // Obter o nome do usuário do localStorage
   }
 
-  private apiUrl = 'https://gym-dev.com/lanchonete/';
+  // private apiUrl = 'https://gym-dev.com/lanchonete/';
+  private apiUrl = BASE_URL;
 
   constructor(private http: HttpClient) {}
 

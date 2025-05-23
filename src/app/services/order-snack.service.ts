@@ -3,6 +3,7 @@ import { FinishOrder, OrderSnack, ResponseFilterOrderSnack } from "../models/Sna
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { ItemInOrderSnack, RemoveItemInOrder } from "../models/Item-Supplier/item.models";
+import { BASE_URL } from "./api_connector";
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,8 @@ export class OrderSnackService {
     return localStorage.getItem('token') || ''; // Obter o nome do usuário do localStorage
   }
 
-  private apiUrl = 'https://gym-dev.com/lanchonete/';
+  // private apiUrl = 'https://gym-dev.com/lanchonete/';
+  private apiUrl = BASE_URL;
 
   constructor(private http: HttpClient) {}
   // função para criar um novo pedido
