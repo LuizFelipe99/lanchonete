@@ -6,7 +6,7 @@ import { financeDashModel, financeDetailDashModel } from 'src/app/models/Dashboa
 import { ItemsCategoryDashboard } from 'src/app/models/Dashboard/items-category.model';
 import { OrderSupplierStatus } from 'src/app/models/Dashboard/oder-supplier-status.model';
 import { UserStatsDashboard } from 'src/app/models/Dashboard/users-status.model';
-
+import { BASE_URL } from '../api_connector';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,8 @@ export class DashBoard {
   }
 
 
-  private apiUrl = 'https://gym-dev.com/lanchonete/';
+  // private apiUrl = 'https://gym-dev.com/lanchonete/';
+  private apiUrl = BASE_URL;
 
   constructor(private http: HttpClient) {}
 

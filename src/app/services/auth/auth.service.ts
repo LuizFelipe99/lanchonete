@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { BASE_URL } from '../api_connector';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://gym-dev.com/lanchonete/';
+  // private apiUrl = 'https://gym-dev.com/lanchonete/';
+  private apiUrl = BASE_URL;
 
   isAuthenticated(): boolean {
     const login = localStorage.getItem('login');

@@ -43,7 +43,7 @@ getUserById(){
         this.newUser.name = this.users[0].name;
         this.newUser.login = this.users[0].login;
         this.newUser.password = this.users[0].password;
-        this.newUser.active = this.users[0].active;
+        this.newUser.active = 1;
         this.newUser.contact = this.users[0].contact;
         this.newUser.usergroup = this.users[0].usergroup;
         this.isLoad = false;
