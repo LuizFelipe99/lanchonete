@@ -41,7 +41,7 @@ getOrders(page: number){
         this.orders = data.data;
         this.totalPages = data.total_pages;
         this.currentPage = data.current_page;
-        this.totalOrders = data.orders_snack;
+        this.totalOrders = data.orders;
         this.isLoad = false;
       }
       this.globalService.veryTokenExpired(data);

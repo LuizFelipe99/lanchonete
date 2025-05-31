@@ -1,5 +1,4 @@
-<p>Desativar Dashboards</p>
-<button (click)="inactiveDash()" >{{label_button}}</button>
+<!-- <button (click)="inactiveDash()" >{{label_button}}</button> -->
 <div class="container">
   <!-- <div class="container-item" *ngIf="setUserDash" >
     <app-users-dash></app-users-dash>
@@ -14,4 +13,19 @@
 </div>
 <div class="container-item" *ngIf="setFinanceDash">
   <app-finance-dash></app-finance-dash>
+</div>
+<hr>
+<div class="area-dash-info">
+  <div class="container-item">
+    <app-last-orders-snack></app-last-orders-snack>
+  </div>
+
+  <div class="container-item">
+    <app-last-orders-snack></app-last-orders-snack>
+  </div>
+
+  <div class="container-item">
+    <app-last-orders-snack></app-last-orders-snack>
+  </div>
+
 </div>

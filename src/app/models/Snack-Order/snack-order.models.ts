@@ -26,7 +26,7 @@ export interface ResponseFilterOrderSnack {
   total_pages: number;
   current_page: number;
   page: number;
-  orders_snack: number;
+  orders: number;
 }
 
 export interface FinishOrder {
