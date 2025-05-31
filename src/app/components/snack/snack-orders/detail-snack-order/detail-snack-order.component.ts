@@ -5,6 +5,7 @@ import { GlobalService } from 'src/app/global.service';
 import { Item, ItemFilter, ItemInOrder, ItemInOrderSnack, RemoveItemInOrder } from 'src/app/models/Item-Supplier/item.models';
 import { ItemSupplierService } from 'src/app/services/item-supplier.service';
 import { OrderSnackService } from 'src/app/services/order-snack.service';
+import { BASE_URL } from 'src/app/services/api_connector';
 
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -19,6 +20,8 @@ export class DetailSnackOrderComponent {
  get identity(): string {
   return localStorage.getItem('identifier') || ''; // Obter o nome do usuário do localStorage
 }
+
+base_url_img = BASE_URL;
 
 searchQuery: string = '';
 searchSubject = new Subject<string>(); // Subject para debounce da busca
