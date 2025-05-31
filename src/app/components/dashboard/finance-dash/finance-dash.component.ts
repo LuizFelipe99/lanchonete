@@ -15,7 +15,8 @@ export class FinanceDashComponent {
   constructor(private api: DashBoard, public globalService: GlobalService) {}
 
   results: financeDashModel[];
-
+  percent = -10;
+  percent_2 = 10;
 
   ngOnInit(): void {
     // this.graficoCategoria();

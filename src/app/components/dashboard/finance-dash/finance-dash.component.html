@@ -7,8 +7,21 @@
         <mat-icon style="font-size: 50px; width: auto; height: auto;">arrow_upward</mat-icon>
       </div>
       <div class="description">
-        <p><b> R$ {{total_current_month | number: '1.2-2'}} </b></p>
-        <span class="span">Total bruto do mês atual</span>
+        <p><b>Total mês atual: R$ {{total_current_month | number: '1.2-2'}} </b></p>
+        <span class="span">Mês passado: R$100.00</span>
+        <p class="span">
+          <span>
+            <mat-icon *ngIf="percent > 0; else negativo" style="color: #1E983B;">
+              trending_up
+            </mat-icon> 
+            <ng-template #negativo>
+            <mat-icon style="color: #E53935;">
+              trending_down
+            </mat-icon>
+          </ng-template>
+            {{percent}}% em relação ao mes anterior
+          </span>
+        </p>
       </div>
     </div>
     <div class="card-footer">
@@ -16,10 +29,12 @@
         Ver detalhes
       </div>
       <div class="action" routerLink="../dashboard/financias/detalhes">
-        <mat-icon style="color: #2B957A;">chevron_right</mat-icon>
+        <mat-icon style="color: #2C3E50;">chevron_right</mat-icon>
       </div>
     </div>
   </mat-card>
+
+  
 
   <!-- card responsavel por exibir a soma do valor que entorou no mes atual -->
   <mat-card class="card-total" style="background-color: #FF902B;">
@@ -28,8 +43,21 @@
         <mat-icon style="font-size: 50px; width: auto; height: auto;">list_alt</mat-icon>
       </div>
       <div class="description">
-        <p><b> {{total_order_snack}} </b></p>
-        <span class="span">Pedidos de clientes</span>
+        <p><b>Total de pedidos: {{total_order_snack}} </b></p>
+        <span class="span">30 pedidos este mês</span>
+        <p class="span">
+          <span>
+              <mat-icon *ngIf="percent_2 > 0; else negativo" style="color: #1E983B;">
+                trending_up
+              </mat-icon> 
+              <ng-template #negativo>
+              <mat-icon style="color: #E53935;">
+                trending_down
+              </mat-icon>
+            </ng-template>
+              {{percent_2}}% em relação ao mes anterior
+          </span>
+        </p>
       </div>
     </div>
     <div class="card-footer" style="background-color: #F77600;">
@@ -46,11 +74,24 @@
   <mat-card class="card-total" style="background-color: #27C24C;">
     <div class="card-body">
       <div class="arrow-up material-symbols-outlined">
-        <mat-icon style="font-size: 50px; width: auto; height: auto;">list_alt</mat-icon>
+        <mat-icon style="font-size: 50px; width: auto; height: auto;">diversity_3</mat-icon>
       </div>
       <div class="description">
-        <p><b> {{total_order_supplier}} </b></p>
-        <span class="span">Pedidos de fornecedor</span>
+        <p><b>Pedidos fornecedor: {{total_order_supplier}} </b></p>
+        <span class="span">30 este mês</span>
+        <p class="span">
+          <span>
+              <mat-icon *ngIf="percent_2 > 0; else negativo" style="color: #1E983B;">
+                trending_up
+              </mat-icon> 
+              <ng-template #negativo>
+              <mat-icon style="color: #E53935;">
+                trending_down
+              </mat-icon>
+            </ng-template>
+              {{percent_2}}% em relação ao mes anterior
+          </span>
+        </p>
       </div>
     </div>
     <div class="card-footer" style="background-color: #1E983B;">
