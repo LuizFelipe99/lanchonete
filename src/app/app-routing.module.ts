@@ -28,31 +28,58 @@ import { FinanceDashDetailComponent } from './components/dashboard/finance-dash-
 // import configuracoes
 import { GeralComponent } from './components/config/geral/geral.component';
 
+//import erros
+import { ErrorHttpsComponent } from './components/erros/erros_https/erros_https.component';
 
-
-
+// const routes: Routes = [
+//   { path: '', redirectTo: '/home', pathMatch: 'full' },
+//   { path: 'login', component: LoginComponent },
+//   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+//   { path: 'usuarios/criar', component: CreateUserComponent },
+//   { path: 'usuarios/listar', component: ListUserComponent,  canActivate: [AuthGuard] },
+//   { path: 'fornecedores/criar', component: CreateSupplierComponent,  canActivate: [AuthGuard] },
+//   { path: 'fornecedores/listar', component: ListSupplierComponent,  canActivate: [AuthGuard] },
+//   { path: 'fornecedores/pedidos/listar', component: ListOrderComponent,  canActivate: [AuthGuard] },
+//   { path: 'fornecedores/pedidos/criar', component: CreateOrderComponent,  canActivate: [AuthGuard] },
+//   { path: 'itens/listar', component: ListItemComponent,  canActivate: [AuthGuard] },
+//   { path: 'itens/criar', component: CreateItemComponent,  canActivate: [AuthGuard] },
+//   { path: 'categorias/listar', component: ListCategoryComponent,  canActivate: [AuthGuard] },
+//   { path: 'categorias/criar', component: CreateCategoryComponent,  canActivate: [AuthGuard] },
+//   { path: 'lanches/criar', component: CreateSnackComponent,  canActivate: [AuthGuard] },
+//   { path: 'lanches/listar', component: ListSnackComponent,  canActivate: [AuthGuard] },
+//   { path: 'lanches/pedidos/listar', component: ListSnackOrderComponent,  canActivate: [AuthGuard] },
+//   { path: 'lanches/pedidos/criar', component: CreateSnackOrderComponent,  canActivate: [AuthGuard] },
+//   { path: 'dashboard/financias/detalhes', component: FinanceDashDetailComponent,  canActivate: [AuthGuard] },
+//   { path: 'configuracoes', component: GeralComponent,  canActivate: [AuthGuard] },
+//   { path: 'itens/baixa', component: LowItemComponent,  canActivate: [AuthGuard] },
+//   { path: 'error', component: ErrorHttpsComponent },
+  
+// ];
+//adicionado allowedgroups para informar os acessos do caixa e admin
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'usuarios/criar', component: CreateUserComponent },
-  { path: 'usuarios/listar', component: ListUserComponent,  canActivate: [AuthGuard] },
-  { path: 'fornecedores/criar', component: CreateSupplierComponent,  canActivate: [AuthGuard] },
-  { path: 'fornecedores/listar', component: ListSupplierComponent,  canActivate: [AuthGuard] },
-  { path: 'fornecedores/pedidos/listar', component: ListOrderComponent,  canActivate: [AuthGuard] },
-  { path: 'fornecedores/pedidos/criar', component: CreateOrderComponent,  canActivate: [AuthGuard] },
-  { path: 'itens/listar', component: ListItemComponent,  canActivate: [AuthGuard] },
-  { path: 'itens/criar', component: CreateItemComponent,  canActivate: [AuthGuard] },
-  { path: 'categorias/listar', component: ListCategoryComponent,  canActivate: [AuthGuard] },
-  { path: 'categorias/criar', component: CreateCategoryComponent,  canActivate: [AuthGuard] },
-  { path: 'lanches/criar', component: CreateSnackComponent,  canActivate: [AuthGuard] },
-  { path: 'lanches/listar', component: ListSnackComponent,  canActivate: [AuthGuard] },
-  { path: 'lanches/pedidos/listar', component: ListSnackOrderComponent,  canActivate: [AuthGuard] },
-  { path: 'lanches/pedidos/criar', component: CreateSnackOrderComponent,  canActivate: [AuthGuard] },
-  { path: 'dashboard/financias/detalhes', component: FinanceDashDetailComponent,  canActivate: [AuthGuard] },
-  { path: 'configuracoes', component: GeralComponent,  canActivate: [AuthGuard] },
-  { path: 'itens/baixa', component: LowItemComponent,  canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'usuarios/criar', component: CreateUserComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'usuarios/listar', component: ListUserComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'fornecedores/criar', component: CreateSupplierComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'fornecedores/listar', component: ListSupplierComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'fornecedores/pedidos/listar', component: ListOrderComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'fornecedores/pedidos/criar', component: CreateOrderComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'itens/listar', component: ListItemComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'itens/criar', component: CreateItemComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'categorias/listar', component: ListCategoryComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'categorias/criar', component: CreateCategoryComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'lanches/criar', component: CreateSnackComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'lanches/listar', component: ListSnackComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'lanches/pedidos/listar', component: ListSnackOrderComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1', '2'] } },
+  { path: 'lanches/pedidos/criar', component: CreateSnackOrderComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1', '2'] } },
+  { path: 'dashboard/financias/detalhes', component: FinanceDashDetailComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'configuracoes', component: GeralComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'itens/baixa', component: LowItemComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'error', component: ErrorHttpsComponent }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

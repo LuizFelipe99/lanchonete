@@ -1,87 +1,52 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ROUTE_PERMISSIONS, PermissionEntry } from 'src/app/services/auth/permissions.config';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent {
-
-  get usuario(): string {
-    return localStorage.getItem('login') || ''; // Obter o nome do usuário do localStorage
-  }
-
-// pegando o grupo do usuario na sessao
-  get usergroup(): string {
-    return localStorage.getItem('usergroup') || ''; // Obter o nome do usuário do localStorage
-  }
-
-  // itens do menu para exibir
-menu_items_config = [
-  { title: "Configurações", url: "/configuracoes"}, //path /configuracoes
-  { title: "Perfil", url: "/home"}
-]
-
-// icones mais usados
-search = "search"; // usado para listar
-grading = "grading"; // usado para cadastrar
-
-// menu home
-menu_items_home = [
-  {title: "Home", path: "/home", icon: "home"}
-]
-
-// menu de pedidos de cliente
-menu_items_order_snack = [
-  {title: "Listar Pedidos", path: "lanches/pedidos/listar", icon: this.search},
-  {title: "Cadastrar Pedidos", path: "lanches/pedidos/criar", icon: this.grading},
-]
-
-menu_items_users = [
-  {title: "Listar usuários", path: "/usuarios/listar", icon: this.search},
-  {title: "Cadastrar usuários", path: "/usuarios/criar", icon: "group_add"}
-]
-
-menu_items_suppliers = [
-  {title: "Listar fornecedores", path: "/fornecedores/listar", icon: this.search},
-  {title: "Cadastrar fornecedores", path: "/fornecedores/criar", icon: "contact_page"}
-]
-
-menu_items_order_supplier = [
-  {title: "Listar pedidos", path: "fornecedores/pedidos/listar", icon: this.search},
-  {title: "Cadastrar pedidos", path: "fornecedores/pedidos/criar", icon: this.grading}
-]
-
-menu_items_item = [
-  {title: "Listar intens", path: "/itens/listar", icon: this.search},
-  {title: "Cadastrar intens", path: "/itens/criar", icon: this.grading},
-  {title: "Baixa de intens", path: "/itens/baixa", icon: "cancel_presentation"}
-]
-
-menu_items_category = [
-  {title: "Listar categorias", path: "/categorias/listar", icon: this.search},
-  {title: "Cadastrar categorias", path: "/categorias/criar", icon: "category"}
-]
-
-
+export class MenuComponent implements OnInit {
   opened = true;
-  showAdminMenu: boolean = false;
-  constructor(private router: Router) {}
   panelOpenState = false;
+  usergroup: string = localStorage.getItem('usergroup') || '';
 
-  ngOnInit(){
-    this.veriryGroupUser();
+  // Top menu (menu suspenso da logo)
+  menu_items_config: PermissionEntry[] = [];
+
+  // Menus por categoria
+  menu_items_home: PermissionEntry[] = [];
+  menu_items_order_snack: PermissionEntry[] = [];
+  menu_items_users: PermissionEntry[] = [];
+  menu_items_suppliers: PermissionEntry[] = [];
+  menu_items_order_supplier: PermissionEntry[] = [];
+  menu_items_item: PermissionEntry[] = [];
+  menu_items_category: PermissionEntry[] = [];
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.filterMenusByUserGroup();
   }
 
   logout(): void {
     localStorage.clear();
-    // Redirecionar para a rota de login
     this.router.navigate(['/login']);
   }
 
-  veriryGroupUser(){
-    if(this.usergroup == '1'){
-      this.showAdminMenu = true;
-    }
+  filterMenusByUserGroup(): void {
+    const group = this.usergroup;
+
+    const filtered = ROUTE_PERMISSIONS.filter(p => p.allowedGroups.includes(group));
+
+    this.menu_items_home = filtered.filter(p => p.category === 'home');
+    this.menu_items_order_snack = filtered.filter(p => p.category === 'order_snack');
+    this.menu_items_users = filtered.filter(p => p.category === 'users');
+    this.menu_items_suppliers = filtered.filter(p => p.category === 'suppliers');
+    this.menu_items_order_supplier = filtered.filter(p => p.category === 'order_supplier');
+    this.menu_items_item = filtered.filter(p => p.category === 'items');
+    this.menu_items_category = filtered.filter(p => p.category === 'category');
+    this.menu_items_config = filtered.filter(p => p.category === 'config');
   }
 }

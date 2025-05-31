@@ -41,10 +41,10 @@ export class LoginComponent {
           localStorage.setItem('id_user', response.data[0].id_user);
           localStorage.setItem('active', response.data[0].active);
           localStorage.setItem('usergroup', response.data[0].usergroup);
+          this.isLoad = false;
           this.router.navigate(['/home']); // Redirecionar para a página inicial (home) após o login bem-sucedido
           this.globalService.openSnackBar('Usuário logado com sucess.', 'Ok',  'Sucesso!', 'success-snackbar');
           // this.openSnackBar('Usuário logado com sucess.', 'Ok',  'Sucesso!', 'success-snackbar');
-          this.isLoad = false;
         } else {
           this.isLoad = false;
           // this.loginError = true;

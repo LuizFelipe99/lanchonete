@@ -71,6 +71,7 @@ import { FinanceDashDetailComponent } from './components/dashboard/finance-dash-
 import { GeralComponent } from './components/config/geral/geral.component';
 import { LowItemComponent } from './components/supplier/supplier-items/low-item/low-item.component';
 import { LastOrdersSnackComponent } from './components/dashboard/last-orders-snack/last-orders-snack.component';
+import { ErrorHttpsComponent } from './components/erros/erros_https/erros_https.component';
 
 
 @NgModule({
@@ -113,6 +114,7 @@ import { LastOrdersSnackComponent } from './components/dashboard/last-orders-sna
     GeralComponent,
     LowItemComponent,
     LastOrdersSnackComponent,
+    ErrorHttpsComponent,
     
   ],
   imports: [

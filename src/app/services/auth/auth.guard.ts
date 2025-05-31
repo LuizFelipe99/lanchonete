@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { AuthService } from './auth.service';
-import { GlobalService } from 'src/app/global.service';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { ErrorService } from './error.service';
+import { ROUTE_PERMISSIONS } from '../auth/permissions.config';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router, private globalService: GlobalService) {}
+  constructor(
+    private router: Router,
+    private errorService: ErrorService
+  ) {}
 
-  canActivate(): boolean {
-    if (this.authService.isAuthenticated()) {
-      // O usuário está autenticado, permita o acesso à rota
-      return true;
-    } else {
-      // O usuário não está autenticado, redirecione para a página de login
-      this.router.navigate(['/login']);
-      // this.globalService.can
+  async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+    const usergroup = localStorage.getItem('usergroup');
+    const currentPath = state.url;
+
+    if (!usergroup) {
+      await this.router.navigate(['/login']);
       return false;
     }
+
+    const routePermission = ROUTE_PERMISSIONS.find(p => p.path === currentPath);
+    const allowedGroups = routePermission?.allowedGroups;
+
+    if (!allowedGroups || !allowedGroups.includes(usergroup)) {
+      this.errorService.setError(403, 'Você não tem permissão para acessar esta área.');
+      await this.router.navigate(['/error']);
+      return false;
+    }
+
+    return true;
   }
 }
