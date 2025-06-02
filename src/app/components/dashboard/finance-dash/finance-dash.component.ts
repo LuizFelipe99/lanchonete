@@ -25,8 +25,19 @@ export class FinanceDashComponent {
     this.globalService.veriryGroupUser();
   }
   total_current_month: any = 0;
+  total_last_month: any = 0;
+  dif_percent_month: any = 0;
+
+  //order_supplier
   total_order_supplier: any = 0;
+  total_current_order_supplier: any = 0;
+  dif_percent_order_supplier: any = 0;
+
+    //snack
   total_order_snack: any = 0;
+  total_current_order_snack: any = 0;
+  dif_percent_order_snack: any = 0;
+
 
 
   getFinanceDash() {
@@ -34,9 +45,20 @@ export class FinanceDashComponent {
       if ('error' in data) {
         this.globalService.openSnackBar('Erro na consulta de dashboard', 'Ok', 'Erro!', 'error-snackbar');
       } else {
-        this.total_current_month = data.current_month[0]['total'];
-        this.total_order_supplier = data.order_supplier[0]['total'];
-        this.total_order_snack = data.order_snack[0]['total'];
+        //total month
+        this.total_current_month = data.current_month[0]['total_current_month'];
+        this.total_last_month = data.current_month[0]['total_last_month'];
+        this.dif_percent_month = data.current_month[0]['dif_percent'];
+
+        //total order_Supplier
+        this.total_order_supplier = data.order_supplier[0]['total_geral'];
+        this.total_current_order_supplier = data.order_supplier[0]['current_month'];
+        this.dif_percent_order_supplier = data.order_supplier[0]['dif_percent'];
+
+        //total order_snack
+        this.total_order_snack = data.order_snack[0]['total_geral'];
+        this.total_current_order_snack = data.order_snack[0]['current_month'];
+        this.dif_percent_order_snack = data.order_snack[0]['dif_percent'];
       }
       this.globalService.veryTokenExpired(data);
     });

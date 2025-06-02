@@ -8,10 +8,10 @@
       </div>
       <div class="description">
         <p><b>Total mês atual: R$ {{total_current_month | number: '1.2-2'}} </b></p>
-        <span class="span">Mês passado: R$100.00</span>
+        <span class="span">Mês passado:R$  {{total_last_month}} </span>
         <p class="span">
           <span>
-            <mat-icon *ngIf="percent > 0; else negativo" style="color: #1E983B;">
+            <mat-icon *ngIf="dif_percent_month > 0; else negativo" style="color: #1E983B;">
               trending_up
             </mat-icon> 
             <ng-template #negativo>
@@ -19,7 +19,7 @@
               trending_down
             </mat-icon>
           </ng-template>
-            {{percent}}% em relação ao mes anterior
+            {{dif_percent_month}}% em relação ao mes anterior
           </span>
         </p>
       </div>
@@ -44,10 +44,10 @@
       </div>
       <div class="description">
         <p><b>Total de pedidos: {{total_order_snack}} </b></p>
-        <span class="span">30 pedidos este mês</span>
+        <span class="span">{{total_current_order_snack}} pedidos este mês</span>
         <p class="span">
           <span>
-              <mat-icon *ngIf="percent_2 > 0; else negativo" style="color: #1E983B;">
+              <mat-icon *ngIf="dif_percent_order_snack > 0; else negativo" style="color: #1E983B;">
                 trending_up
               </mat-icon> 
               <ng-template #negativo>
@@ -55,7 +55,7 @@
                 trending_down
               </mat-icon>
             </ng-template>
-              {{percent_2}}% em relação ao mes anterior
+              {{dif_percent_order_snack}}% em relação ao mes anterior
           </span>
         </p>
       </div>
@@ -78,10 +78,10 @@
       </div>
       <div class="description">
         <p><b>Pedidos fornecedor: {{total_order_supplier}} </b></p>
-        <span class="span">30 este mês</span>
+        <span class="span">{{total_current_order_supplier}} este mês</span>
         <p class="span">
           <span>
-              <mat-icon *ngIf="percent_2 > 0; else negativo" style="color: #1E983B;">
+              <mat-icon *ngIf="dif_percent_order_supplier > 0; else negativo" style="color: #1E983B;">
                 trending_up
               </mat-icon> 
               <ng-template #negativo>
@@ -89,7 +89,7 @@
                 trending_down
               </mat-icon>
             </ng-template>
-              {{percent_2}}% em relação ao mes anterior
+              {{dif_percent_order_supplier}}% em relação ao mes anterior
           </span>
         </p>
       </div>

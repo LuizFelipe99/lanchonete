@@ -22,6 +22,7 @@ export class LastOrdersSnackComponent {
   isLoad: boolean = false;
   page: number = 1;
   totalOrders: number = 0;
+  total_values: any = 0;
   // passando a pagina por parametro para a paginação
   // a pagina pode variar de acordo com o botao do form de paginar, ele sempre incrementa/decrementa current_page + 1 ou -1 depende da ação
   getOrders(page: number) {
@@ -33,6 +34,7 @@ export class LastOrdersSnackComponent {
       } else {
         this.orders = data.data;
         this.totalOrders = data.orders;
+        this.total_values = data.total_value;
         this.isLoad = false;
       }
       this.globalService.veryTokenExpired(data);

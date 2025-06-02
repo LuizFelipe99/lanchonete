@@ -19,6 +19,7 @@ export interface OrderSnackFilter{
   id_order_snack?: string;
   client?: string;
   status?: string;
+
 }
 
 export interface ResponseFilterOrderSnack {
@@ -27,6 +28,7 @@ export interface ResponseFilterOrderSnack {
   current_page: number;
   page: number;
   orders: number;
+  total_value?: number;
 }
 
 export interface FinishOrder {

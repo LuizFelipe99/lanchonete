@@ -3,7 +3,7 @@
     <div class="card-container">
       <div class="card-head">
         <span class="span"> {{card_title}} </span>
-        <span class="span"> <span>R$ 123.00</span> </span>
+        <span class="span"> <span>R$ {{total_values}} </span> </span>
       </div>
       <div class="card-body">
         <table class="responsive-table" id="customers">
@@ -21,7 +21,7 @@
               <mat-icon *ngIf="order.status !== 'Pendente'" class="icon-success">check</mat-icon>
               {{order.status}}
             </td>
-            <td> {{order.total}} </td>
+            <td>R$ {{order.total | number: '1.2-2'}} </td>
           </tr>
         </table>
       </div>
