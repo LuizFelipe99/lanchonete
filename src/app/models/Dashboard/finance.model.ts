@@ -10,4 +10,7 @@ export interface financeDetailDashModel{
     total_pix: number [];
     total_cash: any[];
     total_card: any[];
+    labels: any [];
+    quantity: any [];
+    month: any [];
 }
