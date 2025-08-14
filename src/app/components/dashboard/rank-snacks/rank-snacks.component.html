@@ -1,0 +1,26 @@
+<div class="container">
+  <mat-card class="card">
+    <div class="card-container">
+      <div class="card-head">
+        <span class="span"> {{card_title}} </span>
+      </div>
+      <div class="card-body">
+        <table class="responsive-table" id="customers">
+          <tr>
+            <th>Item</th>
+            <th>Vendidos</th>
+            <th>Total</th>
+          </tr>
+          <tr *ngFor="let item of items">
+            <td> {{item.name}} </td>
+            <td> {{item.rank}} </td>
+            <td>R$ {{item.total}} </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span>Total de itens vendidos {{snacks}} </span>
+    </div>
+  </mat-card>
+</div>

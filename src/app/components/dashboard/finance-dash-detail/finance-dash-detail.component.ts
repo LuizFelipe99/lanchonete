@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Chart, ChartConfiguration } from 'chart.js';
 import { GlobalService } from 'src/app/global.service';
 import { DashBoard } from 'src/app/services/dashboard/dashboard.service';
@@ -10,8 +10,10 @@ import { DashBoard } from 'src/app/services/dashboard/dashboard.service';
 })
 export class FinanceDashDetailComponent implements OnInit {
 
+  @ViewChild('financeChartDetail', { static: false }) chartCanvas: ElementRef;
+
   public chart: Chart<'doughnut', number[], string>;
-  current_month: any [];
+  current_month: any[];
 
   public labels: string[] = [];
   public quantities: number[] = [];
@@ -19,7 +21,7 @@ export class FinanceDashDetailComponent implements OnInit {
   public colorsBg: string[] = ['#34495E', '#FF902B', '#27C24C'];
   public colorsFooter: string[] = ['#2C3E50', '#F77600', '#1E983B'];
 
-  constructor(private api: DashBoard, public globalService: GlobalService) {}
+  constructor(private api: DashBoard, public globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.getFinanceDetailDash();
@@ -41,7 +43,12 @@ export class FinanceDashDetailComponent implements OnInit {
   }
 
   drawChart(labels: string[], quantities: number[]): void {
-    const ctx = document.getElementById('financeChartDetail') as HTMLCanvasElement;
+    const ctx = this.chartCanvas?.nativeElement;
+
+    if (!ctx) {
+      console.error('Canvas não encontrado');
+      return;
+    }
 
     if (this.chart) {
       this.chart.destroy();
@@ -73,7 +80,7 @@ export class FinanceDashDetailComponent implements OnInit {
           tooltip: {
             enabled: true,
             callbacks: {
-              label: function(context) {
+              label: function (context) {
                 const label = context.label || '';
                 const value = context.parsed || 0;
                 return `${label}: R$ ${value.toFixed(2)}`;

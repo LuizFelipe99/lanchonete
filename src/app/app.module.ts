@@ -72,6 +72,7 @@ import { GeralComponent } from './components/config/geral/geral.component';
 import { LowItemComponent } from './components/supplier/supplier-items/low-item/low-item.component';
 import { LastOrdersSnackComponent } from './components/dashboard/last-orders-snack/last-orders-snack.component';
 import { ErrorHttpsComponent } from './components/erros/erros_https/erros_https.component';
+import { RankSnacksComponent } from './components/dashboard/rank-snacks/rank-snacks.component';
 
 
 @NgModule({
@@ -115,6 +116,7 @@ import { ErrorHttpsComponent } from './components/erros/erros_https/erros_https.
     LowItemComponent,
     LastOrdersSnackComponent,
     ErrorHttpsComponent,
+    RankSnacksComponent,
     
   ],
   imports: [
