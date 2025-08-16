@@ -49,26 +49,29 @@ pago: number = 0;
 restante: number = 0;
 isDecrease = false;
 
+
   getDetailOrder(pagination: number) {
     this.isLoad = true; // variavel que controla o simbolo de loading
       this.api.getDetailOrder(this.identity, pagination, this.perPage).then((response) => {
         if (response.status === true) {
-        this.detailOder = response.data; 
-        this.totalPages = response.total_pages;
-        this.currentPage = response.current_page;
-        this.client = response.data[0].client;
-        this.pedido = response.data[0].id_order_snack;
-        this.status = response.data[0].status;
-        this.payment_type = response.data[0].payment_type;
-        this.service_type = response.data[0].service_type;
-        this.total_order = this.sumSubTotal();
+          this.detailOder = response.data; 
+          this.totalPages = response.total_pages;
+          this.currentPage = response.current_page;
+          this.client = response.data[0].client;
+          this.pedido = response.data[0].id_order_snack;
+          this.status = response.data[0].status;
+          this.payment_type = response.data[0].payment_type;
+          this.service_type = response.data[0].service_type;
+          this.total_order = this.sumSubTotal();
 
-        this.pago = response.payament[0].pago;
-        this.restante = (this.total_order - this.pago);
-        this.isLoad = false;
-        this.verificaPendencia()
-        // bloco responsavel por fazer a soma entre os subtotais, para nao precisar criar outra chamada para api
-        // colocando na localstorage o id_order para adicionar mais itens
+          this.pago = response.payament[0].pago;
+          this.restante = (this.total_order - this.pago);
+          this.isLoad = false;
+          this.verificaPendencia()
+          // bloco responsavel por fazer a soma entre os subtotais, para nao precisar criar outra chamada para api
+          // colocando na localstorage o id_order para adicionar mais itens
+
+          //chamando a funcao que verifica se é para fechar todo modal ou nao
         }else{
           // this.globalService.openSnackBar('Nenhum registro encontrado', 'Ok',  'Erro!', 'error-snackbar');
           this.isLoad = false;
@@ -98,6 +101,7 @@ isDecrease = false;
       discounted_value: '',
       discounted_type: '',
       created_by: this.id_user,
+      value_to_return: 0,
     };
     
     finishOrderSnack(){
@@ -109,9 +113,8 @@ isDecrease = false;
         console.log(response);
         if ('error' in response) {
           if('extra_value' in response){
-            this.globalService.openSnackBar('Valor informado é maior do que o total do pedido', 'Ok', 'Erro!', 'error-snackbar');
+            this.globalService.openSnackBar('Necessário devolver troco: $' + response.value_to_return , 'Ok', 'Alerta!', 'alert-snackbar');
           }else{
-
             this.globalService.openSnackBar('Não há valores para abater', 'Ok', 'Erro!', 'error-snackbar');
             this.isLoad = false;
           }

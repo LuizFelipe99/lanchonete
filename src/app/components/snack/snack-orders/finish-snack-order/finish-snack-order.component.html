@@ -32,9 +32,9 @@
     </form>
     <mat-card class="cabecalho form" style="width: 100%; margin-top: 1rem;">
       <span><b>Pedido: </b> {{identity}} </span>
-      <span><b>Total:</b> {{total_order}} </span>
+      <span><b>Total:</b> {{total_order | number: '1.2-2'}} </span>
       <span><b>Pago:</b> {{pago}} </span>
-      <span><b>Restante:</b> {{restante}} </span>
+      <span><b>Restante:</b> {{restante | number: '1.2-2'}} </span>
     </mat-card>
   </mat-card>
   
