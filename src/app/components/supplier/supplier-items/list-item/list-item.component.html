@@ -66,7 +66,7 @@
       <td>{{ item.description }}</td>
       <td>{{ item.category }}</td>
       <td>{{ item.current_stock }}</td>
-      <td>{{ item.rank }}</td>
+      <td >{{ item.rank }} pts</td>
       <td class="options-table" >
         <mat-icon *ngIf="!addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Editar Item', 'edit-item', item.id_item || '', '50%' )" >edit</mat-icon>
         <mat-icon *ngIf="addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Confirmar item', 'confirm-item', item.id_item || '', '50%' )" >add_circle</mat-icon>

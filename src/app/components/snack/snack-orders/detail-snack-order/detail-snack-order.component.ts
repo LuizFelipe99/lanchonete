@@ -159,7 +159,7 @@ getDetailOrder(pagination: number) {
     this.itemInOrder.id_order_snack = this.pedido;
     this.api.insertItemInOrder(this.itemInOrder).subscribe(data => {
       if('error' in data) {
-        this.globalService.openSnackBar('Não foi encontrado', 'Ok', 'Erro!', 'error-snackbar');
+        this.globalService.openSnackBar(data.message ?? 'Pedido não encontrado', 'Ok', 'Erro!', 'error-snackbar');
         this.isLoad = false;
       } else {
         this.globalService.openSnackBar('Item adicionado ao pedido', 'Ok', 'Sucesso!', 'success-snackbar');

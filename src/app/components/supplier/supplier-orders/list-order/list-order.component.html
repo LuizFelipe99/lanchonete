@@ -59,19 +59,17 @@
       <th>Pedido</th>
       <th>Fornecedor</th>
       <th>Responsável</th>
-      <th>Pedido</th>
       <th>Itens</th>
       <th>Valor</th>
       <th>Data de vencimento</th>
       <th></th>
     </tr>
     <tr *ngFor="let order of orders">
-      <td> {{order.id_order_supplier}} </td>
+      <td># {{order.id_order_supplier}} </td>
       <td> {{order.supplier}} </td>
       <td> {{order.responsible}} </td>
-      <td> {{order.id_order_supplier}} </td>
-      <td> {{order.items}} </td>
-      <td> R$ {{order.total | number: '1.2-2'}} </td>
+      <td> {{order.items ?? '0'}} </td>
+      <td> R$ {{order.total ?? '0' | number: '1.2-2'}} </td>
       <td> {{order.dt_expired}} </td>
       <td >  <mat-icon (click)="globalService.openDialog('Detalhes do pedido', 'detail-order-supplier', order.id_order_supplier || '', '50%')" style="cursor: pointer">shopping_cart</mat-icon></td>
     </tr>

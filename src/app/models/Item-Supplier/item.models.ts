@@ -46,6 +46,7 @@ export interface ItemInOrderSnack{
   quantity?: string,
   price_unit?: string,
   total?: string,
+  message?: string,
 }
 
 export interface RemoveItemInOrder{
