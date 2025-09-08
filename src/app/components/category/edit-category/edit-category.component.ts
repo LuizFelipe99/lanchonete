@@ -43,7 +43,6 @@ export class EditCategoryComponent {
   }
 
   updateCategory() {
-    console.log(this.newCategory);
     this.isLoad = true;
     this.api.updateCategory(this.newCategory, this.identity).subscribe(createCategory => {
       if ('error' in createCategory) {

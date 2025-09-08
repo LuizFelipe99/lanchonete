@@ -70,7 +70,6 @@ isAdmin = false;
 
 veriryGroupUser(): boolean {
   const usergroup = localStorage.getItem('usergroup') || '';
-  console.log('usergroup lido do localStorage:', usergroup);
 
   if (usergroup === '1') {
     this.isAdmin = true;

@@ -84,7 +84,6 @@ export class DashBoard {
 
   public getRankItems(): Observable<itemRank> {
     const token = this.tokenId;
-    console.log(token);
     // Configurar o cabeçalho da requisição
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

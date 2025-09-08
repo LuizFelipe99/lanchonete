@@ -24,7 +24,6 @@ export class RankSnacksComponent {
   // passando a pagina por parametro para a paginação
   // a pagina pode variar de acordo com o botao do form de paginar, ele sempre incrementa/decrementa current_page + 1 ou -1 depende da ação
   getRankItems() {
-    console.log("passei");
     this.isLoad = true;
       this.api.getRankItems().subscribe(data => {
       if ('error' in data) {

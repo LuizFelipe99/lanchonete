@@ -4,7 +4,9 @@
   <mat-card class="card-total">
     <div class="card-body">
       <div class="arrow-up material-symbols-outlined">
-        <mat-icon style="font-size: 50px; width: auto; height: auto;">arrow_upward</mat-icon>
+        <mat-icon style="font-size: 50px; width: auto; height: auto; background-color: #2C3E50; padding: 10px; border-radius: 100%;">
+          arrow_upward
+        </mat-icon>
       </div>
       <div class="description">
         <p><b>Total mês atual: R$ {{total_current_month | number: '1.2-2'}} </b></p>
@@ -36,11 +38,11 @@
 
   
 
-  <!-- card responsavel por exibir a soma do valor que entorou no mes atual -->
+  <!-- total de pedidos -->
   <mat-card class="card-total" style="background-color: #FF902B;">
     <div class="card-body">
       <div class="arrow-up material-symbols-outlined">
-        <mat-icon style="font-size: 50px; width: auto; height: auto;">list_alt</mat-icon>
+        <mat-icon style="font-size: 50px; width: auto; height: auto; background-color: #F77600; padding: 10px; border-radius: 100%;">list_alt</mat-icon>
       </div>
       <div class="description">
         <p><b>Total de pedidos: {{total_order_snack}} </b></p>
@@ -74,7 +76,7 @@
   <mat-card class="card-total" style="background-color: #27C24C;">
     <div class="card-body">
       <div class="arrow-up material-symbols-outlined">
-        <mat-icon style="font-size: 50px; width: auto; height: auto;">diversity_3</mat-icon>
+        <mat-icon style="font-size: 50px; width: auto; height: auto; background-color: #1E983B; padding: 10px; border-radius: 100%;">diversity_3</mat-icon>
       </div>
       <div class="description">
         <p><b>Pedidos fornecedor: {{total_order_supplier}} </b></p>

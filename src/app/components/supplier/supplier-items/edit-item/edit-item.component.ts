@@ -40,7 +40,6 @@ export class EditItemComponent {
         this.isLoad = false;
       } else {
         this.category_names = data.data;
-        console.log('getCategoryName',this.newItem.category);
         }
         this.globalService.veryTokenExpired(data);
       }
@@ -60,7 +59,6 @@ export class EditItemComponent {
         this.newItem.description = this.items[0].description;
         this.newItem.category = this.items[0].category;
         this.newItem.sale_price = this.items[0].sale_price;
-        console.log('new item name ', this.newItem.category);
         this.isLoad = false;
       }
       this.globalService.veryTokenExpired(data);
@@ -68,7 +66,6 @@ export class EditItemComponent {
   }
 
   updateItem() {
-    console.log(this.newItem);
     this.isLoad = true;
     this.api.updateItem(this.newItem, this.identity).subscribe(createItem => {
       if ('error' in createItem) {

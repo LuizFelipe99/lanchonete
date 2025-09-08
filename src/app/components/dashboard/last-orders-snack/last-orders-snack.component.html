@@ -3,7 +3,7 @@
     <div class="card-container">
       <div class="card-head">
         <span class="span"> {{card_title}} </span>
-        <span class="span"> <span>R$ {{total_values}} </span> </span>
+        <span class="span"> <span>R$ {{total_values | number: '1.2-2'}} </span> </span>
       </div>
       <div class="card-body">
         <table class="responsive-table" id="customers">
