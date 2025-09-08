@@ -57,7 +57,8 @@ export class LoginComponent {
         }
       })
       .catch((error) => {
-        // this.isLoad = false;
+        this.globalService.openSnackBar('Erro ao se conectar com a base de dados.', 'Ok', 'Erro!', 'error-snackbar')
+        this.isLoad = false;
         console.error('Erro de login:', error);
       });
   }
