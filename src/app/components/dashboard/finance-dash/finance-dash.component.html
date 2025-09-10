@@ -1,153 +1,87 @@
-<div class="container" style="margin-bottom: 1rem;">
+<div class="kpi-grid">
 
-  <!-- card responsavel por exibir a soma do valor que entorou no mes atual -->
-  <mat-card class="card-total">
-    <div class="card-body">
-      <div class="arrow-up material-symbols-outlined">
-        <mat-icon style="font-size: 50px; width: auto; height: auto; background-color: #2C3E50; padding: 10px; border-radius: 100%;">
-          arrow_upward
-        </mat-icon>
+  <!-- Total mês atual -->
+  <mat-card class="kpi-card kpi--revenue">
+    <div class="kpi-body">
+      <div class="kpi-icon-badge">
+        <mat-icon>arrow_upward</mat-icon>
       </div>
-      <div class="description">
-        <p><b>Total mês atual: R$ {{total_current_month | number: '1.2-2'}} </b></p>
-        <span class="span">Mês passado:R$  {{total_last_month}} </span>
-        <p class="span">
-          <span>
-            <mat-icon *ngIf="dif_percent_month > 0; else negativo" style="color: #1E983B;">
-              trending_up
-            </mat-icon> 
-            <ng-template #negativo>
-            <mat-icon style="color: #E53935;">
-              trending_down
-            </mat-icon>
+
+      <div class="kpi-desc">
+        <p class="kpi-title">Total mês atual</p>
+        <p class="kpi-value">R$ {{ total_current_month | number:'1.2-2' }}</p>
+        <p class="kpi-sub">Mês passado: R$ {{ total_last_month }}</p>
+
+        <p class="kpi-trend">
+          <mat-icon *ngIf="dif_percent_month > 0; else neg1" class="trend trend--up">trending_up</mat-icon>
+          <ng-template #neg1>
+            <mat-icon class="trend trend--down">trending_down</mat-icon>
           </ng-template>
-            {{dif_percent_month}}% em relação ao mes anterior
-          </span>
+          {{ dif_percent_month }}% em relação ao mês anterior
         </p>
       </div>
     </div>
-    <div class="card-footer">
-      <div class="see_detail">
-        Ver detalhes
-      </div>
-      <div class="action" routerLink="../dashboard/financias/detalhes">
-        <mat-icon style="color: #2C3E50;">chevron_right</mat-icon>
-      </div>
-    </div>
+
+    <a class="kpi-footer" routerLink="../dashboard/financias/detalhes">
+      <span>Ver detalhes</span>
+      <mat-icon>chevron_right</mat-icon>
+    </a>
   </mat-card>
 
-  
-
-  <!-- total de pedidos -->
-  <mat-card class="card-total" style="background-color: #FF902B;">
-    <div class="card-body">
-      <div class="arrow-up material-symbols-outlined">
-        <mat-icon style="font-size: 50px; width: auto; height: auto; background-color: #F77600; padding: 10px; border-radius: 100%;">list_alt</mat-icon>
+  <!-- Total de pedidos -->
+  <mat-card class="kpi-card kpi--orders">
+    <div class="kpi-body">
+      <div class="kpi-icon-badge">
+        <mat-icon>list_alt</mat-icon>
       </div>
-      <div class="description">
-        <p><b>Total de pedidos: {{total_order_snack}} </b></p>
-        <span class="span">{{total_current_order_snack}} pedidos este mês</span>
-        <p class="span">
-          <span>
-              <mat-icon *ngIf="dif_percent_order_snack > 0; else negativo" style="color: #1E983B;">
-                trending_up
-              </mat-icon> 
-              <ng-template #negativo>
-              <mat-icon style="color: #E53935;">
-                trending_down
-              </mat-icon>
-            </ng-template>
-              {{dif_percent_order_snack}}% em relação ao mes anterior
-          </span>
+
+      <div class="kpi-desc">
+        <p class="kpi-title">Total de pedidos</p>
+        <p class="kpi-value">{{ total_order_snack }}</p>
+        <p class="kpi-sub">{{ total_current_order_snack }} pedidos este mês</p>
+
+        <p class="kpi-trend">
+          <mat-icon *ngIf="dif_percent_order_snack > 0; else neg2" class="trend trend--up">trending_up</mat-icon>
+          <ng-template #neg2>
+            <mat-icon class="trend trend--down">trending_down</mat-icon>
+          </ng-template>
+          {{ dif_percent_order_snack }}% em relação ao mês anterior
         </p>
       </div>
     </div>
-    <div class="card-footer" style="background-color: #F77600;">
-      <div class="see_detail">
-        Ver detalhes
-      </div>
-      <div class="action" routerLink="../lanches/pedidos/listar">
-        <mat-icon style="color: #FF902B;">chevron_right</mat-icon>
-      </div>
-    </div>
+
+    <a class="kpi-footer" routerLink="../lanches/pedidos/listar">
+      <span>Ver detalhes</span>
+      <mat-icon>chevron_right</mat-icon>
+    </a>
   </mat-card>
 
-  <!-- card responsavel por exibir a soma do valor que entorou no mes atual -->
-  <mat-card class="card-total" style="background-color: #27C24C;">
-    <div class="card-body">
-      <div class="arrow-up material-symbols-outlined">
-        <mat-icon style="font-size: 50px; width: auto; height: auto; background-color: #1E983B; padding: 10px; border-radius: 100%;">diversity_3</mat-icon>
+  <!-- Pedidos fornecedor -->
+  <mat-card class="kpi-card kpi--suppliers">
+    <div class="kpi-body">
+      <div class="kpi-icon-badge">
+        <mat-icon>diversity_3</mat-icon>
       </div>
-      <div class="description">
-        <p><b>Pedidos fornecedor: {{total_order_supplier}} </b></p>
-        <span class="span">{{total_current_order_supplier}} este mês</span>
-        <p class="span">
-          <span>
-              <mat-icon *ngIf="dif_percent_order_supplier > 0; else negativo" style="color: #1E983B;">
-                trending_up
-              </mat-icon> 
-              <ng-template #negativo>
-              <mat-icon style="color: #E53935;">
-                trending_down
-              </mat-icon>
-            </ng-template>
-              {{dif_percent_order_supplier}}% em relação ao mes anterior
-          </span>
+
+      <div class="kpi-desc">
+        <p class="kpi-title">Pedidos fornecedor</p>
+        <p class="kpi-value">{{ total_order_supplier }}</p>
+        <p class="kpi-sub">{{ total_current_order_supplier }} este mês</p>
+
+        <p class="kpi-trend">
+          <mat-icon *ngIf="dif_percent_order_supplier > 0; else neg3" class="trend trend--up">trending_up</mat-icon>
+          <ng-template #neg3>
+            <mat-icon class="trend trend--down">trending_down</mat-icon>
+          </ng-template>
+          {{ dif_percent_order_supplier }}% em relação ao mês anterior
         </p>
       </div>
     </div>
-    <div class="card-footer" style="background-color: #1E983B;">
-      <div class="see_detail">
-        Ver detalhes
-      </div>
-      <div class="action" routerLink="../fornecedores/pedidos/listar">
-        <mat-icon style="color: #27C24C;">chevron_right</mat-icon>
-      </div>
-    </div>
+
+    <a class="kpi-footer" routerLink="../fornecedores/pedidos/listar">
+      <span>Ver detalhes</span>
+      <mat-icon>chevron_right</mat-icon>
+    </a>
   </mat-card>
 
 </div>
-
-<!-- <mat-card class="filter-card">
-  <div class="card-head">
-    <mat-icon>filter_alt</mat-icon>
-    Filtros
-  </div>
-  <div>
-    <form class="form-filter">
-
-      <mat-form-field class="example-form-field">
-        <mat-label>Data de inicio</mat-label>
-        <input matInput [matDatepicker]="picker_dt_begin" name="dt_begin">
-        <mat-datepicker-toggle matIconSuffix [for]="picker_dt_begin"></mat-datepicker-toggle>
-        <mat-datepicker #picker_dt_begin>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Cancelar</button>
-            <button mat-raised-button class="button-apply" matDatepickerApply>Aplicar</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
-      <mat-form-field class="example-form-field">
-        <mat-label>Data de inicio</mat-label>
-        <input matInput [matDatepicker]="picker_dt_end" name="dt_expired">
-        <mat-datepicker-toggle matIconSuffix [for]="picker_dt_end"></mat-datepicker-toggle>
-        <mat-datepicker #picker_dt_end>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Cancelar</button>
-            <button mat-raised-button class="button-apply" matDatepickerApply>Aplicar</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
-
-      <button  mat-raised-button class="button-success">Filtrar <mat-icon>filter_alt</mat-icon></button>
-    </form>
-    <span class="span">Filtre entre duas datas serem exibidas no gráfico</span>
-  </div>
-</mat-card> -->
-
-<!-- <h1>Gráfico</h1>
-<div class="content-chart">
-  <p>Gráfico referente quantidade de item por categoria</p>
-  <canvas id="financeChart"> {{chart}} </canvas>
-</div> -->
-<!-- <mat-icon style="margin-right: 5px;">list_alt</mat-icon> -->

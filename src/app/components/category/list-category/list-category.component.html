@@ -1,88 +1,107 @@
-<div class="container">
-  <mat-card>
-    <form class="form">
-      <div>
-        <div class="form-filter">
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Nome</mat-label>
-              <input matInput placeholder="Nome" name="name" [(ngModel)]="filterCategory.name" />
-            </mat-form-field>
-          </div>
+<div class="categories-page">
 
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Descrição</mat-label>
-              <input matInput placeholder="Descrição" name="description" [(ngModel)]="filterCategory.description" />
-            </mat-form-field>
-          </div>
-
-          <mat-card-actions style="justify-content: end">
-            <div class="example-button-row">
-              <button (click)="clearInputs()" style="margin-right: 1rem" mat-raised-button class="button-warning">
-                Limpar filtros
-              </button>
-              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-              <button mat-raised-button class="button-success" (click)="getCategories(1)">
-                Buscar
-              </button>
-            </div>
-          </mat-card-actions>
-        </div>
+  <!-- Filtros -->
+  <mat-card class="filter-card">
+    <div class="filter-card__head">
+      <div class="head-left">
+        <mat-icon>filter_alt</mat-icon>
+        <span>Filtros</span>
       </div>
+      <div class="head-right">
+        <button mat-raised-button class="button-warning" (click)="clearInputs()">
+          Limpar filtros
+        </button>
+        <button mat-raised-button class="button-success" (click)="getCategories(1)">
+          Buscar
+        </button>
+      </div>
+    </div>
+
+    <form class="filter-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome" name="name" [(ngModel)]="filterCategory.name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Descrição</mat-label>
+        <input matInput placeholder="Descrição" name="description" [(ngModel)]="filterCategory.description" />
+      </mat-form-field>
     </form>
   </mat-card>
 
-  <!-- simbolo de loadgin -->
+  <!-- Loading -->
   <div class="loading-content" style="height: 40px;">
-    <div class="" *ngIf="isLoad">
-      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
-    </div>
+    <mat-spinner *ngIf="isLoad" diameter="40"></mat-spinner>
   </div>
 
-  <table class="responsive-table" id="customers">
-    <tr>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th></th>
-    </tr>
-    <tr *ngFor="let category of categories">
-      <td>{{ category.name }}</td>
-      <td>{{ category.description }}</td>
-      <td class="options-table" >
-        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Categoria', 'edit-category', category.id_category || '', '50%' )" >edit</mat-icon>
-      </td>
-    </tr>
-  </table>
-  <!-- INICIO paginação  -->
-  <div class="form">
-    <div class="form-filter">
+  <!-- Lista -->
+  <mat-card class="data-card">
+    <div class="data-card__head">
+      <div class="head-left">
+        <mat-icon>category</mat-icon>
+        <span>Categorias</span>
+      </div>
+      <div class="head-right subtle">
+        <span>Total: <strong>{{ totalCategories }}</strong></span>
+        <span>Páginas: <strong>{{ totalPages }}</strong></span>
+      </div>
+    </div>
+
+    <div class="data-card__body">
+      <div class="table-wrap">
+        <table class="table-modern">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let category of categories">
+              <td class="truncate">{{ category?.name }}</td>
+              <td class="truncate desc-col">{{ category?.description }}</td>
+              <td class="col-actions">
+                <button class="icon-btn"
+                        (click)="globalService.openDialog('Editar Categoria','edit-category', category?.id_category || '', '50%')"
+                        aria-label="Editar categoria">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginação -->
       <div class="pagination">
-        <div>
-          <span
-            >Total: <b> {{ totalCategories }} </b>
-          </span>
-          <span
-            >Paginas: <b> {{ totalPages }} </b>
-          </span>
+        <div class="page-info">
+          Página <strong>{{ currentPage }}</strong> de <strong>{{ totalPages }}</strong>
         </div>
-        <!-- botoes de paginação -->
-        <div class="buttons">
-          <!-- seta de anterior -->
+        <div class="page-buttons">
           <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getCategories(this.currentPage - 1)">
-            <
+            <mat-icon>chevron_left</mat-icon>
           </button>
-          <!-- pagina atual da pagina current_page -->
-          {{ currentPage }}
-          <!-- seta de proximo -->
           <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getCategories(this.currentPage + 1)">
-            >
+            <mat-icon>chevron_right</mat-icon>
           </button>
         </div>
       </div>
     </div>
-  </div>
-  <!-- FIM DA PAGINAÇÃO -->
-  <div class=""> <h1>Gráfico</h1> </div>
-  <app-items-category></app-items-category>
+  </mat-card>
+
+  <!-- Gráfico -->
+  <mat-card class="chart-card">
+    <div class="chart-head">
+      <div class="chart-title">
+        <mat-icon>insights</mat-icon>
+        <span>Itens por Categoria</span>
+      </div>
+    </div>
+    <div class="chart-body">
+      <app-items-category></app-items-category>
+    </div>
+  </mat-card>
+
 </div>

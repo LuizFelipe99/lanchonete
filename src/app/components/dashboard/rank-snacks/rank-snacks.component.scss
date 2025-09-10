@@ -1,91 +1,66 @@
-.card-head{
-  background-color: #FF902B;
-  text-align: center;
-  font-size: 18px;
-  color: #ffff;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 0.5rem;
-  border-radius: 8px 8px 0px 0px;
-}
-.card{
-  width: 100%;
-  padding: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 8px 24px var(--card-shadow);
-  transition: box-shadow 0.3s ease;
-     box-shadow: 0px 6px 10px 1px black;
-   border-radius: 20px;
-}
-#customers {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    font-size: 18px;
-    // line-height: 18px;
-  }
-  
-  #customers td,
-  #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #customers th {
-    text-align: center;
-  }
-  
-  #customers tr:nth-child(even) {
-    background: #f2f2f2;
-  }
-  
-  #customers tr:hover {
-    background: var(--menu-primary);
-    color: white;
-  }
-  
-  #customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background: var(--menu-primary);
-    color: white;
-  }
-  
-  
-  /* Define a largura da tabela na página */
-  .responsive-table {
-    width: 100%;
-    // height: 80vh;
-  }
+.table-card{ margin-top: 8px }
 
-  .card-footer{
-    background-color: #FF902B;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    padding: 0.5rem;
-      border-radius: 0px 0px 8px 8px;
-  }
-  
-  
-  // .container{
-  //   display: flex;
-  //   flex-direction: column;
-  //   // justify-content: center;
-  //   // height: 100%;
-  //   align-items: center;
-  //   margin-top: 1rem;
-  // }
-  
-  ::ng-deep .mat-mdc-progress-spinner circle{
-    stroke: var(--menu-second)
-  }
-
-.icon-success{
-color: green;
+.data-card{
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
-.icon-unsuccess{
-  color: #f44336;
-
+/* Cabeçalho do card */
+.data-card__head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 12px 16px;
+  background: var(--table-head-bg); /* azul 800 do mockup */
+  color:#fff;
 }
+.data-card__head .head-left{ display:flex; align-items:center; gap:10px; font-weight:700 }
+.data-card__head .mat-icon{ color:#BFDBFE }
+
+/* Corpo e rodapé */
+.data-card__body{ padding: 12px }
+.data-card__footer{
+  border-top: 1px solid var(--color-border);
+  padding: 10px 14px;
+  background:#F8FAFC; color: var(--color-text);
+}
+
+/* ===== Tabela moderna ===== */
+.table-wrap{ width:100%; overflow:auto }
+.table-modern{
+  width:100%;
+  border-collapse: separate; border-spacing:0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px; overflow: hidden;
+  font-size: 14px;
+}
+.table-modern thead th{
+  background: var(--table-head-bg);
+  color:#fff;
+  text-align:left;
+  padding:12px 14px;
+  font-weight:600;
+}
+.table-modern tbody td{
+  padding:12px 14px;
+  border-top:1px solid var(--color-border);
+  vertical-align: middle;
+}
+.table-modern tbody tr:nth-child(even){ background:#F8FAFC }
+.table-modern tbody tr:hover{ background: rgba(59,130,246,.08) }
+
+/* Numéricos/alinhamento */
+.col-num{ text-align:right }
+.mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace }
+.item-name{ font-weight: 600; color: var(--color-text) }
+
+/* Spinner (compat) */
+::ng-deep .mat-mdc-progress-spinner circle{ stroke: var(--color-primary) }
+
+/* — Opcional: cabeçalho “grudado” ao rolar e altura máxima — */
+/*
+.table-wrap{ max-height: 420px; overflow:auto }
+.table-modern thead th{ position: sticky; top: 0; z-index: 1 }
+*/

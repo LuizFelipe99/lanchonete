@@ -1,100 +1,145 @@
-<div class="container">
-  <mat-card>
-    <form class="form">
-      <div>
-        <div class="form-filter">
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Fornecedor</mat-label>
-              <input matInput placeholder="Ex. Super Mercado X" name="supplier" [(ngModel)]="filterOrder.supplier">
-            </mat-form-field>
-          </div>
-          
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Responsável</mat-label>
-              <input matInput placeholder="Ex. Luiz Felipe" name="responsible" [(ngModel)]="filterOrder.responsible">
-            </mat-form-field>
-          </div>
-          
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Pedido</mat-label>
-              <input type="number" matInput placeholder="Ex. 100" name="id_order_supplier" [(ngModel)]="filterOrder.id_order_supplier">
-            </mat-form-field>
-          </div>
+<div class="orders-supplier-page">
 
-          <div>
-            <mat-form-field>
-              <mat-label>Status</mat-label>
-              <mat-select name="active"  [(ngModel)]="filterOrder.active" >
-                <mat-option [value]="0">Inativo</mat-option>
-                <mat-option [value]="1">Ativo</mat-option>
-                <mat-option [value]="3">Todos</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          
-          <mat-card-actions style="justify-content: end;">
-            <div class="example-button-row" >
-              <button (click)="clearInputs()" style="margin-right: 1rem;" mat-raised-button class="button-warning">Limpar Filtros</button> 
-              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-              <button mat-raised-button class="button-success" style="margin-right: 1rem;" (click)="getOrders(page)" >Buscar</button>
-            </div>
-          </mat-card-actions>
-        </div>
+  <!-- Filtros -->
+  <mat-card class="filter-card">
+    <div class="filter-card__head">
+      <div class="head-left">
+        <mat-icon>filter_alt</mat-icon>
+        <span>Filtros</span>
       </div>
+      <div class="head-right">
+        <button mat-raised-button class="button-warning" (click)="clearInputs()">
+          Limpar filtros
+        </button>
+        <button mat-raised-button class="button-success" (click)="getOrders(page)">
+          Buscar
+        </button>
+      </div>
+    </div>
+
+    <form class="filter-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Fornecedor</mat-label>
+        <input matInput placeholder="Ex. Super Mercado X" name="supplier" [(ngModel)]="filterOrder.supplier">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Responsável</mat-label>
+        <input matInput placeholder="Ex. Luiz Felipe" name="responsible" [(ngModel)]="filterOrder.responsible">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Pedido</mat-label>
+        <input type="number" matInput placeholder="Ex. 100" name="id_order_supplier" [(ngModel)]="filterOrder.id_order_supplier">
+      </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select name="status" [(ngModel)]="filterOrder.status">
+        <mat-option [value]="1">Recebido</mat-option>
+        <mat-option [value]="2">Cancelado</mat-option>
+        <mat-option [value]="3">Todos</mat-option>
+      </mat-select>
+    </mat-form-field>
     </form>
   </mat-card>
 
-  <!-- simbolo de loadgin -->
+  <!-- Loading -->
   <div class="loading-content" style="height: 40px;">
-    <div class="" *ngIf="isLoad">
-      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
-    </div>
+    <mat-spinner *ngIf="isLoad" diameter="40"></mat-spinner>
   </div>
 
-  <table class="responsive-table" id="customers">
-    <tr>
-      <th>Pedido</th>
-      <th>Fornecedor</th>
-      <th>Responsável</th>
-      <th>Itens</th>
-      <th>Valor</th>
-      <th>Data de vencimento</th>
-      <th></th>
-    </tr>
-    <tr *ngFor="let order of orders">
-      <td># {{order.id_order_supplier}} </td>
-      <td> {{order.supplier}} </td>
-      <td> {{order.responsible}} </td>
-      <td> {{order.items ?? '0'}} </td>
-      <td> R$ {{order.total ?? '0' | number: '1.2-2'}} </td>
-      <td> {{order.dt_expired}} </td>
-      <td >  <mat-icon (click)="globalService.openDialog('Detalhes do pedido', 'detail-order-supplier', order.id_order_supplier || '', '50%')" style="cursor: pointer">shopping_cart</mat-icon></td>
-    </tr>
-  </table>
-  <!-- INICIO paginação  -->
-  <div class="form">
-    <div class="form-filter">
+  <!-- Lista -->
+  <mat-card class="data-card">
+    <div class="data-card__head">
+      <div class="head-left">
+        <mat-icon>shopping_bag</mat-icon>
+        <span>Pedidos de Fornecedor</span>
+      </div>
+      <div class="head-right subtle">
+        <span>Total: <strong>{{ totalOrders }}</strong></span>
+        <span>Páginas: <strong>{{ totalPages }}</strong></span>
+      </div>
+    </div>
+
+    <div class="data-card__body">
+      <div class="table-wrap">
+        <table class="table-modern">
+          <thead>
+  <tr>
+    <th class="col-id">Pedido</th>
+    <th>Fornecedor</th>
+    <th>Responsável</th>
+    <th class="col-center">Itens</th>
+    <th class="col-right">Valor</th>
+    <th class="col-status">Status</th>
+    <th>Vencimento</th>
+    <th class="col-actions"></th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let order of orders">
+    <td class="col-id mono"># {{ order?.id_order_supplier }}</td>
+    <td class="truncate">{{ order?.supplier }}</td>
+    <td class="truncate">{{ order?.responsible }}</td>
+
+    <td class="col-center mono">{{ order?.items ?? 0 }}</td>
+    <td class="col-right mono">R$ {{ (order?.total ?? 0) | number:'1.2-2' }}</td>
+
+          <!-- NOVO: status -->
+        <td class="col-status">
+          <span class="badge" [ngClass]="statusClass(order?.status)">
+            <mat-icon class="badge__icon">{{ statusIcon(order?.status) }}</mat-icon>
+            {{ statusLabel(order?.status) }}
+          </span>
+        </td>
+
+
+          <td>
+            <span class="chip">{{ order?.dt_expired }}</span>
+          </td>
+
+          <td class="col-actions">
+            <button class="icon-btn"
+                    (click)="globalService.openDialog('Detalhes do pedido', 'detail-order-supplier', order?.id_order_supplier || '', '50%')"
+                    aria-label="Detalhes">
+              <mat-icon>shopping_cart</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+        </table>
+      </div>
+
+      <!-- Paginação -->
       <div class="pagination">
-        <div>
-          <span>Total: <b> {{totalOrders}} </b> </span>
-          <span>Paginas: <b> {{totalPages}} </b> </span>
+        <div class="page-info">
+          Página <strong>{{ currentPage }}</strong> de <strong>{{ totalPages }}</strong>
         </div>
-        <!-- botoes de paginação -->
-        <div class="buttons">
-        <!-- seta de anterior -->
-          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getOrders(this.currentPage - 1)"> < </button>
-          <!-- pagina atual da pagina current_page -->
-          {{currentPage}}
-          <!-- seta de proximo -->
-          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getOrders(this.currentPage + 1)"> > </button>
+        <div class="page-buttons">
+          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getOrders(this.currentPage - 1)">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getOrders(this.currentPage + 1)">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
         </div>
       </div>
     </div>
-  </div>
-  <!-- FIM DA PAGINAÇÃO -->
-  <div class=""> <h1>Gráfico</h1> </div>
-  <app-order-supplier-status></app-order-supplier-status>
+  </mat-card>
+
+  <!-- Gráfico -->
+  <mat-card class="chart-card">
+    <div class="chart-head">
+      <div class="chart-title">
+        <mat-icon>insights</mat-icon>
+        <span>Status dos Pedidos</span>
+      </div>
+    </div>
+    <div class="chart-body">
+      <app-order-supplier-status></app-order-supplier-status>
+    </div>
+  </mat-card>
+
 </div>

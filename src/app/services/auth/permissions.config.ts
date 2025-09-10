@@ -35,5 +35,7 @@ export const ROUTE_PERMISSIONS: PermissionEntry[] = [
 
   { path: '/dashboard/financias/detalhes', allowedGroups: ['1'], title: 'Detalhes financeiros', icon: 'bar_chart', category: 'dashboard' },
 
-  { path: '/configuracoes', allowedGroups: ['1'], title: 'Configurações', icon: 'settings', category: 'config' }
+  { path: '/configuracoes', allowedGroups: ['1'], title: 'Configurações', icon: 'settings', category: 'config' },
+
+  { path: '/acesso/usuarios', allowedGroups: ['1'], title: 'Acessos', icon: 'settings', category: 'dashboard' }
 ];

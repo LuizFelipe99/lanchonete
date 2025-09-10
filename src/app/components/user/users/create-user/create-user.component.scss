@@ -1,45 +1,50 @@
-
-.card-login{
-  width: 35%;
-  // background-color: var(--second-color);
-  color: #000;
-  padding: 10px;
-}
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  color: #000;
-  // background-color: var(--primary-color)
-}
-.form{
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
+/* Página */
+.user-create-page{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:12px;
 }
 
+/* Card base */
+.form-card{
+  width:100%;
+  max-width:720px;
+  background: var(--color-bg);
+  border:1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
 
-@media (max-width: 1024px) {
-  .card-login{
-    width: 55%;
-  }
+/* Cabeçalho */
+.form-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; background: var(--table-head-bg); color:#fff;
 }
-@media (max-width: 769px) {
-  .card-login{
-    width: 65%;
-  }
+.form-head .head-left{ display:flex; align-items:center; gap:8px; font-weight:700 }
+.form-head .head-left .mat-icon{ color:#BFDBFE }
+.form-head .head-right{ display:flex; align-items:center; gap:8px }
+
+/* Corpo */
+.form-body{ padding:12px }
+.form-grid{
+  display:grid; gap:12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
-@media (max-width: 481px) {
-  .card-login{
-    width: 75%;
-  }
+.col-2{ grid-column: span 2 }
+
+/* Ações */
+.actions{
+  display:flex; justify-content:flex-end; gap:8px;
+  padding:12px 16px; border-top:1px solid var(--color-border);
 }
-.loading-content{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-::ng-deep .mat-mdc-progress-spinner circle{
-  stroke: var(--menu-second)
+
+/* Spinner compat */
+::ng-deep .mat-mdc-progress-spinner circle{ stroke: var(--color-primary) }
+
+/* Responsivo extra */
+@media (max-width: 640px){
+  .col-2{ grid-column: auto }
 }

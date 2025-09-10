@@ -14,7 +14,7 @@ export interface UserFilter{
   id_user?: string,
   name?: string;
   login?: string;
-  active?: number;
+  active?: any;
   per_page?: number;
   password?: string;
   contact?: string;

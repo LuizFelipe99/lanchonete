@@ -1,26 +1,35 @@
-<div class="container">
-  <mat-card class="card">
-    <div class="card-container">
-      <div class="card-head">
-        <span class="span"> {{card_title}} </span>
+<div class="table-card">
+  <mat-card class="data-card">
+    <div class="data-card__head">
+      <div class="head-left">
+        <mat-icon>bar_chart</mat-icon>
+        <span>{{ card_title }}</span>
       </div>
-      <div class="card-body">
-        <table class="responsive-table" id="customers">
-          <tr>
-            <th>Item</th>
-            <th>Vendidos</th>
-            <th>Total</th>
-          </tr>
-          <tr *ngFor="let item of items">
-            <td> {{item.name}} </td>
-            <td> {{item.rank}} </td>
-            <td>R$ {{item.total}} </td>
-          </tr>
+    </div>
+
+    <div class="data-card__body">
+      <div class="table-wrap">
+        <table class="table-modern table-modern--items">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th class="col-num">Vendidos</th>
+              <th class="col-num">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td class="item-name">{{ item.name }}</td>
+              <td class="col-num mono">{{ item.rank }}</td>
+              <td class="col-num mono">R$ {{ item.total | number:'1.2-2' }}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
-    <div class="card-footer">
-      <span>Total de itens vendidos {{snacks}} </span>
+
+    <div class="data-card__footer">
+      <span>Total de itens vendidos: <strong>{{ snacks }}</strong></span>
     </div>
   </mat-card>
 </div>

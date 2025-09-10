@@ -1,41 +1,49 @@
+/* Página do diálogo */
+.add-item-page{
+  display:flex; justify-content:center; align-items:center;
+  padding: 8px;
+}
 
-.card-login{
-    width: 55%;
-    // background-color: var(--second-color);
-    color: #ffff;
-    padding: 10px;
-    margin: 1rem;
-  }
-  .container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    // background-color: var(--primary-color)
-  }
-  .form{
-    display: flex;
-    flex-direction: column;
-    padding: 10px
-  }
-  .button-apply{
-    background-color: var(--menu-second);
-  }
-  
-  
-  @media (max-width: 1024px) {
-    .card-login{
-      width: 55%;
-    }
-  }
-  @media (max-width: 769px) {
-    .card-login{
-      width: 65%;
-    }
-  }
-  @media (max-width: 481px) {
-    .card-login{
-      width: 75%;
-    }
-  }
-  
+/* Card base */
+.editor-card{
+  width:100%; max-width: 720px;
+  background: var(--color-bg);
+  border:1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+/* Cabeçalho */
+.editor-head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:12px 16px;
+  background: var(--table-head-bg); color:#fff;
+}
+.editor-head .head-left{ display:flex; align-items:center; gap:8px; font-weight:700 }
+.editor-head .head-left .mat-icon{ color:#BFDBFE }
+
+/* Etiqueta do pedido */
+.chip{
+  display:inline-flex; align-items:center; padding:4px 10px; border-radius:999px;
+  background:#F1F5F9; border:1px solid #E5E7EB; color:#0B1220; font-weight:700; font-size:12px;
+}
+.mono{ font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1 }
+
+/* Grid do formulário */
+.editor-form{
+  display:grid; gap:12px; padding:12px 16px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.editor-form .full{ grid-column: 1 / -1 } /* Item ocupa a linha toda */
+
+/* Rodapé de ações */
+.actions{
+  display:flex; justify-content:flex-end; padding: 12px 16px; gap:10px;
+  border-top:1px solid var(--color-border); background:#F8FAFC;
+}
+
+/* Responsivo */
+@media (max-width: 720px){
+  .editor-form{ grid-template-columns: 1fr }
+}

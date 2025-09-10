@@ -1,15 +1,17 @@
-<!-- menu.component.html -->
+<!-- Topbar -->
 <mat-toolbar class="nav_bar_sup">
-  <div class="">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="opened = !opened">
-      <mat-icon style="margin-right: 5px;">menu</mat-icon>
+  <div>
+    <button mat-icon-button aria-label="Alternar menu" (click)="opened = !opened">
+      <mat-icon class="mr-5">menu</mat-icon>
     </button>
     <span>Lanchonete</span>
   </div>
 
   <div class="logo_nav" mat-button [matMenuTriggerFor]="menu">
     <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngFor="let menu of menu_items_config" [routerLink]="menu.path">
+      <button mat-menu-item *ngFor="let menu of menu_items_config"
+              [routerLink]="menu.path"
+              routerLinkActive="active-item">
         {{ menu.title }}
       </button>
     </mat-menu>
@@ -17,121 +19,130 @@
   </div>
 </mat-toolbar>
 
+<!-- Sidenav -->
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">
-    <mat-list role="list">
+    <!-- Accordion único com todos os grupos: abre um por vez (multi=false) -->
+    <mat-accordion class="menu-accordion" [multi]="false">
+      <!-- HOME -->
+      <mat-expansion-panel *ngIf="menu_items_home.length">
+        <mat-expansion-panel-header>
+          <mat-icon>home</mat-icon>
+          <span class="menu__header-text">Home</span>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let item of menu_items_home"
+             [routerLink]="item.path"
+             routerLinkActive="active-item">
+            <mat-icon class="mr-5">{{ item.icon }}</mat-icon>
+            <span class="menu__text">{{ item.title }}</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
 
-      <mat-accordion class="header-menu" *ngIf="menu_items_home.length">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header class="header-menu">
-            <mat-panel-title>Home:</mat-panel-title>
-            <mat-icon style="margin-right: 5px;">home</mat-icon>
-          </mat-expansion-panel-header>
-          <div class="content">
-            <mat-list-item *ngFor="let item of menu_items_home" role="listitem" [routerLink]="item.path">
-              <mat-icon style="margin-right: 5px;">{{ item.icon }}</mat-icon>
-              {{ item.title }}
-            </mat-list-item>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+      <!-- PEDIDOS LANCHES -->
+      <mat-expansion-panel *ngIf="menu_items_order_snack.length">
+        <mat-expansion-panel-header>
+          <mat-icon>list_alt</mat-icon>
+          <span class="menu__header-text">Pedidos Lanches</span>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let item of menu_items_order_snack"
+             [routerLink]="item.path"
+             routerLinkActive="active-item">
+            <mat-icon class="mr-5">{{ item.icon }}</mat-icon>
+            <span class="menu__text">{{ item.title }}</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
 
-      <mat-accordion class="header-menu" *ngIf="menu_items_order_snack.length">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header class="header-menu">
-            <mat-panel-title>Pedidos Lanches:</mat-panel-title>
-            <mat-icon style="margin-right: 5px;">list_alt</mat-icon>
-          </mat-expansion-panel-header>
-          <div class="content">
-            <mat-list-item *ngFor="let item of menu_items_order_snack" role="listitem" [routerLink]="item.path">
-              <mat-icon style="margin-right: 5px;">{{ item.icon }}</mat-icon>
-              {{ item.title }}
-            </mat-list-item>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+      <!-- USUÁRIOS -->
+      <mat-expansion-panel *ngIf="menu_items_users.length">
+        <mat-expansion-panel-header>
+          <mat-icon>people</mat-icon>
+          <span class="menu__header-text">Usuários</span>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let item of menu_items_users"
+             [routerLink]="item.path"
+             routerLinkActive="active-item">
+            <mat-icon class="mr-5">{{ item.icon }}</mat-icon>
+            <span class="menu__text">{{ item.title }}</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
 
-      <mat-accordion class="header-menu" *ngIf="menu_items_users.length">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header class="header-menu">
-            <mat-panel-title>Usuários:</mat-panel-title>
-            <mat-icon style="margin-right: 5px;">people</mat-icon>
-          </mat-expansion-panel-header>
-          <div class="content">
-            <mat-list-item *ngFor="let item of menu_items_users" class="menu-item" role="listitem" [routerLink]="item.path">
-              <mat-icon style="margin-right: 5px;">{{ item.icon }}</mat-icon>
-              {{ item.title }}
-            </mat-list-item>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+      <!-- FORNECEDORES -->
+      <mat-expansion-panel *ngIf="menu_items_suppliers.length">
+        <mat-expansion-panel-header>
+          <mat-icon>diversity_3</mat-icon>
+          <span class="menu__header-text">Fornecedores</span>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let item of menu_items_suppliers"
+             [routerLink]="item.path"
+             routerLinkActive="active-item">
+            <mat-icon class="mr-5">{{ item.icon }}</mat-icon>
+            <span class="menu__text">{{ item.title }}</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
 
-      <mat-accordion class="header-menu" *ngIf="menu_items_suppliers.length">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header class="header-menu">
-            <mat-panel-title>Fornecedores:</mat-panel-title>
-            <mat-icon style="margin-right: 5px;">diversity_3</mat-icon>
-          </mat-expansion-panel-header>
-          <div class="content">
-            <mat-list-item *ngFor="let item of menu_items_suppliers" role="listitem" [routerLink]="item.path">
-              <mat-icon style="margin-right: 5px;">{{ item.icon }}</mat-icon>
-              {{ item.title }}
-            </mat-list-item>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+      <!-- PEDIDOS FORNECEDOR -->
+      <mat-expansion-panel *ngIf="menu_items_order_supplier.length">
+        <mat-expansion-panel-header>
+          <mat-icon>list_alt</mat-icon>
+          <span class="menu__header-text">Pedidos Fornecedor</span>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let item of menu_items_order_supplier"
+             [routerLink]="item.path"
+             routerLinkActive="active-item">
+            <mat-icon class="mr-5">{{ item.icon }}</mat-icon>
+            <span class="menu__text">{{ item.title }}</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
 
-      <mat-accordion class="header-menu" *ngIf="menu_items_order_supplier.length">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header class="header-menu">
-            <mat-panel-title>Pedidos Fornecedor:</mat-panel-title>
-            <mat-icon style="margin-right: 5px;">list_alt</mat-icon>
-          </mat-expansion-panel-header>
-          <div class="content">
-            <mat-list-item *ngFor="let item of menu_items_order_supplier" role="listitem" [routerLink]="item.path">
-              <mat-icon style="margin-right: 5px;">{{ item.icon }}</mat-icon>
-              {{ item.title }}
-            </mat-list-item>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+      <!-- ITENS -->
+      <mat-expansion-panel *ngIf="menu_items_item.length">
+        <mat-expansion-panel-header>
+          <mat-icon>inventory</mat-icon>
+          <span class="menu__header-text">Itens</span>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let item of menu_items_item"
+             [routerLink]="item.path"
+             routerLinkActive="active-item">
+            <mat-icon class="mr-5">{{ item.icon }}</mat-icon>
+            <span class="menu__text">{{ item.title }}</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
 
-      <mat-accordion class="header-menu" *ngIf="menu_items_item.length">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header class="header-menu">
-            <mat-panel-title>Itens:</mat-panel-title>
-            <mat-icon style="margin-right: 5px;">inventory</mat-icon>
-          </mat-expansion-panel-header>
-          <div class="content">
-            <mat-list-item *ngFor="let item of menu_items_item" role="listitem" [routerLink]="item.path">
-              <mat-icon style="margin-right: 5px;">{{ item.icon }}</mat-icon>
-              {{ item.title }}
-            </mat-list-item>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+      <!-- CATEGORIAS -->
+      <mat-expansion-panel *ngIf="menu_items_category.length">
+        <mat-expansion-panel-header>
+          <mat-icon>category</mat-icon>
+          <span class="menu__header-text">Categorias</span>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let item of menu_items_category"
+             [routerLink]="item.path"
+             routerLinkActive="active-item">
+            <mat-icon class="mr-5">{{ item.icon }}</mat-icon>
+            <span class="menu__text"  >{{ item.title }}</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
 
-      <mat-accordion class="header-menu" *ngIf="menu_items_category.length">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header class="header-menu">
-            <mat-panel-title>Categorias:</mat-panel-title>
-            <mat-icon style="margin-right: 5px;">category</mat-icon>
-          </mat-expansion-panel-header>
-          <div class="content">
-            <mat-list-item *ngFor="let item of menu_items_category" role="listitem" [routerLink]="item.path">
-              <mat-icon style="margin-right: 5px;">{{ item.icon }}</mat-icon>
-              {{ item.title }}
-            </mat-list-item>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-
-      <p>
-        <button mat-button (click)="logout()" class="button-exit">
-          <mat-icon style="margin-right: 5px;">logout</mat-icon> Sair
-        </button>
-      </p>
-    </mat-list>
+    <!-- Sair -->
+    <div class="menu__footer">
+      <button mat-button (click)="logout()" class="button-exit">
+        <mat-icon class="mr-5">logout</mat-icon> Sair
+      </button>
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content>

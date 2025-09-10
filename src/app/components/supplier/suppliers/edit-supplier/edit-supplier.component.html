@@ -1,70 +1,74 @@
-  <div class="container">
-    <mat-card class="card-login">
-      <mat-card-header>
-        <!-- <mat-card-title>Editar fornecedor</mat-card-title>
-        <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle> -->
-      </mat-card-header>
+<div class="dialog-form">
+  <mat-card class="form-shell">
 
-      <!-- simbolo de loadgin -->
-      <div class="loading-content" style="height: 40px;">
-        <div class="" *ngIf="isLoad">
-          <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
-        </div>
+    <!-- Cabeçalho -->
+    <div class="form-head">
+      <div class="head-left">
+        <mat-icon>handshake</mat-icon>
+        <span>Editar fornecedor</span>
       </div>
+    </div>
 
-      <!-- formulario de envio de dados para o cadastro de usuario -->
-      <!-- criado ngfor para listar os itens vindos da api -->
-      <div class="" *ngFor="let item of suppliers">
-        <form class="form">
-          <mat-form-field class="example-full-width">
-            <mat-label>Nome</mat-label>
-            <input autofocus matInput placeholder="Nome do fornecedor" name="name" [(ngModel)]="newSupplier.name" required />
-          </mat-form-field>
+    <!-- Loading -->
+    <div class="loading-block" *ngIf="isLoad">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Responsável</mat-label>
-            <input matInput placeholder="Responsável" name="responsible" [(ngModel)]="newSupplier.responsible" required />
-          </mat-form-field>
+    <!-- Conteúdo (um card por fornecedor retornado) -->
+    <div class="form-body" *ngFor="let item of suppliers">
 
-          <mat-form-field class="example-full-width"  >
-            <mat-label>Endereço</mat-label>
-            <input matInput placeholder="Endereço" name="adress" [(ngModel)]="newSupplier.adress" required />
-          </mat-form-field>
+      <!-- Campos -->
+      <form class="fields-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input autofocus matInput placeholder="Nome do fornecedor" name="name" [(ngModel)]="newSupplier.name" required />
+        </mat-form-field>
 
-          <mat-form-field class="example-full-width" >
-            <mat-label>Contato da empresa</mat-label>
-            <input matInput placeholder="Contato da empresa" name="contact_supplier" [(ngModel)]="newSupplier.contact_supplier" required />
-          </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Responsável</mat-label>
+          <input matInput placeholder="Responsável" name="responsible" [(ngModel)]="newSupplier.responsible" required />
+        </mat-form-field>
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Contato do responsável</mat-label>
-            <input
-              matInput placeholder="Contato do responsável" name="contact_responsible" [(ngModel)]="newSupplier.contact_responsible" required />
-          </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Endereço</mat-label>
+          <input matInput placeholder="Endereço" name="adress" [(ngModel)]="newSupplier.adress" required />
+        </mat-form-field>
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Catalogo de produto</mat-label>
-            <input matInput placeholder="Catálogo de produto" name="catalog" [(ngModel)]="newSupplier.catalog"/>
-          </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Contato da empresa</mat-label>
+          <input matInput placeholder="(xx) xxxx-xxxx" name="contact_supplier" [(ngModel)]="newSupplier.contact_supplier" required />
+        </mat-form-field>
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Ativo</mat-label>
-            <mat-select name="active" [(ngModel)]="newSupplier.active" required>
-              <mat-option [value]="1">Sim</mat-option>
-              <mat-option [value]="2">Não</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-        <mat-card-actions style="justify-content: end">
-          <div class="example-button-row">
-            <button mat-raised-button class="button-warning" (click)="cancel()" style="margin-right: 1rem;">
-            Fechar
-          </button>
-          <button mat-raised-button class="button-success" (click)="updateSupplier()">
-            Salvar
-          </button>
-          </div>
-        </mat-card-actions>
+        <mat-form-field appearance="outline">
+          <mat-label>Contato do responsável</mat-label>
+          <input matInput placeholder="(xx) xxxxx-xxxx" name="contact_responsible" [(ngModel)]="newSupplier.contact_responsible" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Catálogo de produto</mat-label>
+          <input matInput placeholder="URL do catálogo (opcional)" name="catalog" [(ngModel)]="newSupplier.catalog" />
+          <mat-hint>Ex.: https://…</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Ativo</mat-label>
+          <mat-select name="active" [(ngModel)]="newSupplier.active" required>
+            <mat-option [value]="1">Sim</mat-option>
+            <mat-option [value]="2">Não</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+
+      <!-- Ações -->
+      <div class="form-actions">
+        <button mat-raised-button class="button-warning" (click)="cancel()">
+          Fechar
+        </button>
+        <button mat-raised-button class="button-success" (click)="updateSupplier()">
+          Salvar
+        </button>
       </div>
-    </mat-card>
-  </div>
+    </div>
+
+  </mat-card>
+</div>

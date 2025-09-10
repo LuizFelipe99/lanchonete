@@ -1,0 +1,153 @@
+<h1>Acesso de Usuários</h1>
+
+<!-- Filtros -->
+<mat-card class="filter-card">
+  <div class="filter-card__head">
+    <div class="head-left">
+      <mat-icon>filter_alt</mat-icon>
+      <span>Filtros</span>
+    </div>
+    <div class="head-right">
+      <button mat-raised-button class="button-warning" (click)="clearFilters()">
+        Limpar filtros
+      </button>
+      <button mat-raised-button class="button-success" (click)="getUsersAccess(1)">
+        Buscar
+      </button>
+    </div>
+  </div>
+
+  <form class="filter-form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Nome" name="name" [(ngModel)]="filterUser.name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Login</mat-label>
+      <input matInput placeholder="Login" name="login" [(ngModel)]="filterUser.login" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Logou de</mat-label>
+      <input matInput [matDatepicker]="dtDePicker" name="dt_login_de" [(ngModel)]="filterUser.dt_login_de">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="dtDePicker"></mat-datepicker-toggle>
+      <mat-datepicker #dtDePicker>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel>Cancelar</button>
+          <button mat-raised-button class="button-apply" matDatepickerApply>Aplicar</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Logou até</mat-label>
+      <input matInput [matDatepicker]="dtAtePicker" name="dt_logou_ate" [(ngModel)]="filterUser.dt_logou_ate">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="dtAtePicker"></mat-datepicker-toggle>
+      <mat-datepicker #dtAtePicker>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel>Cancelar</button>
+          <button mat-raised-button class="button-apply" matDatepickerApply>Aplicar</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Requisição</mat-label>
+      <mat-select name="request" [(ngModel)]="filterUser.request">
+        <mat-option [value]="'S'">Sucesso</mat-option>
+        <mat-option [value]="'E'">Erro</mat-option>
+        <mat-option [value]="''">Todos</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>IP</mat-label>
+      <input matInput placeholder="IP" name="ip" [(ngModel)]="filterUser.ip"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status usuário</mat-label>
+      <mat-select name="user_status" [(ngModel)]="filterUser.user_status">
+        <mat-option [value]="1">Ativo</mat-option>
+        <mat-option [value]="0">Inativo</mat-option>
+        <mat-option [value]="">Todos</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+</mat-card>
+
+<!-- Tabela -->
+<mat-card class="data-card">
+  <div class="data-card__head">
+    <div class="head-left">
+      <mat-icon>group</mat-icon>
+      <span>Usuários</span>
+    </div>
+    <div class="head-right subtle">
+      <span>Total: <strong>{{ totalUsers }}</strong></span>
+      <span>Páginas: <strong>{{ totalPages }}</strong></span>
+    </div>
+  </div>
+
+  <div class="data-card__body">
+    <div class="table-wrap">
+      <table class="table-modern">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Login</th>
+            <th>Acessado</th>
+            <th>Status</th>
+            <th>Status Usuário</th>
+            <th>IP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td class="truncate">{{ user.name }}</td>
+            <td class="mono truncate">{{ user.login }}</td>
+            <td class="truncate col-contact">{{ user.logou_em }}</td>
+            <td>
+                <span class="badge" [ngClass]="user.request_status === 'S' ? 'success' : 'danger'">
+                  <mat-icon class="badge__icon">
+                    {{ user.request_status === 'S' ? 'check_circle' : 'cancel' }}
+                  </mat-icon>
+                  {{ user.request_status === 'S' ? 'Sucesso' : 'Falha' }}
+                </span>
+              </td>
+
+             <td>
+                <span class="badge" [ngClass]="user.status_user === 1 ? 'success' : 'danger'">
+                  <mat-icon class="badge__icon">
+                    {{ user.status_user === 1 ? 'check_circle' : 'cancel' }}
+                  </mat-icon>
+                  {{ user.status_user === 1 ? 'Ativo' : 'Inativo' }}
+                </span>
+              </td>
+            <td class="truncate col-contact">{{ user.user_ip }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginação -->
+    <div class="pagination">
+      <div class="page-info">
+        Página <strong>{{ currentPage }}</strong> de <strong>{{ totalPages }}</strong>
+      </div>
+      <div class="page-buttons">
+        <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getUsersAccess(currentPage - 1)">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getUsersAccess(currentPage + 1)">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>

@@ -8,6 +8,7 @@ import { OrderSupplierStatus } from 'src/app/models/Dashboard/oder-supplier-stat
 import { UserStatsDashboard } from 'src/app/models/Dashboard/users-status.model';
 import { BASE_URL } from '../api_connector';
 import { itemRank } from 'src/app/models/Dashboard/rank-item.model';
+import { usersAccess } from 'src/app/models/Dashboard/users-access.model';
 
 @Injectable({
   providedIn: 'root',
@@ -91,5 +92,17 @@ export class DashBoard {
     });
     const endPoint = `${this.apiUrl}/dashboard/rank_snacks/`;
     return this.http.get<itemRank>(endPoint, { headers });
+  }
+
+  public getUsersAccess(filter?: any, page?: number): Observable<usersAccess> {
+    const token = this.tokenId;
+    // Configurar o cabeçalho da requisição
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    const endPoint = `${this.apiUrl}/dashboard/users-access/`;
+    filter.page = page;
+    return this.http.post<usersAccess>(endPoint, filter, { headers })
   }
 }

@@ -1,37 +1,44 @@
-
-.card-login{
-  width: 100%;
-  // background-color: var(--second-color);
-  color: #ffff;
-  padding: 1rem;
-}
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  // background-color: var(--primary-color)
-}
-.form{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 1rem;
+/* Página (centraliza o card dentro do modal) */
+.dialog-page{
+  display:flex; align-items:center; justify-content:center;
+  width:100%;
 }
 
-.example-full-width{
- margin-right: 20px;
+/* Card base */
+.dialog-card{
+  width:100%;
+  background: var(--color-bg);
+  border:1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
 }
 
-.loading-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Cabeçalho do card */
+.dialog-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; background: var(--table-head-bg); color:#fff;
+}
+.dialog-head .head-left{ display:flex; align-items:center; gap:8px; font-weight:700 }
+.dialog-head .head-left .mat-icon{ color:#BFDBFE }
+
+/* Corpo do card */
+.dialog-body{ padding: 12px }
+
+/* Grid do formulário (responsivo) */
+.form-grid{
+  display:grid; gap:12px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-.loading-content{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Rodapé de ações */
+.dialog-actions{
+  margin-top: 4px;
+  display:flex; gap:8px; justify-content:flex-end;
+  padding:12px; border-top:1px solid var(--color-border);
 }
+
+/* Compat spinner */
+::ng-deep .mat-mdc-progress-spinner circle{ stroke: var(--color-primary) }
+
+/* (herda botões e inputs do seu global) */

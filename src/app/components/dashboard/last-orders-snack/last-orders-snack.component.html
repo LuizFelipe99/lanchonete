@@ -1,33 +1,48 @@
-<div class="container">
-  <mat-card class="card">
-    <div class="card-container">
-      <div class="card-head">
-        <span class="span"> {{card_title}} </span>
-        <span class="span"> <span>R$ {{total_values | number: '1.2-2'}} </span> </span>
+<div class="table-card">
+  <mat-card class="data-card">
+    <div class="data-card__head">
+      <div class="head-left">
+        <mat-icon>table_chart</mat-icon>
+        <span>{{ card_title }}</span>
       </div>
-      <div class="card-body">
-        <table class="responsive-table" id="customers">
-          <tr>
-            <th>Cliente</th>
-            <th>Pedido</th>
-            <th>Status</th>
-            <th>Valor</th>
-          </tr>
-          <tr *ngFor="let order of orders">
-            <td> {{order.client}} </td>
-            <td> {{order.id_order_snack}} </td>
-            <td>
-              <mat-icon *ngIf="order.status === 'Pendente'" class="icon-unsuccess">do_not_disturb_on</mat-icon>
-              <mat-icon *ngIf="order.status !== 'Pendente'" class="icon-success">check</mat-icon>
-              {{order.status}}
-            </td>
-            <td>R$ {{order.total | number: '1.2-2'}} </td>
-          </tr>
+      <div class="head-right">
+        <span>Total:</span>
+        <strong>R$ {{ total_values | number:'1.2-2' }}</strong>
+      </div>
+    </div>
+
+    <div class="data-card__body">
+      <div class="table-wrap">
+        <table class="table-modern">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Pedido</th>
+              <th>Status</th>
+              <th class="col-num">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders">
+              <td>{{ order.client }}</td>
+              <td class="mono">{{ order.id_order_snack }}</td>
+              <td>
+                <span class="badge" [ngClass]="order.status === 'Pendente' ? 'warn' : 'success'">
+                  <mat-icon class="badge__icon">
+                    {{ order.status === 'Pendente' ? 'do_not_disturb_on' : 'check' }}
+                  </mat-icon>
+                  {{ order.status }}
+                </span>
+              </td>
+              <td class="col-num mono">R$ {{ order.total | number:'1.2-2' }}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
-    <div class="card-footer">
-      <span>Total de pedidos: {{totalOrders}} </span>
+
+    <div class="data-card__footer">
+      <span>Total de pedidos: <strong>{{ totalOrders }}</strong></span>
     </div>
   </mat-card>
 </div>

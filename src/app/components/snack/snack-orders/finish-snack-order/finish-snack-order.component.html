@@ -1,59 +1,114 @@
-<div class="container">
-  <mat-card class="cabecalho form" style="width: 55%; height: 50vh;">
-    <form class="form">
-      <div>
-        <div class="form-filter">
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Valor</mat-label>
-              <input matInput placeholder="R$ 1" name="discounted_value" [(ngModel)]="FinishOrder.discounted_value" >
-            </mat-form-field>
-          </div>
+<div class="finish-page">
 
-          <div>
-            <mat-form-field>
-              <mat-label>Forma de pagamento</mat-label>
-              <mat-select name="discounted_value" [(ngModel)]="FinishOrder.discounted_type" >
-                <mat-option [value]="'pix'">Pix</mat-option>
-                <mat-option [value]="'Dinheiro'">Dinheiro</mat-option>
-                <mat-option [value]="'Cartao'">Cartão</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          
-          <mat-card-actions style="justify-content: end;">
-            <div class="example-button-row" >
-              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-              <button [disabled]="isDecrease" mat-raised-button class="button-success" style="margin-right: 1rem;" (click)="finishOrderSnack() " >Abater</button>
-            </div>
-          </mat-card-actions>
+  <mat-card class="order-card">
+    <!-- Cabeçalho -->
+    <div class="order-head">
+      <div class="head-left">
+        <mat-icon>receipt_long</mat-icon>
+        <div class="title">
+          <div class="title-main">Finalizar Pedido</div>
+          <div class="title-sub">#{{ pedido }}</div>
         </div>
       </div>
-    </form>
-    <mat-card class="cabecalho form" style="width: 100%; margin-top: 1rem;">
-      <span><b>Pedido: </b> {{identity}} </span>
-      <span><b>Total:</b> {{total_order | number: '1.2-2'}} </span>
-      <span><b>Pago:</b> {{pago}} </span>
-      <span><b>Restante:</b> {{restante | number: '1.2-2'}} </span>
-    </mat-card>
-  </mat-card>
-  
-  <!-- lado direito responsavel pelo detalhe -->
-  <mat-card class="cabecalho form" style="width: 45%; height: 50vh;">
-    Detalhes
-    <div class="detalhe" >
-      <table class="responsive-table" id="customers">
-        <tr>
-          <th>Item</th>
-          <th>Subtotal</th>
-          <th>Quantidade</th>
-        </tr>
-        <tr *ngFor="let item of detailOder">
-          <td> {{item.name}} </td>
-          <td> R$ {{item.total}} </td>
-          <td> {{item.total_quantity}} </td>
-        </tr>
-      </table>
+      <div class="head-right">
+        <span class="badge" [ngClass]="status === 'Concluído' ? 'success' : 'warn'">
+          {{ status || 'Pendente' }}
+        </span>
+      </div>
+    </div>
+
+    <div class="order-body">
+      <!-- Coluna: tabela de itens -->
+      <div class="col items-col">
+        <div class="table-wrap">
+          <table class="table-modern">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th class="col-num">Qtd</th>
+                <th>Obs.</th>
+                <th class="col-num">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let it of detailOder">
+                <td class="truncate">{{ it?.name }}</td>
+                <td class="col-num mono">{{ it?.total_quantity }}</td>
+                <td class="truncate">{{ it?.observation }}</td>
+                <td class="col-num mono">R$ {{ it?.total }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- loading local da lista -->
+        <div class="loading-inline" *ngIf="isLoad">
+          <mat-spinner diameter="40"></mat-spinner>
+        </div>
+      </div>
+
+      <!-- Coluna: resumo e pagamento -->
+      <div class="col side-col">
+        <!-- Resumo -->
+        <div class="summary">
+          <div class="summary-row">
+            <span class="label">Cliente</span>
+            <span class="value">{{ client }}</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Atendimento</span>
+            <span class="chip">{{ service_type }}</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Pagamento</span>
+            <span class="chip">{{ payment_type }}</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Pago</span>
+            <span class="value mono">R$ {{ pago | number:'1.2-2' }}</span>
+          </div>
+          <div class="summary-row total">
+            <span class="label">Total do pedido</span>
+            <span class="value strong mono">R$ {{ total_order | number:'1.2-2' }}</span>
+          </div>
+          <div class="summary-row" [ngClass]="(restante ?? 0) <= 0 ? 'ok' : 'warn'">
+            <span class="label">Restante</span>
+            <span class="value mono">R$ {{ restante | number:'1.2-2' }}</span>
+          </div>
+        </div>
+
+        <!-- Form de pagamento (ligado ao FinishOrder) -->
+        <div class="pay-card">
+          <div class="pay-head">
+            <mat-icon>payments</mat-icon>
+            <span>Registrar Pagamento</span>
+          </div>
+
+          <div class="pay-form">
+            <mat-form-field appearance="outline">
+              <mat-label>Forma de pagamento</mat-label>
+              <mat-select name="discounted_type" [(ngModel)]="FinishOrder.discounted_type">
+                <mat-option value="Pix">Pix</mat-option>
+                <mat-option value="Dinheiro">Dinheiro</mat-option>
+                <mat-option value="Cartão">Cartão</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Valor recebido</mat-label>
+              <input matInput type="number" step="0.01" name="discounted_value"
+                     [(ngModel)]="FinishOrder.discounted_value" placeholder="0,00" />
+            </mat-form-field>
+
+            <button mat-raised-button class="button-success w-full"
+                    (click)="finishOrderSnack()">
+              Aplicar pagamento
+              <mat-icon>check_small</mat-icon>
+            </button>
+          </div>
+          <span class="hint">Se houver troco, o sistema exibirá um alerta.</span>
+        </div>
+      </div>
     </div>
   </mat-card>
 

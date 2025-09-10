@@ -1,38 +1,42 @@
-<div class="container">
-  <mat-card class="card-login">
-    <!-- simbolo de loadgin -->
-    <div class="loading-content" style="height: 40px;">
-      <div class="" *ngIf="isLoad">
-        <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+<div class="user-edit-page">
+  <mat-card class="form-card">
+    <!-- Overlay de loading -->
+    <div class="loading-overlay" *ngIf="isLoad">
+      <mat-spinner diameter="48"></mat-spinner>
+    </div>
+
+    <!-- Cabeçalho -->
+    <div class="form-card__head">
+      <div class="head-left">
+        <mat-icon>person</mat-icon>
+        <span>Editar Usuário</span>
       </div>
     </div>
 
-    <!-- formulario de envio de dados para o cadastro de usuario -->
-    <!-- criado ngfor para listar os itens vindos da api -->
-    <div class="" *ngFor="let item of users">
-      <form class="form">
-        <mat-form-field class="example-full-width" style="width: 60%">
+    <!-- Conteúdo -->
+    <div class="form-card__body" *ngFor="let item of users">
+      <form class="form-grid">
+        <mat-form-field appearance="outline">
           <mat-label>Nome</mat-label>
           <input autofocus matInput placeholder="Nome do usuário" name="name" [(ngModel)]="newUser.name" required />
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" style="width: 35%">
+        <mat-form-field appearance="outline">
           <mat-label>Login</mat-label>
           <input matInput placeholder="Login" name="login" required [(ngModel)]="newUser.login" />
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" style="width: 65%">
+        <mat-form-field appearance="outline">
           <mat-label>Senha</mat-label>
-          <input matInput placeholder="Senha" type="password" name="password" required [(ngModel)]="newUser.password" />
+          <input matInput type="password" placeholder="Senha" name="password" required [(ngModel)]="newUser.password" />
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" style="width: 30%">
+        <mat-form-field appearance="outline">
           <mat-label>Contato</mat-label>
           <input matInput placeholder="Contato" name="contact" required [(ngModel)]="newUser.contact" />
         </mat-form-field>
 
-
-        <mat-form-field class="example-full-width" style="width: 35%">
+        <mat-form-field appearance="outline">
           <mat-label>Nível</mat-label>
           <mat-select name="usergroup" [(ngModel)]="newUser.usergroup" required>
             <mat-option [value]="1">Administrador</mat-option>
@@ -40,25 +44,24 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" style="width: 35%">
+        <mat-form-field appearance="outline">
           <mat-label>Ativo</mat-label>
-          <mat-select name="usergroup" [(ngModel)]="newUser.active" required>
+          <!-- ajuste apenas no 'name' para evitar duplicidade com o campo acima -->
+          <mat-select name="active" [(ngModel)]="newUser.active" required>
             <mat-option [value]="0">Não</mat-option>
             <mat-option [value]="1">Sim</mat-option>
           </mat-select>
         </mat-form-field>
       </form>
 
-      <mat-card-actions style="justify-content: end">
-        <div class="example-button-row">
-          <button mat-raised-button class="button-warning" (click)="cancel()" style="margin-right: 1rem;">
-            Fechar
-          </button>
-          <button mat-raised-button class="button-success" (click)="updateUser()">
-            Salvar
-          </button>
-        </div>
-      </mat-card-actions>
+      <div class="actions-row">
+        <button mat-raised-button class="button-warning" (click)="cancel()">
+          Fechar
+        </button>
+        <button mat-raised-button class="button-success" (click)="updateUser()">
+          Salvar
+        </button>
+      </div>
     </div>
   </mat-card>
 </div>

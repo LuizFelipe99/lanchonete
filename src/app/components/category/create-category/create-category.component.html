@@ -1,29 +1,44 @@
-<div class="container">
-  <mat-card class="card-login">
-    <mat-card-header>
-      <mat-card-title style="color: black !important;">Cadastrar categoria</mat-card-title>
-      <!-- <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle> -->
-    </mat-card-header>
+<div class="create-category-page">
+  <mat-card class="form-card">
+    <!-- Cabeçalho -->
+    <div class="form-head">
+      <div class="head-left">
+        <mat-icon>category</mat-icon>
+        <span>Cadastrar categoria</span>
+      </div>
+    </div>
 
-    <!-- formulario de envio de dados para o cadastro de usuario -->
-    <form class="form" (keyup.enter)="insertCategory()">
-      <mat-form-field class="example-full-width">
-        <mat-label>Nome</mat-label>
-        <input matInput placeholder="Nome da categoria" name="name" [(ngModel)]="newCategory.name" required />
-      </mat-form-field>
+    <!-- Formulário -->
+    <form class="form-body" (keyup.enter)="insertCategory()">
+      <div class="form-grid">
+        <mat-form-field appearance="outline" class="col-2">
+          <mat-label>Nome</mat-label>
+          <input
+            matInput
+            placeholder="Nome da categoria"
+            name="name"
+            [(ngModel)]="newCategory.name"
+            required
+          />
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Descrição</mat-label>
-        <input matInput placeholder="Descrição" name="responsible" [(ngModel)]="newCategory.description" required />
-      </mat-form-field>
-
+        <mat-form-field appearance="outline" class="col-2">
+          <mat-label>Descrição</mat-label>
+          <input
+            matInput
+            placeholder="Descrição"
+            name="description"
+            [(ngModel)]="newCategory.description"
+          />
+        </mat-form-field>
+      </div>
     </form>
 
-    <mat-card-actions style="justify-content: end">
-      <div class="example-button-row">
-        <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
-        <button mat-raised-button class="button-success" (click)="insertCategory()"> Salvar </button>
-      </div>
+    <!-- Ações -->
+    <mat-card-actions class="actions">
+      <button mat-raised-button class="button-success" (click)="insertCategory()">
+        Salvar
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

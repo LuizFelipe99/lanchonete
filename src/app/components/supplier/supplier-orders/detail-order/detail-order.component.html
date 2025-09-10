@@ -1,71 +1,116 @@
-<div class="container">
-  <mat-card class="cabecalho form">
-    <div class="fornecedor">
-      <b>Fornecedor: </b> {{supplier}}
+<div class="order-supplier-detail">
+
+  <!-- RESUMO / CABEÇALHO -->
+  <mat-card class="summary-card">
+    <div class="summary-head">
+      <div class="head-left">
+        <mat-icon>local_shipping</mat-icon>
+        <span>Pedido do Fornecedor</span>
+      </div>
+
+      <div class="head-actions">
+        <button *ngIf="addItem" mat-raised-button class="button-success"
+          (click)="globalService.openDialog('Selecione o item','list-item','1','80%')">
+          Mais Itens
+          <mat-icon>search</mat-icon>
+        </button>
+
+        <button *ngIf="finishOrder" mat-raised-button class="button-success"
+          (click)="globalService.openDialog('Selecione o item','finish-order', identity, '40%')">
+          Finalizar
+          <mat-icon>check_small</mat-icon>
+        </button>
+      </div>
     </div>
-    <div class="pedido">
-      <b>Pedido:</b> {{ pedido }}
-    </div>
-    <div class="total">
-      <b>Total:</b> R${{total}}
-    </div>
-    <div class="vencimento">
-      <b>Vencimento: </b> {{ dt_expired }}
-    </div>
-    <div class="vencimento">
-    <b>Status: </b> <span class=""> {{ status }} </span>
-    </div>
-    <!-- botao para adicionar mais itens, vai ser feito um if de acordo com a data -->
-    <div class="action" *ngIf="addItem">
-      <button  (click)="globalService.openDialog('Selecione o item', 'list-item', '1', '80%')" mat-raised-button class="button-success" style="width: 20%;">Mais Itens <mat-icon>search</mat-icon></button>
-    </div>
-    <!-- botao para finalizar o pedido -->
-    <div class="action" *ngIf="finishOrder" style="margin-top: 10px;">
-      <button  (click)="globalService.openDialog('Selecione o item', 'finish-order', identity, '40%')" mat-raised-button class="button-success" style="width: 20%;">Finalizar <mat-icon>check_small</mat-icon></button>
+
+    <div class="summary-grid">
+      <div class="summary-item">
+        <span class="label">Fornecedor</span>
+        <span class="value truncate">{{ supplier }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Pedido</span>
+        <span class="value mono"># {{ pedido }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Total</span>
+        <span class="value strong mono">R$ {{ total | number:'1.2-2' }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Vencimento</span>
+        <span class="chip">{{ dt_expired }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Status</span>
+        <span class="badge" [ngClass]="status === 'Concluído' ? 'success' : 'warn'">{{ status }}</span>
+      </div>
     </div>
   </mat-card>
-  <!-- simbolo de loadgin -->
+
+  <!-- LOADING -->
   <div class="loading-content" style="height: 40px;">
-    <div class="" *ngIf="isLoad">
-      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
-    </div>
+    <mat-spinner *ngIf="isLoad" diameter="40"></mat-spinner>
   </div>
-  <table class="responsive-table" id="customers">
-    <tr>
-      <th>Item</th>
-      <th>Preço por unidade</th>
-      <th>Quantidade</th>
-      <th>Subtotal</th>
-      <th></th>
-    </tr>
-    <tr *ngFor="let detail of detailOder">
-      <td> {{detail.name}} </td>
-      <td>R$ {{detail.price_unit | number: '1.2-2'}} </td>
-      <td> {{detail.quantity}} </td>
-      <td>R$ {{detail.total | number: '1.2-2'}} </td>
-      <!-- botao de remover o item do pediodo segue a mesma logica de adicionar, só poderá fazer isso se a data de vencimento for menor do que a de hoje -->
-      <td *ngIf="addItem" (click)="removeItemOrder(detail.id_order_supplier_items)" >  <mat-icon  style="cursor: pointer">delete</mat-icon></td>
-    </tr>
-  </table>
-  <!-- INICIO paginação  -->
-  <div class="form" style="width: 100%; max-width: 100%;">
-    <div class="form-filter">
+
+  <!-- ITENS DO PEDIDO -->
+  <mat-card class="data-card">
+    <div class="data-card__head">
+      <div class="head-left">
+        <mat-icon>inventory_2</mat-icon>
+        <span>Itens do Pedido</span>
+      </div>
+      <div class="head-right subtle">
+        <span>Total: <strong>{{ totalOrders }}</strong></span>
+        <span>Páginas: <strong>{{ totalPages }}</strong></span>
+      </div>
+    </div>
+
+    <div class="data-card__body">
+      <div class="table-wrap">
+        <table class="table-modern">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th class="col-right">Preço unit.</th>
+              <th class="col-center">Qtd</th>
+              <th class="col-right">Subtotal</th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detail of detailOder">
+              <td class="truncate">{{ detail.name }}</td>
+              <td class="col-right mono">R$ {{ detail.price_unit | number:'1.2-2' }}</td>
+              <td class="col-center mono">{{ detail.quantity }}</td>
+              <td class="col-right mono">R$ {{ detail.total | number:'1.2-2' }}</td>
+              <td class="col-actions">
+                <button class="icon-btn" *ngIf="addItem" (click)="removeItemOrder(detail.id_order_supplier_items)"
+                  aria-label="Remover item">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginação -->
       <div class="pagination">
-        <div>
-          <span>Total: <b> {{totalOrders}} </b> </span>
-          <span>Paginas: <b> {{totalPages}} </b> </span>
+        <div class="page-info">
+          Página <strong>{{ currentPage }}</strong> de <strong>{{ totalPages }}</strong>
         </div>
-        <!-- botoes de paginação -->
-        <div class="buttons">
-        <!-- seta de anterior -->
-          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getDetailOrder(this.currentPage - pagination)"> < </button>
-          <!-- pagina atual da pagina current_page -->
-          {{currentPage}}
-          <!-- seta de proximo -->
-          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getDetailOrder(this.currentPage + pagination)"> > </button>
+        <div class="page-buttons">
+          <button class="btn-pagination" [disabled]="currentPage === 1"
+            (click)="getDetailOrder(this.currentPage - pagination)">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          <button class="btn-pagination" [disabled]="currentPage === totalPages"
+            (click)="getDetailOrder(this.currentPage + pagination)">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
         </div>
       </div>
     </div>
-  </div>
-  <!-- FIM DA PAGINAÇÃO -->
+  </mat-card>
+
 </div>

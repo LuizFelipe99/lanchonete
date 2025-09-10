@@ -1,31 +1,35 @@
-
-.card-login{
-  width: 100%;
-  // background-color: var(--second-color);
-  color: #ffff;
-  padding: 1rem;
-}
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  // background-color: var(--primary-color)
-}
-.form{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 1rem;
+.user-edit-page{
+  display:flex; justify-content:center; align-items:flex-start; padding:12px;
 }
 
-.example-full-width{
- margin-right: 20px;
+.form-card{
+  position:relative;
+  width:100%;
+  background: var(--color-bg);
+  border:1px solid var(--color-border);
+  border-radius: var(--radius, 12px);
+  box-shadow: var(--shadow, 0 8px 24px rgba(0,0,0,.08));
+  overflow:hidden;
 }
 
-.loading-content{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* overlay de loading */
+.loading-overlay{
+  position:absolute; inset:0; display:grid; place-items:center;
+  backdrop-filter: blur(1.5px);
+  background: rgba(255,255,255,.55);
+  z-index: 2;
 }
+
+/* cabeçalho */
+.form-card__head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px;
+  background: var(--table-head-bg);
+  color:#fff;
+}
+.form-card__head .head-left{ display:flex; align-items:center; gap:8px; font-weight:800 }
+.form-card__head .mat-icon{ color:#BFDBFE }
+
+/* corpo */
+.form-card__body{ padding: 12px }
+

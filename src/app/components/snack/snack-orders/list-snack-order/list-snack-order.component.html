@@ -1,92 +1,121 @@
-<div class="container">
-    <mat-card>
-      <form class="form">
-        <div>
-          <div class="form-filter">
-            <div>
-              <mat-form-field class="example-full-width">
-                <mat-label>Cliente</mat-label>
-                <input matInput placeholder="Ex. Super Mercado X" name="supplier" [(ngModel)]="filterOrder.client">
-              </mat-form-field>
-            </div>
-            
-            <div>
-              <mat-form-field class="example-full-width">
-                <mat-label>Pedido</mat-label>
-                <input type="number" matInput placeholder="Ex. 100" name="id_order_supplier" [(ngModel)]="filterOrder.id_order_snack">
-              </mat-form-field>
-            </div>
+<div class="orders-page">
 
-            <div>
-              <mat-form-field>
-                <mat-label>Status</mat-label>
-                <mat-select name="active"  [(ngModel)]="filterOrder.status" >
-                  <mat-option [value]="1">Concluído</mat-option>
-                  <mat-option [value]="2">Pendente</mat-option>
-                  <mat-option [value]="3">Todos</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            
-            <mat-card-actions style="justify-content: end;">
-              <div class="example-button-row" >
-                <button routerLink="../usuarios/criar" style="margin-right: 1rem;" mat-raised-button class="button-warning">Limpar Filtros</button> 
-                <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-                <button mat-raised-button class="button-success" style="margin-right: 1rem;" (click)="getOrders(page)" >Buscar</button>
-              </div>
-            </mat-card-actions>
-          </div>
-        </div>
-      </form>
-    </mat-card>
-  
-  <!-- simbolo de loadgin -->
-  <div class="loading-content" style="height: 40px;">
-    <div class="" *ngIf="isLoad">
-      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+  <!-- Filtros -->
+  <mat-card class="filter-card">
+    <div class="filter-card__head">
+      <div class="head-left">
+        <mat-icon>filter_alt</mat-icon>
+        <span>Filtros</span>
+      </div>
+      <div class="head-right">
+        <button mat-raised-button class="button-warning" routerLink="../usuarios/criar">
+          Limpar filtros
+        </button>
+        <button mat-raised-button class="button-success" (click)="getOrders(page)">
+          Buscar
+        </button>
+      </div>
     </div>
-  </div>
-    <table class="responsive-table" id="customers">
-      <tr>
-        <th>Cliente</th>
-        <th style="width: 50px;">Pedido</th>
-        <th>Status</th>
-        <th style="width: 50px;">Itens</th>
-        <th>Valor</th>
-        <th style="width: 30px;" ></th>
-      </tr>
-      <tr *ngFor="let order of orders">
-        <td> {{order.client}} </td>
-        <td># {{order.id_order_snack}} </td>
-        <td> 
-          <mat-icon *ngIf="order.status === 'Pendente'" class="icon-unsuccess">do_not_disturb_on</mat-icon>
-          <mat-icon *ngIf="order.status !== 'Pendente'" class="icon-success" >check</mat-icon>
-          {{order.status}} 
-        </td>
 
-        <td> {{order.itens ?? '0'}} </td>
-        <td> R$ {{order.total ?? '0' | number: '1.2-2'}} </td>
-        <td >  <mat-icon (click)="globalService.openDialog('Detalhes do pedido', 'detail-snack-order', order.id_order_snack || '', '95%')" style="cursor: pointer">shopping_cart</mat-icon></td>
-      </tr>
-    </table>
-    <!-- INICIO paginação  -->
-    <div class="form">
-      <div class="form-filter">
-        <div class="pagination">
-          <div>
-            <span>Total: <b> {{totalOrders}} </b> </span>
-            <span>Paginas: <b> {{totalPages}} </b> </span>
-          </div>
-          <!-- botoes de paginação -->
-          <div class="buttons">
-          <!-- seta de anterior -->
-            <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getOrders(this.currentPage - 1)"> < </button>
-            <!-- pagina atual da pagina current_page -->
-            {{currentPage}}
-            <!-- seta de proximo -->
-            <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getOrders(this.currentPage + 1)"> > </button>
-          </div>
+    <form class="filter-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Cliente</mat-label>
+        <input matInput placeholder="Ex. Super Mercado X" name="supplier" [(ngModel)]="filterOrder.client">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Pedido</mat-label>
+        <input type="number" matInput placeholder="Ex. 100" name="id_order_supplier" [(ngModel)]="filterOrder.id_order_snack">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select name="active" [(ngModel)]="filterOrder.status">
+          <mat-option [value]="1">Concluído</mat-option>
+          <mat-option [value]="2">Pendente</mat-option>
+          <mat-option [value]="3">Todos</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-card>
+
+  <!-- Loading -->
+  <div class="loading-content" style="height: 40px;">
+    <mat-spinner *ngIf="isLoad" diameter="40"></mat-spinner>
+  </div>
+
+  <!-- Tabela -->
+  <mat-card class="data-card">
+    <div class="data-card__head">
+      <div class="head-left">
+        <mat-icon>table_rows</mat-icon>
+        <span>Pedidos</span>
+      </div>
+      <div class="head-right subtle">
+        <span>Total: <strong>{{ totalOrders }}</strong></span>
+        <span>Páginas: <strong>{{ totalPages }}</strong></span>
+      </div>
+    </div>
+
+    <div class="data-card__body">
+      <div class="table-wrap">
+        <table class="table-modern">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th class="col-id">Pedido</th>
+              <th>Status</th>
+              <th class="col-center">Itens</th>
+              <th class="col-right">Valor</th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders">
+              <td class="truncate">{{ order.client }}</td>
+
+              <!-- alinham certinho com o cabeçalho -->
+              <td class="col-id mono"># {{ order.id_order_snack }}</td>
+
+              <td>
+                <span class="badge" [ngClass]="order.status === 'Pendente' ? 'warn' : 'success'">
+                  <mat-icon class="badge__icon">
+                    {{ order.status === 'Pendente' ? 'do_not_disturb_on' : 'check' }}
+                  </mat-icon>
+                  {{ order.status }}
+                </span>
+              </td>
+
+              <td class="col-center mono">{{ order.itens ?? 0 }}</td>
+              <td class="col-right mono">R$ {{ (order.total ?? 0) | number:'1.2-2' }}</td>
+
+              <td class="col-actions">
+                <button class="icon-btn"
+                        (click)="globalService.openDialog('Detalhes do pedido','detail-snack-order',order.id_order_snack || '', '95%')"
+                        aria-label="Detalhes do pedido">
+                  <mat-icon>shopping_cart</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginação -->
+      <div class="pagination">
+        <div class="page-info">
+          Página <strong>{{ currentPage }}</strong> de <strong>{{ totalPages }}</strong>
+        </div>
+        <div class="page-buttons">
+          <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getOrders(this.currentPage - 1)">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getOrders(this.currentPage + 1)">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
         </div>
       </div>
     </div>
-  </div>
+  </mat-card>
+
+</div>

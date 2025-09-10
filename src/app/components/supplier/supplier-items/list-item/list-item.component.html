@@ -1,105 +1,129 @@
-<div class="container">
-  <mat-card>
-    <form class="form">
-      <div>
-        <div class="form-filter">
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Nome</mat-label>
-              <input matInput placeholder="Nome" name="name" [(ngModel)]="filterItem.name" />
-            </mat-form-field>
-          </div>
+<div class="items-page">
 
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Descrição</mat-label>
-              <input matInput placeholder="Descrição" name="description" [(ngModel)]="filterItem.description" />
-            </mat-form-field>
-          </div>
-
-          <mat-form-field>
-            <mat-label>Tipo de produto</mat-label>
-            <mat-select name="category" [(ngModel)]="filterItem.category">
-              <mat-option *ngFor="let item of categories" [value]="item.id_category"> {{item.name}} </mat-option>
-
-              <!-- <mat-option [value]="1">Bebidas</mat-option>
-              <mat-option [value]="2">Pão</mat-option>
-              <mat-option [value]="3">Carne</mat-option>
-              <mat-option [value]="4">Geral</mat-option> -->
-            </mat-select>
-          </mat-form-field>
-
-          <mat-card-actions style="justify-content: end">
-            <div class="example-button-row">
-              <button style="margin-right: 1rem" mat-raised-button class="button-warning" (click)="clearInputs()">
-                Limpar Filtros
-              </button>
-              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-              <button mat-raised-button class="button-success" (click)="getItems(1)">
-                Buscar
-              </button>
-            </div>
-          </mat-card-actions>
-        </div>
+  <!-- Filtros -->
+  <mat-card class="filter-card">
+    <div class="filter-card__head">
+      <div class="head-left">
+        <mat-icon>filter_alt</mat-icon>
+        <span>Filtros</span>
       </div>
+      <div class="head-right">
+        <button mat-raised-button class="button-warning" (click)="clearInputs()">
+          Limpar filtros
+        </button>
+        <button mat-raised-button class="button-success" (click)="getItems(1)">
+          Buscar
+        </button>
+      </div>
+    </div>
+
+    <form class="filter-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome" name="name" [(ngModel)]="filterItem.name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Descrição</mat-label>
+        <input matInput placeholder="Descrição" name="description" [(ngModel)]="filterItem.description" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo de produto</mat-label>
+        <mat-select name="category" [(ngModel)]="filterItem.category">
+          <mat-option *ngFor="let item of categories" [value]="item.id_category">
+            {{ item.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </form>
   </mat-card>
 
-  <!-- simbolo de loadgin -->
+  <!-- Loading -->
   <div class="loading-content" style="height: 40px;">
-    <div class="" *ngIf="isLoad">
-      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
-    </div>
+    <mat-spinner *ngIf="isLoad" diameter="40"></mat-spinner>
   </div>
 
-  <table class="responsive-table" id="customers">
-    <tr>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th>Categoria</th>
-      <th>Em estoque</th>
-      <th>Rank</th>
-      <th></th>
-    </tr>
-    <tr *ngFor="let item of items">
-      <td>{{ item.name }}</td>
-      <td>{{ item.description }}</td>
-      <td>{{ item.category }}</td>
-      <td>{{ item.current_stock }}</td>
-      <td >{{ item.rank }} pts</td>
-      <td class="options-table" >
-        <mat-icon *ngIf="!addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Editar Item', 'edit-item', item.id_item || '', '50%' )" >edit</mat-icon>
-        <mat-icon *ngIf="addItemButton" style="cursor: pointer" (click)="globalService.openDialog('Confirmar item', 'confirm-item', item.id_item || '', '50%' )" >add_circle</mat-icon>
-      </td>
-    </tr>
-  </table>
-  <!-- INICIO paginação  -->
-  <div class="form">
-    <div class="form-filter">
+  <!-- Lista -->
+  <mat-card class="data-card">
+    <div class="data-card__head">
+      <div class="head-left">
+        <mat-icon>inventory_2</mat-icon>
+        <span>Itens</span>
+      </div>
+      <div class="head-right subtle">
+        <span>Total: <strong>{{ totalItems }}</strong></span>
+        <span>Páginas: <strong>{{ totalPages }}</strong></span>
+      </div>
+    </div>
+
+    <div class="data-card__body">
+      <div class="table-wrap">
+        <table class="table-modern">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Categoria</th>
+              <th class="col-center">Em estoque</th>
+              <th class="col-right">Rank</th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td class="truncate">{{ item?.name }}</td>
+              <td class="truncate desc-col">{{ item?.description }}</td>
+              <td class="truncate">{{ item?.category }}</td>
+
+              <td class="col-center mono">
+                <span class="badge" [ngClass]="item?.current_stock ?? 0 > 0 ? 'success' : 'danger'">
+                  <mat-icon class="badge__icon">
+                    {{ item?.current_stock ?? 0 > 0 ? 'inventory' : 'inventory_2' }}
+                  </mat-icon>
+                   {{ item?.current_stock ?? 0 }}
+                </span>
+              </td>
+
+              <td class="col-right mono">
+                <span class="chip">{{ item?.rank ?? 0 }} pts</span>
+              </td>
+
+              <td class="col-actions">
+                <button class="icon-btn"
+                        *ngIf="!addItemButton"
+                        (click)="globalService.openDialog('Editar Item','edit-item', item?.id_item || '', '50%')"
+                        aria-label="Editar item">
+                  <mat-icon>edit</mat-icon>
+                </button>
+
+                <button class="icon-btn"
+                        *ngIf="addItemButton"
+                        (click)="globalService.openDialog('Confirmar item','confirm-item', item?.id_item || '', '50%')"
+                        aria-label="Confirmar item">
+                  <mat-icon>add_circle</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginação -->
       <div class="pagination">
-        <div>
-          <span
-            >Total: <b> {{ totalItems }} </b>
-          </span>
-          <span
-            >Paginas: <b> {{ totalPages }} </b>
-          </span>
+        <div class="page-info">
+          Página <strong>{{ currentPage }}</strong> de <strong>{{ totalPages }}</strong>
         </div>
-        <!-- botoes de paginação -->
-        <div class="buttons">
-          <!-- seta de anterior -->
+        <div class="page-buttons">
           <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getItems(this.currentPage - 1)">
-            <
+            <mat-icon>chevron_left</mat-icon>
           </button>
-          <!-- pagina atual da pagina current_page -->
-          {{ currentPage }}
-          <!-- seta de proximo -->
           <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getItems(this.currentPage + 1)">
-            >
+            <mat-icon>chevron_right</mat-icon>
           </button>
         </div>
       </div>
     </div>
-  </div>
-    <!-- FIM DA PAGINAÇÃO -->
+  </mat-card>
+
 </div>

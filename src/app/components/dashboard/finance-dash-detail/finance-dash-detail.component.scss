@@ -1,75 +1,82 @@
-:root{
-    --borda-redonda: 10px;
-    --footer-bg: #2B957A; 
-    --card-bg: #37BC9B;
-  
-  }
-  .container{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 1rem;
-  }
-.card-total{
-    background-color: #34495E;
-    color: #fff;
-    width: 25%;
-    height: 150px;
-    padding-top: 10px;
-    font-size: 20px;
-    box-shadow: 0px 0px 5px black;
-    border-radius: var(borda-redonda);
+/* ===== Botão Voltar ===== */
+.btn-back{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 12px; border-radius:10px;
+  background: transparent; color: var(--color-text);
+  border:1px solid var(--color-border);
+  cursor:pointer; transition: background .18s ease, border-color .18s ease, transform .06s ease;
+  margin-bottom: 12px;
 }
-.card-body{
-    height: 70%;
-    text-align: right;
-    padding-right: 1rem;
-    display: flex;
-    justify-content: space-between;
-}
-.card-footer{
-    height: 30%;
-    background-color: #2C3E50;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 10px;
-    padding-left: 10px;
-    border-bottom-left-radius:  var(borda-redonda);
-    border-bottom-right-radius: var(borda-redonda);
-}
-.arrow-up{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
-}
-.description{
-    margin-top: 1rem;
-}
-.span{
-    font-size: 18px;
-    color: #CBE4D2;
+.btn-back:hover{
+  background:#FFF; border-color:#CBD5E1; transform: translateY(-1px);
 }
 
-.content-chart{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 250px;
-  }
+/* ===== Grid dos métodos ===== */
+.method-grid{
+  display:grid; gap:16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-bottom: 16px;
+}
 
-  .btn-goback{
-    background-color: transparent;
-    border-radius: 10px;
-    border: 1px solid black;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  .btn-goback:hover{
-    box-shadow: 0px 0px 10px black;
-    background-color: rgba(82, 81, 81, 0.438);
-  }
+/* Card base (mantém uso das suas coresBg/coresFooter) */
+.pay-card{
+  color:#fff;
+  border-radius: var(--radius);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow: 0 10px 22px rgba(2,6,23,.25);
+  overflow:hidden; display:flex; flex-direction:column;
+}
+
+/* Corpo */
+.pay-card__body{
+  display:flex; align-items:center; gap:14px; padding:16px;
+}
+.pay-card__icon{
+  width:56px; height:56px; border-radius:14px;
+  background: rgba(0,0,0,.12); display:grid; place-items:center;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
+}
+.pay-card__icon .mat-icon{ color:#fff; font-size:30px; width:30px; height:30px }
+
+.pay-card__desc{ display:flex; flex-direction:column; gap:2px }
+.pay-value{ margin:0; font-size:22px; font-weight:800; color:#fff }
+.pay-label{ margin:0; font-size:12px; font-weight:700; letter-spacing:.2px; color:#DBEAFE; text-transform:uppercase }
+
+/* Rodapé (usa seu colorsFooter[i]) */
+.pay-card__footer{
+  padding:10px 14px;
+  border-top:1px solid rgba(255,255,255,.12);
+  color:#E5E7EB; font-weight:600;
+}
+
+/* ===== Card do gráfico ===== */
+.chart-card{
+  background: var(--color-bg);
+  border:1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.chart-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; background: var(--table-head-bg); color:#fff;
+}
+.chart-title{ display:flex; align-items:center; gap:8px; font-weight:700 }
+.chart-title .mat-icon{ color:#BFDBFE }
+.btn-toggle{
+  display:inline-flex; align-items:center; gap:8px;
+  background: rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.22);
+  padding:6px 10px; border-radius:10px; cursor:pointer;
+  transition: background .18s ease, border-color .18s ease;
+}
+.btn-toggle:hover{ background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.32) }
+
+.chart-body{ padding: 12px }
+.chart-canvas{
+  width:100%; height: 320px; /* o TS já está com maintainAspectRatio:false */
+}
+
+/* Responsivo */
+@media (max-width:720px){
+  .chart-canvas{ height: 260px }
+}

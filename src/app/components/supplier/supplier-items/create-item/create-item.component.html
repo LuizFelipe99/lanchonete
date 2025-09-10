@@ -1,73 +1,80 @@
-<div class="container">
-  <mat-card class="card-login">
-    <mat-card-header>
-      <mat-card-title style="color: black !important;">Cadastrar item</mat-card-title>
-      <!-- <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle> -->
-    </mat-card-header>
+<div class="create-item-page">
+  <mat-card class="form-card">
+    <!-- Cabeçalho -->
+    <div class="form-head">
+      <div class="head-left">
+        <mat-icon>add_box</mat-icon>
+        <span>Cadastrar item</span>
+      </div>
+    </div>
 
-        <!-- simbolo de loadgin -->
-        <div class="loading-content" style="height: 40px;">
-          <div class="" *ngIf="isLoad">
-            <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+    <!-- Loading -->
+    <div class="loading-content" style="height:40px">
+      <mat-spinner *ngIf="isLoad" diameter="40"></mat-spinner>
+    </div>
+
+    <!-- Formulário -->
+    <form class="form-body" (keyup.enter)="insertItem()">
+      <div class="form-grid">
+        <mat-form-field appearance="outline" class="col-2">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome do Item" name="name" [(ngModel)]="newItem.name" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-2">
+          <mat-label>Descrição</mat-label>
+          <input matInput placeholder="Descrição" name="description" [(ngModel)]="newItem.description" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Categoria</mat-label>
+          <mat-select name="category" [(ngModel)]="newItem.category" required>
+            <mat-option *ngFor="let names of category_names" [value]="names.id_category">
+              {{ names.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Estoque mínimo</mat-label>
+          <input type="number" matInput placeholder="Ex.: 1" name="min_stock" [(ngModel)]="newItem.min_stock" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Valor de venda</mat-label>
+          <input type="number" matInput placeholder="Ex.: 1.00" name="sale_price" [(ngModel)]="newItem.sale_price" required />
+        </mat-form-field>
+
+        <!-- Upload / Imagem -->
+        <div class="upload-field col-2">
+          <label class="upload-label">Imagem</label>
+
+          <!-- input escondido -->
+          <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" hidden>
+
+          <div class="upload-actions">
+            <button type="button" mat-raised-button (click)="triggerFileInput()">
+              <mat-icon>upload</mat-icon>
+              Escolher imagem
+            </button>
+
+            <span class="file-name" *ngIf="selectedFileName !== 'Nenhum arquivo selecionado'">
+              {{ selectedFileName }}
+            </span>
+          </div>
+
+          <div class="image-preview" *ngIf="imagePreview">
+            <img [src]="imagePreview" alt="Prévia da Imagem">
           </div>
         </div>
-
-    <!-- formulario de envio de dados para o cadastro de usuario -->
-    <form class="form" (keyup.enter)="insertItem()">
-      <mat-form-field class="example-full-width">
-        <mat-label>Nome</mat-label>
-        <input matInput placeholder="Nome do Item" name="name" [(ngModel)]="newItem.name" required />
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Descrição</mat-label>
-        <input matInput placeholder="Descrição" name="description" [(ngModel)]="newItem.description" required />
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Categoria</mat-label>
-        <mat-select name="category" [(ngModel)]="newItem.category" required>
-          <mat-option *ngFor="let names of category_names" [value]="names.id_category">{{names.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Estoque minimo</mat-label>
-        <input type="number" matInput placeholder="Ex: 1" name="min_stock" [(ngModel)]="newItem.min_stock" required />
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Valor de venda</mat-label>
-        <input type="number" matInput placeholder="Ex: 1" name="sale_price" [(ngModel)]="newItem.sale_price" required />
-      </mat-form-field>
-      
-      <div class="upload-container">
-        <label class="upload-label">Imagem</label>
-        
-        <!-- Input escondido -->
-        <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" hidden>
-        
-        <!-- Botão Material Design -->
-        <button mat-raised-button color="primary" (click)="triggerFileInput()">
-          <mat-icon>upload</mat-icon> Escolher Imagem
-        </button>
-      
-        <!-- Exibir o nome do arquivo escolhido -->
-        <span class="file-name" *ngIf="selectedFileName !== 'Nenhum arquivo selecionado'">
-          {{ selectedFileName }}
-        </span>
-      
-        <!-- Exibir a pré-visualização da imagem -->
-        <div class="image-preview" *ngIf="imagePreview">
-          <img [src]="imagePreview" alt="Prévia da Imagem">
-        </div>
       </div>
-      
     </form>
 
-    <mat-card-actions style="justify-content: end">
-      <div class="example-button-row">
-        <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
-        <button mat-raised-button class="button-success" (click)="insertItem()"> Salvar </button>
-      </div>
+    <!-- Ações -->
+    <mat-card-actions class="actions">
+      <button mat-raised-button class="button-success" (click)="insertItem()">
+        Salvar
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

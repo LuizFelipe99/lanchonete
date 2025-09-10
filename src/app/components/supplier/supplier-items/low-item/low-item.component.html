@@ -1,35 +1,63 @@
-<div class="container">
-  <mat-card class="card-login">
-    <mat-card-header>
-      <mat-card-title style="color: black !important;">Baixa de item</mat-card-title>
-    </mat-card-header>
+<div class="stock-low-page">
+  <mat-card class="form-card">
+    <!-- Cabeçalho -->
+    <div class="form-head">
+      <div class="head-left">
+        <mat-icon>inventory_2</mat-icon>
+        <span>Baixa de item</span>
+      </div>
+      <div class="head-right">
+        <mat-spinner *ngIf="isLoad" diameter="28"></mat-spinner>
+      </div>
+    </div>
 
-    <form class="form">
-          <!-- simbolo de loadgin -->
-          <div class="loading-content" style="height: 40px;">
-            <div class="" *ngIf="isLoad">
-              <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
-            </div>
-          </div>
-          <mat-form-field class="example-full-width">
-            <mat-label>Item</mat-label>
-            <input matInput placeholder="Nome do Item" [formControl]="itemControl" [(ngModel)]="lowItem.id_item" [matAutocomplete]="auto" required />
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredItems | async" [value]="option.id_item">
-                {{ option.name }}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-          
-      <!-- quatidade -->
-      <mat-form-field class="example-full-width">
-        <mat-label>Quantidade</mat-label>
-        <input matInput placeholder="Quantidade" name="qte" [(ngModel)]="lowItem.qte_remove"  required type="number"/>
-      </mat-form-field>
+    <!-- Form -->
+    <form class="form-body" (keyup.enter)="lowItemStock()">
+      <div class="form-grid">
+        <!-- Item com autocomplete -->
+        <mat-form-field appearance="outline" class="col-2">
+          <mat-label>Item</mat-label>
+          <input
+            matInput
+            placeholder="Digite para buscar..."
+            [formControl]="itemControl"
+            [(ngModel)]="lowItem.id_item"
+            ngModelOptions="{standalone: true}"
+            [matAutocomplete]="auto"
+            required
+          />
+          <mat-icon matPrefix>search</mat-icon>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredItems | async" [value]="option.id_item">
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-hint>Escolha o item para dar baixa</mat-hint>
+        </mat-form-field>
 
-      <div class="example-button-row">
-        <button mat-raised-button class="button-success" (click)="lowItemStock()"> Salvar </button>
+        <!-- Quantidade -->
+        <mat-form-field appearance="outline" class="">
+          <mat-label>Quantidade</mat-label>
+          <input
+            matInput
+            type="number"
+            min="1"
+            placeholder="Ex.: 1"
+            name="qte"
+            [(ngModel)]="lowItem.qte_remove"
+            required
+          />
+          <mat-icon matSuffix>remove_circle</mat-icon>
+          <mat-hint>Informe a quantidade a remover do estoque</mat-hint>
+        </mat-form-field>
       </div>
     </form>
+
+    <!-- Ações -->
+    <mat-card-actions class="actions">
+      <button mat-raised-button class="button-success" (click)="lowItemStock()">
+        Salvar
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>

@@ -1,40 +1,46 @@
-<div class="container">
-    <mat-card class="card-login">
-      <mat-card-header>
-        <mat-card-subtitle>Pedido: {{id_order_supplier}} </mat-card-subtitle>
-      </mat-card-header>
-      <!-- formulario de envio de dados para o cadastro de usuario -->
-      <form class="form">
-        <mat-form-field class="example-full-width">
-            <mat-label>Item </mat-label>
-            <input matInput placeholder="Ex. Pedido fora do padrao..." disabled  name="name" [(ngModel)]="newItem.name" >
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Quantidade</mat-label>
-            <input matInput placeholder="Ex. 1" name="quantity" [(ngModel)]="newItem.quantity">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Valor por unidade</mat-label>
-            <input matInput placeholder="R$ 1.00" name="price_unit" [(ngModel)]="newItem.price_unit">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Total</mat-label>
-            <input matInput disabled  name="total" [(ngModel)]="newItem.total">
-        </mat-form-field>
-      </form>
-  
-      <mat-card-actions style="justify-content: end">
-        <div class="example-button-row">
-          <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
-          <button mat-raised-button class="button-success" (click)="insertItemOrder()" >
-            Adicionar
-          </button>
-        </div>
-      </mat-card-actions>
-    </mat-card>
-  
-  
-  
-  
-  </div>
-  
+<div class="add-item-page">
+  <mat-card class="editor-card">
+    <div class="editor-head">
+      <div class="head-left">
+        <mat-icon>playlist_add</mat-icon>
+        <span>Adicionar item ao pedido</span>
+      </div>
+      <span class="chip mono">Pedido # {{ id_order_supplier }}</span>
+    </div>
+
+    <form class="editor-form">
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Item</mat-label>
+        <mat-icon matPrefix>inventory_2</mat-icon>
+        <input matInput placeholder="Ex. Pedido fora do padrão..." disabled
+               name="name" [(ngModel)]="newItem.name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Quantidade</mat-label>
+        <mat-icon matPrefix>format_list_numbered</mat-icon>
+        <input matInput placeholder="Ex. 1" inputmode="numeric"
+               name="quantity" [(ngModel)]="newItem.quantity">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Valor por unidade</mat-label>
+        <mat-icon matPrefix>attach_money</mat-icon>
+        <input matInput placeholder="R$ 1,00" inputmode="decimal"
+               name="price_unit" [(ngModel)]="newItem.price_unit">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Total</mat-label>
+        <mat-icon matPrefix>summarize</mat-icon>
+        <input matInput disabled name="total" [(ngModel)]="newItem.total">
+      </mat-form-field>
+    </form>
+
+    <div class="actions">
+      <button mat-raised-button class="button-success" (click)="insertItemOrder()">
+        Adicionar
+      </button>
+    </div>
+  </mat-card>
+</div>

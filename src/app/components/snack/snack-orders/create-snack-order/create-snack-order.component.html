@@ -1,35 +1,52 @@
+<div class="order-client-page">
+  <mat-card class="form-card">
 
+    <!-- Cabeçalho -->
+    <div class="form-head">
+      <div class="head-left">
+        <mat-icon>receipt_long</mat-icon>
+        <span>Pedido cliente</span>
+      </div>
+    </div>
 
+    <!-- Formulário -->
+    <form class="form-body">
+      <div class="form-grid">
+        <mat-form-field appearance="outline" class="col-2">
+          <mat-label>Cliente</mat-label>
+          <input
+            matInput
+            placeholder="Mesa, Nome etc..."
+            name="client"
+            [(ngModel)]="newOrder.client"
+            required
+          />
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
 
-<div class="container">
-  <mat-card class="card-login">
-    <mat-card-header>
-      <mat-card-title>Pedido cliente</mat-card-title>
-      <mat-card-subtitle style="color: #ffff">Lanchonete</mat-card-subtitle>
-    </mat-card-header>
-
-    <!-- formulario de envio de dados para o cadastro de usuario -->
-    <form class="form">
-      <mat-form-field class="example-full-width">
-        <mat-label>Cliente</mat-label>
-        <input matInput placeholder="Mesa, Nome etc.." name="name"  [(ngModel)]="newOrder.client" required />
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Tipo de atendimento</mat-label>
-        <mat-select name="category" [(ngModel)]="newOrder.service_type" required>
-          <mat-option [value]="'Salão'" >Salão</mat-option>
-          <mat-option [value]="'Whatsapp'" >Whatsapp</mat-option>
-          <mat-option [value]="'Ifood'" >Ifood</mat-option>
-          <mat-option [value]="'Outro'" >Outro</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field appearance="outline" class="col-2">
+          <mat-label>Tipo de atendimento</mat-label>
+          <mat-select
+            name="service_type"
+            [(ngModel)]="newOrder.service_type"
+            required
+          >
+            <mat-option [value]="'Salão'">Salão</mat-option>
+            <mat-option [value]="'Whatsapp'">Whatsapp</mat-option>
+            <mat-option [value]="'Ifood'">Ifood</mat-option>
+            <mat-option [value]="'Outro'">Outro</mat-option>
+          </mat-select>
+          <mat-icon matPrefix>support_agent</mat-icon>
+        </mat-form-field>
+      </div>
     </form>
 
-    <mat-card-actions style="justify-content: end">
-      <div class="example-button-row">
-        <button mat-raised-button class="button-success" (click)="createNewOrder()" > Salvar </button>
-      </div>
+    <!-- Ações -->
+    <mat-card-actions class="actions">
+      <button mat-raised-button class="button-success" (click)="createNewOrder()">
+        Salvar
+      </button>
     </mat-card-actions>
+
   </mat-card>
 </div>

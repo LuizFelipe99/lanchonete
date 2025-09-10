@@ -1,29 +1,36 @@
-<div class="container">
-  <mat-card class="card-login">
-    <mat-card-header>
-      <mat-card-title style="color: black !important">Novo pedido fornecedor</mat-card-title>
-      <!-- <mat-card-subtitle>Lanchonete</mat-card-subtitle> -->
-    </mat-card-header>
-  <!-- simbolo de loadgin -->
-  <div class="loading-content" style="height: 40px;">
-    <div class="" *ngIf="isLoad">
-      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+<div class="order-create-page">
+
+  <mat-card class="form-card">
+    <div class="form-card__head">
+      <div class="head-left">
+        <mat-icon>library_add</mat-icon>
+        <span>Novo pedido fornecedor</span>
+      </div>
+
     </div>
-  </div>
-    <!-- formulario de envio de dados para o cadastro de usuario -->
-    <form class="form">
-      <mat-form-field>
+
+    <!-- Loading -->
+    <div class="loading-content">
+      <mat-spinner *ngIf="isLoad" diameter="40"></mat-spinner>
+    </div>
+
+    <!-- Formulário -->
+    <form class="form-grid">
+
+      <mat-form-field appearance="outline">
         <mat-label>Fornecedor</mat-label>
         <mat-select name="type" [(ngModel)]="newOrder.id_supplier">
-          <mat-option  *ngFor="let name of suppliers" [value]="name.id_supplier"> {{name.name}} </mat-option>
+          <mat-option *ngFor="let name of suppliers" [value]="name.id_supplier">
+            {{ name.name }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <!-- input de data reference a expiração do pedido -->
-      <mat-form-field class="example-form-field">
+      <!-- Data (fica como Date no template; a formatação para dd/MM/yyyy é feita no TS ao enviar) -->
+      <mat-form-field appearance="outline">
         <mat-label>Data de vencimento</mat-label>
-        <input matInput [matDatepicker]="datepicker" name="dt_expired" [(ngModel)]="newOrder.dt_expired" >
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <input matInput [matDatepicker]="datepicker" name="dt_expired" [(ngModel)]="newOrder.dt_expired">
+        <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
         <mat-datepicker #datepicker>
           <mat-datepicker-actions>
@@ -33,34 +40,32 @@
         </mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field appearance="outline" class="col-span-2">
         <mat-label>Observação</mat-label>
-        <textarea matInput placeholder="Ex. Pedido fora do padrao..."></textarea>
+        <textarea matInput placeholder="Ex. Pedido fora do padrão..."></textarea>
       </mat-form-field>
 
-      <!-- area responsavel para referenciar pelo menos 1 item -->
-      <!-- vai ter um if para verificar se ja foi criado a order -->
-      <div *ngIf="addItem">
-        <mat-form-field class="example-full-width" style="width: 50%;">
+      <!-- Seleção de itens após criar o pedido -->
+      <div class="items-cta col-span-2" *ngIf="addItem">
+        <mat-form-field appearance="outline" class="items-cta__input">
           <mat-label>Itens</mat-label>
-          <input matInput placeholder="Ex. Pão" disabled=""> 
+          <input matInput placeholder="Ex. Pão" disabled>
         </mat-form-field>
-        <button  (click)="globalService.openDialog('Selecione o item', 'list-item', '1', '80%')" mat-raised-button class="button-success" style="width: 50%;">Buscar <mat-icon>search</mat-icon></button>
+
+        <button mat-raised-button class="button-success items-cta__button"
+                (click)="globalService.openDialog('Selecione o item','list-item','1','80%')">
+          Buscar
+          <mat-icon>search</mat-icon>
+        </button>
       </div>
 
     </form>
 
-    <mat-card-actions style="justify-content: end">
-      <div class="example-button-row">
-        <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
-        <button mat-raised-button class="button-success"  (click)="createNewOrder()">
-          Processar
-        </button>
-      </div>
-    </mat-card-actions>
+    <div class="form-card__footer">
+      <button mat-raised-button class="button-success" (click)="createNewOrder()">
+        Processar
+      </button>
+    </div>
   </mat-card>
-
-
-
 
 </div>

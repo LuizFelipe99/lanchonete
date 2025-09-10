@@ -1,31 +1,43 @@
-<div class="container">
-    <mat-card class="card-login">
-      <mat-card-header>
-        <mat-card-title style="color: #000">Finalizar pedido</mat-card-title>
-        <mat-card-subtitle style="color: #000">Lanchonete {{identity}} </mat-card-subtitle>
-      </mat-card-header>
-  
-      <!-- formulario de envio de dados para o cadastro de usuario -->
-      <form class="form">
-        <mat-form-field class="example-full-width">
-          <mat-label>Recebido por</mat-label>
-          <mat-select name="id_user" required>
-            <mat-option *ngFor="let user of users" [value]="user.id_user" >{{user.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
+<div class="finish-order-page">
+  <mat-card class="form-card">
+    <div class="form-card__head">
+      <div class="head-left">
+        <mat-icon>assignment_turned_in</mat-icon>
+        <span>Finalizar pedido</span>
+      </div>
+      <div class="head-right">
+        <span class="mono">ID: <strong>{{ identity }}</strong></span>
+      </div>
+    </div>
 
-        <mat-radio-group aria-label="Select an option" name="status" [(ngModel)]="updateOrder.status">
-            <mat-radio-button value="1">Receber</mat-radio-button>
-            <mat-radio-button value="2">Cancelar</mat-radio-button>
-          </mat-radio-group>
-      </form>
-  
-      <mat-card-actions style="justify-content: end">
-        <div class="example-button-row">
-          <!-- <button routerLink="/login"  style="margin-right: 1rem;" mat-raised-button class="button-warning">Voltar</button>  -->
-          <button mat-raised-button class="button-success" (click)="finishOrder()" > Salvar </button>
-        </div>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-  
+    <form class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Recebido por</mat-label>
+        <mat-select name="id_user" required>
+          <mat-option *ngFor="let user of users" [value]="user.id_user">
+            {{ user.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="form-block">
+        <label class="block-label">Status</label>
+        <mat-radio-group
+          aria-label="Selecione o status"
+          name="status"
+          [(ngModel)]="updateOrder.status"
+          class="radio-group"
+        >
+          <mat-radio-button value="1">Receber</mat-radio-button>
+          <mat-radio-button value="2">Cancelar</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </form>
+
+    <div class="form-actions">
+      <button mat-raised-button class="button-success" (click)="finishOrder()">
+        Salvar
+      </button>
+    </div>
+  </mat-card>
+</div>

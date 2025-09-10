@@ -1,98 +1,114 @@
-<div class="container">
-  <mat-card>
-    <form class="form">
-      <div>
-        <div class="form-filter">
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Fornecedor</mat-label>
-              <input matInput placeholder="Nome" name="name" [(ngModel)]="filterSupplier.name" />
-            </mat-form-field>
-          </div>
+<div class="suppliers-page">
 
-          <div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Responsável</mat-label>
-              <input matInput placeholder="Responsável" name="responsible" [(ngModel)]="filterSupplier.responsible" />
-            </mat-form-field>
-          </div>
-           <div>
-            <mat-form-field>
-              <mat-label>Status</mat-label>
-              <mat-select name="active"  [(ngModel)]="filterSupplier.active" >
-                <mat-option [value]="0">Inativo</mat-option>
-                <mat-option [value]="1">Ativo</mat-option>
-                <mat-option [value]="3">Todos</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-
-          <mat-card-actions style="justify-content: end">
-            <div class="example-button-row">
-              <button (click)="clearInputs()" style="margin-right: 1rem" mat-raised-button class="button-warning">
-                Limpar Filtros
-              </button>
-              <!-- quando for chamar a função dentro da resposta da api eu passo a mensagem como parametro dentro da função -->
-              <button mat-raised-button class="button-success" (click)="getSuppliers(1)">
-                Buscar
-              </button>
-            </div>
-          </mat-card-actions>
-        </div>
+  <!-- Filtros -->
+  <mat-card class="filter-card">
+    <div class="filter-card__head">
+      <div class="head-left">
+        <mat-icon>filter_alt</mat-icon>
+        <span>Filtros</span>
       </div>
+      <div class="head-right">
+        <button mat-raised-button class="button-warning" (click)="clearInputs()">
+          Limpar filtros
+        </button>
+        <button mat-raised-button class="button-success" (click)="getSuppliers(1)">
+          Buscar
+        </button>
+      </div>
+    </div>
+
+    <form class="filter-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Fornecedor</mat-label>
+        <input matInput placeholder="Nome" name="name" [(ngModel)]="filterSupplier.name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Responsável</mat-label>
+        <input matInput placeholder="Responsável" name="responsible" [(ngModel)]="filterSupplier.responsible" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select name="active" [(ngModel)]="filterSupplier.active">
+          <mat-option [value]="1">Ativo</mat-option>
+          <mat-option [value]="0">Inativo</mat-option>
+          <mat-option [value]="3">Todos</mat-option>
+        </mat-select>
+      </mat-form-field>
     </form>
   </mat-card>
 
-  <!-- simbolo de loadgin -->
+  <!-- Loading -->
   <div class="loading-content" style="height: 40px;">
-    <div class="" *ngIf="isLoad">
-      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
-    </div>
+    <mat-spinner *ngIf="isLoad" diameter="40"></mat-spinner>
   </div>
 
-  <table class="responsive-table" id="customers">
-    <tr>
-      <th>Fornecedor</th>
-      <th>Responsável</th>
-      <th>Contato</th>
-      <th></th>
-    </tr>
-    <tr *ngFor="let supplier of suppliers">
-      <td>{{ supplier.name }}</td>
-      <td>{{ supplier.responsible }}</td>
-      <td>{{ supplier.contact_responsible }}</td>
-      <td class="options-table" >
-        <mat-icon style="cursor: pointer" (click)="globalService.openDialog('Editar Fornecedor', 'edit-supplier', supplier.id_supplier || '','50%' )" >edit</mat-icon>
-      </td>
-    </tr>
-  </table>
-  <!-- INICIO paginação  -->
-  <div class="form">
-    <div class="form-filter">
+  <!-- Tabela -->
+  <mat-card class="data-card">
+    <div class="data-card__head">
+      <div class="head-left">
+        <mat-icon>local_shipping</mat-icon>
+        <span>Fornecedores</span>
+      </div>
+      <div class="head-right subtle">
+        <span>Total: <strong>{{ totalSuppliers }}</strong></span>
+        <span>Páginas: <strong>{{ totalPages }}</strong></span>
+      </div>
+    </div>
+
+    <div class="data-card__body">
+      <div class="table-wrap">
+        <table class="table-modern">
+          <thead>
+            <tr>
+              <th>Fornecedor</th>
+              <th>Responsável</th>
+              <th>Contato</th>
+              <th>Status</th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let supplier of suppliers">
+              <td class="truncate">{{ supplier.name }}</td>
+              <td class="truncate">{{ supplier.responsible }}</td>
+              <td class="truncate">{{ supplier.contact_responsible }}</td>
+              <td>
+                <span class="badge" [ngClass]="supplier.active === 1 ? 'success' : 'danger'">
+                  <mat-icon class="badge__icon">
+                    {{ supplier.active === 1 ? 'check_circle' : 'cancel' }}
+                  </mat-icon>
+                  {{ supplier.active === 1 ? 'Ativo' : 'Inativo' }}
+                </span>
+              </td>
+              <td class="col-actions">
+                <button class="icon-btn"
+                        (click)="globalService.openDialog('Editar Fornecedor','edit-supplier', supplier.id_supplier || '', '50%')"
+                        aria-label="Editar fornecedor">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginação -->
       <div class="pagination">
-        <div>
-          <span
-            >Total: <b> {{ totalSuppliers }} </b>
-          </span>
-          <span
-            >Paginas: <b> {{ totalPages }} </b>
-          </span>
+        <div class="page-info">
+          Página <strong>{{ currentPage }}</strong> de <strong>{{ totalPages }}</strong>
         </div>
-        <!-- botoes de paginação -->
-        <div class="buttons">
-          <!-- seta de anterior -->
+        <div class="page-buttons">
           <button class="btn-pagination" [disabled]="currentPage === 1" (click)="getSuppliers(this.currentPage - 1)">
-            <
+            <mat-icon>chevron_left</mat-icon>
           </button>
-          <!-- pagina atual da pagina current_page -->
-          {{ currentPage }}
-          <!-- seta de proximo -->
           <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="getSuppliers(this.currentPage + 1)">
-            >
+            <mat-icon>chevron_right</mat-icon>
           </button>
         </div>
       </div>
     </div>
-  </div>
+  </mat-card>
+
 </div>

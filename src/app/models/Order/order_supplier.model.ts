@@ -4,12 +4,11 @@ export interface OrderSupplier {
   dt_created?: string;
   dt_expired?: string;
   total?: string;
-  status?: string;
+  status?: any;
   created_by?: string;
   supplier?: string;
   responsible?: string;
   items?: string;
-  
 }
 
 export interface OrderFilter{
@@ -17,6 +16,7 @@ export interface OrderFilter{
   responsible?: string,
   id_order_supplier?: number;
   active?: number;
+  status?: any;
 }
 
 export interface ResponseFilterOrder {

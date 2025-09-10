@@ -31,6 +31,8 @@ import { GeralComponent } from './components/config/geral/geral.component';
 //import erros
 import { ErrorHttpsComponent } from './components/erros/erros_https/erros_https.component';
 
+import { UsersAccessComponent } from './components/dashboard/users-access/users-access.component';
+
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
 //   { path: 'login', component: LoginComponent },
@@ -77,6 +79,7 @@ const routes: Routes = [
   { path: 'dashboard/financias/detalhes', component: FinanceDashDetailComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
   { path: 'configuracoes', component: GeralComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
   { path: 'itens/baixa', component: LowItemComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
+  { path: 'acesso/usuarios', component: UsersAccessComponent, canActivate: [AuthGuard], data: { allowedGroups: ['1'] } },
   { path: 'error', component: ErrorHttpsComponent }
 ];
 

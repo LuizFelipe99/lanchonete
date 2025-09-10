@@ -1,39 +1,53 @@
-<button class="btn-goback" routerLink="../../../home">
-  <mat-icon>undo</mat-icon>
+<!-- Voltar -->
+<button class="btn-back" routerLink="../../../home" aria-label="Voltar">
+  <mat-icon>arrow_back</mat-icon>
+  <span>Voltar</span>
 </button>
 
-<div class="container" style="margin-bottom: 1rem; display: flex; gap: 1rem;">
-  <mat-card class="card-total" *ngFor="let label of labels; let i = index" [style.background-color]="colorsBg[i]">
-    <div class="card-body">
-      <div class="arrow-up material-symbols-outlined">
-        <mat-icon [ngSwitch]="label" style="font-size: 50px; width: auto; height: auto;">
+<!-- Cards por método de pagamento -->
+<div class="method-grid">
+  <mat-card class="pay-card" *ngFor="let label of labels; let i = index"
+            [style.backgroundColor]="colorsBg[i]">
+    <div class="pay-card__body">
+      <div class="pay-card__icon">
+        <mat-icon [ngSwitch]="label">
           <ng-container *ngSwitchCase="'Pix'">attach_money</ng-container>
           <ng-container *ngSwitchCase="'Dinheiro'">payments</ng-container>
           <ng-container *ngSwitchCase="'Cartão'">credit_card</ng-container>
           <ng-container *ngSwitchDefault>payment</ng-container>
         </mat-icon>
       </div>
-      <div class="description">
-        <p><b>R$ {{ quantities[i] | number:'1.2-2' }} </b></p>
-        <span class="span">{{ label }}</span>
+
+      <div class="pay-card__desc">
+        <p class="pay-value">R$ {{ quantities[i] | number:'1.2-2' }}</p>
+        <p class="pay-label">{{ label }}</p>
       </div>
     </div>
-    <div class="card-footer" [style.background-color]="colorsFooter[i]">
-      <div class="see_detail">
-        {{current_month}}
-      </div>
+
+    <div class="pay-card__footer" [style.backgroundColor]="colorsFooter[i]">
+      <span>{{ current_month }}</span>
     </div>
   </mat-card>
 </div>
 
-<h1>Gráfico</h1>
-<div class="content-chart">
-  <p>Gráfico mes atual</p>
-  <!-- <canvas id="financeChartDetail"></canvas> -->
-   <canvas #financeChartDetail></canvas>
-</div>
+<!-- Gráfico -->
+<mat-card class="chart-card">
+  <div class="chart-head">
+    <div class="chart-title">
+      <mat-icon>donut_large</mat-icon>
+      <span>Gráfico mês atual</span>
+    </div>
 
-<!-- <div class="content-chart">
-  <p>Gráfico mes atual</p>
-   <canvas #financeChartDetailBar></canvas>
-</div> -->
+    <!-- Alterna donut ↔ barras usando sua função -->
+    <button type="button" class="btn-toggle" (click)="changeChart()">
+      <mat-icon *ngIf="!barChartControl">bar_chart</mat-icon>
+      <mat-icon *ngIf="barChartControl">donut_large</mat-icon>
+      <span>{{ barChartControl ? 'Ver pizza' : 'Ver barras' }}</span>
+    </button>
+  </div>
+
+  <div class="chart-body">
+    <canvas *ngIf="!barChartControl" #financeChartDetail class="chart-canvas"></canvas>
+    <canvas *ngIf="barChartControl"  #financeChartDetailBar class="chart-canvas"></canvas>
+  </div>
+</mat-card>

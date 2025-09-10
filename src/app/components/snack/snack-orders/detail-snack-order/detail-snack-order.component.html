@@ -1,67 +1,106 @@
-<div class="container">
-  <mat-card class="cabecalho form" style="margin-right: 1rem; width: 70%;" *ngIf="addItem">
-    Lanches
+<div class="order-page">
 
-      <!-- preciso adicionar um input para busca aqui -->
-      <!-- Campo de busca -->
+  <!-- Lado esquerdo: Lanches (só aparece quando addItem = true) -->
+  <mat-card class="products-card" *ngIf="addItem">
+    <div class="products-head">
+      <div class="head-left">
+        <mat-icon>lunch_dining</mat-icon>
+        <span>Lanches</span>
+      </div>
+
+      <!-- Busca -->
       <mat-form-field appearance="outline" class="search-bar">
         <mat-label>Buscar Lanche</mat-label>
         <input matInput type="text" [(ngModel)]="searchQuery" (input)="onSearchChange()">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-    <div class="lanches-container">
-
-      <!-- primeiro parametro da função é o id do item -->
-      <!-- (id_item: string, price_unit: number, quantity: number, total: number){ -->
-      <mat-card class="lanche" *ngFor="let item of items" (click)="insertItemInOrder(item.id_item || '', item.sale_price || '', '1', item.sale_price || '');" >
-        <!-- <img src="https://gym-dev.com/lanchonete/{{item.url_img}}" alt=""> -->
-        <img [src]="item.url_img ? base_url_img + item.url_img : 'https://gym-dev.com/lanchonete/snacks_img/produto-sem-imagem.jpg'" alt="Imagem do item">
-        <span> {{item.name}} </span>
-        <span>R$  {{item.sale_price}} </span>
-      </mat-card>
     </div>
-    <!-- simbolo de loadgin -->
-    <div class="load" *ngIf="isLoad">
-      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+
+    <div class="products-body">
+      <div class="product-grid">
+        <mat-card class="product-card"
+                  *ngFor="let item of items"
+                  (click)="insertItemInOrder(item.id_item || '', item.sale_price || '', '1', item.sale_price || '')">
+          <div class="product-thumb">
+            <img
+              [src]="item.url_img ? base_url_img + item.url_img : 'https://gym-dev.com/lanchonete/snacks_img/produto-sem-imagem.jpg'"
+              alt="Imagem do item" loading="lazy">
+          </div>
+          <div class="product-info">
+            <p class="product-name truncate">{{ item.name }}</p>
+            <p class="product-price">R$ {{ item.sale_price }}</p>
+          </div>
+        </mat-card>
+      </div>
+
+      <!-- Loading dentro da área de lanches -->
+      <div class="loading-inline" *ngIf="isLoad">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
     </div>
   </mat-card>
 
-  <!-- lado responsavel por exibir os itens do pedido -->
-  <mat-card class="cabecalho form" [ngClass]="{'detail-true': addItem, 'detail-false': !addItem}">
-    Detalhes
-    <div class="detalhe" >
-      <table class="responsive-table" id="customers">
-        <tr>
-          <th>Item</th>
-          <th>Subtotal</th>
-          <th>Quantidade</th>
-          <th>Obs.:</th>
-          <th>Remover</th>
-        </tr>
-        <tr *ngFor="let item of detailOder">
-          <td> {{item.name}} </td>
-          <td> R$ {{item.total}} </td>
-          <td> {{item.total_quantity}} </td>
-          <td> {{item.observation}} </td>
-          <td >
-            <mat-icon *ngIf="addItem" style="cursor: pointer;" (click)="removeItemFromOrder(item.id_order_snack_items)" >
-              delete
-            </mat-icon>
-          </td>
-        </tr>
-      </table>
+  <!-- Lado direito: Detalhes -->
+  <mat-card class="details-card" [ngClass]="{'details--wide': !addItem}">
+    <div class="details-head">
+      <div class="head-left">
+        <mat-icon>receipt_long</mat-icon>
+        <span>Detalhes</span>
+      </div>
     </div>
-    <!-- simbolo de loadgin -->
-    <div class="load" *ngIf="isLoad">
-      <mat-spinner *ngIf="isLoad" diameter="40" class="loading-circle"></mat-spinner>
+
+    <div class="details-body">
+      <div class="table-wrap">
+        <table class="table-modern">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th class="col-right">Subtotal</th>
+              <th class="col-center">Quantidade</th>
+              <th>Obs.</th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of detailOder">
+              <td class="truncate">{{ item.name }}</td>
+              <td class="col-right mono">R$ {{ item.total }}</td>
+              <td class="col-center mono">{{ item.total_quantity }}</td>
+              <td class="truncate">{{ item.observation }}</td>
+              <td class="col-actions">
+                <button class="icon-btn"
+                        *ngIf="addItem"
+                        (click)="removeItemFromOrder(item.id_order_snack_items)"
+                        aria-label="Remover item">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Loading da área de detalhes -->
+      <div class="loading-inline" *ngIf="isLoad">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+
+      <div class="summary">
+        <div class="summary-row"><span class="label">Cliente</span><span class="value">{{ client }}</span></div>
+        <div class="summary-row"><span class="label">Atendimento</span><span class="chip">{{ service_type }}</span></div>
+        <div class="summary-row"><span class="label">Pagamento</span><span class="chip">{{ payment_type }}</span></div>
+        <div class="summary-row total"><span class="label">Total</span><span class="value strong">R$ {{ total | number:'1.2-2' }}</span></div>
+        <div class="summary-row"><span class="label">Status</span><span class="badge" [ngClass]="status === 'Concluído' ? 'success' : 'warn'">{{ status }}</span></div>
+      </div>
+
+      <button *ngIf="addItem"
+              mat-raised-button
+              class="button-success finalize-btn"
+              (click)="globalService.openDialog('Detalhes do pedido','finish-snack-order', this.pedido, '75%')">
+        Finalizar
+        <mat-icon>check_small</mat-icon>
+      </button>
     </div>
-    <span><b>Cliente</b> {{client}} </span>
-    <span><b>Atendimento</b> {{service_type}} </span>
-    <span><b>Pagamento</b> {{payment_type}} </span>
-    <span><b>Total</b> R${{total | number: '1.2-2'}}</span>
-    <span><b>Status: </b> {{status}}</span>
-    <button *ngIf="addItem" mat-raised-button class="button-success" style="width: 40%; cursor: pointer;"
-    (click)="globalService.openDialog('Detalhes do pedido', 'finish-snack-order', this.pedido, '75%')" >Finalizar <mat-icon>check_small</mat-icon></button>
-     
   </mat-card>
+
 </div>

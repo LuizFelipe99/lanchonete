@@ -1,27 +1,50 @@
+/* Página */
+.supplier-create-page{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:12px;
+}
 
-.card-login{
-  width: 30%;
-  // background-color: var(--second-color);
-  color: #ffff;
-  padding: 10px;
+/* Card base */
+.form-card{
+  width:100%;
+  max-width:800px;
+  background: var(--color-bg);
+  border:1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
 }
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  // background-color: var(--primary-color)
+
+/* Cabeçalho */
+.form-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; background: var(--table-head-bg); color:#fff;
 }
-.form{
-  display: flex;
-  flex-direction: column;
-  padding: 10px
+.form-head .head-left{ display:flex; align-items:center; gap:8px; font-weight:700 }
+.form-head .head-left .mat-icon{ color:#BFDBFE }
+.form-head .head-right{ display:flex; align-items:center; gap:8px }
+
+/* Corpo */
+.form-body{ padding:12px }
+.form-grid{
+  display:grid; gap:12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
-.loading-content{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.col-2{ grid-column: span 2 }
+
+/* Ações */
+.actions{
+  display:flex; justify-content:flex-end;
+  padding:12px 16px; border-top:1px solid var(--color-border);
 }
-::ng-deep .mat-mdc-progress-spinner circle{
-  stroke: var(--menu-second)
+
+/* Spinner compat */
+::ng-deep .mat-mdc-progress-spinner circle{ stroke: var(--color-primary) }
+
+/* Responsivo extra */
+@media (max-width: 640px){
+  .col-2{ grid-column: auto }
 }

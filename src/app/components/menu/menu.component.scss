@@ -1,89 +1,103 @@
+/* ===== Container / Topbar ===== */
 mat-sidenav-container{
-  height: calc(205vh - 115vh);
-  max-height: 100vh;
-  // height: 100%;
+  height: 100vh; max-height: 100vh; background: var(--color-surface);
 }
-mat-sidenav{
-  width: 250px;
-  // background-color: var(--menu-second);
-  // background-image: linear-gradient(to bottom, #dd5517, #e05918, #e45c19, #e7601a, #ea631b, #e6601a, #e15d1a, #dd5a19, #d15116, #c44813, #b83f0f, #ac360c);
-  background-color: #e7601a;
-}
-
 .nav_bar_sup{
-  background-color: var(--button-warning);
-  color: #fff;
-  height: 10%;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+  background: linear-gradient(90deg, #0F172A 0%, #1E3A8A 100%) !important;
+  color:#fff; height:64px; display:flex; justify-content:space-between; align-items:center;
+  border-bottom:0; box-shadow:0 6px 20px rgba(2,6,23,.35);
 }
+.nav_bar_sup .mat-icon,
+.nav_bar_sup button[mat-icon-button]{ color:#BFDBFE !important }
 
-.menu-item{
-  cursor: pointer !important;
-}
-
-::ng-deep .mdc-list-item__content{
-  cursor: pointer !important;
-}
-
-::ng-deep .mat-mdc-list-item:hover{
-  border-bottom: 1px solid black;
-  background-color: #dd5517;
-  
-}
-
-::ng-deep .header-menu{
-  border-radius: 10px !important;
-  margin: 0px !important;
-  background-color: var(--menu-second) !important;
-}
-::ng-deep .mat-expansion-panel:last-of-type{
-  margin-top: 10px !important;
-  background-color: transparent !important;
-}
-
-.button-exit{
-  align-self: flex-end;
-}
-
-
-.logo{
-  border-radius: 50%;
-  max-width: 60%;
-  box-shadow: 3px 3px 9px 3px black;
-  cursor: pointer;
-  transition: 0.6s;
-}
-.logo:hover{
-  scale: 1.1;
-} 
 .logo_nav{
-  display: flex;
-  justify-content: end;
-  // width: 100%;
+  display:flex; align-items:center; gap:10px; padding:4px 8px;
+  border-radius:999px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14);
+}
+.logo{
+  width:44px; height:44px; object-fit:cover; border-radius:999px; border:2px solid #fff;
+  box-shadow:0 6px 16px rgba(0,0,0,.25), 0 0 0 3px rgba(59,130,246,.35);
+  transition: transform .2s ease, box-shadow .2s ease; cursor:pointer;
+}
+.logo:hover{ transform:translateY(-1px) scale(1.03); box-shadow:0 8px 20px rgba(0,0,0,.28), 0 0 0 4px rgba(59,130,246,.45) }
+
+/* ===== Sidenav ===== */
+mat-sidenav{
+  width: 260px; color:#E5E7EB;
+  background: linear-gradient(180deg, #0F172A 0%, #1E3A8A 100%) !important;
+  border-right:1px solid rgba(255,255,255,.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+}
+mat-sidenav-content{ background: var(--color-surface) }
+
+/* ===== Accordion (grupos recolhidos) ===== */
+.menu-accordion{
+  display:block; padding:10px 8px;
 }
 
-/* Works on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 12px;
+/* Painel base */
+::ng-deep .mat-expansion-panel{
+  background: transparent !important;
+  color:#E5E7EB; margin:8px 4px !important; border-radius:12px !important;
+  overflow:hidden; box-shadow:none !important; border:1px solid rgba(255,255,255,.06);
 }
 
-*::-webkit-scrollbar-track {
-  background: orange;
-  border-radius: 20px;
+/* Cabeçalho */
+::ng-deep .mat-expansion-panel-header{
+  background: rgba(255,255,255,.06) !important;
+  color:#fff !important; border-radius:12px !important; min-height:44px !important;
+  transition: background .18s ease, transform .06s ease;
+  padding-inline: 10px !important;
+}
+::ng-deep .mat-expansion-panel-header:hover{ background: rgba(255,255,255,.10) !important }
+::ng-deep .mat-expansion-panel-header mat-icon{ color:#BFDBFE !important; margin-right:8px }
+
+/* Indicador (seta) */
+::ng-deep .mat-expansion-indicator::after{
+  color:#C7D2FE !important;
 }
 
-*::-webkit-scrollbar-thumb {
-  background-color: var(--menu-primary);
-  border-radius: 20px;
-  border: 3px solid orange;
+/* Estado expandido (grupo ativo) */
+::ng-deep .mat-expansion-panel.mat-expanded > .mat-expansion-panel-header{
+  background: rgba(59,130,246,.18) !important;
+  box-shadow: inset 0 0 0 1px rgba(59,130,246,.35);
 }
 
-::ng-deep .mat-drawer-inner-container{
-  overflow: visible !important;
+/* Lista interna */
+::ng-deep .mat-mdc-nav-list .mat-mdc-list-item{
+  --pad-x: 12px;
+  color:#E5E7EB !important; border-radius:10px; margin:2px 4px;
+  padding-inline: var(--pad-x) !important;
+  transition: background .18s ease, box-shadow .18s ease, transform .06s ease;
 }
+::ng-deep .mat-mdc-nav-list .mat-mdc-list-item:hover{
+  background: rgba(255,255,255,.10) !important; border-bottom:0 !important;
+}
+mat-sidenav mat-icon{ color:#C7D2FE }
 
-::ng-deep .mat-mdc-list-base{
-  padding: 5px !important;
+/* Estado ativo (routerLinkActive) dos itens */
+.active-item{
+  background: rgba(59,130,246,.20) !important;
+  box-shadow: inset 0 0 0 1px rgba(59,130,246,.40);
+  color:#fff !important;
+}
+.active-item mat-icon{ color:#FFFFFF !important }
+
+/* Footer (sair) */
+.menu__footer{
+  padding: 8px; margin-top: 8px;
+}
+.button-exit{
+  width:100%; border-radius:10px; color:#fff;
+  background: rgba(220,38,38,.18); border:1px solid rgba(220,38,38,.45);
+  transition: background .18s ease, border-color .18s ease;
+}
+.button-exit:hover{ background: rgba(220,38,38,.28); border-color: rgba(220,38,38,.65) }
+
+/* Utilitários */
+.mr-5{ margin-right:5px }
+
+// cor da fonte do menu
+.menu__text{
+  color: white;
 }
