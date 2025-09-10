@@ -89,6 +89,16 @@
     <div class="head-right subtle">
       <span>Total: <strong>{{ totalUsers }}</strong></span>
       <span>Páginas: <strong>{{ totalPages }}</strong></span>
+
+      <!-- Botão Exportar CSV -->
+      <button mat-icon-button (click)="onExportCsv()" aria-label="Exportar CSV" style="margin-left: 8px;">
+        <mat-icon>download</mat-icon>
+      </button>
+      <!-- <button mat-raised-button class="button-success" (click)="onExportCsv()" style="margin-left: 8px;">
+        Exportar CSV
+        <mat-icon>download</mat-icon>
+      </button> -->
+     
     </div>
   </div>
 
@@ -111,22 +121,21 @@
             <td class="mono truncate">{{ user.login }}</td>
             <td class="truncate col-contact">{{ user.logou_em }}</td>
             <td>
-                <span class="badge" [ngClass]="user.request_status === 'S' ? 'success' : 'danger'">
-                  <mat-icon class="badge__icon">
-                    {{ user.request_status === 'S' ? 'check_circle' : 'cancel' }}
-                  </mat-icon>
-                  {{ user.request_status === 'S' ? 'Sucesso' : 'Falha' }}
-                </span>
-              </td>
-
-             <td>
-                <span class="badge" [ngClass]="user.status_user === 1 ? 'success' : 'danger'">
-                  <mat-icon class="badge__icon">
-                    {{ user.status_user === 1 ? 'check_circle' : 'cancel' }}
-                  </mat-icon>
-                  {{ user.status_user === 1 ? 'Ativo' : 'Inativo' }}
-                </span>
-              </td>
+              <span class="badge" [ngClass]="user.request_status === 'S' ? 'success' : 'danger'">
+                <mat-icon class="badge__icon">
+                  {{ user.request_status === 'S' ? 'check_circle' : 'cancel' }}
+                </mat-icon>
+                {{ user.request_status === 'S' ? 'Sucesso' : 'Falha' }}
+              </span>
+            </td>
+            <td>
+              <span class="badge" [ngClass]="user.status_user === 1 ? 'success' : 'danger'">
+                <mat-icon class="badge__icon">
+                  {{ user.status_user === 1 ? 'check_circle' : 'cancel' }}
+                </mat-icon>
+                {{ user.status_user === 1 ? 'Ativo' : 'Inativo' }}
+              </span>
+            </td>
             <td class="truncate col-contact">{{ user.user_ip }}</td>
           </tr>
         </tbody>
