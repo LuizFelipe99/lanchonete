@@ -46,7 +46,7 @@ payment_type = '';
 service_type = '';
 
 pago: number = 0;
-restante: number = 0;
+restante: any;
 isDecrease = false;
 
 
